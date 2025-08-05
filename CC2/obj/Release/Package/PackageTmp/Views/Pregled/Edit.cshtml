@@ -1,0 +1,104 @@
+﻿@model CC2.Models.Kontakti
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="container-fluid py-4">
+                    <div class="row">
+
+                        <div class="col-lg-9 col-12 mx-auto">
+                            <div class="card card-body mt-4">
+                                <h6 class="mb-0">Novi kontakt</h6>
+                                <p class="text-sm mb-0">Kreiraj novi kontakt</p>
+                                @if (TempData["Success"] != null)
+                                {
+                                    <div style="margin-left:23px;" id="successPopup" class="custom-popup">
+                                        <span style="color:green;" class="custom-popup-content">@TempData["Success"]</span>
+
+
+                                    </div>
+                                }
+                                @if (TempData["Error"] != null)
+                                {
+                                    <div style="margin-left:23px;" id="errorPopup" class="custom-popup">
+                                        <span style="color:darkred;" class="custom-popup-content">@TempData["Error"]</span>
+                                    </div>
+                                }
+                                <hr class="horizontal dark my-3">
+
+                                @using (Html.BeginForm("Edit", "Kontakti", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <!-- Hidden field for ID -->
+                                    @Html.HiddenFor(model => model.Id)
+
+                                    <!-- Hidden field for TERMIN_ID -->
+                                    @Html.HiddenFor(model => model.terminId)
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="form-label">Ime</label>
+                                            @Html.TextBoxFor(x => x.ime, new { required = "required", @name = "ime", placeholder = "Ime", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.ime)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Prezime</label>
+                                            @Html.TextBoxFor(x => x.prezime, new { required = "required", @name = "prezime", placeholder = "Prezime", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.prezime)
+                                        </div>
+                                        <!-- Add similar sections for other fields -->
+                                    </div>
+
+                                    <hr class="horizontal dark my-3">
+                                    <div class="row">
+                                        <div class="col-1">
+                                            <label class="form-label">Prefix</label>
+                                            @Html.TextBoxFor(x => x.prefix, new { required = "required", @id = "prefixInput", placeholder = "prefix", @class = "form-control", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(x => x.prefix)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Broj</label>
+                                            @Html.TextBoxFor(x => x.broj, new { required = "required", @name = "broj", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.broj)
+                                        </div>
+                                        <div class="row">
+                                            <p>&nbsp;</p>
+                                            <button type="submit" class="btn btn_primary text-uppercase" id="chkButton">
+                                                PROVJERI
+                                            </button>
+                                            <a class="btn btn_primary text-uppercase" id="chkButtonPoziv" style="display:none;" href=""></a>
+                                        </div>
+                                        <div id="messageContainer" class="shine">
+                                            <span id="messageText" class="error-message"></span>
+                                        </div>
+                                        <div id="result"></div> <!-- To display the result -->
+                                        <!-- Add similar sections for other fields -->
+
+                                    </div>
+                                }
+
+                                <p>&nbsp;</p>
+
+                                <div class="col-12">
+                                    <button class="btn btn-outline-primary" onclick="goBack()">Nazad</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

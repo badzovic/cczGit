@@ -1,0 +1,1579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\PUB</_PublishTargetUrl>
+    <History>True|2025-04-24T09:07:07.4802411Z;True|2024-11-18T12:56:50.6912735+01:00;True|2024-10-07T16:08:12.6660920+02:00;True|2024-10-03T08:53:50.4059744+02:00;True|2024-09-11T14:49:26.0916334+02:00;True|2024-09-11T14:17:24.0697375+02:00;True|2024-08-22T10:50:03.1112837+02:00;True|2024-08-22T10:08:05.6013197+02:00;True|2024-08-20T14:52:40.2043789+02:00;True|2024-03-21T07:41:38.9831998+01:00;True|2024-03-20T13:55:11.8442404+01:00;False|2024-03-20T13:54:37.4133379+01:00;True|2023-10-26T12:28:17.0561143+02:00;True|2023-10-26T12:23:17.1199477+02:00;True|2023-10-20T14:22:15.6624154+02:00;True|2023-10-20T09:47:54.7758971+02:00;True|2023-10-20T09:17:41.7814751+02:00;True|2023-10-20T09:09:54.8525414+02:00;True|2023-10-19T10:41:22.8106463+02:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>03/14/2024 10:38:10</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>03/14/2024 10:38:10</publishTime>
+    </File>
+    <File Include="bin/CC2.dll">
+      <publishTime>04/24/2025 15:38:54</publishTime>
+    </File>
+    <File Include="bin/CC2.pdb">
+      <publishTime>04/24/2025 15:38:54</publishTime>
+    </File>
+    <File Include="bin/DataAccess.dll">
+      <publishTime>08/20/2024 14:52:38</publishTime>
+    </File>
+    <File Include="bin/DataAccess.dll.config">
+      <publishTime>03/14/2024 10:38:10</publishTime>
+    </File>
+    <File Include="bin/DataAccess.pdb">
+      <publishTime>08/20/2024 14:52:38</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Configuration.Abstractions.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Configuration.Binder.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Configuration.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Logging.Abstractions.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Logging.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Options.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Extensions.Primitives.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>03/14/2024 10:38:12</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>03/14/2024 10:38:12</publishTime>
+    </File>
+    <File Include="bin/NLog.Extensions.Logging.dll">
+      <publishTime>03/14/2024 10:38:12</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>03/14/2024 10:38:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Globalization.Calendars.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.ZipFile.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Http.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Sockets.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/System.Buffers.dll">
+      <publishTime>03/14/2024 10:38:12</publishTime>
+    </File>
+    <File Include="bin/System.Memory.dll">
+      <publishTime>03/14/2024 10:38:12</publishTime>
+    </File>
+    <File Include="bin/System.Numerics.Vectors.dll">
+      <publishTime>03/14/2024 10:38:12</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
+      <publishTime>03/14/2024 10:38:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>03/14/2024 10:38:11</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>03/14/2024 10:38:12</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.rtl.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.rtl.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.rtl.min.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.rtl.min.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.rtl.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.rtl.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.rtl.min.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.rtl.min.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.min.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.min.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.rtl.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.rtl.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.rtl.min.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-utilities.rtl.min.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap.rtl.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap.rtl.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap.rtl.min.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap.rtl.min.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/css/argon-dashboard.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/css/argon-dashboard.css.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/css/argon-dashboard.min.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/css/nucleo-icons.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/css/nucleo-svg.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/fonts/nucleo-icons.eot">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/fonts/nucleo-icons.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/fonts/nucleo-icons.ttf">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/fonts/nucleo-icons.woff">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/fonts/nucleo-icons.woff2">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/fonts/nucleo.eot">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/fonts/nucleo.ttf">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/fonts/nucleo.woff">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/fonts/nucleo.woff2">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/apple-icon.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/automotive.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/bruce-mars.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/crm.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/default.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/down-arrow-dark.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/down-arrow-white.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/down-arrow.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/favicon.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/home-decor-1.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/home-decor-2.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/home-decor-3.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/icons/flags/AU.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/icons/flags/BR.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/icons/flags/DE.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/icons/flags/GB.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/icons/flags/US.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/illustrations/404.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/illustrations/icon-documentation.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/img-1-1200x1000.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/img-1.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/img-2.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/img-3.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/ivana-square.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/ivana-squares.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/ivancik.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/kal-visuals-square.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logo-ct-dark.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logo-ct.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/bitcoin.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/github.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/google.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/gray-logos/logo-coinbase.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/gray-logos/logo-nasa.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/gray-logos/logo-netflix.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/gray-logos/logo-pinterest.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/gray-logos/logo-spotify.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/gray-logos/logo-vodafone.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/mastercard.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/logos/visa.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/marie.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/meeting.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/office-dark.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/pricing-header-bg.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/shapes/pattern-left.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/shapes/pattern-right.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/bootstrap.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/icon-bulb.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/icon-sun-cloud.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/logo-asana.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/logo-atlassian.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/logo-invision.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/logo-jira.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/logo-slack.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/logo-spotify.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/small-logos/logo-xd.svg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/team-1.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/team-2.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/team-3.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/team-4.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/team-5.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/tesla.png">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/img/vr-bg.jpg">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/argon-dashboard.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/argon-dashboard.js.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/argon-dashboard.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/core/bootstrap.bundle.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/core/bootstrap.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/core/popper.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/amcharts/animated.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/amcharts/core.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/amcharts/maps.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/amcharts/worldLow.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/chartjs.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/choices.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/countup.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/datatables.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/dragula/dragula.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/dragula/dragula.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/dropzone.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/flatpickr.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/fullcalendar.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/jkanban/jkanban.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/jkanban/jkanban.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/leaflet.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/moment.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/multistep-form.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/nouislider.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/orbit-controls.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/perfect-scrollbar.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/photoswipe-ui-default.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/photoswipe.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/quill.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/round-slider.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/smooth-scrollbar.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/sweetalert.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/threejs.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/js/plugins/tilt.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/badges/_badge-circle.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/badges/_badge-dot.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/badges/_badge-floating.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/badges/_badge.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/bootstrap-grid.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/bootstrap-reboot.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/bootstrap-utilities.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/bootstrap.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/forms/_floating-labels.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/forms/_form-check.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/forms/_form-control.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/forms/_form-range.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/forms/_form-select.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/forms/_form-text.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/forms/_input-group.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/forms/_labels.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/forms/_validation.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_clearfix.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_color-bg.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_colored-links.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_position.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_ratio.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_stacks.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_stretched-link.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_text-truncation.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_visually-hidden.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/helpers/_vr.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_alert.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_backdrop.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_border-radius.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_box-shadow.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_breakpoints.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_buttons.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_caret.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_clearfix.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_color-scheme.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_container.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_deprecate.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_forms.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_gradients.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_grid.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_image.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_list-group.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_lists.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_pagination.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_reset-text.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_resize.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_table-variants.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_text-truncate.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_transition.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_utilities.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/mixins/_visually-hidden.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/utilities/_api.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/vendor/_rfs.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_accordion.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_alert.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_badge.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_breadcrumb.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_button-group.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_buttons.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_card.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_carousel.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_close.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_containers.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_dropdown.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_forms.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_functions.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_grid.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_helpers.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_images.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_list-group.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_maps.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_mixins.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_modal.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_nav.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_navbar.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_offcanvas.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_pagination.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_placeholders.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_popover.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_progress.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_reboot.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_root.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_spinners.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_tables.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_toasts.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_tooltip.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_transitions.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_type.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_utilities.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/bootstrap/_variables.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/cards/card-background.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/cards/card-blog.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/cards/card-carousel.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/cards/card-horizontal.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/cards/card-pricing.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/cards/card-profile.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/custom/_styles.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/custom/_variables.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/forms/_form-check.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/forms/_form-select.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/forms/_form-switch.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/forms/_forms.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/forms/_input-group.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/forms/_inputs.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/forms/_labels.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/mixins/mixins.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/mixins/_badge.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/mixins/_colored-shadows.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/mixins/_hover.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/mixins/_social-buttons.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/free/plugins.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/free/_flatpickr.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/free/_nouislider.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/free/_perfect-scrollbar.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/free/_prism.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/multi-step.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/plugins-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_carousel-slick.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_choices.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_datatable-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_datatable.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_dragula.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_dropzone.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_fullcalendar-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_fullcalendar.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_glidejs.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_highlight.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_kanban.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_leaflet.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_list-check.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_photoswipe.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_quill.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_rating-widget.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_sweetalert2-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/plugins/pro/_sweetalert2.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/theme-pro.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/theme.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_animations.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_avatars.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_badge.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_breadcrumb.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_cards-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_cards.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_choices.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_dark-version.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_dropdowns.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_fixed-plugin.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_form-switch.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_full-calendar.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_header.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_info-areas.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_misc-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_misc.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_navbar-vertical.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_navbar.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_pagination.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_rtl.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_social-buttons.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_table.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_timeline.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_utilities-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_utilities.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/variables/_virtual-reality.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_accordion.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_alert.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_avatars.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_backgrounds.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_badge.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_breadcrumbs.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_buttons.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_cards-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_cards.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_components.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_dark-version.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_dropdown-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_dropdown.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_dropup.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_fixed-plugin.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_floating-elements.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_footer.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_forms.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_gradients.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_header.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_info-areas.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_misc-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_misc.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_nav.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_navbar-vertical.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_navbar.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_pagination.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_popovers.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_progress.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_rtl-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_rtl.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_social-buttons.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_tables.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_tilt.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_timeline.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_tooltips.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_typography.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_utilities-extend.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_utilities.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/scss/argon-dashboard/_variables.scss">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>03/14/2024 10:38:10</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.js.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.min.js.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.esm.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.esm.js.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.esm.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.esm.min.js.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.map">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.8.3.js">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/ConfirmEmail.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/ExternalLoginFailure.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPassword.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPasswordConfirmation.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPassword.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPasswordConfirmation.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/SendCode.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/VerifyCode.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>04/25/2024 09:06:17</publishTime>
+    </File>
+    <File Include="Views/Kontakti/Create.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Kontakti/Edit.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Kontakti/editSales.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Kontakti/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Korisnik/Index.cshtml">
+      <publishTime>08/22/2024 09:15:32</publishTime>
+    </File>
+    <File Include="Views/Manage/AddPhoneNumber.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Manage/ChangePassword.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Manage/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Manage/ManageLogins.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Manage/SetPassword.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Nijedobijen/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/NijeZainteresovan/Index.cshtml">
+      <publishTime>03/21/2024 07:35:49</publishTime>
+    </File>
+    <File Include="Views/Novosti/dodaj.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Novosti/Index.cshtml">
+      <publishTime>04/14/2025 13:25:20</publishTime>
+    </File>
+    <File Include="Views/Pregled/Edit.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Pregled/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Pregled/Kontakt.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Pregled/kontaktSales.cshtml">
+      <publishTime>08/14/2024 08:50:02</publishTime>
+    </File>
+    <File Include="Views/Pregled/MojiKreirani.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Pregled/SalesAdmin.cshtml">
+      <publishTime>08/22/2024 11:10:46</publishTime>
+    </File>
+    <File Include="Views/PregledVracenih/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/PropusteniTermini/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Shared/Lockout.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>08/14/2024 08:42:06</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Statistika/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Statistika/Init.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Statistika/Search.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Termini/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Upregovorima/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/Zavrseni/Index.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>03/14/2024 10:38:09</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>03/20/2024 13:55:10</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

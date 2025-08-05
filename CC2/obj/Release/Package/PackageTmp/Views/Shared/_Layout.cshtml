@@ -1,0 +1,489 @@
+﻿@using Microsoft.AspNet.Identity
+@using CC2.Models
+<!DOCTYPE html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="~/Content/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="~/Content/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="~/Content/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link id="pagestyle" href="~/Content/css/argon-dashboard.css" rel="stylesheet" />
+
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Content/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="~/Content/img/favicon.png">
+
+
+
+    <!-- Nucleo Icons -->
+    <link href="~/Content/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="~/Content/css/nucleo-svg.css" rel="stylesheet" />
+    <title>CC - @ViewBag.Title </title>
+
+</head>
+
+<div class="min-height-300 bg-primary position-absolute w-100"></div>
+<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+    <div class="sidenav-header">
+        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+        <a class="navbar-brand m-0" href="/">
+            <img src="~/Content/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+            <span class="ms-1 font-weight-bold">CallCenter PRO</span>
+        </a>
+    </div>
+
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto h-auto" id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link active" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+                    <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                        <i class="ni ni-circle-08 text-info text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Kontakt</span>
+                </a>
+                <div class="collapse  show " id="dashboardsExamples">
+                    <ul class="nav ms-4">
+                        @if ((!User.IsInRole("adminsales")) && (!User.IsInRole("sales")) && (!User.IsInRole("kontrola")) && (!User.IsInRole("adminmarketing")))
+                        {
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Kontakti/Create">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Novi kontakt </span>
+                                </a>
+                            </li>
+                        }
+                        @if ((User.IsInRole("adminsales")))
+                        {
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Pregled">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Nove karte </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Pregled/SalesAdmin">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Pregled </span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/Pregled">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Pregled kontakata </span>
+                                </a>
+                            </li>
+                        }
+
+                        @if ((User.IsInRole("sales")))
+                        {
+                            <li class="nav-item ">
+                                <a class="nav-link" href="/Upregovorima">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> U pregovorima </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Nijedobijen">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Nije dobijen </span>
+                                </a>
+                            </li>
+                        }
+                        @if ((User.IsInRole("adminsales")))
+                        {
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Nijezainteresovan">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Nije zainteresovan </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Zavrseni">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Završeni </span>
+                                </a>
+                            </li>
+                        }
+                        @if ((!User.IsInRole("adminsales")) && (!User.IsInRole("sales")) && (!User.IsInRole("kontrola")) && (!User.IsInRole("kontrola")))
+                        {
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/PregledVracenih">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Vraćeni kontakti </span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Pregled/Mojikreirani">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Svi kreirani kontakti </span>
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </li>
+            @if ((!User.IsInRole("kontrola")) && (!User.IsInRole("adminmarketing")) && (!User.IsInRole("adminsales")))
+            {
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#authExamples" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                            <i class="ni ni-calendar-grid-58 text-danger text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Termini</span>
+                    </a>
+                    <div class="collapse " id="authExamples">
+                        <ul class="nav ms-4">
+
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/termini">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal">Predstojeci termini </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/propusteniTermini">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal">Propušteni termini </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+            }
+
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                    <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                        <i class="ni ni-ui-04 text-info text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Novosti</span>
+                </a>
+                <div class="collapse " id="applicationsExamples">
+                    <ul class="nav ms-4">
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/Novosti">
+                                <span class="sidenav-mini-icon"> N </span>
+                                <span class="sidenav-normal">Sve Novosti </span>
+                            </a>
+                            @if (User.IsInRole("adminsales") || (User.IsInRole("adminmarketing")))
+                            {
+                                <a class="nav-link " href="/Novosti/dodaj">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal">Dodaj Novost </span>
+                                </a>
+                            }
+                            </li>                       
+                    </ul>
+                </div>
+            </li>
+            @if (User.IsInRole("adminmarketing"))
+            {
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#applicationsExamples44" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                            <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Statistika</span>
+                    </a>
+                    <div class="collapse " id="applicationsExamples44">
+                        <ul class="nav ms-4">
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Statistika/Init">
+                                    <span class="sidenav-mini-icon"> K </span>
+                                    <span class="sidenav-normal"> Pregled </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+            }
+            @if ((User.IsInRole("admin") || (User.IsInRole("adminmarketing") || (User.IsInRole("adminsales")))))
+            {
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">ADMIN POSTAVKE</h6>
+                </li>
+
+
+
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#pagesExamples" class="nav-link " aria-controls="pagesExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                            <i class="ni ni-single-02 text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Korisnici</span>
+                    </a>
+                    <div class="collapse " id="pagesExamples">
+                        <ul class="nav ms-4">
+
+
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Korisnik/Index">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal">Dodaj korisnika </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Account/ResetPassword">
+                                    <span class="sidenav-mini-icon"> C </span>
+                                    <span class="sidenav-normal">Reset lozinke korisnika </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+            }
+
+
+
+        </ul>
+    </div>
+    <div class="sidenav-footer mx-3 my-3">
+        <div class="card card-plain shadow-none" id="sidenavCard">
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+            <img class="w-60 mx-auto" src="~/Content/img/illustrations/icon-documentation.svg" alt="sidebar_illustration">
+            <div class="card-body text-center p-3 w-100 pt-0">
+                <div class="docs-info">
+                    <h6 class="mb-0">Trebaš pomoć?</h6>
+                    <p class="text-xs font-weight-bold mb-0">Download-uj uputstvo</p>
+                </div>
+                <p>&nbsp;</p>
+                <a href="#" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Uputstvo</a>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+
+            </div>
+        </div>
+
+
+    </div>
+</aside>
+
+<main class="main-content position-relative border-radius-lg ">
+    <nav class="navbar navbar-main navbar-expand-lg  px-0 mx-4 shadow-none border-radius-xl z-index-sticky " id="navbarBlur" data-scroll="false">
+        <div class="container-fluid py-1 px-3">
+
+
+            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group">
+                    </div>
+                </div>
+                <ul class="navbar-nav  justify-content-end">
+                    <li class="nav-item px-3 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-white p-0">
+                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                            <div class="sidenav-toggler-inner">
+                                <i class="sidenav-toggler-line bg-white"></i>
+                                <i class="sidenav-toggler-line bg-white"></i>
+                                <i class="sidenav-toggler-line bg-white"></i>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user me-sm-1"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                            <li class="mb-2">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <ul class="navbar-nav navbar-right">
+                                            <li>
+                                                @Html.ActionLink("Dobrodošli, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "navbar-right" })
+
+                                                @if (User.IsInRole("admin"))
+                                                {
+                                                    <p style="font-size:12px;">ADMIN</p>
+                                                }
+                                                else if (User.IsInRole("adminmarketing"))
+                                                {
+                                                    <p style="font-size:12px;">ADMIN MARKETING</p>
+                                                }
+                                                else if (User.IsInRole("adminsales"))
+                                                {
+                                                    <p style="font-size:12px;">ADMIN SALES</p>
+                                                }
+                                                else if (User.IsInRole("kontrola"))
+                                                {
+                                                    <p style="font-size:12px;">KONTROLA</p>
+                                                }
+                                                else if (User.IsInRole("sales"))
+                                                {
+                                                    <p style="font-size:12px;">SALES</p>
+                                                }
+                                                else if (User.IsInRole("marketing"))
+                                                {
+                                                    <p style="font-size:12px;">MARKETING</p>
+                                                }
+
+                                            </li>
+
+                                            <li><a class="dropdown-item border-radius-md" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                        </ul>
+
+                                    }
+                                }
+
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <body class="g-sidenav-show  bg-gray-100">
+
+        <script>
+            document.body.style.zoom = "90%";
+        </script>
+
+        @RenderBody()
+
+    </body>
+    <footer class="footer pt-3  ">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-lg-between">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="copyright text-center text-sm text-muted text-lg-start">
+                        ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>,
+                        <a href="" class="font-weight-bold" target="_blank">CallCenter PRO.</a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</main>
+
+
+
+<div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+        <i class="fa fa-cog py-2"> </i>
+    </a>
+    <div class="card shadow-lg">
+        <div class="card-header pb-0 pt-3 bg-transparent ">
+            <div class="float-start">
+                <h5 class="mt-3 mb-0">Konfigurator</h5>
+                <p>Personalizuj svoj dashboard.</p>
+            </div>
+            <div class="float-end mt-4">
+                <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                    <i class="fa fa-close"></i>
+                </button>
+            </div>
+            <!-- End Toggle Button -->
+        </div>
+        <hr class="horizontal dark my-1">
+        <div class="card-body pt-sm-3 pt-0 overflow-auto">
+            <!-- Sidebar Backgrounds -->
+            <!-- Sidenav Type -->
+            <div class="mt-3">
+                <h6 class="mb-0">Meni Tipovi</h6>
+            </div>
+            <div class="d-flex">
+                <button class="btn bg-gradient-faded-info w-100 px-3 mb-2 active me-2" data-class="bg-white" onclick="sidebarType(this)">Svijetli</button>
+                <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default" onclick="sidebarType(this)">Tamni</button>
+            </div>
+            <hr class="horizontal dark my-sm-4">
+            <div class="mt-2 mb-5 d-flex">
+                <h6 class="mb-0">Light / Dark mode</h6>
+                <div class="form-check form-switch ps-0 ms-auto my-auto">
+                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!--   Core JS Files   -->
+<script src="~/Content/js/core/popper.min.js"></script>
+<script src="~/Content/js/core/bootstrap.min.js"></script>
+<script src="~/Content/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="~/Content/js/plugins/smooth-scrollbar.min.js"></script>
+<!-- Kanban scripts -->
+<script src="~/Content/js/plugins/dragula/dragula.min.js"></script>
+<script src="~/Content/js/plugins/jkanban/jkanban.js"></script>
+<script src="~/Content/js/plugins/chartjs.min.js"></script>
+
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
+
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+<!--   Core JS Files   -->
+<script src="~/Content/js/core/popper.min.js"></script>
+
+<script src="~/Content/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="~/Content/js/plugins/smooth-scrollbar.min.js"></script>
+
+<!-- Kanban scripts -->
+<script src="~/Content/js/plugins/dragula/dragula.min.js"></script>
+<script src="~/Content/js/plugins/jkanban/jkanban.js"></script>
+<script src="~/Content/js/core/popper.min.js"></script>
+
+<script src="~/Content/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="~/Content/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="~/Content/js/plugins/fullcalendar.min.js"></script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="~/Content/js/argon-dashboard.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+

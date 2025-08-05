@@ -1,0 +1,744 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CC2</RootNamespace>
+    <AssemblyName>CC2</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44393</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.5.2.4\lib\net46\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.Extensions.Logging.5.3.4\lib\net461\NLog.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.0\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.2.2\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.2.2\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.2.2\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.2.2\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KontaktiController.cs" />
+    <Compile Include="Controllers\KorisnikController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NijedobijenController.cs" />
+    <Compile Include="Controllers\NijeZainteresovanController.cs" />
+    <Compile Include="Controllers\NovostiController.cs" />
+    <Compile Include="Controllers\PregledController.cs" />
+    <Compile Include="Controllers\PregledVracenihController.cs" />
+    <Compile Include="Controllers\PropusteniTerminiController.cs" />
+    <Compile Include="Controllers\StatistikaController.cs" />
+    <Compile Include="Controllers\TerminiController.cs" />
+    <Compile Include="Controllers\UpregovorimaController.cs" />
+    <Compile Include="Controllers\ZavrseniController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Dashboard.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Kontakti.cs" />
+    <Compile Include="Models\Korisnici.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pregled.cs" />
+    <Compile Include="Models\PregledKontakta.cs" />
+    <Compile Include="Models\PregledVracenih.cs" />
+    <Compile Include="Models\Statistika.cs" />
+    <Compile Include="Models\Termin.cs" />
+    <Compile Include="Models\UploadedFile.cs" />
+    <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\argon-dashboard.css" />
+    <Content Include="Content\css\argon-dashboard.min.css" />
+    <Content Include="Content\css\nucleo-icons.css" />
+    <Content Include="Content\css\nucleo-svg.css" />
+    <Content Include="Content\fonts\nucleo-icons.svg" />
+    <Content Include="Content\img\apple-icon.png" />
+    <Content Include="Content\img\automotive.jpg" />
+    <Content Include="Content\img\bruce-mars.jpg" />
+    <Content Include="Content\img\crm.jpg" />
+    <Content Include="Content\img\default.jpg" />
+    <Content Include="Content\img\down-arrow-dark.svg" />
+    <Content Include="Content\img\down-arrow-white.svg" />
+    <Content Include="Content\img\down-arrow.svg" />
+    <Content Include="Content\img\favicon.png" />
+    <Content Include="Content\img\home-decor-1.jpg" />
+    <Content Include="Content\img\home-decor-2.jpg" />
+    <Content Include="Content\img\home-decor-3.jpg" />
+    <Content Include="Content\img\icons\flags\AU.png" />
+    <Content Include="Content\img\icons\flags\BR.png" />
+    <Content Include="Content\img\icons\flags\DE.png" />
+    <Content Include="Content\img\icons\flags\GB.png" />
+    <Content Include="Content\img\icons\flags\US.png" />
+    <Content Include="Content\img\illustrations\404.svg" />
+    <Content Include="Content\img\illustrations\icon-documentation.svg" />
+    <Content Include="Content\img\img-1-1200x1000.jpg" />
+    <Content Include="Content\img\img-1.jpg" />
+    <Content Include="Content\img\img-2.jpg" />
+    <Content Include="Content\img\img-3.jpg" />
+    <Content Include="Content\img\ivana-square.jpg" />
+    <Content Include="Content\img\ivana-squares.jpg" />
+    <Content Include="Content\img\ivancik.jpg" />
+    <Content Include="Content\img\kal-visuals-square.jpg" />
+    <Content Include="Content\img\logo-ct-dark.png" />
+    <Content Include="Content\img\logo-ct.png" />
+    <Content Include="Content\img\logos\bitcoin.jpg" />
+    <Content Include="Content\img\logos\github.svg" />
+    <Content Include="Content\img\logos\google.svg" />
+    <Content Include="Content\img\logos\gray-logos\logo-coinbase.svg" />
+    <Content Include="Content\img\logos\gray-logos\logo-nasa.svg" />
+    <Content Include="Content\img\logos\gray-logos\logo-netflix.svg" />
+    <Content Include="Content\img\logos\gray-logos\logo-pinterest.svg" />
+    <Content Include="Content\img\logos\gray-logos\logo-spotify.svg" />
+    <Content Include="Content\img\logos\gray-logos\logo-vodafone.svg" />
+    <Content Include="Content\img\logos\mastercard.png" />
+    <Content Include="Content\img\logos\visa.png" />
+    <Content Include="Content\img\marie.jpg" />
+    <Content Include="Content\img\meeting.jpg" />
+    <Content Include="Content\img\office-dark.jpg" />
+    <Content Include="Content\img\pricing-header-bg.jpg" />
+    <Content Include="Content\img\shapes\pattern-left.png" />
+    <Content Include="Content\img\shapes\pattern-right.png" />
+    <Content Include="Content\img\small-logos\bootstrap.svg" />
+    <Content Include="Content\img\small-logos\icon-bulb.svg" />
+    <Content Include="Content\img\small-logos\icon-sun-cloud.png" />
+    <Content Include="Content\img\small-logos\logo-asana.svg" />
+    <Content Include="Content\img\small-logos\logo-atlassian.svg" />
+    <Content Include="Content\img\small-logos\logo-invision.svg" />
+    <Content Include="Content\img\small-logos\logo-jira.svg" />
+    <Content Include="Content\img\small-logos\logo-slack.svg" />
+    <Content Include="Content\img\small-logos\logo-spotify.svg" />
+    <Content Include="Content\img\small-logos\logo-xd.svg" />
+    <Content Include="Content\img\team-1.jpg" />
+    <Content Include="Content\img\team-2.jpg" />
+    <Content Include="Content\img\team-3.jpg" />
+    <Content Include="Content\img\team-4.jpg" />
+    <Content Include="Content\img\team-5.jpg" />
+    <Content Include="Content\img\tesla.png" />
+    <Content Include="Content\img\vr-bg.jpg" />
+    <Content Include="Content\js\argon-dashboard.js" />
+    <Content Include="Content\js\argon-dashboard.min.js" />
+    <Content Include="Content\js\core\bootstrap.bundle.min.js" />
+    <Content Include="Content\js\core\bootstrap.min.js" />
+    <Content Include="Content\js\core\popper.min.js" />
+    <Content Include="Content\js\plugins\amcharts\animated.js" />
+    <Content Include="Content\js\plugins\amcharts\core.js" />
+    <Content Include="Content\js\plugins\amcharts\maps.js" />
+    <Content Include="Content\js\plugins\amcharts\worldLow.js" />
+    <Content Include="Content\js\plugins\chartjs.min.js" />
+    <Content Include="Content\js\plugins\choices.min.js" />
+    <Content Include="Content\js\plugins\countup.min.js" />
+    <Content Include="Content\js\plugins\datatables.js" />
+    <Content Include="Content\js\plugins\dragula\dragula.js" />
+    <Content Include="Content\js\plugins\dragula\dragula.min.js" />
+    <Content Include="Content\js\plugins\dropzone.min.js" />
+    <Content Include="Content\js\plugins\flatpickr.min.js" />
+    <Content Include="Content\js\plugins\fullcalendar.min.js" />
+    <Content Include="Content\js\plugins\jkanban\jkanban.js" />
+    <Content Include="Content\js\plugins\jkanban\jkanban.min.js" />
+    <Content Include="Content\js\plugins\leaflet.js" />
+    <Content Include="Content\js\plugins\moment.min.js" />
+    <Content Include="Content\js\plugins\multistep-form.js" />
+    <Content Include="Content\js\plugins\nouislider.min.js" />
+    <Content Include="Content\js\plugins\orbit-controls.js" />
+    <Content Include="Content\js\plugins\perfect-scrollbar.min.js" />
+    <Content Include="Content\js\plugins\photoswipe-ui-default.min.js" />
+    <Content Include="Content\js\plugins\photoswipe.min.js" />
+    <Content Include="Content\js\plugins\quill.min.js" />
+    <Content Include="Content\js\plugins\round-slider.min.js" />
+    <Content Include="Content\js\plugins\smooth-scrollbar.min.js" />
+    <Content Include="Content\js\plugins\sweetalert.min.js" />
+    <Content Include="Content\js\plugins\threejs.js" />
+    <Content Include="Content\js\plugins\tilt.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\css\argon-dashboard.css.map" />
+    <Content Include="Content\fonts\nucleo-icons.eot" />
+    <Content Include="Content\fonts\nucleo-icons.ttf" />
+    <Content Include="Content\fonts\nucleo-icons.woff" />
+    <Content Include="Content\fonts\nucleo-icons.woff2" />
+    <Content Include="Content\fonts\nucleo.eot" />
+    <Content Include="Content\fonts\nucleo.ttf" />
+    <Content Include="Content\fonts\nucleo.woff" />
+    <Content Include="Content\fonts\nucleo.woff2" />
+    <Content Include="Content\js\argon-dashboard.js.map" />
+    <Content Include="Content\scss\argon-dashboard.scss" />
+    <Content Include="Content\scss\argon-dashboard\badges\_badge-circle.scss" />
+    <Content Include="Content\scss\argon-dashboard\badges\_badge-dot.scss" />
+    <Content Include="Content\scss\argon-dashboard\badges\_badge-floating.scss" />
+    <Content Include="Content\scss\argon-dashboard\badges\_badge.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\bootstrap-utilities.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\bootstrap.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\forms\_floating-labels.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\forms\_form-check.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\forms\_form-control.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\forms\_form-range.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\forms\_form-select.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\forms\_form-text.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\forms\_input-group.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\forms\_labels.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\forms\_validation.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_clearfix.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_color-bg.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_colored-links.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_position.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_ratio.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_stacks.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_stretched-link.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_text-truncation.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_visually-hidden.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\helpers\_vr.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_alert.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_backdrop.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_caret.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_color-scheme.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_container.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_lists.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_table-variants.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_transition.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_utilities.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\mixins\_visually-hidden.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\utilities\_api.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\vendor\_rfs.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_accordion.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_alert.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_badge.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_breadcrumb.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_button-group.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_buttons.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_card.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_carousel.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_close.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_containers.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_dropdown.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_forms.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_functions.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_grid.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_helpers.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_images.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_list-group.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_maps.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_mixins.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_modal.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_nav.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_navbar.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_offcanvas.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_pagination.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_placeholders.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_popover.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_progress.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_reboot.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_root.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_spinners.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_tables.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_toasts.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_tooltip.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_transitions.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_type.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_utilities.scss" />
+    <Content Include="Content\scss\argon-dashboard\bootstrap\_variables.scss" />
+    <Content Include="Content\scss\argon-dashboard\cards\card-background.scss" />
+    <Content Include="Content\scss\argon-dashboard\cards\card-blog.scss" />
+    <Content Include="Content\scss\argon-dashboard\cards\card-carousel.scss" />
+    <Content Include="Content\scss\argon-dashboard\cards\card-horizontal.scss" />
+    <Content Include="Content\scss\argon-dashboard\cards\card-pricing.scss" />
+    <Content Include="Content\scss\argon-dashboard\cards\card-profile.scss" />
+    <Content Include="Content\scss\argon-dashboard\custom\_styles.scss" />
+    <Content Include="Content\scss\argon-dashboard\custom\_variables.scss" />
+    <Content Include="Content\scss\argon-dashboard\forms\_form-check.scss" />
+    <Content Include="Content\scss\argon-dashboard\forms\_form-select.scss" />
+    <Content Include="Content\scss\argon-dashboard\forms\_form-switch.scss" />
+    <Content Include="Content\scss\argon-dashboard\forms\_forms.scss" />
+    <Content Include="Content\scss\argon-dashboard\forms\_input-group.scss" />
+    <Content Include="Content\scss\argon-dashboard\forms\_inputs.scss" />
+    <Content Include="Content\scss\argon-dashboard\forms\_labels.scss" />
+    <Content Include="Content\scss\argon-dashboard\mixins\mixins.scss" />
+    <Content Include="Content\scss\argon-dashboard\mixins\_badge.scss" />
+    <Content Include="Content\scss\argon-dashboard\mixins\_colored-shadows.scss" />
+    <Content Include="Content\scss\argon-dashboard\mixins\_hover.scss" />
+    <Content Include="Content\scss\argon-dashboard\mixins\_social-buttons.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\free\plugins.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\free\_flatpickr.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\free\_nouislider.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\free\_perfect-scrollbar.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\free\_prism.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\multi-step.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\plugins-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_carousel-slick.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_choices.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_datatable-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_datatable.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_dragula.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_dropzone.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_fullcalendar-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_fullcalendar.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_glidejs.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_highlight.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_kanban.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_leaflet.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_list-check.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_photoswipe.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_quill.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_rating-widget.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_sweetalert2-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\plugins\pro\_sweetalert2.scss" />
+    <Content Include="Content\scss\argon-dashboard\theme-pro.scss" />
+    <Content Include="Content\scss\argon-dashboard\theme.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_animations.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_avatars.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_badge.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_breadcrumb.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_cards-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_cards.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_choices.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_dark-version.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_dropdowns.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_fixed-plugin.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_form-switch.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_full-calendar.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_header.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_info-areas.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_misc-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_misc.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_navbar-vertical.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_navbar.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_pagination.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_rtl.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_social-buttons.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_table.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_timeline.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_utilities-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_utilities.scss" />
+    <Content Include="Content\scss\argon-dashboard\variables\_virtual-reality.scss" />
+    <Content Include="Content\scss\argon-dashboard\_accordion.scss" />
+    <Content Include="Content\scss\argon-dashboard\_alert.scss" />
+    <Content Include="Content\scss\argon-dashboard\_avatars.scss" />
+    <Content Include="Content\scss\argon-dashboard\_backgrounds.scss" />
+    <Content Include="Content\scss\argon-dashboard\_badge.scss" />
+    <Content Include="Content\scss\argon-dashboard\_breadcrumbs.scss" />
+    <Content Include="Content\scss\argon-dashboard\_buttons.scss" />
+    <Content Include="Content\scss\argon-dashboard\_cards-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\_cards.scss" />
+    <Content Include="Content\scss\argon-dashboard\_components.scss" />
+    <Content Include="Content\scss\argon-dashboard\_dark-version.scss" />
+    <Content Include="Content\scss\argon-dashboard\_dropdown-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\_dropdown.scss" />
+    <Content Include="Content\scss\argon-dashboard\_dropup.scss" />
+    <Content Include="Content\scss\argon-dashboard\_fixed-plugin.scss" />
+    <Content Include="Content\scss\argon-dashboard\_floating-elements.scss" />
+    <Content Include="Content\scss\argon-dashboard\_footer.scss" />
+    <Content Include="Content\scss\argon-dashboard\_forms.scss" />
+    <Content Include="Content\scss\argon-dashboard\_gradients.scss" />
+    <Content Include="Content\scss\argon-dashboard\_header.scss" />
+    <Content Include="Content\scss\argon-dashboard\_info-areas.scss" />
+    <Content Include="Content\scss\argon-dashboard\_misc-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\_misc.scss" />
+    <Content Include="Content\scss\argon-dashboard\_nav.scss" />
+    <Content Include="Content\scss\argon-dashboard\_navbar-vertical.scss" />
+    <Content Include="Content\scss\argon-dashboard\_navbar.scss" />
+    <Content Include="Content\scss\argon-dashboard\_pagination.scss" />
+    <Content Include="Content\scss\argon-dashboard\_popovers.scss" />
+    <Content Include="Content\scss\argon-dashboard\_progress.scss" />
+    <Content Include="Content\scss\argon-dashboard\_rtl-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\_rtl.scss" />
+    <Content Include="Content\scss\argon-dashboard\_social-buttons.scss" />
+    <Content Include="Content\scss\argon-dashboard\_tables.scss" />
+    <Content Include="Content\scss\argon-dashboard\_tilt.scss" />
+    <Content Include="Content\scss\argon-dashboard\_timeline.scss" />
+    <Content Include="Content\scss\argon-dashboard\_tooltips.scss" />
+    <Content Include="Content\scss\argon-dashboard\_typography.scss" />
+    <Content Include="Content\scss\argon-dashboard\_utilities-extend.scss" />
+    <Content Include="Content\scss\argon-dashboard\_utilities.scss" />
+    <Content Include="Content\scss\argon-dashboard\_variables.scss" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Korisnik\Index.cshtml" />
+    <Content Include="Views\Kontakti\Index.cshtml" />
+    <Content Include="Views\Kontakti\Create.cshtml" />
+    <Content Include="Views\Pregled\Index.cshtml" />
+    <Content Include="Views\Pregled\Kontakt.cshtml" />
+    <Content Include="Views\Pregled\Edit.cshtml" />
+    <Content Include="Views\Kontakti\Edit.cshtml" />
+    <Content Include="Views\PregledVracenih\Index.cshtml" />
+    <Content Include="Views\Termini\Index.cshtml" />
+    <Content Include="Views\PropusteniTermini\Index.cshtml" />
+    <Content Include="Views\Pregled\kontaktSales.cshtml" />
+    <Content Include="Views\Kontakti\editSales.cshtml" />
+    <Content Include="Views\Zavrseni\Index.cshtml" />
+    <Content Include="Views\Upregovorima\Index.cshtml" />
+    <Content Include="Views\Nijedobijen\Index.cshtml" />
+    <Content Include="Views\NijeZainteresovan\Index.cshtml" />
+    <Content Include="Views\Statistika\Index.cshtml" />
+    <Content Include="Views\Statistika\Init.cshtml" />
+    <Content Include="Views\Statistika\Search.cshtml" />
+    <Content Include="Views\Pregled\SalesAdmin.cshtml" />
+    <Content Include="Views\Pregled\MojiKreirani.cshtml" />
+    <Content Include="Views\Novosti\Index.cshtml" />
+    <Content Include="Views\Novosti\dodaj.cshtml" />
+    <Content Include="Views\Kontakti\Kalendar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{E8CC9A97-B63A-496A-A29F-CC20411A5B0A}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60120</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44393/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,238 @@
+﻿@model CC2.Models.PregledKontakta
+
+
+@{
+    ViewBag.Title = "Kontakt";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="container-fluid py-4">
+                    <div class="row">
+                        <div class="col-lg-9 col-12 mx-auto">
+                            <div class="card card-body mt-4">
+                                <h6 class="mb-0">Pregled kontakta</h6>
+                                <p class="text-sm mb-0">Pregled informacija o kontaktu</p>
+                                <hr class="horizontal dark my-3">
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="form-label">Broj</label>
+                                        <span>@Model.pregledKontakta[0].ID</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Ime</label>
+                                        <span>@Model.pregledKontakta[0].IME</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Prezime</label>
+                                        <span>@Model.pregledKontakta[0].PREZIME</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Adresa</label>
+                                        <span>@Model.pregledKontakta[0].ADRESA</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Drzava</label>
+                                        <span>@Model.pregledKontakta[0].DRZAVA</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Grad</label>
+                                        <span>@Model.pregledKontakta[0].GRAD</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Broj tel1</label>
+                                        <span>@Model.pregledKontakta[0].PREFIX @Model.pregledKontakta[0].BROJ</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Broj tel 2</label>
+                                        <span>@Model.pregledKontakta[0].PREFIX @Model.pregledKontakta[0].BROJ2</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Email</label>
+                                        <span>@Model.pregledKontakta[0].EMAIL</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Bei</label>
+                                        <span>@Model.pregledKontakta[0].BEI</span>
+                                    </div>
+                                </div>
+
+                                <hr class="horizontal dark my-3">
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="Aktivnost">Dostupnnost</label>
+                                        <span>@Model.pregledKontakta[0].DOSTUPNOST</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="Investicija" class="form-label">Moguća investicija</label>
+                                        <span>@Model.pregledKontakta[0].MOGUCA_INVESTICIJA</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="Komentar" class="form-label">Komentar</label>
+                                        <span>@Model.pregledKontakta[0].KOMENTAR</span>
+                                    </div>
+                                </div>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                @if (User.IsInRole("adminsales"))
+                                {
+                                    if (@Model.pregledKontakta[0].BLACKLIST != "Y")
+                                    {
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button style="width:100%;" class="btn btn-danger" id="blacklistButton">OZNAČI KONTAKT KAO BLACKLIST</button>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+                                <p>&nbsp;</p>
+                                <a class="btn btn_primary text-uppercase" id="poziv" style="display:block;" href="tel:@Model.pregledKontakta[0].PREFIX@Model.pregledKontakta[0].BROJ">
+                                    POZOVI TEL 1
+                                </a>
+                                <p>&nbsp;</p>
+                                <a class="btn btn_primary text-uppercase" id="poziv" style="display:block;" href="tel:@Model.pregledKontakta[0].PREFIX@Model.pregledKontakta[0].BROJ2">
+                                    POZOVI TEL 2
+                                </a>
+                                <p>&nbsp;</p>
+                                @if (Model.pregledKontakta[0].PRODAT == "Y")
+                                {<h2 style="color:red; margin-left:44%;">PRODATO!</h2>}
+
+                               
+                            <div class="col-12">
+
+                                @if (User.IsInRole("sales"))
+                                {
+                                   <a href="@Url.Action("editSales", "Kontakti", new { @Model.pregledKontakta[0].ID })" class="btn btn-outline-primary">Uredi</a>
+
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Edit", "Kontakti", new { @Model.pregledKontakta[0].ID })" class="btn btn-outline-primary">Uredi</a>
+                                }
+
+
+                                @if (Model.pregledKontakta[0].VRACEN_MARKETINGU == "Y" || Model.pregledKontakta[0].VRACENO_SA_KONTROLE == "Y")
+                                {
+                                    <button class="btn btn-outline-primary" onclick="goBack()">Nazad</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-outline-primary" onclick="goBack()">Nazad</button>
+                                }
+
+                                @if (User.IsInRole("marketing"))
+                                {
+                                    <div style="display: flex; justify-content: flex-end;">
+                                        <a id="izbrisi" class="btn btn-danger" href="#" style="margin-right: 10px;">IZBRIŠI</a>
+                                    </div>
+
+                                }
+
+                                @if (User.IsInRole("adminmarketing"))
+                                {
+                                    <div style="display: flex; justify-content: flex-end;">
+                                        <a id="prosljedi-link-prosljedi-link-vratiMarketingu" class="btn btn-dark" href="#" style="margin-right: 10px;">OZNACI KAO VRACENO</a>
+                                        <a id="prosljedi-link-vrati" class="btn btn-info" href="#" style="margin-right: 10px;">VRATI AGENTU</a>
+                                        <a id="prosljedi-link" class="btn btn-danger" href="#" style="margin-right: 10px;">PROSLJEDI KONTROLI</a>
+                                    </div>
+
+                                }
+
+                                @if (User.IsInRole("kontrola"))
+                                {
+                                    <div style="display: flex; justify-content: flex-end;">
+                                        <a id="prosljedi-link-prosljedi-link-vratiMarketingu" class="btn btn-info" href="#" style="margin-right: 10px;">VRATI MARKETINGU</a>
+                                        <a id="prosljedi-link-salesu" class="btn btn-danger" href="#" style="margin-right: 10px;">PROSLJEDI SALESU</a>
+                                    </div>
+                                }
+                            </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+
+    $(document).on('click', '#prosljedi-link-vrati', function () {
+
+                var url = "/Pregled/VratiAgentu?selectedIds=" + @Model.pregledKontakta[0].ID;
+
+                // Navigate to the controller action
+               window.location.href = url;
+    });
+
+
+    $("#prosljedi-link").click(function () {
+
+                var url = "/Pregled/ProsljediKontroli?selectedIds=" +  @Model.pregledKontakta[0].ID;
+
+                // Navigate to the controller action
+                window.location.href = url;
+    });
+
+    $("#prosljedi-link-prosljedi-link-vratiMarketingu").click(function () {
+
+                var url = "/Pregled/VratiMarketingu?selectedIds=" +  @Model.pregledKontakta[0].ID;
+
+                window.location.href = url;
+
+    });
+
+    $("#prosljedi-link-salesu").click(function () {
+
+                var url = "/Pregled/ProsljediProdaji?selectedIds=" + @Model.pregledKontakta[0].ID;
+
+                // Navigate to the controller action
+                window.location.href = url;
+    });
+
+
+
+document.getElementById("izbrisi").addEventListener("click", function() {
+    // Display a confirmation dialog
+    var confirmation = confirm("Da li ste sigurni?");
+
+    // If the user confirms, navigate to the /Pregled/Blacklist URL with the parameter
+    if (confirmation) {
+      var parameterValue = @Model.pregledKontakta[0].ID;
+      var url = `/Pregled/izbrisi?selectedIds=${parameterValue}`;
+      window.location.href = url;
+    }
+  });
+
+  document.getElementById("blacklistButton").addEventListener("click", function() {
+    // Display a confirmation dialog
+    var confirmation = confirm("Da li ste sigurni?");
+
+    // If the user confirms, navigate to the /Pregled/Blacklist URL with the parameter
+    if (confirmation) {
+      var parameterValue = @Model.pregledKontakta[0].ID;
+      var url = `/Pregled/Blacklist?id=${parameterValue}`;
+      window.location.href = url;
+    }
+  });
+
+
+
+
+
+
+</script>
+
+

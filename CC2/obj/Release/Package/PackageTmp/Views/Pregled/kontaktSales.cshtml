@@ -1,0 +1,140 @@
+﻿@model CC2.Models.PregledKontakta
+
+
+@{
+    ViewBag.Title = "Kontakt";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="container-fluid py-4">
+                    <div class="row">
+                        <div class="col-lg-9 col-12 mx-auto">
+                            <div class="card card-body mt-4">
+                                <h6 class="mb-0">Pregled kontakta</h6>
+                                <p class="text-sm mb-0">Pregled informacija o kontaktu</p>
+                                <hr class="horizontal dark my-3">
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="form-label">Broj</label>
+                                        <span>@Model.pregledKontakta[0].ID</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Ime</label>
+                                        <span>@Model.pregledKontakta[0].IME</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Prezime</label>
+                                        <span>@Model.pregledKontakta[0].PREZIME</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Adresa</label>
+                                        <span>@Model.pregledKontakta[0].ADRESA</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Drzava</label>
+                                        <span>@Model.pregledKontakta[0].DRZAVA</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Grad</label>
+                                        <span>@Model.pregledKontakta[0].GRAD</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Broj tel1</label>
+                                        <span>@Model.pregledKontakta[0].PREFIX @Model.pregledKontakta[0].BROJ</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Broj tel2</label>
+                                        <span>@Model.pregledKontakta[0].PREFIX @Model.pregledKontakta[0].BROJ2</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Email</label>
+                                        <span>@Model.pregledKontakta[0].EMAIL</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Bei</label>
+                                        <span>@Model.pregledKontakta[0].BEI</span>
+                                    </div>
+                                </div>
+
+                                <hr class="horizontal dark my-3">
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label for="Aktivnost">Dostupnnost</label>
+                                        <span>@Model.pregledKontakta[0].DOSTUPNOST</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="Investicija" class="form-label">Moguća investicija</label>
+                                        <span>@Model.pregledKontakta[0].MOGUCA_INVESTICIJA</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="Komentar" class="form-label">Komentar</label>
+                                        <span>@Model.pregledKontakta[0].KOMENTAR</span>
+                                    </div>
+                                </div>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                @if (User.IsInRole("adminsales"))
+                                {
+                                    if (@Model.pregledKontakta[0].BLACKLIST == "Y")
+                                    {
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div style="color: red; font-weight: bold; text-align: center; padding: 10px; font-size: 30px;">
+                                                    KONTAKT JE BLACKLISTAN!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button style="width:100%;" class="btn btn-danger" id="blacklistButton">OZNAČI KONTAKT KAO BLACKLIST</button>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+
+                                <p>&nbsp;</p>
+                                <a class="btn btn_primary text-uppercase" id="poziv" style="display:block;" href="tel:@Model.pregledKontakta[0].PREFIX@Model.pregledKontakta[0].BROJ">
+                                    POZOVI BROJ 1
+                                </a>
+                                <p>&nbsp;</p>
+                                <a class="btn btn_primary text-uppercase" id="poziv" style="display:block;" href="tel:@Model.pregledKontakta[0].PREFIX@Model.pregledKontakta[0].BROJ2">
+                                    POZOVI BROJ 2
+                                </a>
+                                <p>&nbsp;</p>
+                                <div class="col-12">
+                                    <a href="@Url.Action("editSales", "Kontakti", new { @Model.pregledKontakta[0].ID })" class="btn btn-outline-primary">Uredi</a>
+
+                                    <button class="btn btn-outline-primary" onclick="goBack()">Nazad</button>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+        document.getElementById('blacklistButton').addEventListener('click', function () {
+            var contactId = '@Model.pregledKontakta[0].ID';
+            var url = '@Url.Action("Blacklist", "Pregled")/' + contactId;
+            window.location.href = url;
+        });
+</script>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

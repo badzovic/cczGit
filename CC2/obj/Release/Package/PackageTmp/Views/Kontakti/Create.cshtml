@@ -1,0 +1,681 @@
+﻿@model CC2.Models.Kontakti
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+   /* Center the container vertically and horizontally */
+
+
+/* Define a CSS class for error messages */
+    .error-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     
+        color: darkred; /* Set the text color to a light color (e.g., white) */
+        font-weight: bold; /* Make the text bold */
+        font-size: 17px; /* Adjust the font size as needed */
+        text-align: center; /* Center-align the text horizontally */
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Add a text shadow for a glowing effect */
+        /* Add any other styles you want to apply */
+        position: relative; /* Add relative positioning */
+    }
+
+    .shine {
+        position: relative;
+        background: linear-gradient(90deg, transparent 50%, #ddd2d2 50%); /* Create a red shining effect */
+        background-size: 200% 100%;
+        animation: shine 2s infinite; /* Increase the animation duration for a more pronounced effect */
+    }
+/* Define the shine animation */
+@@keyframes shine {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+</style>
+
+
+<h2 style="color:white;">   Novi Kontakt</h2>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card">
+
+
+                <!-- Card header -->
+                <div class="card-header">
+
+
+                </div>
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+                @if (TempData["NoSuccessMessage"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @TempData["NoSuccessMessage"]
+                    </div>
+                }
+
+                <!-- End Navbar -->
+                <div class="container-fluid py-4">
+                    <div class="row">
+                        <div class="col-lg-9 col-12 mx-auto">
+                            @using (Html.BeginForm("Create", "Kontakti", FormMethod.Post))
+                            {
+                                <div class="card card-body mt-4">
+                                    <h6 class="mb-0">Novi kontakt</h6>
+                                    <p class="text-sm mb-0">Kreiraj novi kontakt</p>
+                                    <hr class="horizontal dark my-3">
+
+                                    @Html.AntiForgeryToken()
+
+
+
+                                    <div class="radio-group" style="margin-left:10px;">
+                                        <input type="radio" name="gender" value="Gospodin" /> Gospodin
+                                        <input type="radio" name="gender" value="Gospodja" /> Gospodja
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="form-label">Ime</label>
+                                            @Html.TextBoxFor(x => x.ime, new { required = "required", @name = "ime", placeholder = "Ime", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.ime)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Prezime</label>
+                                            @Html.TextBoxFor(x => x.prezime, new { required = "required", @name = "prezime", placeholder = "Prezime", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.prezime)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Adresa</label>
+                                            @Html.TextBoxFor(x => x.adresa, new { @name = "adresa", placeholder = "Adresa", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.adresa)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">PLZ</label>
+                                            @Html.TextBoxFor(x => x.plz, new { @name = "plz", placeholder = "Plz", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.plz)
+                                        </div>
+                                        @*<div class="col-6">
+                            <label class="form-label">Država</label>
+                            <select class="form-select" id="countrySelect" data-input>
+                                <option selected disabled>Odaberite državu</option>
+                            </select>
+                        </div>*@
+                                        <div class="col-6">
+                                            <label class="form-label">Država</label>
+                                            @Html.DropDownListFor(x => x.drzava, new SelectList(Enumerable.Empty<SelectListItem>(), "Value", "Text"), "Odaberite državu", new { @class = "form-select", @id = "countrySelect" })
+                                            @Html.ValidationMessageFor(x => x.drzava)
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label">Grad</label>
+                                            @Html.TextBoxFor(x => x.grad, new { @name = "grad", placeholder = "Grad", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.grad)
+                                        </div>
+                                    </div>
+
+                                    <hr class="horizontal dark my-3">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label class="form-label">Prefix</label>
+                                            @Html.TextBoxFor(x => x.prefix, new { required = "required", @id = "prefixInput", placeholder = "prefix", @class = "form-control", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(x => x.prefix)
+                                        </div>
+                                        <div class="col-10">
+                                            <label class="form-label">Broj</label>
+                                            @Html.TextBoxFor(x => x.broj, new { required = "required", @name = "broj", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.broj)
+                                        </div>
+                                        <p>&nbsp;</p>
+                                        <a class="btn btn_primary text-uppercase" id="chkButtonPoziv" style="display:none;" href="">
+                                        </a>
+                                        <div class="col-2">
+                                            <label class="form-label">Prefix</label>
+                                            @Html.TextBoxFor(x => x.prefix, new { required = "required", @id = "prefixInput2", placeholder = "prefix", @class = "form-control", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(x => x.prefix)
+                                        </div>
+                                        <div class="col-10">
+                                            <label class="form-label">Broj 2</label>
+                                            @Html.TextBoxFor(x => x.broj2, new { @name = "broj2", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.broj2)
+                                        </div>
+
+                                        <div class="row">
+                                            <p>&nbsp;</p>
+
+                                            <a class="btn btn_primary text-uppercase" id="chkButtonPoziv2" style="display:none;" href="">
+                                            </a>
+                                            <p>&nbsp;</p>
+                                            <a class="btn btn_primary text-uppercase" id="chkButton">
+                                                PROVJERI
+                                            </a>
+                                        </div>
+                                        <div id="messageContainer" class="shine">
+                                            <span id="messageText" class="error-message"></span>
+                                        </div>
+                                        <div id="result"></div> <!-- To display the result -->
+
+                                        <div class="col-6">
+                                            <label class="form-label">Email</label>
+                                            @Html.TextBoxFor(x => x.email, new { @name = "email", placeholder = "Email", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.email)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Faks</label>
+                                            @Html.TextBoxFor(x => x.fax, new { @name = "fax", placeholder = "Unesite fax", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.fax)
+                                        </div>
+                                    </div>
+                                    <hr class="horizontal dark my-3">
+                                    <div class="radio-group" style="margin-left:10px;">
+                                        <input type="radio" name="bei" value="LocalBank" /> LocalBank
+                                        <input type="radio" name="bei" value="Online" /> Online bei
+                                        <input type="radio" name="bei" value="Phone" /> Phone bei
+                                    </div>
+                                    <hr class="horizontal dark my-3">
+
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="Aktivnost">Dostupnnost</label>
+                                            @Html.TextAreaFor(m => m.dostupnost, new { @class = "form-control", rows = "6", placeholder = "Dostupnost...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Dostupnnost" })
+                                            @Html.ValidationMessageFor(m => m.dostupnost)
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="Investicija" class="form-label">Moguća investicija</label>
+                                            @Html.TextAreaFor(m => m.investicija, new { @class = "form-control", rows = "6", placeholder = "Moguca investicija...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "investicija" })
+                                            @Html.ValidationMessageFor(m => m.investicija)
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="Komentar" class="form-label">Komentar</label>
+                                            @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
+                                            @Html.ValidationMessageFor(m => m.komentar)
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div id="additionalElements" style="display: none;">
+                                        <div class="uk-width-1-1">
+                                            <p><span style="color: red;"></span> <span>Zakaži termin (Ukoliko ne zelite zakazati, ostavite prazno)</span></p>
+                                        </div>
+                                        <div class="uk-width-1-1 uk-width-1-1@s">
+                                            @Html.TextBoxFor(model => model.terminDate, new { @class = "form-control datetimepicker", @type = "datetime-local" })
+                                        </div>
+                                        <p>&nbsp;</p>
+                                        <button type="submit" name="submitButton" value="Zainteresovan" class="btn btn-outline-primary">Zainteresovan</button>
+
+
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <button type="submit" name="submitButton" value="Sacuvaj" class="btn btn-outline-primary">Sacuvaj</button>
+                                        <button class="btn btn-outline-primary" onclick="goBack()">Nazad</button>
+                                        <button class="btn btn-outline-primary" onclick="goBack()">Nije Zainteresovan</button>
+
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="~/Content/js/plugins/datatables.js"></script>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<script>
+
+    const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
+        searchable: true,
+
+    });
+
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }</script>
+<!-- Link to Bootstrap JS (for some interactive features) and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Fetch countries from the Rest Countries API and populate the dropdown
+    $(document).ready(function () {
+        const countrySelect = $("#countrySelect");
+        $.get("https://restcountries.com/v3.1/all", function (data) {
+            // Find Germany and Austria in the data
+            const germany = data.find(country => country.name.common === "Germany");
+            const austria = data.find(country => country.name.common === "Austria");
+
+            // Remove Germany and Austria from the data
+            data = data.filter(country => country !== germany && country !== austria);
+
+            // Add Germany as the first option
+            const germanyOption = $("<option>");
+            germanyOption.val(germany.cca2);
+            germanyOption.text(germany.name.common);
+            countrySelect.append(germanyOption);
+
+            // Add Austria as the second option
+            const austriaOption = $("<option>");
+            austriaOption.val(austria.cca2);
+            austriaOption.text(austria.name.common);
+            countrySelect.append(austriaOption);
+
+            // Add the rest of the countries
+            data.forEach(function (country) {
+                const option = $("<option>");
+                option.val(country.cca2);
+                option.text(country.name.common);
+                countrySelect.append(option);
+            });
+        });
+    });
+
+
+    // Country code to telephone prefix mapping
+    const countryPrefixes = {
+        "DE": "49",
+        "AT": "43",
+        "BD": "880",
+        "BE": "32",
+        "BF": "226",
+        "BG": "359",
+        "BA": "387",
+        "BB": "+1-246",
+        "WF": "681",
+        "BL": "590",
+        "BM": "+1-441",
+        "BN": "673",
+        "BO": "591",
+        "BH": "973",
+        "BI": "257",
+        "BJ": "229",
+        "BT": "975",
+        "JM": "+1-876",
+        "BV": "",
+        "BW": "267",
+        "WS": "685",
+        "BQ": "599",
+        "BR": "55",
+        "BS": "+1-242",
+        "JE": "+44-1534",
+        "BY": "375",
+        "BZ": "501",
+        "RU": "7",
+        "RW": "250",
+        "RS": "381",
+        "TL": "670",
+        "RE": "262",
+        "TM": "993",
+        "TJ": "992",
+        "RO": "40",
+        "TK": "690",
+        "GW": "245",
+        "GU": "+1-671",
+        "GT": "502",
+        "GS": "",
+        "GR": "30",
+        "GQ": "240",
+        "GP": "590",
+        "JP": "81",
+        "GY": "592",
+        "GG": "+44-1481",
+        "GF": "594",
+        "GE": "995",
+        "GD": "+1-473",
+        "GB": "44",
+        "GA": "241",
+        "SV": "503",
+        "GN": "224",
+        "GM": "220",
+        "GL": "299",
+        "GI": "350",
+        "GH": "233",
+        "OM": "968",
+        "TN": "216",
+        "JO": "962",
+        "HR": "385",
+        "HT": "509",
+        "HU": "36",
+        "HK": "852",
+        "HN": "504",
+        "HM": " ",
+        "VE": "58",
+        "PR": "+1-787",
+        "PS": "970",
+        "PW": "680",
+        "PT": "351",
+        "SJ": "47",
+        "PY": "595",
+        "IQ": "964",
+        "PA": "507",
+        "PF": "689",
+        "PG": "675",
+        "PE": "51",
+        "PK": "92",
+        "PH": "63",
+        "PN": "870",
+        "PL": "48",
+        "PM": "508",
+        "ZM": "260",
+        "EH": "212",
+        "EE": "372",
+        "EG": "20",
+        "ZA": "27",
+        "EC": "593",
+        "IT": "39",
+        "VN": "84",
+        "SB": "677",
+        "ET": "251",
+        "SO": "252",
+        "ZW": "263",
+        "SA": "966",
+        "ES": "34",
+        "ER": "291",
+        "ME": "382",
+        "MD": "373",
+        "MG": "261",
+        "MF": "590",
+        "MA": "212",
+        "MC": "377",
+        "UZ": "998",
+        "MM": "95",
+        "ML": "223",
+        "MO": "853",
+        "MN": "976",
+        "MH": "692",
+        "MK": "389",
+        "MU": "230",
+        "MT": "356",
+        "MW": "265",
+        "MV": "960",
+        "MQ": "596",
+        "MP": "+1-670",
+        "MS": "+1-664",
+        "MR": "222",
+        "IM": "+44-1624",
+        "UG": "256",
+        "TZ": "255",
+        "MY": "60",
+        "MX": "52",
+        "IL": "972",
+        "FR": "33",
+        "IO": "246",
+        "SH": "290",
+        "FI": "358",
+        "FJ": "679",
+        "FK": "500",
+        "FM": "691",
+        "FO": "298",
+        "NI": "505",
+        "NL": "31",
+        "NO": "47",
+        "NA": "264",
+        "VU": "678",
+        "NC": "687",
+        "NE": "227",
+        "NF": "672",
+        "NG": "234",
+        "NZ": "64",
+        "NP": "977",
+        "NR": "674",
+        "NU": "683",
+        "CK": "682",
+        "XK": "",
+        "CI": "225",
+        "CH": "41",
+        "CO": "57",
+        "CN": "86",
+        "CM": "237",
+        "CL": "56",
+        "CC": "61",
+        "CA": "1",
+        "CG": "242",
+        "CF": "236",
+        "CD": "243",
+        "CZ": "420",
+        "CY": "357",
+        "CX": "61",
+        "CR": "506",
+        "CW": "599",
+        "CV": "238",
+        "CU": "53",
+        "SZ": "268",
+        "SY": "963",
+        "SX": "599",
+        "KG": "996",
+        "KE": "254",
+        "SS": "211",
+        "SR": "597",
+        "KI": "686",
+        "KH": "855",
+        "KN": "+1-869",
+        "KM": "269",
+        "ST": "239",
+        "SK": "421",
+        "KR": "82",
+        "SI": "386",
+        "KP": "850",
+        "KW": "965",
+        "SN": "221",
+        "SM": "378",
+        "SL": "232",
+        "SC": "248",
+        "KZ": "7",
+        "KY": "+1-345",
+        "SG": "65",
+        "SE": "46",
+        "SD": "249",
+        "DO": "+1-809",
+        "DM": "+1-767",
+        "DJ": "253",
+        "DK": "45",
+        "VG": "+1-284",
+        "YE": "967",
+        "DZ": "213",
+        "US": "1",
+        "UY": "598",
+        "YT": "262",
+        "UM": "1",
+        "LB": "961",
+        "LC": "+1-758",
+        "LA": "856",
+        "TV": "688",
+        "TW": "886",
+        "TT": "+1-868",
+        "TR": "90",
+        "LK": "94",
+        "LI": "423",
+        "LV": "371",
+        "TO": "676",
+        "LT": "370",
+        "LU": "352",
+        "LR": "231",
+        "LS": "266",
+        "TH": "66",
+        "TF": "",
+        "TG": "228",
+        "TD": "235",
+        "TC": "+1-649",
+        "LY": "218",
+        "VA": "379",
+        "VC": "+1-784",
+        "AE": "971",
+        "AD": "376",
+        "AG": "+1-268",
+        "AF": "93",
+        "AI": "+1-264",
+        "VI": "+1-340",
+        "IS": "354",
+        "IR": "98",
+        "AM": "374",
+        "AL": "355",
+        "AO": "244",
+        "AQ": "",
+        "AS": "+1-684",
+        "AR": "54",
+        "AU": "61",
+        "AW": "297",
+        "IN": "91",
+        "AX": "+358-18",
+        "AZ": "994",
+        "IE": "353",
+        "ID": "62",
+        "UA": "380",
+        "QA": "974",
+        "MZ": "258"
+
+    };
+
+    // Update prefix input based on selected country
+    $("#countrySelect").on("change", function () {
+        const selectedCountry = $(this).val();
+        const prefixInput = $("#prefixInput");
+        const prefixInput2 = $("#prefixInput2");
+        if (countryPrefixes[selectedCountry]) {
+            prefixInput.val("00" + countryPrefixes[selectedCountry]);
+        } else {
+            prefixInput.val("");
+        }
+        if (countryPrefixes[selectedCountry]) {
+            prefixInput2.val("00" + countryPrefixes[selectedCountry]);
+        } else {
+            prefixInput2.val("");
+        }
+    });
+</script>
+
+<script>
+    // Wrap your JavaScript in an event listener for DOMContentLoaded
+    document.addEventListener("DOMContentLoaded", function () {
+        // Attach a click event listener to the CHK button
+
+        document.getElementById("prefixInput").addEventListener("change", updateHref);
+        document.getElementById("prefixInput2").addEventListener("change", updateHref);
+        document.getElementById("broj").addEventListener("change", updateHref);
+        document.getElementById("broj2").addEventListener("change", updateHref);
+        function updateHref() {
+            var prefix = document.getElementById("prefixInput").value        
+            var broj = document.getElementById("broj").value;
+            var broj2 = document.getElementById("broj2").value;
+            // Combine prefix and broj into a valid tel URI
+
+            // Check if the prefix is empty
+            if (!prefix) {
+                alert("Molimo odaberite državni prefix!");
+                return; // Stop further execution
+            }
+
+            var telUri = "tel:" + prefix + broj;
+            var telUri2 = "tel:" + prefix + broj2;
+            // Update the href attribute of chkButtonPoziv
+            var chkButtonPoziv = document.getElementById("chkButtonPoziv");
+            chkButtonPoziv.setAttribute("href", telUri);
+            var chkButtonPoziv2 = document.getElementById("chkButtonPoziv2");
+            chkButtonPoziv2.setAttribute("href", telUri2);
+            // Show chkButtonPoziv
+
+        }
+        document.getElementById("chkButton").addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent the default behavior of the anchor element
+
+            var prefix = document.getElementById("prefixInput").value;
+            var broj = document.getElementById("broj").value;
+            var broj2 = document.getElementById("broj2").value;
+            // Send an AJAX request to the server to check the number
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/Kontakti/CheckNumber?prefix=" + encodeURIComponent(prefix) + "&broj=" + encodeURIComponent(broj) + "&broj2=" + encodeURIComponent(broj2), true);
+
+            xhr.onreadystatechange = function () {
+
+                if (xhr.readyState === 4) {
+                    console.log(xhr.status);
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+
+                        if (response.success && response.exists == false) {
+                            // Show the additional elements and buttons
+                            document.getElementById("additionalElements").style.display = "block";
+                          
+                            if (document.getElementById("broj").value.trim() !== "") {
+                                document.getElementById("chkButtonPoziv").style.display = "block";
+                                document.getElementById("chkButtonPoziv").textContent = "POZOVI BROJ 1";
+                                document.getElementById("messageContainer").style.display = "none";
+
+                            }
+                            if (document.getElementById("broj2").value.trim() !== "") {
+                                document.getElementById("chkButtonPoziv2").style.display = "block";
+                                document.getElementById("chkButtonPoziv2").textContent = "POZOVI BROJ 2";
+                                 document.getElementById("messageContainer").style.display = "none";
+                            }
+                            document.getElementById("chkButton").style.display = "block";
+                        } else {
+                            console.log("tu sam");
+                            // Hide the additional elements and buttons
+                            document.getElementById("additionalElements").style.display = "none";
+                            document.getElementById("chkButtonPoziv").style.display = "none";
+                            document.getElementById("chkButtonPoziv2").style.display = "none";
+                            document.getElementById("messageContainer").style.display = "block";
+                            document.getElementById("messageText").textContent = "Kontakt već postoji!";
+                            document.getElementById("chkButton").style.display = "block";
+
+                            //if (response.exists == false) {
+                            //    // Display the message in the message container
+                            //    document.getElementById("messageContainer").style.display = "block";
+                            //}
+                        }
+                    } else {
+                        // Handle error
+                    }
+                }
+            };
+
+            xhr.send();
+        });
+    });
+    document.getElementById("nazadButton").addEventListener("click", function () {
+        // Navigate to the /Kontakt/Pregled URL
+        window.location.href = "/Kontakt/Pregled";
+    });
+
+    document.getElementById("nijezaint").addEventListener("click", function () {
+        // Navigate to the /Kontakt/Pregled URL
+        window.location.href = "/Kontakt/Pregled";
+    });
+
+</script>
+
+

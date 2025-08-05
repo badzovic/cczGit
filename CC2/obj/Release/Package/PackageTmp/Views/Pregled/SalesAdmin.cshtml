@@ -1,0 +1,563 @@
+﻿@model CC2.Models.Pregled
+
+@{
+    ViewBag.Title = "Pregled";
+}
+
+<style>
+    .form-inline .form-group {
+        display: flex;
+        align-items: center;
+    }
+
+        .form-inline .form-group label {
+            margin-right: 10px;
+        }
+
+        .form-inline .form-group select {
+            min-width: 200px;
+        }
+
+    .btn-primary {
+        margin-left: 10px;
+    }
+</style>
+<main class="main-content position-relative border-radius-lg ">
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <h5 class="mb-0">Pregled svih karti - sales admin</h5>
+
+                    </div>
+                    @if (TempData["Success"] != null)
+                    {
+                        <div style="margin-left:23px;" id="successPopup" class="custom-popup">
+                            <span style="color:green;" class="custom-popup-content">@TempData["Success"]</span>
+
+
+                        </div>
+                    }
+                    @if (TempData["Error"] != null)
+                    {
+                        <div style="margin-left:23px;" id="errorPopup" class="custom-popup">
+                            <span style="color:darkred;" class="custom-popup-content">@TempData["Error"]</span>
+
+
+                        </div>
+                    }
+
+                    <div class="table-responsive">
+                        <form method="get" action="@Url.Action("SalesAdmin", "Pregled")" class="form-inline mb-3">
+                            <div class="form-group mr-3" style="width: 50%;">
+                                <label for="statusFilter" class="mr-2">Filter po statusu:</label>
+                                @Html.DropDownListFor(m => m.filter, new List<SelectListItem> {
+                                    new SelectListItem { Text = "Prikazi sve", Value = "" },
+                                    new SelectListItem { Text = "U PREGOVORIMA", Value = "U_PREGOVORIMA", Selected = (ViewBag.SelectedFilter == "U_PREGOVORIMA") },
+                                    new SelectListItem { Text = "NIJE DOBIJEN", Value = "NIJE_DOBIJEN", Selected = (ViewBag.SelectedFilter == "NIJE_DOBIJEN") },
+                                    new SelectListItem { Text = "NIJE ZAINTERESOVAN", Value = "NIJE_ZAINTERESOVAN", Selected = (ViewBag.SelectedFilter == "NIJE_ZAINTERESOVAN") },
+                                    new SelectListItem { Text = "PRODAT", Value = "PRODAT", Selected = (ViewBag.SelectedFilter == "PRODAT") }
+                                }, new { @class = "form-control", @id = "statusFilter" })
+                            </div>
+                            <div class="form-group mr-3" style="width: 50%;">
+                                <label for="agentFilter" class="mr-2">Filter po agentu:</label>
+                                @Html.DropDownListFor(m => m.SelectedAgentId, new SelectList(Model.Users, "Id", "Email", ViewBag.SelectedAgentId), "Svi agenti", new { @class = "form-control", @id = "agentFilter" })
+                            </div>
+                            <button type="submit" class="btn btn-primary">Filtriraj</button>
+                            <button type="button" class="btn btn-secondary" id="resetFilters">Ukloni filter</button>
+                        </form>
+
+
+                        <table class="table table-flush" id="datatable-basic">
+
+                            <thead class="thead-light">
+
+                                <tr style="text-align: center;  ">
+
+
+
+                                    @if (User.IsInRole("adminsales"))
+                                    {
+                                        <p style="margin-left:25px;">  <input type="checkbox" id="selectAll" />  Odaberi sve unose</p>
+
+                                        <th></th>
+
+                                        <th>Broj</th>
+
+                                        <th>Ime</th>
+
+                                        <th>Prezime</th>
+
+                                        <th>Drzava</th>
+
+                                        <th>Broj tel</th>
+
+                                        <th>Datum</th>
+
+                                        <th>Status</th>
+
+                                        <th>Karta trenutno kod</th>
+
+                                        <th>Kreirao</th>
+
+                                        <th>Datum dodjele</th>
+
+                                        <th>Blacklist</th>
+
+                                        <th>Pregledaj</th>
+
+                                    }
+
+                                </tr>
+
+                            </thead>
+
+
+                            @if (User.IsInRole("adminsales"))
+                            {
+                                <tbody>
+                                    @foreach (var item in Model.kontaktiSalesAdminSvi)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="select-checkbox" data-id="@item.ID" />
+                                            </td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.ID</td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.IME</td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREZIME</td>
+
+
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.DRZAVA</td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREFIX @item.BROJ</td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.DATETIME_CREATED</td>
+
+                                            @if (item.PRODAT == "Y")
+                                            {
+                                                <td style="text-align:left;" class="text-sm font-weight-bold">PRODAT</td>
+                                            }
+                                            else if (item.SALES_NIJE_ZAINTERESOVAN == "Y")
+                                            {
+                                                <td style="text-align:left;" class="text-sm font-weight-bold">NIJE ZAINTERESOVAN</td>
+                                            }
+                                            else if (item.NIJE_DOBIJEN == "Y")
+                                            {
+                                                <td style="text-align:left;" class="text-sm font-weight-bold">NIJE DOBIJEN</td>
+                                            }
+                                            else if (item.U_PREGOVORIMA == "Y")
+                                            {
+                                                <td style="text-align:left; color:lawngreen; " class="text-sm font-weight-bold">U PREGOVORIMA</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align:left;" class="text-sm font-weight-bold">NA TERMINU</td>
+                                            }
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.AspNetUsers1.UserName</td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.AspNetUsers.UserName</td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.DATUM_DODJELE</td>
+
+                                            @if (item.BLACKLIST == "Y")
+                                            {
+                                                <td style="text-align:left;" class="text-sm font-weight-bold"><b>BLACKLISTAN!</b></td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align:left;" class="text-sm font-weight-bold">NE</td>
+                                            }
+                                            <td>
+                                                <a class="btn btn-outline-secondary text-uppercase" href="@Url.Action("kontaktSales", "Pregled", new { id = item.ID})">PREGLED</a>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                </tbody>
+                            }
+
+                        </table>
+
+                        @if (User.IsInRole("adminsales"))
+                        {
+                            <div style="display: flex; justify-content: flex-end;">
+                                <button type="button" class="btn btn-outline-primary" style="margin-right: 20px;" id="prosljedi-link-salesAgentu">PROSLJEDI AGENTU</button>
+                            </div>
+                            @*foreach (var item in Model.kontaktiSalesAdmin)
+                                {
+                                    <div class="item">
+                                         Your item content here
+                                         Add a checkbox for each item with a unique value
+                                        s
+                                        <input type="checkbox" class="select-checkbox" data-id="@item.ID" />
+                                    </div>
+                                }*@
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade" id="agentSelectionModal" tabindex="-1" role="dialog" aria-labelledby="agentSelectionModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agentSelectionModalLabel">Odaberite Agenta</h5>
+
+
+                </div>
+                <div class="modal-body">
+                    <form id="agentSelectionForm">
+                        <div class="form-group">
+
+                            @Html.DropDownListFor(model => model.SelectedEmail, new SelectList(Model.Users, "Id", "Email"), "Odaberite agenta", new { @class = "form-select", @id = "IdSelect" })
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="prosljediButton" class="btn btn-primary">Prosljedi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="~/Content/js/plugins/datatables.js"></script>
+<script>
+
+    var ItemId;
+    var selectedIdsSales = []; // Array to store selected item IDs
+
+
+
+    $(document).ready(function () {
+        var selectedIds = []; // Array to store selected item IDs
+
+        // Handle the click event for the checkboxes
+        $(".select-checkbox").click(function () {
+            var itemId = $(this).data("id");
+            console.log(selectedIds);
+            if ($(this).is(":checked")) {
+                // If the checkbox is checked, add the item ID to the selectedIds array
+                selectedIds.push(itemId);
+            } else {
+                // If the checkbox is unchecked, remove the item ID from the selectedIds array
+                selectedIds = selectedIds.filter(id => id !== itemId);
+            }
+        });
+
+        $("#selectAll").click(function () {
+            var isChecked = $(this).prop("checked");
+
+            // Update the state of all checkboxes to match the "Select All" checkbox
+            $(".select-checkbox").prop("checked", isChecked);
+
+            if (isChecked) {
+                // Clear the selectedIds array first
+                selectedIds = [];
+
+                // Use $.each to iterate over all checkboxes and add their data-id attributes to selectedIds
+                $(".select-checkbox").each(function () {
+                    selectedIds.push($(this).data("id"));
+                    console.log(selectedIds);
+                });
+            } else {
+                // If "Select All" is unchecked, clear the selectedIds array
+                selectedIds = [];
+            }
+        });
+
+        $("#prosljedi-link").click(function () {
+            if (selectedIds.length > 0) {
+
+                console.log(selectedIds);
+
+                if (selectedIds.length > 0) {
+                    // Construct the URL for the controller action with selectedIds and selectedAgentId
+                    var url = "/Pregled/ProsljediKontroli?selectedIds=" + selectedIds.join(",");
+
+                    // Navigate to the controller action
+                    window.location.href = url;
+                } else {
+                    // Display an error message if no agent is selected
+                    alert("Molimo odaberite agente.");
+                }
+            }
+        });
+
+        $("#prosljedi-link-prosljedi-link-vratiMarketingu").click(function () {
+            if (selectedIds.length > 0) {
+
+                console.log(selectedIds);
+
+                if (selectedIds.length > 0) {
+                    // Construct the URL for the controller action with selectedIds and selectedAgentId
+                    var url = "/Pregled/VratiMarketingu?selectedIds=" + selectedIds.join(",");
+
+                    // Navigate to the controller action
+                    window.location.href = url;
+                } else {
+                    // Display an error message if no agent is selected
+                    alert("Molimo odaberite agente.");
+                }
+            }
+        });
+
+        $("#izbrisi").click(function () {
+            if (selectedIds.length > 0) {
+                // Display a confirmation dialog
+                var confirmation = confirm("Da li ste sigurni?");
+
+                if (confirmation) {
+                    // If the user clicks OK in the confirmation dialog
+                    console.log(selectedIds);
+
+                    if (selectedIds.length > 0) {
+                        // Construct the URL for the controller action with selectedIds and selectedAgentId
+                        var url = "/Pregled/izbrisi?selectedIds=" + selectedIds.join(",");
+
+                        // Navigate to the controller action
+                        window.location.href = url;
+                    } else {
+                        // Display an error message if no agent is selected
+                        alert("Molimo odaberite agente.");
+                    }
+                }
+            }
+        });
+
+
+        $("#prosljedi-link-vrati").click(function () {
+            if (selectedIds.length > 0) {
+
+                console.log(selectedIds);
+
+                if (selectedIds.length > 0) {
+                    // Construct the URL for the controller action with selectedIds and selectedAgentId
+                    var url = "/Pregled/VratiAgentu?selectedIds=" + selectedIds.join(",");
+
+                    // Navigate to the controller action
+                    window.location.href = url;
+                } else {
+                    // Display an error message if no agent is selected
+                    alert("Molimo odaberite agente.");
+                }
+            }
+        });
+
+        $("#prosljedi-link-adminu").click(function () {
+            if (selectedIds.length > 0) {
+
+                console.log(selectedIds);
+
+                if (selectedIds.length > 0) {
+                    // Construct the URL for the controller action with selectedIds and selectedAgentId
+                    var url = "/Pregled/Prosljedi?selectedIds=" + selectedIds.join(",");
+
+                    // Navigate to the controller action
+                    window.location.href = url;
+                } else {
+                    // Display an error message if no agent is selected
+                    alert("Molimo odaberite agente.");
+                }
+            }
+        });
+
+        $("#prosljedi-link-salesu").click(function () {
+            if (selectedIds.length > 0) {
+
+                console.log(selectedIds);
+
+                if (selectedIds.length > 0) {
+                    // Construct the URL for the controller action with selectedIds and selectedAgentId
+                    var url = "/Pregled/ProsljediProdaji?selectedIds=" + selectedIds.join(",");
+
+                    // Navigate to the controller action
+                    window.location.href = url;
+                } else {
+                    // Display an error message if no agent is selected
+                    alert("Molimo odaberite agente.");
+                }
+            }
+        });
+
+
+        //$("#prosljediAgentu").click(function () {
+        //    ItemId = $(this).data("item-id"); // Store the data-item-id value
+        //    console.log(ItemId);
+        //    $("#agentSelectionModal").modal("show");
+        //});
+
+        $("#prosljedi-link-salesAgentu").click(function () {
+            // Clear the selectedIds array
+            selectedIdsSales = [];
+
+            // Loop through the checkboxes and add the selected IDs to the array
+            $(".select-checkbox:checked").each(function () {
+                selectedIdsSales.push($(this).data("id"));
+            });
+            console.log("sada je selektovano i ide na modal" + selectedIdsSales);
+            if (selectedIdsSales.length > 0) {
+                // If at least one checkbox is selected, open the modal
+                $("#agentSelectionModal").modal("show");
+            } else {
+                // If no checkboxes are selected, display an error message
+                alert("Molimo odaberite stavke koje želite proslijediti agentu.");
+            }
+        });
+
+        $("#prosljediButton").click(function () {
+            var selectedAgentId = $("#IdSelect").val();
+
+            if (selectedAgentId && selectedIdsSales.length > 0) {
+                // Construct the URL for the controller action with selectedIds and selectedAgentId
+                console.log("iz modala prosljedi" + selectedIdsSales);
+                console.log("/Pregled/ProsljediAgentSalesu?selectedIds=" + selectedIdsSales.join(",") + "&selectedAgentId=" + selectedAgentId);
+                var url = "/Pregled/ProsljediAgentSalesu?selectedIds=" + selectedIdsSales.join(",") + "&selectedAgentId=" + selectedAgentId + "&z=" + "2";
+
+
+                // Navigate to the controller action
+                window.location.href = url;
+            } else if (!selectedAgentId) {
+                // Display an error message if no agent is selected
+                alert("Molimo odaberite agenta.");
+            } else {
+                // Display an error message if no items are selected
+                alert("Molimo odaberite stavke koje želite proslijediti prodaji.");
+            }
+        });
+
+        $("#close").click(function () {
+            // Show the modal when the link is clicked
+            $("#agentSelectionModal").modal("hide");
+        });
+    });
+</script>
+
+
+
+
+<script>
+
+    const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
+
+        searchable: true,
+        initComplete: function () {
+            // Apply styles to all td elements in the DataTable
+            $("#datatable-basic tbody td").css({
+                "font-weight": "bold",
+                "font-size": "1.1em" // Adjust the font size as needed
+            });
+        }
+    });
+
+    var win = navigator.platform.indexOf('Win') > -1;
+
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+
+        var options = {
+
+            damping: '0.5'
+
+        }
+
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+
+    }
+
+</script>
+
+
+<script>
+    function confirmActionKontrola(itemId) {
+
+        var confirmResult = confirm("Jeste li sigurni?");
+
+        if (confirmResult) {
+            // If the user clicks "OK", continue to the action
+            window.location.href = "@Url.Action("ProsljediKontroli", "Pregled")" + "?id=" + itemId;
+        }
+
+        // Return false to prevent the default link behavior
+        return false;
+    }
+</script>
+<script>
+    function confirmVratiAgentu(itemId) {
+
+        var confirmResult = confirm("Jeste li sigurni?");
+
+        if (confirmResult) {
+            // If the user clicks "OK", continue to the action
+            window.location.href = "@Url.Action("VratiAgentu", "Pregled")" + "?id=" + itemId;
+        }
+
+        // Return false to prevent the default link behavior
+        return false;
+    }
+</script>
+<script>
+    function confirmVratiMarketingu(itemId) {
+
+        var confirmResult = confirm("Jeste li sigurni?");
+
+        if (confirmResult) {
+            // If the user clicks "OK", continue to the action
+            window.location.href = "@Url.Action("VratiMarketingu", "Pregled")" + "?id=" + itemId;
+        }
+
+        // Return false to prevent the default link behavior
+        return false;
+    }
+</script>
+<script>
+    function confirmProsljediProdaji(itemId) {
+
+        var confirmResult = confirm("Jeste li sigurni?");
+
+        if (confirmResult) {
+            // If the user clicks "OK", continue to the action
+            window.location.href = "@Url.Action("ProsljediProdaji", "Pregled")" + "?id=" + itemId;
+        }
+
+        // Return false to prevent the default link behavior
+        return false;
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#resetFilters").click(function () {
+            // Postavi clearFilters parametar i resetuj vrednosti filtera
+            var form = $(this).closest("form");
+
+            // Resetovanje vrednosti filtera
+            $("#statusFilter").val("");
+            $("#agentFilter").val("");
+
+            // Postavi clearFilters parametar na true
+            form.append($('<input>').attr('type', 'hidden').attr('name', 'clearFilters').attr('value', 'true'));
+
+            // Submitovanje forme
+            form.submit();
+        });
+    });
+</script>

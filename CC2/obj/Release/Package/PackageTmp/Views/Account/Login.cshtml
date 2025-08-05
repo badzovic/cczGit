@@ -1,0 +1,78 @@
+﻿@using CC2.Models
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = "";
+
+
+}
+
+
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+           background-image: url('@Url.Content("~/Content/bck2.jpg")');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            background-color: #0a1211b0;
+        }
+    </style>
+</head>
+
+
+    <div class="container">
+        <div class="login-container">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h4 class="mb-0">Login</h4>
+                        <p class="mb-0 small-heading">Call Centre PRO © </p>
+
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Email, new { @class = "font-weight-bold", @style="color:white" })
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Password, new { @class = "font-weight-bold", @style = "color:white" })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input" })
+                                    @Html.LabelFor(m => m.RememberMe, new { @class = "form-check-label", @style = "color:white" })
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-block">Log In</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+

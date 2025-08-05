@@ -1,0 +1,163 @@
+﻿@model CC2.Models.Kontakti
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="container-fluid py-4">
+                    <div class="row">
+                        <div class="col-lg-9 col-12 mx-auto">
+                            <div class="card card-body mt-4">
+                                <h6 class="mb-0">Novi kontakt</h6>
+                                <p class="text-sm mb-0">Kreiraj novi kontakt</p>
+                                <hr class="horizontal dark my-3">
+
+                                @using (Html.BeginForm("Edit", "Kontakti", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <!-- Hidden field for ID -->
+                                    @Html.HiddenFor(x => x.Id)
+
+                                    <!-- Hidden field for TERMIN_ID -->
+                                    @Html.HiddenFor(x => x.terminId)
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label class="form-label">Ime</label>
+                                            @Html.TextBoxFor(x => x.ime, new { @name = "ime", placeholder = "Ime", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.ime)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Prezime</label>
+                                            @Html.TextBoxFor(x => x.prezime, new { @name = "prezime", placeholder = "Prezime", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.prezime)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Adresa</label>
+                                            @Html.TextBoxFor(x => x.adresa, new { @name = "adresa", placeholder = "Adresa", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.adresa)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">PLZ</label>
+                                            @Html.TextBoxFor(x => x.plz, new { @name = "plz", placeholder = "plz", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.plz)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Prefix</label>
+                                            @Html.TextBoxFor(x => x.prefix, new { @name = "prefix", placeholder = "prefix", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.prefix)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Kontakt broj</label>
+                                            @Html.TextBoxFor(x => x.broj, new { @name = "broj", placeholder = "broj", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.broj)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Email</label>
+                                            @Html.TextBoxFor(x => x.email, new { @name = "email", placeholder = "email", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.email)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Fax</label>
+                                            @Html.TextBoxFor(x => x.fax, new { @name = "fax", placeholder = "fax", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.fax)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Grad</label>
+                                            @Html.TextBoxFor(x => x.grad, new { @name = "grad", placeholder = "grad", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.grad)
+                                        </div>
+                                        <p>&nbsp;</p>
+                                        <div id="additionalElements">
+                                            <div class="uk-width-1-1">
+                                                <p><span style="color: red;"></span> <span>Promjeni termin (Ukoliko ne zelite zakazati, ostavite prazno)</span></p>
+                                            </div>
+                                            <div class="uk-width-1-1 uk-width-1-1@s">
+                                                @Html.TextBoxFor(model => model.terminDate, new { @class = "form-control datetimepicker", @type = "datetime-local" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <hr class="horizontal dark my-3">
+                                    <div class="row">
+                                        <div class="col-1">
+                                            <label class="form-label">Prefix</label>
+                                            @Html.TextBoxFor(x => x.prefix, new { required = "required", @id = "prefixInput", placeholder = "prefix", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.prefix)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Broj</label>
+                                            @Html.TextBoxFor(x => x.broj, new { required = "required", @name = "broj", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.broj)
+                                        </div>
+                                        <p>&nbsp;</p>
+                                        <a class="btn btn_primary text-uppercase" id="poziv" style="display:block;" href="tel:@Model.prefix@Model.broj">
+                                            POZOVI BROJ 1
+                                        </a>
+                                        <div class="col-1">
+                                            <label class="form-label">Prefix</label>
+                                            @Html.TextBoxFor(x => x.prefix, new { required = "required", @id = "prefixInput", placeholder = "prefix", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.prefix)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Broj</label>
+                                            @Html.TextBoxFor(x => x.broj2, new { @name = "broj", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.broj2)
+                                        </div>
+                                        <p>&nbsp;</p>
+                                        <a class="btn btn_primary text-uppercase" id="poziv2" style="display:block;" href="tel:@Model.prefix@Model.broj2">
+                                            POZOVI BROJ 2
+                                        </a>
+                                    </div>
+                                    <p>&nbsp;</p>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="Aktivnost">Dostupnnost</label>
+                                            @Html.TextAreaFor(m => m.dostupnost, new { @class = "form-control", rows = "6", placeholder = "Dostupnost...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Dostupnnost" })
+                                            @Html.ValidationMessageFor(m => m.dostupnost)
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="Investicija" class="form-label">Moguća investicija</label>
+                                            @Html.TextAreaFor(m => m.investicija, new { @class = "form-control", rows = "6", placeholder = "Moguca investicija...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "investicija" })
+                                            @Html.ValidationMessageFor(m => m.investicija)
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="Komentar" class="form-label">Komentar</label>
+                                            @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
+                                            @Html.ValidationMessageFor(m => m.komentar)
+                                        </div>
+                                    </div>
+                                    <p>&nbsp;</p>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-outline-primary">Izmjeni</button>
+
+                                        @if (Model.vracenMarketingu == "Y" || Model.vracenSakontrole == "Y")
+                                        {
+                                            <a href="@Url.Action("Index", "PregledVracenih")" class="btn btn-outline-secondary">Nazad</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Index", "Pregled")" class="btn btn-outline-secondary">Nazad</a>
+                                        }
+                                        
+                                        <a style="margin-right: 10px;" class="btn btn-success" href="/Pregled/Prosljedi?selectedIds=@Model.Id">ZAINTERESOVAN</a>
+
+                                    </div>
+                                }
+                               
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4243563108a14b19baaebf3f91a882ed" Name="Diagram1" ZoomLevel="93" >
+        <EntityTypeShape EntityType="CCModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CCModel.AspNetRoles" Width="1.5" PointX="3.75" PointY="8.5" />
+        <EntityTypeShape EntityType="CCModel.AspNetUserClaims" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="CCModel.AspNetUserLogins" Width="1.5" PointX="3" PointY="40.25" />
+        <EntityTypeShape EntityType="CCModel.AspNetUserRoles" Width="1.5" PointX="6" PointY="16.375" />
+        <EntityTypeShape EntityType="CCModel.AspNetUsers" Width="1.5" PointX="0.75" PointY="14.375" />
+        <EntityTypeShape EntityType="CCModel.CC_KONTAKTI" Width="1.5" PointX="3" PointY="15.375" />
+        <EntityTypeShape EntityType="CCModel.DRZAVE" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CCModel.KONTAKTI" Width="1.5" PointX="5.25" PointY="19.375" />
+        <EntityTypeShape EntityType="CCModel.STATISTIKA" Width="1.5" PointX="3" PointY="26.125" />
+        <EntityTypeShape EntityType="CCModel.STATUS" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CCModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CCModel.TERMINI" Width="1.5" PointX="3" PointY="29.25" />
+        <AssociationConnector Association="CCModel.FK_CC_KONTAKTI_AspNetRoles" />
+        <AssociationConnector Association="CCModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="CCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CCModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CCModel.FK_CC_KONTAKTI_AspNetUsers" />
+        <AssociationConnector Association="CCModel.FK_CC_KONTAKTI_AspNetUsers1" />
+        <AssociationConnector Association="CCModel.FK_CC_KONTAKTI_AspNetUsers3" />
+        <AssociationConnector Association="CCModel.FK_KONTAKTI_AspNetUsers" />
+        <AssociationConnector Association="CCModel.FK_KONTAKTI_AspNetUsers1" />
+        <AssociationConnector Association="CCModel.FK_KONTAKTI_AspNetUsers2" />
+        <AssociationConnector Association="CCModel.FK_KONTAKTI_AspNetUsers3" />
+        <AssociationConnector Association="CCModel.FK_STATISTIKA_AspNetUsers" />
+        <AssociationConnector Association="CCModel.FK_TERMINI_AspNetUsers" />
+        <AssociationConnector Association="CCModel.FK_KONTAKTI_TERMINI" />
+        <EntityTypeShape EntityType="CCModel.UPLOADEDFILES" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

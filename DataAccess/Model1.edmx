@@ -1,0 +1,1180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RolaID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Active" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CC_KONTAKTI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KREIRAO_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TRENUTNO_KOD_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TRENUTNO_GRUPA_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FINALIZIRAO_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GENDER" Type="nvarchar" MaxLength="128" />
+          <Property Name="IME" Type="nvarchar" MaxLength="128" />
+          <Property Name="PREZIME" Type="nvarchar" MaxLength="128" />
+          <Property Name="ADRESA" Type="nvarchar" MaxLength="128" />
+          <Property Name="PLZ" Type="nvarchar" MaxLength="128" />
+          <Property Name="DRZAVA" Type="nvarchar" MaxLength="128" />
+          <Property Name="GRAD" Type="nvarchar" MaxLength="128" />
+          <Property Name="PREFIX" Type="nvarchar" MaxLength="128" />
+          <Property Name="BROJ" Type="nvarchar" MaxLength="128" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="128" />
+          <Property Name="FAX" Type="nvarchar" MaxLength="128" />
+          <Property Name="BEI" Type="nvarchar" MaxLength="128" />
+          <Property Name="DOSTUPNOST" Type="nvarchar(max)" />
+          <Property Name="MOGUCA_INVESTICIJA" Type="nvarchar(max)" />
+          <Property Name="KOMENTAR" Type="nvarchar(max)" />
+          <Property Name="DATETIME_CREATED" Type="datetime" />
+          <Property Name="DATETIME_UPDATED" Type="datetime" />
+          <Property Name="AKTIVAN" Type="nvarchar" MaxLength="50" />
+          <Property Name="TERMIN_ID" Type="int" Nullable="false" />
+          <Property Name="VRACEN_MARKETINGU" Type="nvarchar" MaxLength="50" />
+          <Property Name="VRACENO_SA_KONTROLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="U_PREGOVORIMA" Type="nvarchar" MaxLength="50" />
+          <Property Name="NIJE_DOBIJEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALES_NIJE_ZAINTERESOVAN" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRODAT" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALES_NIJE_ZAINTERESOVAN_DATE" Type="datetime" />
+          <Property Name="BROJ2" Type="nvarchar" MaxLength="128" />
+          <Property Name="BLACKLIST" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATUM_DODJELE" Type="datetime" />
+          <Property Name="FIRMA" Type="nvarchar" MaxLength="200" />
+          <Property Name="BROJ_KARTICA" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DRZAVE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KONTAKTI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KREIRAO_ID" Type="nvarchar" MaxLength="128" />
+          <Property Name="TRENUTNO_KOD_ID" Type="nvarchar" MaxLength="128" />
+          <Property Name="TRENUTNO_GRUPA_ID" Type="nvarchar" MaxLength="128" />
+          <Property Name="FINALIZIRAO_ID" Type="nvarchar" MaxLength="128" />
+          <Property Name="GENDER" Type="nvarchar" MaxLength="128" />
+          <Property Name="IME" Type="nvarchar" MaxLength="128" />
+          <Property Name="PREZIME" Type="nvarchar" MaxLength="128" />
+          <Property Name="ADRESA" Type="nvarchar" MaxLength="128" />
+          <Property Name="PLZ" Type="nvarchar" MaxLength="50" />
+          <Property Name="DRZAVA" Type="nvarchar" MaxLength="128" />
+          <Property Name="GRAD" Type="nvarchar" MaxLength="128" />
+          <Property Name="PREFIX" Type="nvarchar" MaxLength="50" />
+          <Property Name="BROJ" Type="nvarchar" MaxLength="128" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="128" />
+          <Property Name="FAX" Type="nvarchar" MaxLength="50" />
+          <Property Name="BEI" Type="nvarchar" MaxLength="128" />
+          <Property Name="TERMIN" Type="datetime" />
+          <Property Name="DOSTUPNOST" Type="nvarchar(max)" />
+          <Property Name="MOGUCA_INVESTICIJA" Type="nvarchar(max)" />
+          <Property Name="KOMENTAR" Type="nvarchar(max)" />
+          <Property Name="DATETIME_CREATED" Type="datetime" />
+          <Property Name="DATETIME_UPDATED" Type="datetime" />
+          <Property Name="AKTIVAN" Type="nvarchar" MaxLength="50" />
+          <Property Name="TERMIN_ID" Type="int" />
+          <Property Name="VRACEN_MARKETINGU" Type="nvarchar" MaxLength="5" />
+          <Property Name="STATUS_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="STATISTIKA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AGENT_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PROVJERIO" Type="nvarchar" MaxLength="50" />
+          <Property Name="POZVAO" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATETIME" Type="datetime" />
+          <Property Name="BROJ" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="STATUS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TERMINI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DATUM" Type="datetime" />
+          <Property Name="NAZIV" Type="nvarchar" MaxLength="50" />
+          <Property Name="KONTAKT_ID" Type="int" />
+          <Property Name="DATUM_KRAJA" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UPLOADEDFILES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FILEPATH" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CC_KONTAKTI_AspNetRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+          <End Role="CC_KONTAKTI" Type="Self.CC_KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CC_KONTAKTI">
+              <PropertyRef Name="TRENUTNO_GRUPA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CC_KONTAKTI_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="CC_KONTAKTI" Type="Self.CC_KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CC_KONTAKTI">
+              <PropertyRef Name="KREIRAO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CC_KONTAKTI_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="CC_KONTAKTI" Type="Self.CC_KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CC_KONTAKTI">
+              <PropertyRef Name="TRENUTNO_KOD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CC_KONTAKTI_AspNetUsers3">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="CC_KONTAKTI" Type="Self.CC_KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CC_KONTAKTI">
+              <PropertyRef Name="FINALIZIRAO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="KONTAKTI" Type="Self.KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="TRENUTNO_GRUPA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="KONTAKTI" Type="Self.KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="TRENUTNO_KOD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_AspNetUsers2">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="KONTAKTI" Type="Self.KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="KREIRAO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_AspNetUsers3">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="KONTAKTI" Type="Self.KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="FINALIZIRAO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_TERMINI">
+          <End Role="TERMINI" Type="Self.TERMINI" Multiplicity="0..1" />
+          <End Role="KONTAKTI" Type="Self.KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="TERMIN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STATISTIKA_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="STATISTIKA" Type="Self.STATISTIKA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STATISTIKA">
+              <PropertyRef Name="AGENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TERMINI_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="TERMINI" Type="Self.TERMINI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TERMINI">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CCModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CC_KONTAKTI" EntityType="Self.CC_KONTAKTI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DRZAVE" EntityType="Self.DRZAVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KONTAKTI" EntityType="Self.KONTAKTI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATISTIKA" EntityType="Self.STATISTIKA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATUS" EntityType="Self.STATUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TERMINI" EntityType="Self.TERMINI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UPLOADEDFILES" EntityType="Self.UPLOADEDFILES" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CC_KONTAKTI_AspNetRoles" Association="Self.FK_CC_KONTAKTI_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="CC_KONTAKTI" EntitySet="CC_KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CC_KONTAKTI_AspNetUsers" Association="Self.FK_CC_KONTAKTI_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CC_KONTAKTI" EntitySet="CC_KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CC_KONTAKTI_AspNetUsers1" Association="Self.FK_CC_KONTAKTI_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CC_KONTAKTI" EntitySet="CC_KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CC_KONTAKTI_AspNetUsers3" Association="Self.FK_CC_KONTAKTI_AspNetUsers3">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CC_KONTAKTI" EntitySet="CC_KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_AspNetUsers" Association="Self.FK_KONTAKTI_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_AspNetUsers1" Association="Self.FK_KONTAKTI_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_AspNetUsers2" Association="Self.FK_KONTAKTI_AspNetUsers2">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_AspNetUsers3" Association="Self.FK_KONTAKTI_AspNetUsers3">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_TERMINI" Association="Self.FK_KONTAKTI_TERMINI">
+            <End Role="TERMINI" EntitySet="TERMINI" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STATISTIKA_AspNetUsers" Association="Self.FK_STATISTIKA_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="STATISTIKA" EntitySet="STATISTIKA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TERMINI_AspNetUsers" Association="Self.FK_TERMINI_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="TERMINI" EntitySet="TERMINI" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CCEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="C__MigrationHistory" EntityType="CCModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="CCModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="CCModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="CCModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUserRoles" EntityType="CCModel.AspNetUserRoles" />
+          <EntitySet Name="AspNetUsers" EntityType="CCModel.AspNetUsers" />
+          <EntitySet Name="CC_KONTAKTI" EntityType="CCModel.CC_KONTAKTI" />
+          <EntitySet Name="DRZAVE" EntityType="CCModel.DRZAVE" />
+          <EntitySet Name="KONTAKTI" EntityType="CCModel.KONTAKTI" />
+          <EntitySet Name="STATISTIKA" EntityType="CCModel.STATISTIKA" />
+          <EntitySet Name="STATUS" EntityType="CCModel.STATUS" />
+          <EntitySet Name="sysdiagrams" EntityType="CCModel.sysdiagrams" />
+          <EntitySet Name="TERMINI" EntityType="CCModel.TERMINI" />
+          <AssociationSet Name="FK_CC_KONTAKTI_AspNetRoles" Association="CCModel.FK_CC_KONTAKTI_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="CC_KONTAKTI" EntitySet="CC_KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="CCModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="CCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="CCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="CCModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CC_KONTAKTI_AspNetUsers" Association="CCModel.FK_CC_KONTAKTI_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CC_KONTAKTI" EntitySet="CC_KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CC_KONTAKTI_AspNetUsers1" Association="CCModel.FK_CC_KONTAKTI_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CC_KONTAKTI" EntitySet="CC_KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CC_KONTAKTI_AspNetUsers3" Association="CCModel.FK_CC_KONTAKTI_AspNetUsers3">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CC_KONTAKTI" EntitySet="CC_KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_AspNetUsers" Association="CCModel.FK_KONTAKTI_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_AspNetUsers1" Association="CCModel.FK_KONTAKTI_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_AspNetUsers2" Association="CCModel.FK_KONTAKTI_AspNetUsers2">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_AspNetUsers3" Association="CCModel.FK_KONTAKTI_AspNetUsers3">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STATISTIKA_AspNetUsers" Association="CCModel.FK_STATISTIKA_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="STATISTIKA" EntitySet="STATISTIKA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TERMINI_AspNetUsers" Association="CCModel.FK_TERMINI_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="TERMINI" EntitySet="TERMINI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKTI_TERMINI" Association="CCModel.FK_KONTAKTI_TERMINI">
+            <End Role="TERMINI" EntitySet="TERMINI" />
+            <End Role="KONTAKTI" EntitySet="KONTAKTI" />
+          </AssociationSet>
+          <EntitySet Name="UPLOADEDFILES" EntityType="CCModel.UPLOADEDFILES" />
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CC_KONTAKTI" Relationship="CCModel.FK_CC_KONTAKTI_AspNetRoles" FromRole="AspNetRoles" ToRole="CC_KONTAKTI" />
+          <NavigationProperty Name="AspNetUserRoles" Relationship="CCModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetRoles" ToRole="AspNetUserRoles" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="CCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="CCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RolaID" Type="Int32" />
+          <NavigationProperty Name="AspNetRoles" Relationship="CCModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetUserRoles" ToRole="AspNetRoles" />
+          <NavigationProperty Name="AspNetUsers" Relationship="CCModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUserRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="CCModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="CCModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetUserRoles" Relationship="CCModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserRoles" />
+          <NavigationProperty Name="CC_KONTAKTI" Relationship="CCModel.FK_CC_KONTAKTI_AspNetUsers" FromRole="AspNetUsers" ToRole="CC_KONTAKTI" />
+          <NavigationProperty Name="CC_KONTAKTI1" Relationship="CCModel.FK_CC_KONTAKTI_AspNetUsers1" FromRole="AspNetUsers" ToRole="CC_KONTAKTI" />
+          <NavigationProperty Name="CC_KONTAKTI2" Relationship="CCModel.FK_CC_KONTAKTI_AspNetUsers3" FromRole="AspNetUsers" ToRole="CC_KONTAKTI" />
+          <NavigationProperty Name="KONTAKTI" Relationship="CCModel.FK_KONTAKTI_AspNetUsers" FromRole="AspNetUsers" ToRole="KONTAKTI" />
+          <NavigationProperty Name="KONTAKTI1" Relationship="CCModel.FK_KONTAKTI_AspNetUsers1" FromRole="AspNetUsers" ToRole="KONTAKTI" />
+          <NavigationProperty Name="KONTAKTI2" Relationship="CCModel.FK_KONTAKTI_AspNetUsers2" FromRole="AspNetUsers" ToRole="KONTAKTI" />
+          <NavigationProperty Name="KONTAKTI3" Relationship="CCModel.FK_KONTAKTI_AspNetUsers3" FromRole="AspNetUsers" ToRole="KONTAKTI" />
+          <NavigationProperty Name="STATISTIKA" Relationship="CCModel.FK_STATISTIKA_AspNetUsers" FromRole="AspNetUsers" ToRole="STATISTIKA" />
+          <NavigationProperty Name="TERMINI" Relationship="CCModel.FK_TERMINI_AspNetUsers" FromRole="AspNetUsers" ToRole="TERMINI" />
+        </EntityType>
+        <EntityType Name="CC_KONTAKTI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KREIRAO_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TRENUTNO_KOD_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TRENUTNO_GRUPA_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FINALIZIRAO_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GENDER" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IME" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PREZIME" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ADRESA" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PLZ" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DRZAVA" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GRAD" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PREFIX" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BROJ" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FAX" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BEI" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DOSTUPNOST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MOGUCA_INVESTICIJA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KOMENTAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DATETIME_CREATED" Type="DateTime" Precision="3" />
+          <Property Name="DATETIME_UPDATED" Type="DateTime" Precision="3" />
+          <Property Name="AKTIVAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TERMIN_ID" Type="Int32" Nullable="false" />
+          <Property Name="VRACEN_MARKETINGU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VRACENO_SA_KONTROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="U_PREGOVORIMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NIJE_DOBIJEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALES_NIJE_ZAINTERESOVAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRODAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALES_NIJE_ZAINTERESOVAN_DATE" Type="DateTime" Precision="3" />
+          <Property Name="BROJ2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetRoles" Relationship="CCModel.FK_CC_KONTAKTI_AspNetRoles" FromRole="CC_KONTAKTI" ToRole="AspNetRoles" />
+          <NavigationProperty Name="AspNetUsers" Relationship="CCModel.FK_CC_KONTAKTI_AspNetUsers" FromRole="CC_KONTAKTI" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="CCModel.FK_CC_KONTAKTI_AspNetUsers1" FromRole="CC_KONTAKTI" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers2" Relationship="CCModel.FK_CC_KONTAKTI_AspNetUsers3" FromRole="CC_KONTAKTI" ToRole="AspNetUsers" />
+          <Property Name="BLACKLIST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATUM_DODJELE" Type="DateTime" Precision="3" />
+          <Property Name="FIRMA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="BROJ_KARTICA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DRZAVE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="KONTAKTI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KREIRAO_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TRENUTNO_KOD_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TRENUTNO_GRUPA_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FINALIZIRAO_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GENDER" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IME" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PREZIME" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ADRESA" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PLZ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DRZAVA" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GRAD" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PREFIX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BROJ" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FAX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BEI" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TERMIN" Type="DateTime" Precision="3" />
+          <Property Name="DOSTUPNOST" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MOGUCA_INVESTICIJA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KOMENTAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DATETIME_CREATED" Type="DateTime" Precision="3" />
+          <Property Name="DATETIME_UPDATED" Type="DateTime" Precision="3" />
+          <Property Name="AKTIVAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TERMIN_ID" Type="Int32" />
+          <Property Name="VRACEN_MARKETINGU" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS_ID" Type="Int32" />
+          <NavigationProperty Name="AspNetUsers" Relationship="CCModel.FK_KONTAKTI_AspNetUsers" FromRole="KONTAKTI" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="CCModel.FK_KONTAKTI_AspNetUsers1" FromRole="KONTAKTI" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers2" Relationship="CCModel.FK_KONTAKTI_AspNetUsers2" FromRole="KONTAKTI" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers3" Relationship="CCModel.FK_KONTAKTI_AspNetUsers3" FromRole="KONTAKTI" ToRole="AspNetUsers" />
+          <NavigationProperty Name="TERMINI" Relationship="CCModel.FK_KONTAKTI_TERMINI" FromRole="KONTAKTI" ToRole="TERMINI" />
+        </EntityType>
+        <EntityType Name="STATISTIKA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AGENT_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PROVJERIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POZVAO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="BROJ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="CCModel.FK_STATISTIKA_AspNetUsers" FromRole="STATISTIKA" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="STATUS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATUS1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TERMINI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DATUM" Type="DateTime" Precision="3" />
+          <Property Name="NAZIV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KONTAKT_ID" Type="Int32" />
+          <NavigationProperty Name="AspNetUsers" Relationship="CCModel.FK_TERMINI_AspNetUsers" FromRole="TERMINI" ToRole="AspNetUsers" />
+          <NavigationProperty Name="KONTAKTI" Relationship="CCModel.FK_KONTAKTI_TERMINI" FromRole="TERMINI" ToRole="KONTAKTI" />
+          <Property Name="DATUM_KRAJA" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_CC_KONTAKTI_AspNetRoles">
+          <End Type="CCModel.AspNetRoles" Role="AspNetRoles" Multiplicity="1" />
+          <End Type="CCModel.CC_KONTAKTI" Role="CC_KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CC_KONTAKTI">
+              <PropertyRef Name="TRENUTNO_GRUPA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Type="CCModel.AspNetRoles" Role="AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CCModel.AspNetUserRoles" Role="AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CCModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CCModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CCModel.AspNetUserRoles" Role="AspNetUserRoles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CC_KONTAKTI_AspNetUsers">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="CCModel.CC_KONTAKTI" Role="CC_KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CC_KONTAKTI">
+              <PropertyRef Name="KREIRAO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CC_KONTAKTI_AspNetUsers1">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="CCModel.CC_KONTAKTI" Role="CC_KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CC_KONTAKTI">
+              <PropertyRef Name="TRENUTNO_KOD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CC_KONTAKTI_AspNetUsers3">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="CCModel.CC_KONTAKTI" Role="CC_KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CC_KONTAKTI">
+              <PropertyRef Name="FINALIZIRAO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_AspNetUsers">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
+          <End Type="CCModel.KONTAKTI" Role="KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="TRENUTNO_GRUPA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_AspNetUsers1">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
+          <End Type="CCModel.KONTAKTI" Role="KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="TRENUTNO_KOD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_AspNetUsers2">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
+          <End Type="CCModel.KONTAKTI" Role="KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="KREIRAO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_AspNetUsers3">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
+          <End Type="CCModel.KONTAKTI" Role="KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="FINALIZIRAO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STATISTIKA_AspNetUsers">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="CCModel.STATISTIKA" Role="STATISTIKA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="STATISTIKA">
+              <PropertyRef Name="AGENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TERMINI_AspNetUsers">
+          <End Type="CCModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="CCModel.TERMINI" Role="TERMINI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TERMINI">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KONTAKTI_TERMINI">
+          <End Type="CCModel.TERMINI" Role="TERMINI" Multiplicity="0..1" />
+          <End Type="CCModel.KONTAKTI" Role="KONTAKTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TERMINI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KONTAKTI">
+              <PropertyRef Name="TERMIN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UPLOADEDFILES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FILEPATH" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CCModelStoreContainer" CdmEntityContainer="CCEntities" >
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="CCModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="CCModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="CCModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="CCModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="CCModel.AspNetUserRoles">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="RolaID" ColumnName="RolaID" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="CCModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CC_KONTAKTI">
+            <EntityTypeMapping TypeName="CCModel.CC_KONTAKTI">
+              <MappingFragment StoreEntitySet="CC_KONTAKTI">
+                <ScalarProperty Name="BROJ_KARTICA" ColumnName="BROJ_KARTICA" />
+                <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+                <ScalarProperty Name="DATUM_DODJELE" ColumnName="DATUM_DODJELE" />
+                <ScalarProperty Name="BLACKLIST" ColumnName="BLACKLIST" />
+                <ScalarProperty Name="BROJ2" ColumnName="BROJ2" />
+                <ScalarProperty Name="SALES_NIJE_ZAINTERESOVAN_DATE" ColumnName="SALES_NIJE_ZAINTERESOVAN_DATE" />
+                <ScalarProperty Name="PRODAT" ColumnName="PRODAT" />
+                <ScalarProperty Name="SALES_NIJE_ZAINTERESOVAN" ColumnName="SALES_NIJE_ZAINTERESOVAN" />
+                <ScalarProperty Name="NIJE_DOBIJEN" ColumnName="NIJE_DOBIJEN" />
+                <ScalarProperty Name="U_PREGOVORIMA" ColumnName="U_PREGOVORIMA" />
+                <ScalarProperty Name="VRACENO_SA_KONTROLE" ColumnName="VRACENO_SA_KONTROLE" />
+                <ScalarProperty Name="VRACEN_MARKETINGU" ColumnName="VRACEN_MARKETINGU" />
+                <ScalarProperty Name="TERMIN_ID" ColumnName="TERMIN_ID" />
+                <ScalarProperty Name="AKTIVAN" ColumnName="AKTIVAN" />
+                <ScalarProperty Name="DATETIME_UPDATED" ColumnName="DATETIME_UPDATED" />
+                <ScalarProperty Name="DATETIME_CREATED" ColumnName="DATETIME_CREATED" />
+                <ScalarProperty Name="KOMENTAR" ColumnName="KOMENTAR" />
+                <ScalarProperty Name="MOGUCA_INVESTICIJA" ColumnName="MOGUCA_INVESTICIJA" />
+                <ScalarProperty Name="DOSTUPNOST" ColumnName="DOSTUPNOST" />
+                <ScalarProperty Name="BEI" ColumnName="BEI" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+                <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+                <ScalarProperty Name="GRAD" ColumnName="GRAD" />
+                <ScalarProperty Name="DRZAVA" ColumnName="DRZAVA" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+                <ScalarProperty Name="PREZIME" ColumnName="PREZIME" />
+                <ScalarProperty Name="IME" ColumnName="IME" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="FINALIZIRAO_ID" ColumnName="FINALIZIRAO_ID" />
+                <ScalarProperty Name="TRENUTNO_GRUPA_ID" ColumnName="TRENUTNO_GRUPA_ID" />
+                <ScalarProperty Name="TRENUTNO_KOD_ID" ColumnName="TRENUTNO_KOD_ID" />
+                <ScalarProperty Name="KREIRAO_ID" ColumnName="KREIRAO_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DRZAVE">
+            <EntityTypeMapping TypeName="CCModel.DRZAVE">
+              <MappingFragment StoreEntitySet="DRZAVE">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KONTAKTI">
+            <EntityTypeMapping TypeName="CCModel.KONTAKTI">
+              <MappingFragment StoreEntitySet="KONTAKTI">
+                <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
+                <ScalarProperty Name="VRACEN_MARKETINGU" ColumnName="VRACEN_MARKETINGU" />
+                <ScalarProperty Name="TERMIN_ID" ColumnName="TERMIN_ID" />
+                <ScalarProperty Name="AKTIVAN" ColumnName="AKTIVAN" />
+                <ScalarProperty Name="DATETIME_UPDATED" ColumnName="DATETIME_UPDATED" />
+                <ScalarProperty Name="DATETIME_CREATED" ColumnName="DATETIME_CREATED" />
+                <ScalarProperty Name="KOMENTAR" ColumnName="KOMENTAR" />
+                <ScalarProperty Name="MOGUCA_INVESTICIJA" ColumnName="MOGUCA_INVESTICIJA" />
+                <ScalarProperty Name="DOSTUPNOST" ColumnName="DOSTUPNOST" />
+                <ScalarProperty Name="TERMIN" ColumnName="TERMIN" />
+                <ScalarProperty Name="BEI" ColumnName="BEI" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+                <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+                <ScalarProperty Name="GRAD" ColumnName="GRAD" />
+                <ScalarProperty Name="DRZAVA" ColumnName="DRZAVA" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+                <ScalarProperty Name="PREZIME" ColumnName="PREZIME" />
+                <ScalarProperty Name="IME" ColumnName="IME" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="FINALIZIRAO_ID" ColumnName="FINALIZIRAO_ID" />
+                <ScalarProperty Name="TRENUTNO_GRUPA_ID" ColumnName="TRENUTNO_GRUPA_ID" />
+                <ScalarProperty Name="TRENUTNO_KOD_ID" ColumnName="TRENUTNO_KOD_ID" />
+                <ScalarProperty Name="KREIRAO_ID" ColumnName="KREIRAO_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATISTIKA">
+            <EntityTypeMapping TypeName="CCModel.STATISTIKA">
+              <MappingFragment StoreEntitySet="STATISTIKA">
+                <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+                <ScalarProperty Name="DATETIME" ColumnName="DATETIME" />
+                <ScalarProperty Name="POZVAO" ColumnName="POZVAO" />
+                <ScalarProperty Name="PROVJERIO" ColumnName="PROVJERIO" />
+                <ScalarProperty Name="AGENT_ID" ColumnName="AGENT_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATUS">
+            <EntityTypeMapping TypeName="CCModel.STATUS">
+              <MappingFragment StoreEntitySet="STATUS">
+                <ScalarProperty Name="STATUS1" ColumnName="STATUS" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CCModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TERMINI">
+            <EntityTypeMapping TypeName="CCModel.TERMINI">
+              <MappingFragment StoreEntitySet="TERMINI">
+                <ScalarProperty Name="DATUM_KRAJA" ColumnName="DATUM_KRAJA" />
+                <ScalarProperty Name="KONTAKT_ID" ColumnName="KONTAKT_ID" />
+                <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+                <ScalarProperty Name="DATUM" ColumnName="DATUM" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UPLOADEDFILES">
+            <EntityTypeMapping TypeName="CCModel.UPLOADEDFILES">
+              <MappingFragment StoreEntitySet="UPLOADEDFILES">
+                <ScalarProperty Name="FILEPATH" ColumnName="FILEPATH" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

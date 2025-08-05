@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CCModelStoreContainer" CdmEntityContainer="CCEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="CCModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="CCModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="CCModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="CCModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="CCModel.AspNetUserRoles">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="RolaID" ColumnName="RolaID" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="CCModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CC_KONTAKTI">
+      <EntityTypeMapping TypeName="CCModel.CC_KONTAKTI">
+        <MappingFragment StoreEntitySet="CC_KONTAKTI">
+          <ScalarProperty Name="BROJ_KARTICA" ColumnName="BROJ_KARTICA" />
+          <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+          <ScalarProperty Name="DATUM_DODJELE" ColumnName="DATUM_DODJELE" />
+          <ScalarProperty Name="BLACKLIST" ColumnName="BLACKLIST" />
+          <ScalarProperty Name="BROJ2" ColumnName="BROJ2" />
+          <ScalarProperty Name="SALES_NIJE_ZAINTERESOVAN_DATE" ColumnName="SALES_NIJE_ZAINTERESOVAN_DATE" />
+          <ScalarProperty Name="PRODAT" ColumnName="PRODAT" />
+          <ScalarProperty Name="SALES_NIJE_ZAINTERESOVAN" ColumnName="SALES_NIJE_ZAINTERESOVAN" />
+          <ScalarProperty Name="NIJE_DOBIJEN" ColumnName="NIJE_DOBIJEN" />
+          <ScalarProperty Name="U_PREGOVORIMA" ColumnName="U_PREGOVORIMA" />
+          <ScalarProperty Name="VRACENO_SA_KONTROLE" ColumnName="VRACENO_SA_KONTROLE" />
+          <ScalarProperty Name="VRACEN_MARKETINGU" ColumnName="VRACEN_MARKETINGU" />
+          <ScalarProperty Name="TERMIN_ID" ColumnName="TERMIN_ID" />
+          <ScalarProperty Name="AKTIVAN" ColumnName="AKTIVAN" />
+          <ScalarProperty Name="DATETIME_UPDATED" ColumnName="DATETIME_UPDATED" />
+          <ScalarProperty Name="DATETIME_CREATED" ColumnName="DATETIME_CREATED" />
+          <ScalarProperty Name="KOMENTAR" ColumnName="KOMENTAR" />
+          <ScalarProperty Name="MOGUCA_INVESTICIJA" ColumnName="MOGUCA_INVESTICIJA" />
+          <ScalarProperty Name="DOSTUPNOST" ColumnName="DOSTUPNOST" />
+          <ScalarProperty Name="BEI" ColumnName="BEI" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+          <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+          <ScalarProperty Name="GRAD" ColumnName="GRAD" />
+          <ScalarProperty Name="DRZAVA" ColumnName="DRZAVA" />
+          <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+          <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+          <ScalarProperty Name="PREZIME" ColumnName="PREZIME" />
+          <ScalarProperty Name="IME" ColumnName="IME" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="FINALIZIRAO_ID" ColumnName="FINALIZIRAO_ID" />
+          <ScalarProperty Name="TRENUTNO_GRUPA_ID" ColumnName="TRENUTNO_GRUPA_ID" />
+          <ScalarProperty Name="TRENUTNO_KOD_ID" ColumnName="TRENUTNO_KOD_ID" />
+          <ScalarProperty Name="KREIRAO_ID" ColumnName="KREIRAO_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DRZAVE">
+      <EntityTypeMapping TypeName="CCModel.DRZAVE">
+        <MappingFragment StoreEntitySet="DRZAVE">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KONTAKTI">
+      <EntityTypeMapping TypeName="CCModel.KONTAKTI">
+        <MappingFragment StoreEntitySet="KONTAKTI">
+          <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
+          <ScalarProperty Name="VRACEN_MARKETINGU" ColumnName="VRACEN_MARKETINGU" />
+          <ScalarProperty Name="TERMIN_ID" ColumnName="TERMIN_ID" />
+          <ScalarProperty Name="AKTIVAN" ColumnName="AKTIVAN" />
+          <ScalarProperty Name="DATETIME_UPDATED" ColumnName="DATETIME_UPDATED" />
+          <ScalarProperty Name="DATETIME_CREATED" ColumnName="DATETIME_CREATED" />
+          <ScalarProperty Name="KOMENTAR" ColumnName="KOMENTAR" />
+          <ScalarProperty Name="MOGUCA_INVESTICIJA" ColumnName="MOGUCA_INVESTICIJA" />
+          <ScalarProperty Name="DOSTUPNOST" ColumnName="DOSTUPNOST" />
+          <ScalarProperty Name="TERMIN" ColumnName="TERMIN" />
+          <ScalarProperty Name="BEI" ColumnName="BEI" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+          <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+          <ScalarProperty Name="GRAD" ColumnName="GRAD" />
+          <ScalarProperty Name="DRZAVA" ColumnName="DRZAVA" />
+          <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+          <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+          <ScalarProperty Name="PREZIME" ColumnName="PREZIME" />
+          <ScalarProperty Name="IME" ColumnName="IME" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="FINALIZIRAO_ID" ColumnName="FINALIZIRAO_ID" />
+          <ScalarProperty Name="TRENUTNO_GRUPA_ID" ColumnName="TRENUTNO_GRUPA_ID" />
+          <ScalarProperty Name="TRENUTNO_KOD_ID" ColumnName="TRENUTNO_KOD_ID" />
+          <ScalarProperty Name="KREIRAO_ID" ColumnName="KREIRAO_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATISTIKA">
+      <EntityTypeMapping TypeName="CCModel.STATISTIKA">
+        <MappingFragment StoreEntitySet="STATISTIKA">
+          <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+          <ScalarProperty Name="DATETIME" ColumnName="DATETIME" />
+          <ScalarProperty Name="POZVAO" ColumnName="POZVAO" />
+          <ScalarProperty Name="PROVJERIO" ColumnName="PROVJERIO" />
+          <ScalarProperty Name="AGENT_ID" ColumnName="AGENT_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATUS">
+      <EntityTypeMapping TypeName="CCModel.STATUS">
+        <MappingFragment StoreEntitySet="STATUS">
+          <ScalarProperty Name="STATUS1" ColumnName="STATUS" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CCModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TERMINI">
+      <EntityTypeMapping TypeName="CCModel.TERMINI">
+        <MappingFragment StoreEntitySet="TERMINI">
+          <ScalarProperty Name="DATUM_KRAJA" ColumnName="DATUM_KRAJA" />
+          <ScalarProperty Name="KONTAKT_ID" ColumnName="KONTAKT_ID" />
+          <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
+          <ScalarProperty Name="DATUM" ColumnName="DATUM" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UPLOADEDFILES">
+      <EntityTypeMapping TypeName="CCModel.UPLOADEDFILES">
+        <MappingFragment StoreEntitySet="UPLOADEDFILES">
+          <ScalarProperty Name="FILEPATH" ColumnName="FILEPATH" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

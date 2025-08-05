@@ -1,0 +1,117 @@
+﻿@model List<CC2.Models.Korisnici>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:white;">   Korisnici</h2>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card">
+
+
+                <!-- Card header -->
+                <div class="card-header">
+
+
+                </div>
+
+                @if (TempData["Success"] != null)
+                {
+                    <div style="margin-left:23px;" id="successPopup" class="custom-popup">
+                        <span style="color:green;" class="custom-popup-content">@TempData["Success"]</span>
+
+
+                    </div>
+                }
+                @if (TempData["Error"] != null)
+                {
+                    <div style="margin-left:23px;" id="errorPopup" class="custom-popup">
+                        <span style="color:darkred;" class="custom-popup-content">@TempData["Error"]</span>
+
+
+                    </div>
+                }
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div style="margin-left:23px;" id="successPopup" class="custom-popup">
+                        <span style="color:green;" class="custom-popup-content"><h5 style="color:green;">@TempData["SuccessMessage"]</h5></span>
+
+
+                    </div>
+                }
+                @if (TempData["NoSuccessMessage"] != null)
+                {
+                    <div style="margin-left:23px;" id="errorPopup" class="custom-popup">
+                        <span style="color:darkred;" class="custom-popup-content"><h5 style="color:red;">@TempData["NoSuccessMessage"]</h5></span>
+
+
+                    </div>
+                }
+
+
+                <div class="table-responsive">
+
+
+
+                    <table class="table table-flush" id="datatable-basic">
+                        <thead class="thead-light">
+                            <tr style="text-align:center;">
+                                <th style="text-align:center;">Korisnik</th>
+                                <th style="text-align:center;">Rola</th>
+                                <th style="text-align:center;">Akcija</th>
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td style="text-align:center;" class="text-sm font-weight-normal">@user.Email</td>
+                                    <td style="text-align:center;" class="text-sm font-weight-normal">@user.UserRole</td>
+                                    <td style="text-align:center;" class="text-sm font-weight-normal">
+                                        <a class="btn btn_primary text-uppercase" href="@Url.Action("Delete", "Korisnik", new { id = @user.UserId })"
+                                           onclick="return confirm('Da li ste sigurni da želite izbrisati ovog korisnika?');">
+                                            IZBRIŠI KORISNIKA
+                                        </a>
+                                    </td>
+
+
+
+
+                                </tr>
+                            }
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <a class="btn bg-success mb-0" href="/Account/Register" style="color:white;">Dodaj novog korisnika</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="~/Content/js/plugins/datatables.js"></script>
+<script>
+    const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
+        searchable: true,
+
+    });
+
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }</script>

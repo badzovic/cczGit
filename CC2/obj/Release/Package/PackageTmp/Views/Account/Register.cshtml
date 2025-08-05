@@ -1,0 +1,74 @@
+﻿@model CC2.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+     
+        <div class="col-12">
+
+            <div class="card">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div style="margin-left:23px;" id="successPopup" class="custom-popup">
+                        <span style="color:green;" class="custom-popup-content"><h4 style="color:green;">@TempData["SuccessMessage"]</h4></span>
+
+
+                    </div>
+                }
+                @if (TempData["NoSuccessMessage"] != null)
+                {
+                    <div style="margin-left:23px;" id="errorPopup" class="custom-popup">
+                        <span style="color:darkred;" class="custom-popup-content"><h4 style="color:red;">@TempData["NoSuccessMessage"]</h4></span>
+
+
+                    </div>
+                }
+                <h2 style="color:white;" id="title">Novi korisnik.</h2>
+                <div class="card-body">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <hr />
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="row">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 col-form-label", @style = "color:darkgreen;" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <label class="col-md-2 col-form-label" style="color: darkgreen;" for="CategoryId">Izaberi Rolu:</label>
+
+                            @Html.DropDownListFor(m => m.Rola, ViewBag.rola as SelectList, "Izaberi Rolu", new { @class = "form-control", @required = "required" })
+
+                        </div>
+                        <div class="row">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 col-form-label", @style = "color:darkgreen;" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 col-form-label", @style = "color:darkgreen" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div>
+                            <p>&nbsp;</p>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <input type="submit" value="Dodaj novog korisnika" class="btn btn-outline-dark" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,139 @@
+﻿@model CC2.Models.UploadedFile
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    /* Center the container vertically and horizontally */
+
+
+    /* Define a CSS class for error messages */
+    .error-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: darkred; /* Set the text color to a light color (e.g., white) */
+        font-weight: bold; /* Make the text bold */
+        font-size: 17px; /* Adjust the font size as needed */
+        text-align: center; /* Center-align the text horizontally */
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Add a text shadow for a glowing effect */
+        /* Add any other styles you want to apply */
+        position: relative; /* Add relative positioning */
+    }
+
+    .shine {
+        position: relative;
+        background: linear-gradient(90deg, transparent 50%, #ddd2d2 50%); /* Create a red shining effect */
+        background-size: 200% 100%;
+        animation: shine 2s infinite; /* Increase the animation duration for a more pronounced effect */
+    }
+    /* Define the shine animation */
+    @@keyframes shine {
+        0% {
+            background-position: -200% 0;
+        }
+
+        100% {
+            background-position: 200% 0;
+        }
+    }
+</style>
+
+
+<h2 style="color:white;"> </h2>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card">
+
+
+                <!-- Card header -->
+                <div class="card-header">
+
+
+                </div>
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success">
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+                @if (TempData["NoSuccessMessage"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @TempData["NoSuccessMessage"]
+                    </div>
+                }
+
+                <!-- End Navbar -->
+                <div class="container-fluid py-4">
+                    <div class="row">
+                        <div class="col-lg-9 col-12 mx-auto">
+                            <h4 class="mb-0">Sve novosti</h4>
+                            <hr class="horizontal dark my-3">
+                            <div class="table-responsive">
+
+                                <table class="table table-flush" id="datatable-basic">
+
+                                    <thead class="thead-light">
+                                        <tr style="text-align:center;">
+                                            <th>Naziv</th>
+                                            <th>Pregled</th>
+                                            <th>Ukloni</th> <!-- Nova kolona -->
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (var item in Model.sviFajlovi)
+                                        {
+                                            <tr>
+                                                <td style="text-align: center; font-size: 16px;" class="text-sm font-weight-bold">@item.NAME</td>
+
+                                                <td style="text-align: center;" class="text-sm font-weight-normal">
+                                                    <a style="text-align:center;" href="@Url.Content(item.FILEPATH)" target="_blank">
+                                                        <b style="color: darkslategrey">PREGLEDAJ DOKUMENT</b>
+                                                    </a>
+
+                                                </td>
+
+                                                <td style="text-align: center;">
+                                                    @using (Html.BeginForm("DeleteFajl", "Novosti", FormMethod.Post))
+                                                    {
+                                                        @Html.Hidden("id", item.ID)
+                                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Da li ste sigurni da želite ukloniti ovaj dokument?');">
+                                                            Ukloni
+                                                        </button>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+
+
+                                </table>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="~/Content/js/plugins/datatables.js"></script>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

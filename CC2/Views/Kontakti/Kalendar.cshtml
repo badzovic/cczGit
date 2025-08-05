@@ -1,0 +1,309 @@
+﻿@model CC2.Models.Kontakti
+@{
+    ViewBag.Title = "Kalendar";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kalendar termina - @Model.firma</title>
+
+    <!-- FullCalendar -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Stilovi -->
+    <style>
+        body {
+            margin: 0;
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .calendar-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .fc-event.shrink {
+            width: 30% !important;
+            min-width: 30px;
+            margin-right: 2px;
+            float: left;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        #calendar {
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f0fdf4;
+        }
+
+        .sidenav {
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            left: 50;
+            top: 0;
+            background-color: white;
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding-left: 50px;
+            padding: 30px;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+            padding: 8px 0;
+            display: block;
+            text-decoration: none;
+        }
+
+            .nav-link:hover {
+                color: #0d6efd;
+                text-decoration: none;
+            }
+
+        .calendar-wrapper {
+            padding-left: 50px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .calendar-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-brand {
+            text-decoration: none !important;
+            color: #413f3f !important;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+            .navbar-brand:hover {
+                color: #0d6efd !important; /* Bootstrap plava na hover, možeš promijeniti */
+            }
+
+            .navbar-brand img {
+                height: 30px;
+            }
+    </style>
+</head>
+
+
+
+    <!-- SIDEBAR -->
+<div class="sidenav">
+    <a class="navbar-brand d-flex align-items-center mb-3" href="/Pregled">
+        <img src="/Content/img/logo-ct-dark.png" alt="logo">
+        <span class="ms-2 fw-bold">Nazad na Pregled</span>
+    </a>
+
+
+</div>
+
+    <!-- MAIN -->
+    <div class="main-content">
+        <div class="calendar-wrapper">
+            <h2 class="calendar-title">Zakazivanje termina za: @Model.firma</h2>
+            <div id="calendar"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        var termini = @Html.Raw(Json.Encode(Model.Termini
+            .Where(t => t.DATUM.HasValue)
+            .Select(t => new {
+                id = t.ID,
+                title = t.NAZIV,
+                start = t.DATUM.Value.ToString("yyyy-MM-ddTHH:mm:ss"),
+                end = t.KRAJ.HasValue ? t.KRAJ.Value.ToString("yyyy-MM-ddTHH:mm:ss") : null,
+                backgroundColor = t.Boja,
+                borderColor = t.Boja,
+                textColor = "white"
+            })));
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridDay',
+                initialDate: new Date().toISOString().split('T')[0],
+                height: 'auto',
+                allDaySlot: false,
+                slotMinTime: "07:00:00",
+                slotMaxTime: "20:00:00",
+                className: "shrink",
+                selectable: true,
+                headerToolbar: {
+                    left: 'dayGridMonth,timeGridWeek,timeGridDay',
+                    center: 'title',
+                    right: 'prev,next today'
+                },
+
+                events: termini,
+                eventDidMount: function (info) {
+                    info.el.style.width = "30%";
+                    info.el.style.marginRight = "5px";
+                    info.el.style.display = "inline-block";
+                    info.el.setAttribute("title", "ALT + klik za brisanje");
+                    // ALT + klik za brisanje termina
+                    info.el.addEventListener("click", function (e) {
+                        if (e.altKey) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            obrisiTermin(info.event.id);
+                        }
+                    });
+                },
+                eventClick: function(info) {
+                    const kontaktId = @Model.Id;
+                    const url = `/Pregled/Kontakt?id=${kontaktId}&page=1`;
+                    window.location.href = url;
+                },
+                select: function(info) {
+                    const kontaktId = @Model.Id;
+                    const start = info.startStr;
+                    const end = info.endStr;
+
+                    const startDate = new Date(start);
+                    const endDate = new Date(end);
+
+                    // Formatiraj kao "dd.mm.yyyy. od HH:mm do HH:mm"
+                    const formatterDate = startDate.toLocaleDateString('sr-Latn-BA');
+                    const formatterStartTime = startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    const formatterEndTime = endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                    const potvrdaTekst = `Rezervisati termin za ${formatterDate} od ${formatterStartTime} do ${formatterEndTime}?`;
+
+                    if (!confirm(potvrdaTekst)) return;
+
+                    fetch('/Kontakti/ZakaziTermin', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                        },
+                        body: JSON.stringify({
+                            kontaktId: kontaktId,
+                            start: start,
+                            end: end
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert("Termin uspješno rezervisan!");
+                            calendar.addEvent({
+                                id: data.id, // očekuješ da server vrati ID novog termina
+                                title: "Marketing rezervacija",
+                                start: start,
+                                end: end,
+                                backgroundColor: "#2ecc71",
+                                borderColor: "#27ae60",
+                                textColor: "white",
+                                className: "shrink"
+                            });
+                        } else {
+                            alert("Greška: " + data.message);
+                        }
+                    });
+                },
+
+                editable: true,
+
+                eventDrop: function (info) {
+                    const event = info.event;
+
+                    const newStart = event.start.toISOString();
+                    const newEnd = event.end ? event.end.toISOString() : null;
+
+                    fetch('/Kontakti/AzurirajTermin', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                        },
+                        body: JSON.stringify({
+                            terminId: event.id,
+                            noviStart: newStart,
+                            noviEnd: newEnd
+                        })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (!data.success) {
+                                alert("Greška: " + data.message);
+                                info.revert(); // ako ne uspije - vrati termin na staro
+                            }
+                        })
+                        .catch(error => {
+                            alert("Greška prilikom komunikacije sa serverom.");
+                            info.revert();
+                        });
+                },
+
+            });
+
+            calendar.render();
+
+            function obrisiTermin(id) {
+                if (!confirm("Da li želiš obrisati ovaj termin?")) return;
+
+                fetch('/Kontakti/ObrisiTermin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id: id })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            const event = calendar.getEventById(id);
+                            if (event) event.remove();
+                        } else {
+                            alert("Greška: " + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("Greška prilikom komunikacije sa serverom.");
+                    });
+            }
+        });
+    </script>
+

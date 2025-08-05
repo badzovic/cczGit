@@ -1,0 +1,34 @@
+﻿@model CC2.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+
+}
+
+<p style="color:white;" class="text-success">@ViewBag.StatusMessage</p>
+
+<div style="margin-left: 200px;">
+    <!-- Move the div to the right by 200px -->
+    <h6 style="color:white">
+        Postavke lozinke:</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dd>
+
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Promjeni lozinku", "ChangePassword", null, new { @class = "btn-link", @style = "color:white" })
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword", null, new { @class = "btn-link" })
+                }
+
+            </dd>
+        </dl>
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>

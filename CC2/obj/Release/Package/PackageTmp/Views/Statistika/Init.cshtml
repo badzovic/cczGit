@@ -1,0 +1,47 @@
+﻿@model CC2.Models.Statistika
+@{
+    ViewBag.Title = "Init";
+}
+
+
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-lg-9 col-12 mx-auto">
+            @using (Html.BeginForm("Search", "Statistika", FormMethod.Post))
+            {
+                <div class="card card-body mt-4">
+                    <h6 class="mb-0">Odaberi agenta i period</h6>
+                    <hr class="horizontal dark my-3">
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label">Agent</label>
+
+                            @Html.DropDownListFor(model => model.SelectedUser, Model.sviKorisnici, "Odaberite agenta", new { @class = "form-select", @id = "IdSelect" })
+
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label">Datum od</label>
+                            @Html.TextBoxFor(model => model.DateFrom, new { @class = "form-control", @type = "date" })
+
+                            <label class="form-label">Datum do</label>
+                            @Html.TextBoxFor(model => model.DateTo, new { @class = "form-control", @type = "date" })
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" name="submitButton" value="Sacuvaj" class="btn btn-outline-primary">Pretrazi</button>
+
+
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
