@@ -70,6 +70,8 @@
     <EntitySetMapping Name="CC_KONTAKTI">
       <EntityTypeMapping TypeName="CCModel.CC_KONTAKTI">
         <MappingFragment StoreEntitySet="CC_KONTAKTI">
+          <ScalarProperty Name="BROJ_KARTICA" ColumnName="BROJ_KARTICA" />
+          <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
           <ScalarProperty Name="DATUM_DODJELE" ColumnName="DATUM_DODJELE" />
           <ScalarProperty Name="BLACKLIST" ColumnName="BLACKLIST" />
           <ScalarProperty Name="BROJ2" ColumnName="BROJ2" />
@@ -182,6 +184,7 @@
     <EntitySetMapping Name="TERMINI">
       <EntityTypeMapping TypeName="CCModel.TERMINI">
         <MappingFragment StoreEntitySet="TERMINI">
+          <ScalarProperty Name="DATUM_KRAJA" ColumnName="DATUM_KRAJA" />
           <ScalarProperty Name="KONTAKT_ID" ColumnName="KONTAKT_ID" />
           <ScalarProperty Name="NAZIV" ColumnName="NAZIV" />
           <ScalarProperty Name="DATUM" ColumnName="DATUM" />

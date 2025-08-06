@@ -40,19 +40,20 @@
 
                                 <tr style="text-align:center;">
 
-                                    <th>Ime</th>
+                                    <th>Rb</th>
 
-                                    <th>Prezime</th>
+                                    <th>Firma</th>
+
+                                    <th>Broj kartica</th>
 
                                     <th>Adresa</th>
 
-                                    <th>PLZ</th>
 
                                     <th>Drzava</th>
 
                                     <th>Broj</th>
 
-                                    <th>U pregovorima</th>
+                                    <th>Termin</th>
 
                                     <th>Datum dodjele</th>
 
@@ -69,20 +70,24 @@
                                     @foreach (var item in Model.prodato)
                                     {
                                         <tr>
+                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.ID</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.IME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.FIRMA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.PREZIME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.BROJ_KARTICA</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-normal">@item.ADRESA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.PLZ</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-normal">@item.DRZAVA</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-normal">@item.PREFIX @item.BROJ</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-normal">DA</td>
+                                            <td>
+                                                <a href="@Url.Action("Kalendar", "Kontakti", new { id = item.ID })" class="btn btn-sm btn-outline-primary">
+                                                    📅 Termini
+                                                </a>
+                                            </td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-normal">@item.DATUM_DODJELE</td>
 

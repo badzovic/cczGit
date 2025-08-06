@@ -101,6 +101,8 @@
     <Property Name="BROJ2" Type="nvarchar" MaxLength="128" />
     <Property Name="BLACKLIST" Type="nvarchar" MaxLength="50" />
     <Property Name="DATUM_DODJELE" Type="datetime" />
+    <Property Name="FIRMA" Type="nvarchar" MaxLength="200" />
+    <Property Name="BROJ_KARTICA" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="DRZAVE">
     <Key>
@@ -178,6 +180,7 @@
     <Property Name="DATUM" Type="datetime" />
     <Property Name="NAZIV" Type="nvarchar" MaxLength="50" />
     <Property Name="KONTAKT_ID" Type="int" />
+    <Property Name="DATUM_KRAJA" Type="datetime" />
   </EntityType>
   <EntityType Name="UPLOADEDFILES">
     <Key>

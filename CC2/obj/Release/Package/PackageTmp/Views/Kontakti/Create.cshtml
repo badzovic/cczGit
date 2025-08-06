@@ -3,17 +3,17 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 <style>
-   /* Center the container vertically and horizontally */
+    /* Center the container vertically and horizontally */
 
 
-/* Define a CSS class for error messages */
+    /* Define a CSS class for error messages */
     .error-message {
         display: flex;
         justify-content: center;
         align-items: center;
-     
         color: darkred; /* Set the text color to a light color (e.g., white) */
         font-weight: bold; /* Make the text bold */
         font-size: 17px; /* Adjust the font size as needed */
@@ -23,22 +23,28 @@
         position: relative; /* Add relative positioning */
     }
 
+    #calendar {
+        background-color: #f4fdf4 !important; /* nježna zelena */
+        border-radius: 10px;
+        padding: 10px;
+    }
+
     .shine {
         position: relative;
         background: linear-gradient(90deg, transparent 50%, #ddd2d2 50%); /* Create a red shining effect */
         background-size: 200% 100%;
         animation: shine 2s infinite; /* Increase the animation duration for a more pronounced effect */
     }
-/* Define the shine animation */
-@@keyframes shine {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
-}
+    /* Define the shine animation */
+    @@keyframes shine {
+        0% {
+            background-position: -200% 0;
+        }
 
+        100% {
+            background-position: 200% 0;
+        }
+    }
 </style>
 
 
@@ -92,12 +98,12 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <label class="form-label">Ime</label>
-                                            @Html.TextBoxFor(x => x.ime, new { required = "required", @name = "ime", placeholder = "Ime", @class = "form-control" })
+                                            @Html.TextBoxFor(x => x.ime, new { @name = "ime", placeholder = "Ime", @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.ime)
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Prezime</label>
-                                            @Html.TextBoxFor(x => x.prezime, new { required = "required", @name = "prezime", placeholder = "Prezime", @class = "form-control" })
+                                            @Html.TextBoxFor(x => x.prezime, new { @name = "prezime", placeholder = "Prezime", @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.prezime)
                                         </div>
                                         <div class="col-6">
@@ -110,12 +116,22 @@
                                             @Html.TextBoxFor(x => x.plz, new { @name = "plz", placeholder = "Plz", @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.plz)
                                         </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Naziv firme</label>
+                                            @Html.TextBoxFor(x => x.firma, new { required = "required", @name = "Firma", placeholder = "Naziv firme", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.firma)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Broj kartica</label>
+                                            @Html.TextBoxFor(x => x.brojkartica, new { required = "required", @name = "brojkartica", placeholder = "Broj kartica", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.brojkartica)
+                                        </div>
                                         @*<div class="col-6">
-                            <label class="form-label">Država</label>
-                            <select class="form-select" id="countrySelect" data-input>
-                                <option selected disabled>Odaberite državu</option>
-                            </select>
-                        </div>*@
+                                                <label class="form-label">Država</label>
+                                                <select class="form-select" id="countrySelect" data-input>
+                                                    <option selected disabled>Odaberite državu</option>
+                                                </select>
+                                            </div>*@
                                         <div class="col-6">
                                             <label class="form-label">Država</label>
                                             @Html.DropDownListFor(x => x.drzava, new SelectList(Enumerable.Empty<SelectListItem>(), "Value", "Text"), "Odaberite državu", new { @class = "form-select", @id = "countrySelect" })
@@ -181,26 +197,12 @@
                                             @Html.ValidationMessageFor(x => x.fax)
                                         </div>
                                     </div>
-                                    <hr class="horizontal dark my-3">
-                                    <div class="radio-group" style="margin-left:10px;">
-                                        <input type="radio" name="bei" value="LocalBank" /> LocalBank
-                                        <input type="radio" name="bei" value="Online" /> Online bei
-                                        <input type="radio" name="bei" value="Phone" /> Phone bei
-                                    </div>
+
                                     <hr class="horizontal dark my-3">
 
 
                                     <div class="row">
-                                        <div class="col-12">
-                                            <label for="Aktivnost">Dostupnnost</label>
-                                            @Html.TextAreaFor(m => m.dostupnost, new { @class = "form-control", rows = "6", placeholder = "Dostupnost...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Dostupnnost" })
-                                            @Html.ValidationMessageFor(m => m.dostupnost)
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="Investicija" class="form-label">Moguća investicija</label>
-                                            @Html.TextAreaFor(m => m.investicija, new { @class = "form-control", rows = "6", placeholder = "Moguca investicija...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "investicija" })
-                                            @Html.ValidationMessageFor(m => m.investicija)
-                                        </div>
+
                                         <div class="col-12">
                                             <label for="Komentar" class="form-label">Komentar</label>
                                             @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
@@ -216,12 +218,15 @@
                                             @Html.TextBoxFor(model => model.terminDate, new { @class = "form-control datetimepicker", @type = "datetime-local" })
                                         </div>
                                         <p>&nbsp;</p>
+                                        <hr class="horizontal dark my-3">
+
+
                                         <button type="submit" name="submitButton" value="Zainteresovan" class="btn btn-outline-primary">Zainteresovan</button>
 
 
                                     </div>
 
-
+                                   
                                     <div class="col-12">
                                         <button type="submit" name="submitButton" value="Sacuvaj" class="btn btn-outline-primary">Sacuvaj</button>
                                         <button class="btn btn-outline-primary" onclick="goBack()">Nazad</button>
@@ -274,7 +279,7 @@
     // Fetch countries from the Rest Countries API and populate the dropdown
     $(document).ready(function () {
         const countrySelect = $("#countrySelect");
-        $.get("https://restcountries.com/v3.1/all", function (data) {
+        $.get("https://restcountries.com/v3.1/all?fields=name,cca2", function (data) {
             // Find Germany and Austria in the data
             const germany = data.find(country => country.name.common === "Germany");
             const austria = data.find(country => country.name.common === "Austria");
@@ -301,6 +306,10 @@
                 option.text(country.name.common);
                 countrySelect.append(option);
             });
+            countrySelect.val("DE");
+            const germanyPrefix = "0049";
+            $("#prefixInput").val(germanyPrefix);
+            $("#prefixInput2").val(germanyPrefix);
         });
     });
 
@@ -588,7 +597,7 @@
         document.getElementById("broj").addEventListener("change", updateHref);
         document.getElementById("broj2").addEventListener("change", updateHref);
         function updateHref() {
-            var prefix = document.getElementById("prefixInput").value        
+            var prefix = document.getElementById("prefixInput").value
             var broj = document.getElementById("broj").value;
             var broj2 = document.getElementById("broj2").value;
             // Combine prefix and broj into a valid tel URI
@@ -629,7 +638,7 @@
                         if (response.success && response.exists == false) {
                             // Show the additional elements and buttons
                             document.getElementById("additionalElements").style.display = "block";
-                          
+
                             if (document.getElementById("broj").value.trim() !== "") {
                                 document.getElementById("chkButtonPoziv").style.display = "block";
                                 document.getElementById("chkButtonPoziv").textContent = "POZOVI BROJ 1";
@@ -639,7 +648,7 @@
                             if (document.getElementById("broj2").value.trim() !== "") {
                                 document.getElementById("chkButtonPoziv2").style.display = "block";
                                 document.getElementById("chkButtonPoziv2").textContent = "POZOVI BROJ 2";
-                                 document.getElementById("messageContainer").style.display = "none";
+                                document.getElementById("messageContainer").style.display = "none";
                             }
                             document.getElementById("chkButton").style.display = "block";
                         } else {
@@ -677,5 +686,4 @@
     });
 
 </script>
-
 

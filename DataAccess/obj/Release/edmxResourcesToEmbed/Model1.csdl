@@ -199,6 +199,8 @@
     <NavigationProperty Name="AspNetUsers2" Relationship="CCModel.FK_CC_KONTAKTI_AspNetUsers3" FromRole="CC_KONTAKTI" ToRole="AspNetUsers" />
     <Property Name="BLACKLIST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DATUM_DODJELE" Type="DateTime" Precision="3" />
+    <Property Name="FIRMA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BROJ_KARTICA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DRZAVE">
     <Key>
@@ -284,6 +286,7 @@
     <Property Name="KONTAKT_ID" Type="Int32" />
     <NavigationProperty Name="AspNetUsers" Relationship="CCModel.FK_TERMINI_AspNetUsers" FromRole="TERMINI" ToRole="AspNetUsers" />
     <NavigationProperty Name="KONTAKTI" Relationship="CCModel.FK_KONTAKTI_TERMINI" FromRole="TERMINI" ToRole="KONTAKTI" />
+    <Property Name="DATUM_KRAJA" Type="DateTime" Precision="3" />
   </EntityType>
   <Association Name="FK_CC_KONTAKTI_AspNetRoles">
     <End Type="CCModel.AspNetRoles" Role="AspNetRoles" Multiplicity="1" />

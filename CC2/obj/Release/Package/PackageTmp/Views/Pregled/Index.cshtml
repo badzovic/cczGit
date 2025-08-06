@@ -55,11 +55,11 @@
 
                                         <th></th>
 
-                                        <th>Broj</th>
+                                        <th>Rb</th>
 
-                                        <th>Ime</th>
+                                        <th>Firma</th>
 
-                                        <th>Prezime</th>
+                                        <th>Broj kartica</th>
 
                                         <th>Adresa</th>
 
@@ -70,6 +70,8 @@
                                         <th>Broj</th>
 
                                         <th>Datum</th>
+
+                                        <th>termin</th>
 
                                         <th>Pregledaj</th>
 
@@ -82,11 +84,11 @@
 
                                         <th></th>
 
-                                        <th>Broj</th>
+                                        <th>Rb</th>
 
-                                        <th>Ime</th>
+                                        <th>Firma</th>
 
-                                        <th>Prezime</th>
+                                        <th>Broj kartica</th>
 
                                         <th>Adresa</th>
 
@@ -99,6 +101,9 @@
                                         <th>Kreirao</th>
 
                                         <th>Datum</th>
+
+                                        <th>termin</th>
+
 
                                         <th>Pregledaj</th>
 
@@ -111,11 +116,11 @@
 
                                         <th></th>
 
-                                        <th>Broj</th>
+                                        <th>Rb</th>
 
-                                        <th>Ime</th>
+                                        <th>Firma</th>
 
-                                        <th>Prezime</th>
+                                        <th>Broj kartica</th>
 
                                         <th>Adresa</th>
 
@@ -128,6 +133,9 @@
                                         <th>Broj</th>
 
                                         <th>Datum</th>
+
+                                        <th>termin</th>
+
 
                                         <th>Pregledaj</th>
 
@@ -138,25 +146,28 @@
 
                                         <th></th>
 
-                                        <th>Broj</th>
+                                        <th>Rb</th>
 
-                                        <th>Ime</th>
+                                        <th>Firma</th>
 
-                                        <th>Prezime</th>
+                                        <th>Broj kartica</th>
 
                                         <th>Adresa</th>
 
-                                        <th>PLZ</th>
+
 
                                         <th>Drzava</th>
 
                                         <th>Broj tel</th>
 
                                         <th>Datum</th>
-
                                         <th>Kreirao</th>
 
-                                        <th>Blacklist</th>
+                                        <th>termin</th>
+
+
+
+
 
                                         <th>Pregledaj</th>
 
@@ -164,15 +175,13 @@
                                     }
                                     @if (User.IsInRole("sales"))
                                     {
-                                        <th>Broj</th>
+                                        <th>Rb</th>
 
-                                        <th>Ime</th>
+                                        <th>Firma</th>
 
-                                        <th>Prezime</th>
+                                        <th>Broj kartica</th>
 
                                         <th>Adresa</th>
-
-                                        <th>PLZ</th>
 
                                         <th>Drzava</th>
 
@@ -180,9 +189,8 @@
 
                                         <th>Datum</th>
 
-                                        <th>Datum dodjele</th>
+                                        <th>Termin</th>
 
-                                        <th>Pregledaj</th>
                                     }
                                 </tr>
 
@@ -200,9 +208,9 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.ID</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.IME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.FIRMA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREZIME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.BROJ_KARTICA</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.ADRESA</td>
 
@@ -213,10 +221,14 @@
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREFIX @item.BROJ</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.DATETIME_CREATED</td>
-
+                                            <td>
+                                                <a href="@Url.Action("Kalendar", "Kontakti", new { id = item.ID })" class="btn btn-sm btn-outline-primary">
+                                                    📅 Termini
+                                                </a>
+                                            </td>
                                             <td>
                                                 <a class="btn btn_primary text-uppercase linkForItem" href="@Url.Action("Kontakt", "Pregled", new { id = item.ID })">PREGLED</a>
-                                               
+
                                             </td>
 
 
@@ -313,14 +325,13 @@
                                             </td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.ID</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.FIRMA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.IME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.BROJ_KARTICA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREZIME</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.ADRESA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.PLZ</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.DRZAVA</td>
 
@@ -330,20 +341,17 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.AspNetUsers.UserName</td>
 
-                                            @if (item.BLACKLIST == "Y")
-                                            {
-                                                <td style="text-align:left;" class="text-sm font-weight-bold"><b>BLACKLISTAN!</b></td>
-                                            }
-                                            else
-                                            {
-                                                <td style="text-align:left;" class="text-sm font-weight-bold">NE</td>
-                                            }
+                                            <td>
+                                                <a href="@Url.Action("Kalendar", "Kontakti", new { id = item.ID })" class="btn btn-sm btn-outline-primary">
+                                                    📅 Termini
+                                                </a>
+                                            </td>
                                             <td>
                                                 <a class="btn btn-outline-secondary text-uppercase" href="@Url.Action("kontaktSales", "Pregled", new { id = item.ID})">PREGLED</a>
                                             </td>
                                             @*<td>
-                                                    <button type="button" class="btn btn-outline-secondary" id="prosljediAgentu" data-item-id="@item.ID">PROSLJEDI AGENTU</button>
-                                                </td>*@
+            <button type="button" class="btn btn-outline-secondary" id="prosljediAgentu" data-item-id="@item.ID">PROSLJEDI AGENTU</button>
+        </td>*@
                                         </tr>
 
                                     }
@@ -357,21 +365,25 @@
                                         <tr>
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.ID</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.IME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.FIRMA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREZIME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.BROJ_KARTICA</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.ADRESA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.PLZ</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.DRZAVA</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREFIX @item.BROJ</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.DATETIME_CREATED</td>
+                                            <td>
+                                                <a href="@Url.Action("Kalendar", "Kontakti", new { id = item.ID })" class="btn btn-sm btn-outline-primary">
+                                                    📅 Termini
+                                                </a>
+                                            </td>
+                                            
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.DATUM_DODJELE</td>
 
                                             <td>
                                                 <a class="btn btn-outline-secondary text-uppercase" href="@Url.Action("kontaktSales", "Pregled", new { id = item.ID})">PREGLED</a>
@@ -395,7 +407,6 @@
                         @if (User.IsInRole("marketing"))
                         {
                             <div style="display: flex; justify-content: flex-end;">
-                                <a id="izbrisi" class="btn btn-danger" href="#" style="margin-right: 10px;">IZBRIŠI</a>
                                 <a style="margin-right: 10px;" id="prosljedi-link-adminu" class="btn btn-success" href="#">ZAINTERESOVAN</a>
                             </div>
 

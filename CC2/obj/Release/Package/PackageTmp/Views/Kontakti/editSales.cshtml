@@ -45,6 +45,17 @@
 
                                     <div class="row">
                                         <div class="col-6">
+                                            <label class="form-label">Firma</label>
+                                            @Html.TextBoxFor(x => x.firma, new { @name = "firma", placeholder = "Firma", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.firma)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Broj kartica</label>
+                                            @Html.TextBoxFor(x => x.brojkartica, new { @name = "brojkartica", placeholder = "Broj kartica", @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.ime)
+                                        </div>
+
+                                        <div class="col-6">
                                             <label class="form-label">Ime</label>
                                             @Html.TextBoxFor(x => x.ime, new { @name = "ime", placeholder = "Ime", @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.ime)
@@ -128,31 +139,22 @@
                                     <p>&nbsp;</p>
 
                                     <div class="row">
-                                        <div class="col-12">
-                                            <label for="Aktivnost">Dostupnnost</label>
-                                            @Html.TextAreaFor(m => m.dostupnost, new { @class = "form-control", rows = "6", placeholder = "Dostupnost...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Dostupnnost" })
-                                            @Html.ValidationMessageFor(m => m.dostupnost)
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="Investicija" class="form-label">Moguća investicija</label>
-                                            @Html.TextAreaFor(m => m.investicija, new { @class = "form-control", rows = "6", placeholder = "Moguca investicija...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "investicija" })
-                                            @Html.ValidationMessageFor(m => m.investicija)
-                                        </div>
+
                                         <div class="col-12">
                                             <label for="Komentar" class="form-label">Komentar</label>
                                             @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
                                             @Html.ValidationMessageFor(m => m.komentar)
                                         </div>
                                     </div>
-                                    <p>&nbsp;</p>
-                                    <div id="additionalElements">
-                                        <div class="uk-width-1-1">
-                                            <p><span style="color: red;"></span> <span>Napravi termin (Ukoliko ne zelite zakazati, ostavite prazno)</span></p>
-                                        </div>
-                                        <div class="uk-width-1-1 uk-width-1-1@s">
-                                            @Html.TextBoxFor(model => model.terminDate, new { @class = "form-control datetimepicker", @type = "datetime-local" })
-                                        </div>
-                                    </div>
+                                    @*<p>&nbsp;</p>
+                                        <div id="additionalElements">
+                                            <div class="uk-width-1-1">
+                                                <p><span style="color: red;"></span> <span>Napravi termin (Ukoliko ne zelite zakazati, ostavite prazno)</span></p>
+                                            </div>
+                                            <div class="uk-width-1-1 uk-width-1-1@s">
+                                                @Html.TextBoxFor(model => model.terminDate, new { @class = "form-control datetimepicker", @type = "datetime-local" })
+                                            </div>
+                                        </div>*@
                                     <p>&nbsp;</p>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-outline-primary">Sacuvaj</button>
@@ -199,18 +201,31 @@
 </script>
 <script>
     function nijeDobijen(itemId) {
+        if (!confirm("Jeste li sigurni?")) return;
 
-        var confirmResult = confirm("Jeste li sigurni?");
-
-        if (confirmResult) {
-            // If the user clicks "OK", continue to the action
-            window.location.href = "@Url.Action("nijeDobijen", "Pregled")" + "?id=" + @Model.Id;
-        }
-
-        // Return false to prevent the default link behavior
-        return false;
+        fetch('/Pregled/NijeDobijen', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: itemId })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Uspješno ažurirano!");
+                    window.location.href = '/Pregled';
+                } else {
+                    alert("Greška: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Greška:", error);
+                alert("Došlo je do greške prilikom komunikacije sa serverom.");
+            });
     }
 </script>
+
 <script>
     function nijeZainteresovan(itemId) {
 

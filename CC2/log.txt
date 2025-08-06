@@ -785,3 +785,15 @@
 2025-08-05 17:46:43.8242 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
 2025-08-05 17:46:51.5118 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
 2025-08-05 17:48:17.4991 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-08-05 17:55:19.2207 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 08:46:31.4660 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 08:46:45.4397 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 08:47:05.6493 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 08:47:32.7008 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 08:48:09.5643 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-08-06 08:52:10.7921 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 09:12:12.5365 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 09:19:57.2773 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 09:26:11.2002 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 09:29:41.8790 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-08-06 09:32:30.1952 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju

@@ -45,7 +45,7 @@ namespace CC2.Controllers
                 var terminiRaw = (from t in efContext.TERMINI
                                   join ur in efContext.AspNetUserRoles on t.USER_ID.ToString() equals ur.UserId
                                   join u in efContext.AspNetUsers on ur.UserId equals u.Id
-                                  where ur.RoleId == "3"
+                                  where ur.RoleId == "6" || ur.RoleId == "3"
                                   select new
                                   {
                                       id = t.ID,    
@@ -380,6 +380,7 @@ namespace CC2.Controllers
 
 
         }
+
         [HttpPost]
         public JsonResult ZakaziTermin(int kontaktId, DateTime start, DateTime end)
         {
@@ -387,17 +388,48 @@ namespace CC2.Controllers
             {
                 using (var ef = new CCEntities())
                 {
+                    // Pronađi trenutno prijavljenog korisnika
+                    var username = User.Identity.Name;
+                    var user = ef.AspNetUsers.FirstOrDefault(u => u.UserName == username);
+
+                    if (user == null)
+                    {
+                        return Json(new { success = false, message = "Korisnik nije pronađen." });
+                    }
+
+                    // Pronađi sve role korisnika
+                    var userRoles = ef.AspNetUserRoles
+                                      .Where(r => r.UserId == user.Id)
+                                      .Select(r => r.RoleId)
+                                      .ToList();
+
+                    // Ako korisnik ima rolu sa ID = 3 (sales)
+                    string userIdToSet;
+                    string nazivToSet;
+
+                    if (userRoles.Contains("3"))
+                    {
+                        userIdToSet = user.Id;
+                        nazivToSet = username + " " + "uspješno rezevrisao";
+                    }
+                       
+                    else
+                    {
+                        userIdToSet = "fafaa80b-27db-455e-bf3a-70c483c6ae5f"; // default
+                        nazivToSet = "Marketing rezervacija";
+                    }
+                      
                     var termin = new TERMINI
                     {
                         DATUM = start,
                         DATUM_KRAJA = end,
                         KONTAKT_ID = kontaktId,
-                        USER_ID = "fafaa80b-27db-455e-bf3a-70c483c6ae5f",
-                        NAZIV = "Marketing rezervacija"
+                        USER_ID = userIdToSet,
+                        NAZIV = nazivToSet
                     };
 
                     ef.TERMINI.Add(termin);
-                    ef.SaveChanges(); 
+                    ef.SaveChanges();
 
                     return Json(new { success = true, id = termin.ID });
                 }

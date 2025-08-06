@@ -26,63 +26,73 @@
                                     <!-- Hidden field for TERMIN_ID -->
                                     @Html.HiddenFor(x => x.terminId)
 
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="form-label">Ime</label>
-                                            @Html.TextBoxFor(x => x.ime, new { @name = "ime", placeholder = "Ime", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.ime)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Prezime</label>
-                                            @Html.TextBoxFor(x => x.prezime, new { @name = "prezime", placeholder = "Prezime", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.prezime)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Adresa</label>
-                                            @Html.TextBoxFor(x => x.adresa, new { @name = "adresa", placeholder = "Adresa", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.adresa)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">PLZ</label>
-                                            @Html.TextBoxFor(x => x.plz, new { @name = "plz", placeholder = "plz", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.plz)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Prefix</label>
-                                            @Html.TextBoxFor(x => x.prefix, new { @name = "prefix", placeholder = "prefix", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.prefix)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Kontakt broj</label>
-                                            @Html.TextBoxFor(x => x.broj, new { @name = "broj", placeholder = "broj", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.broj)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Email</label>
-                                            @Html.TextBoxFor(x => x.email, new { @name = "email", placeholder = "email", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.email)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Fax</label>
-                                            @Html.TextBoxFor(x => x.fax, new { @name = "fax", placeholder = "fax", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.fax)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Grad</label>
-                                            @Html.TextBoxFor(x => x.grad, new { @name = "grad", placeholder = "grad", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.grad)
-                                        </div>
-                                        <p>&nbsp;</p>
-                                        <div id="additionalElements">
-                                            <div class="uk-width-1-1">
-                                                <p><span style="color: red;"></span> <span>Promjeni termin (Ukoliko ne zelite zakazati, ostavite prazno)</span></p>
-                                            </div>
-                                            <div class="uk-width-1-1 uk-width-1-1@s">
-                                                @Html.TextBoxFor(model => model.terminDate, new { @class = "form-control datetimepicker", @type = "datetime-local" })
-                                            </div>
-                                        </div>
-
+                            <div class="row">
+                                <div class="col-6">
+                                    <label class="form-label">Firma</label>
+                                    @Html.TextBoxFor(x => x.firma, new { @name = "firma", placeholder = "Firma", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.firma)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Broj kartica</label>
+                                    @Html.TextBoxFor(x => x.brojkartica, new { @name = "brojkartica", placeholder = "Broj kartica", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.ime)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Ime</label>
+                                    @Html.TextBoxFor(x => x.ime, new { @name = "ime", placeholder = "Ime", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.ime)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Prezime</label>
+                                    @Html.TextBoxFor(x => x.prezime, new { @name = "prezime", placeholder = "Prezime", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.prezime)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Adresa</label>
+                                    @Html.TextBoxFor(x => x.adresa, new { @name = "adresa", placeholder = "Adresa", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.adresa)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">PLZ</label>
+                                    @Html.TextBoxFor(x => x.plz, new { @name = "plz", placeholder = "plz", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.plz)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Prefix</label>
+                                    @Html.TextBoxFor(x => x.prefix, new { @name = "prefix", placeholder = "prefix", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.prefix)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Kontakt broj</label>
+                                    @Html.TextBoxFor(x => x.broj, new { @name = "broj", placeholder = "broj", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.broj)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Email</label>
+                                    @Html.TextBoxFor(x => x.email, new { @name = "email", placeholder = "email", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.email)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Fax</label>
+                                    @Html.TextBoxFor(x => x.fax, new { @name = "fax", placeholder = "fax", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.fax)
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Grad</label>
+                                    @Html.TextBoxFor(x => x.grad, new { @name = "grad", placeholder = "grad", @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.grad)
+                                </div>
+                                <p>&nbsp;</p>
+                                <div id="additionalElements">
+                                    <div class="uk-width-1-1">
+                                        <p><span style="color: red;"></span> <span>Promjeni termin (Ukoliko ne zelite zakazati, ostavite prazno)</span></p>
                                     </div>
+                                    <div class="uk-width-1-1 uk-width-1-1@s">
+                                        @Html.TextBoxFor(model => model.terminDate, new { @class = "form-control datetimepicker", @type = "datetime-local" })
+                                    </div>
+                                </div>
+
+                            </div>
 
                                     <hr class="horizontal dark my-3">
                                     <div class="row">

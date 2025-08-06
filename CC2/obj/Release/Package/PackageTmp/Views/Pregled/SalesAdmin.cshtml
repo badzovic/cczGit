@@ -87,15 +87,14 @@
 
                                         <th>Broj</th>
 
-                                        <th>Ime</th>
+                                        <th>Firma</th>
 
-                                        <th>Prezime</th>
+                                        <th>Broj kartica</th>
 
                                         <th>Drzava</th>
 
                                         <th>Broj tel</th>
 
-                                        <th>Datum</th>
 
                                         <th>Status</th>
 
@@ -103,9 +102,7 @@
 
                                         <th>Kreirao</th>
 
-                                        <th>Datum dodjele</th>
-
-                                        <th>Blacklist</th>
+                                        <th>Termin</th>
 
                                         <th>Pregledaj</th>
 
@@ -128,9 +125,9 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.ID</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.IME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.FIRMA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREZIME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.BROJ_KARTICA</td>
 
 
 
@@ -138,7 +135,6 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREFIX @item.BROJ</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.DATETIME_CREATED</td>
 
                                             @if (item.PRODAT == "Y")
                                             {
@@ -165,16 +161,12 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.AspNetUsers.UserName</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.DATUM_DODJELE</td>
+                                            <td>
+                                                <a href="@Url.Action("Kalendar", "Kontakti", new { id = item.ID })" class="btn btn-sm btn-outline-primary">
+                                                    📅 Termini
+                                                </a>
+                                            </td>
 
-                                            @if (item.BLACKLIST == "Y")
-                                            {
-                                                <td style="text-align:left;" class="text-sm font-weight-bold"><b>BLACKLISTAN!</b></td>
-                                            }
-                                            else
-                                            {
-                                                <td style="text-align:left;" class="text-sm font-weight-bold">NE</td>
-                                            }
                                             <td>
                                                 <a class="btn btn-outline-secondary text-uppercase" href="@Url.Action("kontaktSales", "Pregled", new { id = item.ID})">PREGLED</a>
                                             </td>
