@@ -26,6 +26,7 @@ namespace CC2.Controllers
             Kontakti kontakt = new Kontakti();
             return View(kontakt);
         }
+
         [Authorize]
         [HttpGet]
         public ActionResult Kalendar(int id)
@@ -33,8 +34,18 @@ namespace CC2.Controllers
             using (var efContext = new CCEntities())
             {
                 var kontakt = efContext.CC_KONTAKTI.Find(id);
+
                 if (kontakt == null)
                     return HttpNotFound();
+
+                var loggedUserId = User.Identity.GetUserId();
+                var loggedUserRoleId = efContext.AspNetUserRoles
+                    .Where(r => r.UserId == loggedUserId)
+                    .Select(r => r.RoleId)
+                    .FirstOrDefault();
+
+             
+
 
                 var model = new Kontakti
                 {
@@ -42,20 +53,28 @@ namespace CC2.Controllers
                     firma = kontakt.FIRMA,
                 };
 
-                var terminiRaw = (from t in efContext.TERMINI
-                                  join ur in efContext.AspNetUserRoles on t.USER_ID.ToString() equals ur.UserId
-                                  join u in efContext.AspNetUsers on ur.UserId equals u.Id
-                                  where ur.RoleId == "6" || ur.RoleId == "3"
-                                  select new
-                                  {
-                                      id = t.ID,    
-                                      DATUM = t.DATUM,
-                                      END = t.DATUM_KRAJA,
-                                      EMAIL = u.Email,
-                                      NAZIV = t.NAZIV,
-                                      KONTAKT_ID = t.KONTAKT_ID
+                var terminiRawQuery = from t in efContext.TERMINI
+                                      join ur in efContext.AspNetUserRoles on t.USER_ID.ToString() equals ur.UserId
+                                      join u in efContext.AspNetUsers on ur.UserId equals u.Id
+                                      select new
+                                      {
+                                          id = t.ID,
+                                          DATUM = t.DATUM,
+                                          END = t.DATUM_KRAJA,
+                                          EMAIL = u.Email,
+                                          NAZIV = t.NAZIV,
+                                          KONTAKT_ID = t.KONTAKT_ID,
+                                          USER_ID = t.USER_ID.ToString(),
+                                          ROLE_ID = ur.RoleId
+                                      };
 
-                                  }).ToList();
+                // 2. Ako je SALES (roleId = 3) — vidi samo svoje termine
+                if (loggedUserRoleId == "3")
+                {
+                    terminiRawQuery = terminiRawQuery.Where(t => t.USER_ID == loggedUserId);
+                }
+
+                var terminiRaw = terminiRawQuery.ToList();
 
                 var termini = terminiRaw
                     .Select(t => new Termin
@@ -63,13 +82,17 @@ namespace CC2.Controllers
                         ID = t.id,
                         DATUM = t.DATUM,
                         KRAJ = t.END,
-                        NAZIV = efContext.CC_KONTAKTI.Where(k => k.ID == t.KONTAKT_ID)
-                        .Select(k => k.FIRMA).FirstOrDefault() + " - AGENT: " + t.EMAIL,
-                        Boja = GenerateColor(t.EMAIL)
+                        NAZIV = efContext.CC_KONTAKTI
+                                  .Where(k => k.ID == t.KONTAKT_ID)
+                                  .Select(k => k.FIRMA)
+                                  .FirstOrDefault() + " - AGENT: " + t.EMAIL,
+                        Boja = GenerateColor(t.EMAIL),
+                        UserId = t.USER_ID
                     }).ToList();
 
                 model.Termini = termini;
-
+                ViewBag.UserId = loggedUserId;
+                ViewBag.RoleId = loggedUserRoleId;
                 return View(model);
             }
         }
@@ -247,7 +270,7 @@ namespace CC2.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult Create(Kontakti kontakt, string submitButton)
+        public ActionResult Create(Kontakti kontakt, string submitButton, string TerminDatum, string TerminVrijemeOd, string TerminVrijemeDo)
         {
 
             CC_KONTAKTI efKontakti = new CC_KONTAKTI();
@@ -290,20 +313,34 @@ namespace CC2.Controllers
                         efKontakti.AKTIVAN = "Y";
                         efKontakti.FIRMA = kontakt.firma;
                         efKontakti.BROJ_KARTICA = kontakt.brojkartica;
-                        if (kontakt.terminDate.ToString() != "1/1/0001 12:00:00 AM")
+
+                        efContext.CC_KONTAKTI.Add(efKontakti);
+                        efContext.SaveChanges();
+
+
+                        if (!string.IsNullOrWhiteSpace(TerminDatum) &&
+                        !string.IsNullOrWhiteSpace(TerminVrijemeOd) &&
+                        !string.IsNullOrWhiteSpace(TerminVrijemeDo))
                         {
-                            var kontaktId = efContext.CC_KONTAKTI.OrderByDescending(x => x.ID).Select(x => x.ID).FirstOrDefault();
-                            termin.USER_ID = userId; ;
-                            termin.DATUM = kontakt.terminDate;
+                            var start = DateTime.Parse($"{TerminDatum} {TerminVrijemeOd}");
+                            var end = DateTime.Parse($"{TerminDatum} {TerminVrijemeDo}");
+
+                            termin.USER_ID = userId;
+                            termin.DATUM = start;
+                            termin.DATUM_KRAJA = end;
                             termin.NAZIV = kontakt.ime + " " + kontakt.prezime;
-                            termin.KONTAKT_ID = kontaktId;
+                            termin.KONTAKT_ID = efKontakti.ID;
+
                             efContext.TERMINI.Add(termin);
-                            int results = efContext.SaveChanges();
-                            var lastTermin = efContext.TERMINI.OrderByDescending(x => x.ID).FirstOrDefault();
-                            int lastTerminId = lastTermin.ID;
-                            efKontakti.TERMIN_ID = lastTerminId;
+                            efContext.SaveChanges();
+
+                            efKontakti.TERMIN_ID = termin.ID;
+                            efContext.SaveChanges();
                         }
-                        efKontakti.TERMIN_ID = 9999999;
+                        else
+                        {
+                            efKontakti.TERMIN_ID = null;
+                        }
                         efContext.CC_KONTAKTI.Add(efKontakti);
                         int results2 = efContext.SaveChanges();
                         transaction.Commit();
@@ -344,23 +381,31 @@ namespace CC2.Controllers
                         efKontakti.AKTIVAN = "Y";
                         efKontakti.FIRMA = kontakt.firma;
                         efKontakti.BROJ_KARTICA = kontakt.brojkartica;
-                        if (kontakt.terminDate.ToString() != "1/1/0001 12:00:00 AM")
+                        efContext.CC_KONTAKTI.Add(efKontakti);
+                        efContext.SaveChanges();
+
+                        if (!string.IsNullOrWhiteSpace(TerminDatum) &&
+                         !string.IsNullOrWhiteSpace(TerminVrijemeOd) &&
+                         !string.IsNullOrWhiteSpace(TerminVrijemeDo))
                         {
-                            var kontaktId = efContext.CC_KONTAKTI.OrderByDescending(x => x.ID).Select(x => x.ID).FirstOrDefault();
-                            termin.USER_ID = userId; ;
-                            termin.DATUM = kontakt.terminDate;
+                            var start = DateTime.Parse($"{TerminDatum} {TerminVrijemeOd}");
+                            var end = DateTime.Parse($"{TerminDatum} {TerminVrijemeDo}");
+
+                            termin.USER_ID = userId;
+                            termin.DATUM = start;
+                            termin.DATUM_KRAJA = end;
                             termin.NAZIV = kontakt.ime + " " + kontakt.prezime;
-                            termin.KONTAKT_ID = kontaktId + 1;
+                            termin.KONTAKT_ID = efKontakti.ID;
 
                             efContext.TERMINI.Add(termin);
-                            int results = efContext.SaveChanges();
-                            var lastTermin = efContext.TERMINI.OrderByDescending(x => x.ID).FirstOrDefault();
-                            int lastTerminId = lastTermin.ID;
-                            efKontakti.TERMIN_ID = lastTerminId;
+                            efContext.SaveChanges();
+
+                            efKontakti.TERMIN_ID = termin.ID;
+                            efContext.SaveChanges();
                         }
                         else
                         {
-                            efKontakti.TERMIN_ID = 9999999;
+                            efKontakti.TERMIN_ID = null;
                         }
                         efContext.CC_KONTAKTI.Add(efKontakti);
                         int results2 = efContext.SaveChanges();
@@ -377,10 +422,7 @@ namespace CC2.Controllers
             TempData["Success"] = "Uspješno ste dodali novi kontakt!";
 
             return RedirectToAction("Index", "Pregled");
-
-
         }
-
         [HttpPost]
         public JsonResult ZakaziTermin(int kontaktId, DateTime start, DateTime end)
         {

@@ -184,7 +184,7 @@
     <Property Name="DATETIME_CREATED" Type="DateTime" Precision="3" />
     <Property Name="DATETIME_UPDATED" Type="DateTime" Precision="3" />
     <Property Name="AKTIVAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="TERMIN_ID" Type="Int32" Nullable="false" />
+    <Property Name="TERMIN_ID" Type="Int32" />
     <Property Name="VRACEN_MARKETINGU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="VRACENO_SA_KONTROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="U_PREGOVORIMA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

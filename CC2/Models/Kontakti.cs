@@ -30,7 +30,7 @@ namespace CC2.Models
         public string buttonZainteresovan { get; set; }
         public string buttonSacuvaj { get; set; }
         public string submitButtonHidden { get; set; }
-        public int terminId { get; set;}
+        public int? terminId { get; set;}
         public string vracenMarketingu { get; set; }
         public string vracenSakontrole { get; set; }
         public List<Termin> Termini { get; set; }

@@ -37,7 +37,7 @@ namespace DataAccess
         public Nullable<System.DateTime> DATETIME_CREATED { get; set; }
         public Nullable<System.DateTime> DATETIME_UPDATED { get; set; }
         public string AKTIVAN { get; set; }
-        public int TERMIN_ID { get; set; }
+        public Nullable<int> TERMIN_ID { get; set; }
         public string VRACEN_MARKETINGU { get; set; }
         public string VRACENO_SA_KONTROLE { get; set; }
         public string U_PREGOVORIMA { get; set; }

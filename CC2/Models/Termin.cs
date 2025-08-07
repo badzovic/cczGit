@@ -16,5 +16,7 @@ namespace CC2.Models
         public string Boja { get; set; }
 
         public DateTime? KRAJ { get; set; }
+
+        public string UserId { get; set; }
     }
 }
