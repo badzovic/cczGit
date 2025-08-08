@@ -25,7 +25,7 @@ namespace CC2.Models
         public string bei { get; set; }
         public string dostupnost { get; set; }
         public string investicija { get; set; }
-        public DateTime terminDate { get; set; }
+        public DateTime? terminDate { get; set; }
         public string komentar { get; set; }
         public string buttonZainteresovan { get; set; }
         public string buttonSacuvaj { get; set; }
@@ -34,7 +34,6 @@ namespace CC2.Models
         public string vracenMarketingu { get; set; }
         public string vracenSakontrole { get; set; }
         public List<Termin> Termini { get; set; }
-        
-
+        public DateTime? terminEndDate { get; set; }
     }
 }

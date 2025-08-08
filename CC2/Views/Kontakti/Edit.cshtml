@@ -83,61 +83,77 @@
                                     @Html.ValidationMessageFor(x => x.grad)
                                 </div>
                                 <p>&nbsp;</p>
+                                <div class="row">
+                                    <div class="col-1">
+                                        <label class="form-label">Prefix</label>
+                                        @Html.TextBoxFor(x => x.prefix, new { required = "required", @id = "prefixInput", placeholder = "prefix", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.prefix)
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Broj</label>
+                                        @Html.TextBoxFor(x => x.broj, new { required = "required", @name = "broj", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.broj)
+                                    </div>
+                                    <p>&nbsp;</p>
+
+                                    <div class="col-1">
+                                        <label class="form-label">Prefix</label>
+                                        @Html.TextBoxFor(x => x.prefix, new { required = "required", @id = "prefixInput", placeholder = "prefix", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.prefix)
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">Broj</label>
+                                        @Html.TextBoxFor(x => x.broj2, new { @name = "broj", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.broj2)
+                                    </div>
+                                    <p>&nbsp;</p>
+
+                                </div>
+                                <p>&nbsp;</p>
                                 <div id="additionalElements">
                                     <div class="uk-width-1-1">
                                         <p><span style="color: red;"></span> <span>Promjeni termin (Ukoliko ne zelite zakazati, ostavite prazno)</span></p>
                                     </div>
-                                    <div class="uk-width-1-1 uk-width-1-1@s">
-                                        @Html.TextBoxFor(model => model.terminDate, new { @class = "form-control datetimepicker", @type = "datetime-local" })
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label>Datum i vrijeme termina (od)</label>
+                                            @Html.TextBoxFor(model => model.terminDate, new
+                                            {
+                                                @class = "form-control",
+                                                @type = "datetime-local",
+                                                @Value = Model.terminDate.HasValue
+                                                         ? Model.terminDate.Value.ToString("yyyy-MM-ddTHH:mm")
+                                                         : ""
+                                            })
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Datum i vrijeme termina (do)</label>
+                                            @Html.TextBoxFor(model => model.terminEndDate, new
+                                            {
+                                                @class = "form-control",
+                                                @type = "datetime-local",
+                                                @Value = Model.terminEndDate.HasValue
+                                                         ? Model.terminEndDate.Value.ToString("yyyy-MM-ddTHH:mm")
+                                                         : ""
+                                            })
+                                        </div>
                                     </div>
+                                    <p>&nbsp;</p>
+                                    <iframe src="@Url.Action("Kalendar", "Kontakti")?embed=true"
+                                            width="100%"
+                                            height="800"
+                                            style="border:none;">
+                                    </iframe>
+                                    <p>&nbsp;</p>
                                 </div>
 
                             </div>
 
                                     <hr class="horizontal dark my-3">
-                                    <div class="row">
-                                        <div class="col-1">
-                                            <label class="form-label">Prefix</label>
-                                            @Html.TextBoxFor(x => x.prefix, new { required = "required", @id = "prefixInput", placeholder = "prefix", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.prefix)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Broj</label>
-                                            @Html.TextBoxFor(x => x.broj, new { required = "required", @name = "broj", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.broj)
-                                        </div>
-                                        <p>&nbsp;</p>
-                                        <a class="btn btn_primary text-uppercase" id="poziv" style="display:block;" href="tel:@Model.prefix@Model.broj">
-                                            POZOVI BROJ 1
-                                        </a>
-                                        <div class="col-1">
-                                            <label class="form-label">Prefix</label>
-                                            @Html.TextBoxFor(x => x.prefix, new { required = "required", @id = "prefixInput", placeholder = "prefix", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.prefix)
-                                        </div>
-                                        <div class="col-6">
-                                            <label class="form-label">Broj</label>
-                                            @Html.TextBoxFor(x => x.broj2, new { @name = "broj", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
-                                            @Html.ValidationMessageFor(x => x.broj2)
-                                        </div>
-                                        <p>&nbsp;</p>
-                                        <a class="btn btn_primary text-uppercase" id="poziv2" style="display:block;" href="tel:@Model.prefix@Model.broj2">
-                                            POZOVI BROJ 2
-                                        </a>
-                                    </div>
-                                    <p>&nbsp;</p>
+                                  
 
                                     <div class="row">
-                                        <div class="col-12">
-                                            <label for="Aktivnost">Dostupnnost</label>
-                                            @Html.TextAreaFor(m => m.dostupnost, new { @class = "form-control", rows = "6", placeholder = "Dostupnost...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Dostupnnost" })
-                                            @Html.ValidationMessageFor(m => m.dostupnost)
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="Investicija" class="form-label">Moguća investicija</label>
-                                            @Html.TextAreaFor(m => m.investicija, new { @class = "form-control", rows = "6", placeholder = "Moguca investicija...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "investicija" })
-                                            @Html.ValidationMessageFor(m => m.investicija)
-                                        </div>
+                                      
                                         <div class="col-12">
                                             <label for="Komentar" class="form-label">Komentar</label>
                                             @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })

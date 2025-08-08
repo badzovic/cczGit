@@ -54,7 +54,7 @@
                 </a>
                 <div class="collapse  show " id="dashboardsExamples">
                     <ul class="nav ms-4">
-                        @if ((!User.IsInRole("adminsales")) && (!User.IsInRole("sales")) && (!User.IsInRole("kontrola")) && (!User.IsInRole("adminmarketing")))
+                        @if ((!User.IsInRole("adminsales")) && (!User.IsInRole("kontrola")) && (!User.IsInRole("adminmarketing") ))
                         {
                             <li class="nav-item ">
                                 <a class="nav-link " href="/Kontakti/Create">

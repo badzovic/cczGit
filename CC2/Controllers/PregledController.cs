@@ -84,7 +84,7 @@ namespace CC2.Controllers
             else if (user.IsInRole("sales"))
             {
                 pregled.kontaktiSales = efContext.CC_KONTAKTI
-               .Where(k => k.TRENUTNO_GRUPA_ID == "3" && k.TRENUTNO_KOD_ID == userId && k.NIJE_DOBIJEN != "Y" && k.U_PREGOVORIMA != "Y" && k.PRODAT != "Y").OrderByDescending(k => k.DATUM_DODJELE)
+               .Where(k => k.TRENUTNO_GRUPA_ID == "3" && k.TRENUTNO_KOD_ID == userId && k.NIJE_DOBIJEN != "Y" && k.U_PREGOVORIMA != "Y" && k.PRODAT != "Y").OrderByDescending(k => k.DATETIME_CREATED)
                .ToList();
             }
 
@@ -450,7 +450,7 @@ namespace CC2.Controllers
                     kontakt.U_PREGOVORIMA = null;
                     kontakt.NIJE_DOBIJEN = "Y";
                     kontakt.DATETIME_UPDATED = DateTime.Now;
-
+                    kontakt.VRACEN_MARKETINGU = "Y";
                     efContext.SaveChanges();
                     transaction.Commit();
 

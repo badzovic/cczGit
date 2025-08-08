@@ -7,28 +7,52 @@
       "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\kontakticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\kontakti\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\kontakti\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\views\\kontakti\\kalendar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\kontakti\\kalendar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\models\\termin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\models\\termin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\pregledvracenih\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\pregledvracenih\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\pregled\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\pregled\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\controllers\\pregledcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\pregledcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\kontakti\\editsales.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\kontakti\\editsales.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\pregled\\salesadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\pregled\\salesadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\kontakti\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\kontakti\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\kontakti\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\kontakti\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\models\\kontakti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\models\\kontakti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8CC9A97-B63A-496A-A29F-CC20411A5B0A}|DataAccess\\DataAccess.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\dataaccess\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{E8CC9A97-B63A-496A-A29F-CC20411A5B0A}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\models\\termin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\models\\termin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E8CC9A97-B63A-496A-A29F-CC20411A5B0A}|DataAccess\\DataAccess.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\dataaccess\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{E8CC9A97-B63A-496A-A29F-CC20411A5B0A}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\content\\js\\argon-dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -50,37 +74,115 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\PregledVracenih\\Index.cshtml",
+              "RelativeDocumentMoniker": "CC2\\Views\\PregledVracenih\\Index.cshtml",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\PregledVracenih\\Index.cshtml",
+              "RelativeToolTip": "CC2\\Views\\PregledVracenih\\Index.cshtml",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAD0AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T10:15:47.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SalesAdmin.cshtml",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Pregled\\SalesAdmin.cshtml",
+              "RelativeDocumentMoniker": "CC2\\Views\\Pregled\\SalesAdmin.cshtml",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Pregled\\SalesAdmin.cshtml",
+              "RelativeToolTip": "CC2\\Views\\Pregled\\SalesAdmin.cshtml",
+              "ViewState": "AQIAAJQBAAAAAAAAAAAUwKkBAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T09:51:13.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "editSales.cshtml",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\editSales.cshtml",
+              "RelativeDocumentMoniker": "CC2\\Views\\Kontakti\\editSales.cshtml",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\editSales.cshtml",
+              "RelativeToolTip": "CC2\\Views\\Kontakti\\editSales.cshtml",
+              "ViewState": "AQIAAMwAAAAAAAAAAAAIwOgAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T09:36:34.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Edit.cshtml",
+              "RelativeDocumentMoniker": "CC2\\Views\\Kontakti\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Edit.cshtml",
+              "RelativeToolTip": "CC2\\Views\\Kontakti\\Edit.cshtml",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAQwJIAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T08:19:54.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PregledController.cs",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\PregledController.cs",
+              "RelativeDocumentMoniker": "CC2\\Controllers\\PregledController.cs",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\PregledController.cs",
+              "RelativeToolTip": "CC2\\Controllers\\PregledController.cs",
+              "ViewState": "AQIAAKMBAAAAAAAAAAAswLkBAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T08:00:43.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Pregled\\Index.cshtml",
+              "RelativeDocumentMoniker": "CC2\\Views\\Pregled\\Index.cshtml",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Pregled\\Index.cshtml",
+              "RelativeToolTip": "CC2\\Views\\Pregled\\Index.cshtml",
+              "ViewState": "AQIAAFsBAAAAAAAAAAAAAH8BAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T08:00:13.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "CC2\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAJcBAAAAAAAAAAAIwLMBAABeAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAIwDgAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-07T13:31:27.982Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "Kontakti.cs",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Models\\Kontakti.cs",
               "RelativeDocumentMoniker": "CC2\\Models\\Kontakti.cs",
               "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Models\\Kontakti.cs",
               "RelativeToolTip": "CC2\\Models\\Kontakti.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAATAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwBsAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T13:12:47.898Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 12,
               "Title": "Model1.edmx [Diagram1]",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\DataAccess\\Model1.edmx",
               "RelativeDocumentMoniker": "DataAccess\\Model1.edmx",
@@ -92,33 +194,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Create.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Kontakti\\Create.cshtml",
               "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Create.cshtml",
               "RelativeToolTip": "CC2\\Views\\Kontakti\\Create.cshtml",
-              "ViewState": "AQIAALwAAAAAAAAAAAAAAOYAAAAAAAAA",
+              "ViewState": "AQIAALwAAAAAAAAAAAArwOUAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-07T12:57:51.29Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "Termin.cs",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Models\\Termin.cs",
               "RelativeDocumentMoniker": "CC2\\Models\\Termin.cs",
               "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Models\\Termin.cs",
               "RelativeToolTip": "CC2\\Models\\Termin.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAqAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwBAAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T11:59:46.275Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "argon-dashboard.js",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Content\\js\\argon-dashboard.js",
               "RelativeDocumentMoniker": "CC2\\Content\\js\\argon-dashboard.js",
@@ -131,7 +233,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "App.Config",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\DataAccess\\App.Config",
               "RelativeDocumentMoniker": "DataAccess\\App.Config",
@@ -144,7 +246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Home\\Index.cshtml",
@@ -163,20 +265,20 @@
               "RelativeDocumentMoniker": "CC2\\Controllers\\KontaktiController.cs",
               "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\KontaktiController.cs",
               "RelativeToolTip": "CC2\\Controllers\\KontaktiController.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAAAFsAAAARAAAA",
+              "ViewState": "AQIAAMoCAAAAAAAAAAAQwNkCAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-06T09:13:11.952Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Kalendar.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Kalendar.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Kontakti\\Kalendar.cshtml",
               "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Kalendar.cshtml",
               "RelativeToolTip": "CC2\\Views\\Kontakti\\Kalendar.cshtml",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAAAEQAAAAJAAAA",
+              "ViewState": "AQIAAHkAAAAAAAAAAAAcwKEAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-06T09:13:08.443Z",
               "EditorCaption": ""

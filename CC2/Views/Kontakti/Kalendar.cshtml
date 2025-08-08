@@ -154,13 +154,15 @@
             .Where(t => t.DATUM.HasValue)
             .Select(t => new {
                 id = t.ID,
-                title = t.NAZIV,
+                title = t.NAZIV + " -  Br kartica: " + t.BrojKartica + "",
                 start = t.DATUM.Value.ToString("yyyy-MM-ddTHH:mm:ss"),
                 end = t.KRAJ.HasValue ? t.KRAJ.Value.ToString("yyyy-MM-ddTHH:mm:ss") : null,
                 backgroundColor = t.Boja,
                 borderColor = t.Boja,
                 textColor = "white",
-                userId = t.UserId
+                userId = t.UserId,
+                kontaktId = t.KONTAKT_ID,
+                brojKartica = t.BrojKartica
             })));
 
 
@@ -211,14 +213,16 @@
                 },
               eventClick: function(info) {
                     const eventOwnerId = info.event.extendedProps.userId;
-
-                    if (eventOwnerId === loggedUserId) {
-                        const kontaktId = '@Model.Id';
-                        const url = `/Pregled/Kontakt?id=${kontaktId}&page=1`;
-                        window.location.href = url;
-                    } else {
-                        alert("Možete otvoriti samo vlastite termine.");
-                    }
+                    const kontaktId = info.event.extendedProps.kontaktId;
+                  console.log(kontaktId);
+                      if (eventOwnerId === loggedUserId && kontaktId > 0) {
+                            const url = `/Pregled/Kontakt?id=${kontaktId}&page=1`;
+                            window.location.href = url;
+                        } else if (eventOwnerId === loggedUserId && (!kontaktId || kontaktId === 0)) {
+                            alert("Otvaranje termina nije moguće jer nije definisan kontakt.");
+                        } else {
+                            alert("Možete otvoriti samo vlastite termine.");
+                        }
                 },
 
 
