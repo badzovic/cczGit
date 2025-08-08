@@ -47,20 +47,19 @@
 
                                     <th>Broj</th>
 
-                                    <th>Ime</th>
+                                    <th>Firma</th>
 
-                                    <th>Prezime</th>
+                                    <th>Broj kartica</th>
 
                                     <th>Adresa</th>
 
-                                    <th>PLZ</th>
 
                                     <th>Drzava</th>
 
                                     <th>Kreirao</th>
 
                                     <th>Broj</th>
-
+                                    <th>Termin</th>
                                     <th>Pregledaj</th>
 
                                     <th>Akcija</th>
@@ -76,20 +75,23 @@
                                         <tr>
                                             <td style="text-align:left;" class="text-sm font-weight-normal">@item.ID</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.IME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.FIRMA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.PREZIME</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.BROJ_KARTICA</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-normal">@item.ADRESA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-normal">@item.PLZ</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-normal">@item.DRZAVA</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-normal">@item.AspNetUsers.UserName</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-normal">@item.PREFIX @item.BROJ</td>
-
+                                            <td>
+                                                <a href="@Url.Action("Kalendar", "Kontakti", new { id = item.ID })" class="btn btn-sm btn-outline-primary">
+                                                    📅 Termini
+                                                </a>
+                                            </td>
                                             <td>
                                                 <a class="btn btn_primary text-uppercase" href="@Url.Action("Kontakt", "Pregled", new { id = item.ID})">PREGLED</a>
                                             </td>

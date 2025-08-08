@@ -84,7 +84,7 @@ if (document.querySelector('[data-toggle="widget-calendar"]')) {
   var calendar = new FullCalendar.Calendar(calendarEl, {
     contentHeight: 'auto',
     initialView: 'dayGridMonth',
-    selectable: true,
+    //selectable: true,
     initialDate: '2020-12-01',
     editable: true,
     headerToolbar: false,
@@ -1006,32 +1006,32 @@ var argon = {
           center: 'dayGridMonth,timeGridWeek,timeGridDay',
           right: 'prev,next today'
         },
-        select: function(info) {
-          // on select we show the Sweet Alert modal with an input
-          Swal.fire({
-            title: 'Create an Event',
-            html: '<div class="form-group">' +
-              '<input class="form-control text-default" placeholder="Event Title" id="input-field">' +
-              '</div>',
-            showCancelButton: true,
-            customClass: {
-              confirmButton: 'btn btn-primary',
-              cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-          }).then(function(result) {
-            var eventData;
-            var event_title = document.getElementById('input-field').value;
-            if (event_title) {
-              eventData = {
-                title: event_title,
-                start: info.startStr,
-                end: info.endStr
-              };
-              calendar.addEvent(eventData);
-            }
-          });
-        },
+        //select: function(info) {
+        //  // on select we show the Sweet Alert modal with an input
+        //  Swal.fire({
+        //    title: 'Create an Event',
+        //    html: '<div class="form-group">' +
+        //      '<input class="form-control text-default" placeholder="Event Title" id="input-field">' +
+        //      '</div>',
+        //    showCancelButton: true,
+        //    customClass: {
+        //      confirmButton: 'btn btn-primary',
+        //      cancelButton: 'btn btn-danger'
+        //    },
+        //    buttonsStyling: false
+        //  }).then(function(result) {
+        //    var eventData;
+        //    var event_title = document.getElementById('input-field').value;
+        //    if (event_title) {
+        //      eventData = {
+        //        title: event_title,
+        //        start: info.startStr,
+        //        end: info.endStr
+        //      };
+        //      calendar.addEvent(eventData);
+        //    }
+        //  });
+        //},
         editable: true,
         // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
         events: [{

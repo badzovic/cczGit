@@ -90,7 +90,7 @@
     <Property Name="DATETIME_CREATED" Type="datetime" />
     <Property Name="DATETIME_UPDATED" Type="datetime" />
     <Property Name="AKTIVAN" Type="nvarchar" MaxLength="50" />
-    <Property Name="TERMIN_ID" Type="int" Nullable="false" />
+    <Property Name="TERMIN_ID" Type="int" />
     <Property Name="VRACEN_MARKETINGU" Type="nvarchar" MaxLength="50" />
     <Property Name="VRACENO_SA_KONTROLE" Type="nvarchar" MaxLength="50" />
     <Property Name="U_PREGOVORIMA" Type="nvarchar" MaxLength="50" />

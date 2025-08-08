@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\adzovic berin\Documents\New folder</_PublishTargetUrl>
-    <History>True|2025-08-06T07:44:19.0960585Z;</History>
+    <History>True|2025-08-08T11:28:29.4863484Z;True|2025-08-06T09:44:19.0960585+02:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -16,19 +16,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/14/2024 10:38:10</publishTime>
     </File>
     <File Include="bin/CC2.dll">
-      <publishTime>08/06/2025 11:26:22</publishTime>
+      <publishTime>08/08/2025 13:28:27</publishTime>
     </File>
     <File Include="bin/CC2.pdb">
-      <publishTime>08/06/2025 11:26:22</publishTime>
+      <publishTime>08/08/2025 13:28:27</publishTime>
     </File>
     <File Include="bin/DataAccess.dll">
-      <publishTime>08/06/2025 09:44:14</publishTime>
+      <publishTime>08/08/2025 13:28:27</publishTime>
     </File>
     <File Include="bin/DataAccess.dll.config">
       <publishTime>03/14/2024 10:38:10</publishTime>
     </File>
     <File Include="bin/DataAccess.pdb">
-      <publishTime>08/06/2025 09:44:14</publishTime>
+      <publishTime>08/08/2025 13:28:27</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/14/2024 10:38:11</publishTime>
@@ -625,7 +625,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/14/2024 10:38:09</publishTime>
     </File>
     <File Include="Content/js/argon-dashboard.js">
-      <publishTime>03/14/2024 10:38:09</publishTime>
+      <publishTime>08/07/2025 13:55:44</publishTime>
     </File>
     <File Include="Content/js/argon-dashboard.js.map">
       <publishTime>03/14/2024 10:38:09</publishTime>
@@ -1468,19 +1468,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/06/2025 10:53:50</publishTime>
     </File>
     <File Include="Views/Kontakti/Create.cshtml">
-      <publishTime>08/05/2025 10:59:23</publishTime>
+      <publishTime>08/07/2025 15:43:53</publishTime>
     </File>
     <File Include="Views/Kontakti/Edit.cshtml">
-      <publishTime>08/05/2025 13:13:06</publishTime>
+      <publishTime>08/08/2025 10:29:37</publishTime>
     </File>
     <File Include="Views/Kontakti/editSales.cshtml">
-      <publishTime>08/05/2025 15:40:20</publishTime>
+      <publishTime>08/08/2025 11:41:36</publishTime>
     </File>
     <File Include="Views/Kontakti/Index.cshtml">
       <publishTime>03/14/2024 10:38:09</publishTime>
     </File>
     <File Include="Views/Kontakti/Kalendar.cshtml">
-      <publishTime>08/06/2025 09:32:03</publishTime>
+      <publishTime>08/08/2025 12:36:02</publishTime>
     </File>
     <File Include="Views/Korisnik/Index.cshtml">
       <publishTime>08/22/2024 09:15:32</publishTime>
@@ -1534,7 +1534,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/05/2025 17:26:12</publishTime>
     </File>
     <File Include="Views/PregledVracenih/Index.cshtml">
-      <publishTime>03/14/2024 10:38:09</publishTime>
+      <publishTime>08/08/2025 12:17:43</publishTime>
     </File>
     <File Include="Views/PropusteniTermini/Index.cshtml">
       <publishTime>08/05/2025 17:17:51</publishTime>
@@ -1546,7 +1546,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/14/2024 10:38:09</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/05/2025 17:40:21</publishTime>
+      <publishTime>08/08/2025 10:07:41</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>03/14/2024 10:38:09</publishTime>

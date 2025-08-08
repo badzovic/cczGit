@@ -20,15 +20,17 @@
             margin: 0;
             background-color: #f4f6f9;
             font-family: 'Segoe UI', sans-serif;
+            padding: 0;
+            height: 100vh;
         }
 
         .calendar-container {
-            max-width: 1200px;
-            margin: 30px auto;
+            width: 100%;
+            margin: 0;
+            padding: 0;
             background-color: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 0;
+            box-shadow: none;
         }
 
         .fc-event.shrink {
@@ -45,13 +47,15 @@
         }
 
         #calendar {
-            border-radius: 8px;
+            border-radius: 0;
             overflow: hidden;
             background-color: #e6f5ec;
+            height: 100vh;
+            padding-bottom: 30px;
         }
 
         .sidenav {
-            width: 200px;
+            width: 50px;
             height: 100vh;
             position: fixed;
             left: 50;
@@ -65,9 +69,10 @@
         }
 
         .main-content {
-            margin-left: 250px;
-            padding-left: 50px;
-            padding: 30px;
+            margin-left: 100px; /* prostor lijevo zbog sidebar-a */
+            margin-right: 30px; /* prostor desno */
+            margin-bottom: 30px; /* prostor dolje */
+            padding: 0;
             min-height: 100vh;
             box-sizing: border-box;
         }
@@ -86,11 +91,10 @@
             }
 
         .calendar-wrapper {
-            padding-left: 50px;
+            padding: 0;
             background-color: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 0;
+            box-shadow: none;
         }
 
         .calendar-title {
@@ -122,79 +126,108 @@
 
 
 
-    <!-- SIDEBAR -->
-<div class="sidenav">
-    <a class="navbar-brand d-flex align-items-center mb-3" href="/Pregled">
-        <img src="/Content/img/logo-ct-dark.png" alt="logo">
-        <span class="ms-2 fw-bold">Nazad na Pregled</span>
-    </a>
+@if (ViewBag.HideSidebar == null || ViewBag.HideSidebar == false)
+{
+    <div class="sidenav">
+        <a class="navbar-brand d-flex align-items-center mb-3" href="/Pregled">
+            <img src="/Content/img/logo-ct-dark.png" alt="logo">
+        </a>
+    </div>
+}
 
-
+<!-- MAIN -->
+<div class="main-content">
+    <div class="calendar-wrapper">
+        @if (ViewBag.HideSidebar == null || ViewBag.HideSidebar == false)
+        {
+            <h2 class="calendar-title">Zakazivanje termina za: @Model.firma</h2>
+        }
+        <div id="calendar"></div>
+    </div>
 </div>
 
-    <!-- MAIN -->
-    <div class="main-content">
-        <div class="calendar-wrapper">
-            <h2 class="calendar-title">Zakazivanje termina za: @Model.firma</h2>
-            <div id="calendar"></div>
-        </div>
-    </div>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
+<script>
         var termini = @Html.Raw(Json.Encode(Model.Termini
             .Where(t => t.DATUM.HasValue)
             .Select(t => new {
                 id = t.ID,
-                title = t.NAZIV,
+                title = t.NAZIV + " -  Br kartica: " + t.BrojKartica + "",
                 start = t.DATUM.Value.ToString("yyyy-MM-ddTHH:mm:ss"),
                 end = t.KRAJ.HasValue ? t.KRAJ.Value.ToString("yyyy-MM-ddTHH:mm:ss") : null,
                 backgroundColor = t.Boja,
                 borderColor = t.Boja,
-                textColor = "white"
+                textColor = "white",
+                userId = t.UserId,
+                kontaktId = t.KONTAKT_ID,
+                brojKartica = t.BrojKartica
             })));
+
+
+        const loggedUserId = "@ViewBag.UserId";
+        const loggedUserRoleId = "@ViewBag.RoleId";
 
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'timeGridDay',
+                initialView: 'timeGridWeek',
                 initialDate: new Date().toISOString().split('T')[0],
-                height: 'auto',
+                height: '100vh',
+                expandRows: true,
                 allDaySlot: false,
                 slotMinTime: "07:00:00",
                 slotMaxTime: "20:00:00",
-                className: "shrink",
+                className: "false",
+                slotLabelFormat: {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                },
+                locale: 'de',
                 selectable: true,
                 headerToolbar: {
                     left: 'dayGridMonth,timeGridWeek,timeGridDay',
                     center: 'title',
                     right: 'prev,next today'
                 },
-
+                dateClick: function (info) {
+                    calendar.changeView('timeGridDay', info.dateStr);
+                },
                 events: termini,
                 eventDidMount: function (info) {
-                    info.el.style.width = "30%";
-                    info.el.style.marginRight = "5px";
+                    info.el.style.width = "100%";
                     info.el.style.display = "inline-block";
                     info.el.setAttribute("title", "ALT + klik za brisanje");
                     // ALT + klik za brisanje termina
                     info.el.addEventListener("click", function (e) {
-                        if (e.altKey) {
+                        const eventOwnerId = info.event.extendedProps.userId;
+                        if (e.altKey && eventOwnerId === loggedUserId) {
                             e.preventDefault();
                             e.stopPropagation();
                             obrisiTermin(info.event.id);
                         }
                     });
                 },
-                eventClick: function(info) {
-                    const kontaktId = @Model.Id;
-                    const url = `/Pregled/Kontakt?id=${kontaktId}&page=1`;
-                    window.location.href = url;
+              eventClick: function(info) {
+                    const eventOwnerId = info.event.extendedProps.userId;
+                    const kontaktId = info.event.extendedProps.kontaktId;
+                  console.log(kontaktId);
+                      if (eventOwnerId === loggedUserId && kontaktId > 0) {
+                            const url = `/Pregled/Kontakt?id=${kontaktId}&page=1`;
+                            window.location.href = url;
+                        } else if (eventOwnerId === loggedUserId && (!kontaktId || kontaktId === 0)) {
+                            alert("Otvaranje termina nije moguće jer nije definisan kontakt.");
+                        } else {
+                            alert("Možete otvoriti samo vlastite termine.");
+                        }
                 },
-                select: function(info) {
+
+
+
+                @*select: function(info) {
                     const kontaktId = @Model.Id;
                     const start = info.startStr;
                     const end = info.endStr;
@@ -237,17 +270,23 @@
                                 textColor: "white",
                                 className: "shrink"
                             });
-                            location.reload(); 
+                            location.reload();
                         } else {
                             alert("Greška: " + data.message);
                         }
                     });
-                },
+                },*@
 
                 editable: true,
 
                 eventDrop: function (info) {
                     const event = info.event;
+                    const eventOwnerId = event.extendedProps.userId;
+                    if (eventOwnerId !== loggedUserId) {
+                        alert("Možete pomjerati samo svoje termine.");
+                        info.revert();
+                        return;
+                    }
 
                     const newStart = event.start.toISOString();
                     const newEnd = event.end ? event.end.toISOString() : null;
@@ -306,5 +345,5 @@
                     });
             }
         });
-    </script>
+</script>
 

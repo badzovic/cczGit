@@ -126,12 +126,7 @@
                                             @Html.TextBoxFor(x => x.brojkartica, new { required = "required", @name = "brojkartica", placeholder = "Broj kartica", @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.brojkartica)
                                         </div>
-                                        @*<div class="col-6">
-                                                <label class="form-label">Država</label>
-                                                <select class="form-select" id="countrySelect" data-input>
-                                                    <option selected disabled>Odaberite državu</option>
-                                                </select>
-                                            </div>*@
+
                                         <div class="col-6">
                                             <label class="form-label">Država</label>
                                             @Html.DropDownListFor(x => x.drzava, new SelectList(Enumerable.Empty<SelectListItem>(), "Value", "Text"), "Odaberite državu", new { @class = "form-select", @id = "countrySelect" })
@@ -178,7 +173,7 @@
                                             </a>
                                             <p>&nbsp;</p>
                                             <a class="btn btn_primary text-uppercase" id="chkButton">
-                                                PROVJERI
+                                                PROVJERIa
                                             </a>
                                         </div>
                                         <div id="messageContainer" class="shine">
@@ -208,15 +203,38 @@
                                             @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
                                             @Html.ValidationMessageFor(m => m.komentar)
                                         </div>
+                                        <p>&nbsp;</p>
+                                        <div class="uk-width-1-1">
+                                            <h5><span style="color: red;"></span> <span>Zakaži termin </span></h5>
+                                        </div>
+
+                                        <div class="uk-width-1-1 uk-width-1-1@s">
+                                            <label>Datum termina</label>
+                                            <input type="date" name="TerminDatum" class="form-control" />
+                                        </div>
+                                        <div class="uk-width-1-1 uk-width-1-1@s mt-3">
+                                            <label>Vrijeme od</label>
+                                            <input type="time" name="TerminVrijemeOd" class="form-control" />
+                                        </div>
+                                        <div class="uk-width-1-1 uk-width-1-1@s mt-3">
+                                            <label>Vrijeme do</label>
+                                            <input type="time" name="TerminVrijemeDo" class="form-control" />
+                                        </div>
                                     </div>
                                     <p>&nbsp;</p>
+                                    <iframe src="@Url.Action("Kalendar", "Kontakti")?embed=true"
+                                            width="100%"
+                                            height="800"
+                                            style="border:none;">
+                                    </iframe>
+                                    <p>&nbsp;</p>
+
                                     <div id="additionalElements" style="display: none;">
-                                        <div class="uk-width-1-1">
-                                            <p><span style="color: red;"></span> <span>Zakaži termin (Ukoliko ne zelite zakazati, ostavite prazno)</span></p>
-                                        </div>
-                                        <div class="uk-width-1-1 uk-width-1-1@s">
-                                            @Html.TextBoxFor(model => model.terminDate, new { @class = "form-control datetimepicker", @type = "datetime-local" })
-                                        </div>
+
+
+
+                                        <p>&nbsp;</p>
+                                        <hr class="horizontal dark my-3">
                                         <p>&nbsp;</p>
                                         <hr class="horizontal dark my-3">
 
@@ -226,7 +244,7 @@
 
                                     </div>
 
-                                   
+
                                     <div class="col-12">
                                         <button type="submit" name="submitButton" value="Sacuvaj" class="btn btn-outline-primary">Sacuvaj</button>
                                         <button class="btn btn-outline-primary" onclick="goBack()">Nazad</button>
