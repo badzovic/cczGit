@@ -847,3 +847,6 @@
 2025-08-08 12:34:34.6093 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
 2025-08-08 12:35:14.3373 Info Korisnik sales1@cc.com je uspješno oznacio prodaju za id  2186
 2025-08-08 12:35:23.0627 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-08-13 10:46:02.9265 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-08-13 10:50:05.6808 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-08-13 10:51:18.5836 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju

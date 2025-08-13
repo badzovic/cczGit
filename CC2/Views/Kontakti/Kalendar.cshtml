@@ -154,7 +154,7 @@
             .Where(t => t.DATUM.HasValue)
             .Select(t => new {
                 id = t.ID,
-                title = t.NAZIV + " -  Br kartica: " + t.BrojKartica + "",
+                title = t.NAZIV + " KARTICA: " + t.BrojKartica + "",
                 start = t.DATUM.Value.ToString("yyyy-MM-ddTHH:mm:ss"),
                 end = t.KRAJ.HasValue ? t.KRAJ.Value.ToString("yyyy-MM-ddTHH:mm:ss") : null,
                 backgroundColor = t.Boja,

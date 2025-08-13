@@ -109,7 +109,7 @@ namespace CC2.Controllers
                         NAZIV = efContext.CC_KONTAKTI
                                   .Where(k => k.ID == t.KONTAKT_ID)
                                   .Select(k => k.FIRMA)
-                                  .FirstOrDefault() + " - AGENT: " + t.EMAIL,
+                                  .FirstOrDefault() + " - " + t.EMAIL,
                         Boja = GenerateColor(t.EMAIL),
                         UserId = t.USER_ID,
                         KONTAKT_ID = t.KONTAKT_ID,
