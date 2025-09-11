@@ -67,6 +67,7 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Active" Type="nvarchar" MaxLength="50" />
           <Property Name="Deleted" Type="nvarchar" MaxLength="50" />
+          <Property Name="Main" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="CC_KONTAKTI">
           <Key>
@@ -619,6 +620,7 @@
           <NavigationProperty Name="KONTAKTI3" Relationship="CCModel.FK_KONTAKTI_AspNetUsers3" FromRole="AspNetUsers" ToRole="KONTAKTI" />
           <NavigationProperty Name="STATISTIKA" Relationship="CCModel.FK_STATISTIKA_AspNetUsers" FromRole="AspNetUsers" ToRole="STATISTIKA" />
           <NavigationProperty Name="TERMINI" Relationship="CCModel.FK_TERMINI_AspNetUsers" FromRole="AspNetUsers" ToRole="TERMINI" />
+          <Property Name="Main" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CC_KONTAKTI">
           <Key>
@@ -1002,6 +1004,7 @@
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="CCModel.AspNetUsers">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Main" ColumnName="Main" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />

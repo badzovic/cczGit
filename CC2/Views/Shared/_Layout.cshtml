@@ -54,7 +54,7 @@
                 </a>
                 <div class="collapse  show " id="dashboardsExamples">
                     <ul class="nav ms-4">
-                        @if ((!User.IsInRole("adminsales")) && (!User.IsInRole("kontrola")) && (!User.IsInRole("adminmarketing") ))
+                        @if ((!User.IsInRole("adminsales")) && (!User.IsInRole("kontrola")) && (!User.IsInRole("adminmarketing")))
                         {
                             <li class="nav-item ">
                                 <a class="nav-link " href="/Kontakti/Create">
@@ -65,6 +65,12 @@
                         }
                         @if ((User.IsInRole("adminsales")))
                         {
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Kontakti/Create">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Kreiraj novi </span>
+                                </a>
+                            </li>
                             <li class="nav-item ">
                                 <a class="nav-link " href="/Pregled">
                                     <span class="sidenav-mini-icon"> L </span>
@@ -98,11 +104,11 @@
                                 </a>
                             </li>
                             @*<li class="nav-item ">
-                            <a class="nav-link " href="/Nijedobijen">
-                                <span class="sidenav-mini-icon"> L </span>
-                                <span class="sidenav-normal"> Nije dobijen </span>
-                            </a>
-                        </li>*@
+                <a class="nav-link " href="/Nijedobijen">
+                    <span class="sidenav-mini-icon"> L </span>
+                    <span class="sidenav-normal"> Nije dobijen </span>
+                </a>
+            </li>*@
                         }
                         @if ((User.IsInRole("adminsales")))
                         {

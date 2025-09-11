@@ -50,6 +50,7 @@
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="CCModel.AspNetUsers">
         <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Main" ColumnName="Main" />
           <ScalarProperty Name="Deleted" ColumnName="Deleted" />
           <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />

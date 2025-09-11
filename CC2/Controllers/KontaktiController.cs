@@ -64,7 +64,7 @@ namespace CC2.Controllers
                 }
 
 
-              
+
                 var terminiRawQuery = from t in efContext.TERMINI
                                       join ur in efContext.AspNetUserRoles on t.USER_ID.ToString() equals ur.UserId
                                       join u in efContext.AspNetUsers on ur.UserId equals u.Id
@@ -80,7 +80,8 @@ namespace CC2.Controllers
                                           KONTAKT_ID = t.KONTAKT_ID,
                                           USER_ID = t.USER_ID.ToString(),
                                           ROLE_ID = ur.RoleId,
-                                          brojKartica = k != null ? k.BROJ_KARTICA.ToString() : "0"
+                                          brojKartica = k != null ? k.BROJ_KARTICA.ToString() : "0",
+                                          Main = u.Main
                                       };
                 // FILTRIRANJE PO ULOGAMA
                 if (loggedUserRoleId == "3") // SALES
@@ -90,31 +91,41 @@ namespace CC2.Controllers
                 }
                 else if (loggedUserRoleId == "2") // MARKETING
                 {
+                    // vidi termine agenata gdje je Main = "Y" ILI svoje vlastite termine
+                    terminiRawQuery = terminiRawQuery.Where(t =>
+                        efContext.AspNetUsers.Any(u => u.Id == t.USER_ID && u.Main == "Y")
+                        || t.USER_ID == loggedUserId);
                 }
                 else
                 {
-                    
+
                 }
 
-              
+
 
                 var terminiRaw = terminiRawQuery.ToList();
 
                 var termini = terminiRaw
-                    .Select(t => new Termin
-                    {
-                        ID = t.id,
-                        DATUM = t.DATUM,                      
-                        KRAJ = t.END,
-                        NAZIV = efContext.CC_KONTAKTI
-                                  .Where(k => k.ID == t.KONTAKT_ID)
-                                  .Select(k => k.FIRMA)
-                                  .FirstOrDefault() + " - " + t.EMAIL,
-                        Boja = GenerateColor(t.EMAIL),
-                        UserId = t.USER_ID,
-                        KONTAKT_ID = t.KONTAKT_ID,
-                        BrojKartica = t.brojKartica,
-                    }).ToList();
+                 .Select(t => new Termin
+                 {
+                     ID = t.id,
+                     DATUM = t.DATUM,
+                     KRAJ = t.END,
+                     NAZIV = (loggedUserRoleId == "2")
+                ? ("")
+                : (efContext.CC_KONTAKTI
+                      .Where(k => k.ID == t.KONTAKT_ID)
+                      .Select(k => k.FIRMA)
+                      .FirstOrDefault() + " - " + t.EMAIL),
+                     Boja = (t.Main == "Y" ? "#f1c40f" :   // žuta
+                t.Main == "YY" ? "#2ecc71" :   // zelena
+                t.Main == "YYY" ? "#e74c3c" :   // crvena
+                                  "#9b59b6"),
+                     UserId = t.USER_ID,
+                     KONTAKT_ID = t.KONTAKT_ID,
+                     BrojKartica = t.brojKartica,
+                 }).ToList();
+
 
                 model.Termini = termini;
                 ViewBag.UserId = loggedUserId;
@@ -203,7 +214,7 @@ namespace CC2.Controllers
             return View(kontakt);
         }
 
-      
+
         public ActionResult CheckNumber(string prefix, string broj, string broj2)
         {
             bool exists = false;
@@ -232,7 +243,7 @@ namespace CC2.Controllers
 
 
 
-              
+
 
                 STATISTIKA stat = new STATISTIKA();
 
@@ -244,8 +255,8 @@ namespace CC2.Controllers
                     {
                         try
                         {
-                            
-                            stat.AGENT_ID = userId; 
+
+                            stat.AGENT_ID = userId;
                             if (broj != "" && broj2 != "")
                             {
                                 stat.BROJ = prefix + broj;
@@ -311,7 +322,7 @@ namespace CC2.Controllers
             .FirstOrDefault();
 
 
-            if (roleId == "3") 
+            if (roleId == "3")
             {
                 using (var transaction = efContext.Database.BeginTransaction())
                 {
@@ -376,6 +387,74 @@ namespace CC2.Controllers
                     }
                     catch (Exception ex)
                     {
+
+                    }
+                }
+            }
+            else if (roleId == "5")
+            {
+                using (var transaction = efContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        efKontakti.KREIRAO_ID = userId;
+                        efKontakti.TRENUTNO_KOD_ID = userId;
+                        efKontakti.TRENUTNO_GRUPA_ID = "5";
+                        efKontakti.FINALIZIRAO_ID = userId;
+                        efKontakti.GENDER = kontakt.gender;
+                        efKontakti.IME = kontakt.ime;
+                        efKontakti.PREZIME = kontakt.prezime;
+                        efKontakti.ADRESA = kontakt.adresa;
+                        efKontakti.PLZ = kontakt.plz;
+                        efKontakti.DRZAVA = kontakt.drzava;
+                        efKontakti.GRAD = kontakt.grad;
+                        efKontakti.PREFIX = kontakt.prefix;
+                        efKontakti.BROJ = kontakt.broj;
+                        efKontakti.BROJ2 = kontakt.broj2;
+                        efKontakti.EMAIL = kontakt.email;
+                        efKontakti.FAX = kontakt.fax;
+                        efKontakti.BEI = kontakt.bei;
+                        efKontakti.DOSTUPNOST = kontakt.dostupnost;
+                        efKontakti.MOGUCA_INVESTICIJA = kontakt.investicija;
+                        efKontakti.KOMENTAR = kontakt.komentar;
+                        efKontakti.DATETIME_CREATED = DateTime.Now;
+                        efKontakti.AKTIVAN = "Y";
+                        efKontakti.FIRMA = kontakt.firma;
+                        efKontakti.BROJ_KARTICA = kontakt.brojkartica;
+                        efContext.CC_KONTAKTI.Add(efKontakti);
+                        efContext.SaveChanges();
+
+                        if (!string.IsNullOrWhiteSpace(TerminDatum) &&
+                        !string.IsNullOrWhiteSpace(TerminVrijemeOd) &&
+                        !string.IsNullOrWhiteSpace(TerminVrijemeDo))
+                        {
+                            var start = DateTime.Parse($"{TerminDatum} {TerminVrijemeOd}");
+                            var end = DateTime.Parse($"{TerminDatum} {TerminVrijemeDo}");
+
+                            termin.USER_ID = userId;
+                            termin.DATUM = start;
+                            termin.DATUM_KRAJA = end;
+                            termin.NAZIV = kontakt.ime + " " + kontakt.prezime;
+                            termin.KONTAKT_ID = efKontakti.ID;
+
+
+                            efContext.TERMINI.Add(termin);
+                            efContext.SaveChanges();
+
+                            efKontakti.TERMIN_ID = termin.ID;
+                            efContext.SaveChanges();
+                        }
+                        else
+                        {
+                            efKontakti.TERMIN_ID = null;
+                            efContext.SaveChanges();
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.Error("Greska kod upisa u bazu na methodi Create." + " " + ex.Message);
 
                     }
                 }
@@ -484,13 +563,13 @@ namespace CC2.Controllers
                         userIdToSet = user.Id;
                         nazivToSet = username + " " + "uspješno rezevrisao";
                     }
-                       
+
                     else
                     {
                         userIdToSet = "fafaa80b-27db-455e-bf3a-70c483c6ae5f"; // default
                         nazivToSet = "Marketing rezervacija";
                     }
-                      
+
                     var termin = new TERMINI
                     {
                         DATUM = start,
@@ -577,7 +656,7 @@ namespace CC2.Controllers
 
             TERMINI termin = new TERMINI();
 
-            
+
 
 
             using (var transaction = efContext.Database.BeginTransaction())
@@ -634,8 +713,8 @@ namespace CC2.Controllers
                     efKontaktiToUpdate.AKTIVAN = "Y";
                     if (kontakt.terminDate != DateTime.MinValue)
                     {
-                         terminToUpdateId = efKontaktiToUpdate.TERMIN_ID;
-                         terminToUpdate = efContext.TERMINI.Find(terminToUpdateId);
+                        terminToUpdateId = efKontaktiToUpdate.TERMIN_ID;
+                        terminToUpdate = efContext.TERMINI.Find(terminToUpdateId);
 
                         if (terminToUpdate != null)
                         {
@@ -683,7 +762,7 @@ namespace CC2.Controllers
             // Redirect to the URL
             return Redirect(url);
 
-          
+
         }
 
         [HttpGet]
@@ -785,7 +864,7 @@ namespace CC2.Controllers
                         {
                             // Ažuriraj postojeći termin
                             terminToUpdate.DATUM = kontakt.terminDate;
-                            terminToUpdate.DATUM_KRAJA = kontakt.terminEndDate; 
+                            terminToUpdate.DATUM_KRAJA = kontakt.terminEndDate;
                             terminToUpdate.NAZIV = kontakt.ime + " " + kontakt.prezime;
                             terminToUpdate.USER_ID = userId;
                             terminToUpdate.KONTAKT_ID = kontakt.Id;
@@ -797,7 +876,7 @@ namespace CC2.Controllers
                             {
                                 USER_ID = userId,
                                 DATUM = kontakt.terminDate,
-                                DATUM_KRAJA = kontakt.terminEndDate, 
+                                DATUM_KRAJA = kontakt.terminEndDate,
                                 NAZIV = kontakt.ime + " " + kontakt.prezime,
                                 KONTAKT_ID = kontakt.Id
                             };

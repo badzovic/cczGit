@@ -156,6 +156,7 @@
     <NavigationProperty Name="KONTAKTI3" Relationship="CCModel.FK_KONTAKTI_AspNetUsers3" FromRole="AspNetUsers" ToRole="KONTAKTI" />
     <NavigationProperty Name="STATISTIKA" Relationship="CCModel.FK_STATISTIKA_AspNetUsers" FromRole="AspNetUsers" ToRole="STATISTIKA" />
     <NavigationProperty Name="TERMINI" Relationship="CCModel.FK_TERMINI_AspNetUsers" FromRole="AspNetUsers" ToRole="TERMINI" />
+    <Property Name="Main" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="CC_KONTAKTI">
     <Key>
