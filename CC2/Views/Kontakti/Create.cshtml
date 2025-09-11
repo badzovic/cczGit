@@ -206,7 +206,7 @@
 
                                         <div class="col-12">
                                             <label for="Komentar" class="form-label">Komentar</label>
-                                            @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
+                                            @Html.TextAreaFor(m => m.komentar, new { required = "required",@class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
                                             @Html.ValidationMessageFor(m => m.komentar)
                                         </div>
                                         <p>&nbsp;</p>
