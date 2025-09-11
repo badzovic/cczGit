@@ -850,3 +850,12 @@
 2025-08-13 10:46:02.9265 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
 2025-08-13 10:50:05.6808 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
 2025-08-13 10:51:18.5836 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-09-11 10:50:18.2132 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-09-11 10:51:18.5378 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-09-11 11:10:51.1731 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-09-11 11:13:07.5896 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-09-11 11:24:18.9761 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-09-11 11:25:21.2990 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-09-11 11:25:39.4821 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-09-11 11:26:02.4485 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-09-11 11:30:11.9426 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju

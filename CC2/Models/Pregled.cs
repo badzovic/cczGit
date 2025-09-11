@@ -1,4 +1,5 @@
-﻿using DataAccess;
+﻿using CC2.Controllers;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,19 +9,19 @@ namespace CC2.Models
 {
     public class Pregled
     {
-        public List<CC_KONTAKTI> kontaktiMarketing { get; set; } = new List<CC_KONTAKTI>();
+        public List<KontaktSaTerminima> kontaktiMarketing { get; set; } = new List<KontaktSaTerminima>();
 
         public List<CC_KONTAKTI> kontaktiMarketingMoji { get; set; } = new List<CC_KONTAKTI>();
 
-        public List<CC_KONTAKTI> kontaktiAdminMarketing { get; set; } = new List<CC_KONTAKTI>();
+        public List<KontaktSaTerminima> kontaktiAdminMarketing { get; set; } = new List<KontaktSaTerminima>();
 
-        public List<CC_KONTAKTI> kontaktiSalesAdmin { get; set; } = new List<CC_KONTAKTI>();
+        public List<KontaktSaTerminima> kontaktiSalesAdmin { get; set; } = new List<KontaktSaTerminima>();
 
-        public List<CC_KONTAKTI> kontaktiSalesAdminSvi { get; set; } = new List<CC_KONTAKTI>();
+        public List<KontaktSaTerminima> kontaktiSalesAdminSvi { get; set; } = new List<KontaktSaTerminima>();
 
-        public List<CC_KONTAKTI> kontaktiSales { get; set; } = new List<CC_KONTAKTI>();
+        public List<KontaktSaTerminima> kontaktiSales { get; set; } = new List<KontaktSaTerminima>();
 
-        public List<CC_KONTAKTI> kontrola { get; set; } = new List<CC_KONTAKTI>();
+        public List<KontaktSaTerminima> kontrola { get; set; } = new List<KontaktSaTerminima>();
 
         public List<string> salesAgenti { get; set; } = new List<string>();
 

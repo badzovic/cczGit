@@ -42,6 +42,7 @@ namespace DataAccess
         public string VRACENO_SA_KONTROLE { get; set; }
         public string U_PREGOVORIMA { get; set; }
         public string NIJE_DOBIJEN { get; set; }
+        public DateTime? SljedeciTermin { get; set; }
         public string SALES_NIJE_ZAINTERESOVAN { get; set; }
         public string PRODAT { get; set; }
         public Nullable<System.DateTime> SALES_NIJE_ZAINTERESOVAN_DATE { get; set; }

@@ -91,9 +91,9 @@
 
                                         <th>Broj kartica</th>
 
-                                        <th>Drzava</th>
+                                        <th>Sljedeci termin</th>
 
-                                        <th>Broj tel</th>
+                                        <th>Broj tel.</th>
 
 
                                         <th>Status</th>
@@ -120,35 +120,40 @@
                                     {
                                         <tr>
                                             <td>
-                                                <input type="checkbox" class="select-checkbox" data-id="@item.ID" />
+                                                <input type="checkbox" class="select-checkbox" data-id="@item.Kontakt.ID" />
                                             </td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.ID</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ID</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.FIRMA</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.FIRMA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.BROJ_KARTICA</td>
-
-
-
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.DRZAVA</td>
-
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.PREFIX @item.BROJ</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.BROJ_KARTICA</td>
 
 
-                                            @if (item.PRODAT == "Y")
+
+
+                                            <td>
+                                                @(item.SljedeciTermin.HasValue
+                                                ? item.SljedeciTermin.Value.ToString("dd.MM.yyyy HH:mm")
+                                                : "-")
+                                            </td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PREFIX @item.Kontakt.BROJ</td>
+
+
+                                            @if (item.Kontakt.PRODAT == "Y")
                                             {
                                                 <td style="text-align:left;" class="text-sm font-weight-bold">PRODAT</td>
                                             }
-                                            else if (item.SALES_NIJE_ZAINTERESOVAN == "Y")
+                                            else if (item.Kontakt.SALES_NIJE_ZAINTERESOVAN == "Y")
                                             {
                                                 <td style="text-align:left;" class="text-sm font-weight-bold">NIJE ZAINTERESOVAN</td>
                                             }
-                                            else if (item.NIJE_DOBIJEN == "Y")
+                                            else if (item.Kontakt.NIJE_DOBIJEN == "Y")
                                             {
                                                 <td style="text-align:left;" class="text-sm font-weight-bold">NIJE DOBIJEN</td>
                                             }
-                                            else if (item.U_PREGOVORIMA == "Y")
+                                            else if (item.Kontakt.U_PREGOVORIMA == "Y")
                                             {
                                                 <td style="text-align:left; color:lawngreen; " class="text-sm font-weight-bold">U PREGOVORIMA</td>
                                             }
@@ -157,18 +162,18 @@
                                                 <td style="text-align:left;" class="text-sm font-weight-bold">NA TERMINU</td>
                                             }
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.AspNetUsers1.UserName</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.AspNetUsers1.UserName</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.AspNetUsers.UserName</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.AspNetUsers.UserName</td>
 
                                             <td>
-                                                <a href="@Url.Action("Kalendar", "Kontakti", new { id = item.ID })" class="btn btn-sm btn-outline-primary">
+                                                <a href="@Url.Action("Kalendar", "Kontakti", new { id = item.Kontakt.ID })" class="btn btn-sm btn-outline-primary">
                                                     📅 Termini
                                                 </a>
                                             </td>
 
                                             <td>
-                                                <a class="btn btn-outline-secondary text-uppercase" href="@Url.Action("kontaktSales", "Pregled", new { id = item.ID})">PREGLED</a>
+                                                <a class="btn btn-outline-secondary text-uppercase" href="@Url.Action("kontaktSales", "Pregled", new { id = item.Kontakt.ID})">PREGLED</a>
                                             </td>
                                         </tr>
 

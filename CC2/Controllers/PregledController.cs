@@ -59,38 +59,85 @@ namespace CC2.Controllers
 
             if (user.IsInRole("marketing"))
             {
-                pregled.kontaktiMarketing = efContext.CC_KONTAKTI
-               .Where(k => k.TRENUTNO_KOD_ID == userId && k.TRENUTNO_GRUPA_ID == "2" && k.VRACEN_MARKETINGU == null && k.PRODAT != "Y").OrderByDescending(k => k.ID)
-               .ToList();
+                pregled.kontaktiMarketing = GetKontaktiSaTerminima(
+                    efContext.CC_KONTAKTI
+                        .Where(k => k.TRENUTNO_KOD_ID == userId
+                                 && k.TRENUTNO_GRUPA_ID == "2"
+                                 && k.VRACEN_MARKETINGU == null
+                                 && k.PRODAT != "Y")
+                        .OrderByDescending(k => k.ID)
+                );
             }
             else if (user.IsInRole("adminmarketing"))
             {
-                pregled.kontaktiAdminMarketing = efContext.CC_KONTAKTI
-               .Where(k => k.TRENUTNO_GRUPA_ID == "4" && k.VRACENO_SA_KONTROLE == null && k.PRODAT != "Y").OrderByDescending(k => k.DATETIME_UPDATED)
-               .ToList();
+                pregled.kontaktiAdminMarketing = GetKontaktiSaTerminima(
+                    efContext.CC_KONTAKTI
+                        .Where(k => k.TRENUTNO_GRUPA_ID == "4"
+                                 && k.VRACENO_SA_KONTROLE == null
+                                 && k.PRODAT != "Y")
+                        .OrderByDescending(k => k.DATETIME_UPDATED)
+                );
             }
             else if (user.IsInRole("kontrola"))
             {
-                pregled.kontrola = efContext.CC_KONTAKTI
-               .Where(k => k.TRENUTNO_GRUPA_ID == "6" && k.PRODAT != "Y").OrderByDescending(k => k.ID)
-               .ToList();
+                pregled.kontrola = GetKontaktiSaTerminima(
+                    efContext.CC_KONTAKTI
+                        .Where(k => k.TRENUTNO_GRUPA_ID == "6" && k.PRODAT != "Y")
+                        .OrderByDescending(k => k.ID)
+                );
             }
             else if (user.IsInRole("adminsales"))
             {
-                pregled.kontaktiSalesAdmin = efContext.CC_KONTAKTI
-               .Where(k => k.TRENUTNO_GRUPA_ID == "5" && k.PRODAT != "Y" && k.SALES_NIJE_ZAINTERESOVAN != "Y" && k.U_PREGOVORIMA != "Y" && k.PRODAT != "Y" && k.NIJE_DOBIJEN != "Y").OrderByDescending(k => k.ID)
-               .ToList();
+                pregled.kontaktiSalesAdmin = GetKontaktiSaTerminima(
+                    efContext.CC_KONTAKTI
+                        .Where(k => k.TRENUTNO_GRUPA_ID == "5"
+                                 && k.PRODAT != "Y"
+                                 && k.SALES_NIJE_ZAINTERESOVAN != "Y"
+                                 && k.U_PREGOVORIMA != "Y"
+                                 && k.NIJE_DOBIJEN != "Y")
+                        .OrderByDescending(k => k.ID)
+                );
             }
             else if (user.IsInRole("sales"))
             {
-                pregled.kontaktiSales = efContext.CC_KONTAKTI
-               .Where(k => k.TRENUTNO_GRUPA_ID == "3" && k.TRENUTNO_KOD_ID == userId && k.NIJE_DOBIJEN != "Y" && k.U_PREGOVORIMA != "Y" && k.PRODAT != "Y").OrderByDescending(k => k.DATETIME_CREATED)
-               .ToList();
+                pregled.kontaktiSales = GetKontaktiSaTerminima(
+                    efContext.CC_KONTAKTI
+                        .Where(k => k.TRENUTNO_GRUPA_ID == "3"
+                                 && k.TRENUTNO_KOD_ID == userId
+                                 && k.NIJE_DOBIJEN != "Y"
+                                 && k.U_PREGOVORIMA != "Y"
+                                 && k.PRODAT != "Y")
+                        .OrderByDescending(k => k.DATETIME_CREATED)
+                );
             }
+
 
 
             return View(pregled);
 
+        }
+
+        private List<KontaktSaTerminima> GetKontaktiSaTerminima(IQueryable<CC_KONTAKTI> query)
+        {
+            return query
+                .GroupJoin(
+                    efContext.TERMINI,
+                    kontakt => kontakt.ID,
+                    termin => termin.KONTAKT_ID,
+                    (kontakt, termini) => new { kontakt, termini }
+                )
+                .Select(x => new KontaktSaTerminima
+                {
+                    Kontakt = x.kontakt,
+                    SljedeciTermin = x.termini
+                        .Where(t => t.DATUM >= DateTime.Now)
+                        .OrderBy(t => t.DATUM)
+                        .Select(t => (DateTime?)t.DATUM)
+                        .FirstOrDefault()
+                })
+                .OrderBy(x => x.SljedeciTermin ?? DateTime.MaxValue)
+                .ThenByDescending(x => x.Kontakt.ID)
+                .ToList();
         }
 
         [Authorize]
@@ -189,27 +236,27 @@ namespace CC2.Controllers
             })
             .ToList();
 
-
             pregled.Users = usersWithIds;
-
 
             if (user.IsInRole("adminsales"))
             {
+                IQueryable<CC_KONTAKTI> query = efContext.CC_KONTAKTI;
+
                 if ((!string.IsNullOrEmpty(filter)) && (!string.IsNullOrEmpty(SelectedAgentId)))
                 {
                     switch (filter)
                     {
                         case "U_PREGOVORIMA":
-                            pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI.Where(k => k.U_PREGOVORIMA == "Y" && k.TRENUTNO_KOD_ID == SelectedAgentId).ToList();
+                            query = query.Where(k => k.U_PREGOVORIMA == "Y" && k.TRENUTNO_KOD_ID == SelectedAgentId);
                             break;
                         case "NIJE_DOBIJEN":
-                            pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI.Where(k => k.NIJE_DOBIJEN == "Y" && k.TRENUTNO_KOD_ID == SelectedAgentId).ToList();
+                            query = query.Where(k => k.NIJE_DOBIJEN == "Y" && k.TRENUTNO_KOD_ID == SelectedAgentId);
                             break;
                         case "NIJE_ZAINTERESOVAN":
-                            pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI.Where(k => k.SALES_NIJE_ZAINTERESOVAN == "Y" && k.TRENUTNO_KOD_ID == SelectedAgentId).ToList();
+                            query = query.Where(k => k.SALES_NIJE_ZAINTERESOVAN == "Y" && k.TRENUTNO_KOD_ID == SelectedAgentId);
                             break;
                         case "PRODAT":
-                            pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI.Where(k => k.PRODAT == "Y" && k.TRENUTNO_KOD_ID == SelectedAgentId).ToList();
+                            query = query.Where(k => k.PRODAT == "Y" && k.TRENUTNO_KOD_ID == SelectedAgentId);
                             break;
                     }
                 }
@@ -218,29 +265,47 @@ namespace CC2.Controllers
                     switch (filter)
                     {
                         case "U_PREGOVORIMA":
-                            pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI.Where(k => k.U_PREGOVORIMA == "Y").ToList();
+                            query = query.Where(k => k.U_PREGOVORIMA == "Y");
                             break;
                         case "NIJE_DOBIJEN":
-                            pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI.Where(k => k.NIJE_DOBIJEN == "Y").ToList();
+                            query = query.Where(k => k.NIJE_DOBIJEN == "Y");
                             break;
                         case "NIJE_ZAINTERESOVAN":
-                            pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI.Where(k => k.SALES_NIJE_ZAINTERESOVAN == "Y").ToList();
+                            query = query.Where(k => k.SALES_NIJE_ZAINTERESOVAN == "Y");
                             break;
                         case "PRODAT":
-                            pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI.Where(k => k.PRODAT == "Y").ToList()  ;
+                            query = query.Where(k => k.PRODAT == "Y");
                             break;
                     }
                 }
                 else if (!string.IsNullOrEmpty(SelectedAgentId))
                 {
-                   pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI.Where(k => k.TRENUTNO_KOD_ID == SelectedAgentId).ToList();
+                    query = query.Where(k => k.TRENUTNO_KOD_ID == SelectedAgentId);
                 }
                 else
                 {
-                    pregled.kontaktiSalesAdminSvi = efContext.CC_KONTAKTI
-                                 .Where(k => k.TRENUTNO_GRUPA_ID == "5" || k.TRENUTNO_GRUPA_ID == "3").OrderByDescending(k => k.ID)
-                                 .ToList();
-                }            
+                    query = query.Where(k => k.TRENUTNO_GRUPA_ID == "5" || k.TRENUTNO_GRUPA_ID == "3");
+                }
+
+                pregled.kontaktiSalesAdminSvi = query
+                 .GroupJoin(
+                     efContext.TERMINI,
+                     kontakt => kontakt.ID,
+                     termin => termin.KONTAKT_ID,
+                     (kontakt, termini) => new { kontakt, termini }
+                 )
+                 .Select(x => new KontaktSaTerminima
+                 {
+                     Kontakt = x.kontakt,
+                     SljedeciTermin = x.termini
+                         .Where(t => t.DATUM >= DateTime.Now)   // samo budući termini
+                         .OrderBy(t => t.DATUM)
+                         .Select(t => (DateTime?)t.DATUM)
+                         .FirstOrDefault()
+                 })
+                 .OrderBy(x => x.SljedeciTermin ?? DateTime.MaxValue)
+                 .ThenByDescending(x => x.Kontakt.ID)
+                 .ToList();
             }
 
             ViewBag.SelectedFilter = filter;
@@ -809,5 +874,14 @@ namespace CC2.Controllers
 
 
     }
+
+    public class KontaktSaTerminima
+    {
+        public CC_KONTAKTI Kontakt { get; set; }
+        public DateTime? SljedeciTermin { get; set; }
+    }
+
+    
+
 }
 
