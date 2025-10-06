@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using CC2.Models;
 using DataAccess;
 using System.Data.Entity;
+using CC2.Helpers;
 
 
 namespace CC2.Controllers
@@ -18,7 +19,7 @@ namespace CC2.Controllers
     
 
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

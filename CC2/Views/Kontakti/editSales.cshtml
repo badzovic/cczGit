@@ -3,7 +3,23 @@
     ViewBag.Title = "Edit";
 }
 
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+<style>
 
+    .modal-dialog {
+        max-width: 90% !important;
+        margin-left: 300px;
+        margin-right: auto;
+    }
+
+    #nijeDobijenCalendar {
+        margin-top: 20px;
+        background: #fff;
+        padding: 10px;
+        border-radius: 6px;
+        min-height: 400px; /* da se vidi okvir i dok nema eventa */
+    }
+</style>
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
@@ -134,7 +150,11 @@
                                         <a class="btn btn_primary text-uppercase" id="poziv2" style="display:block;" href="tel:@Model.prefix@Model.broj2">
                                             POZOVI BROJ 2
                                         </a>
-
+                                        <div class="col-12">
+                                            <label for="Komentar" class="form-label">Komentar</label>
+                                            @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
+                                            @Html.ValidationMessageFor(m => m.komentar)
+                                        </div>
                                     </div>
                                     <p>&nbsp;</p>
 
@@ -170,11 +190,7 @@
                                                 style="border:none;">
                                         </iframe>
                                         <p>&nbsp;</p>
-                                        <div class="col-12">
-                                            <label for="Komentar" class="form-label">Komentar</label>
-                                            @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
-                                            @Html.ValidationMessageFor(m => m.komentar)
-                                        </div>
+
                                     </div>
                                     @*<p>&nbsp;</p>
                                         <div id="additionalElements">
@@ -191,7 +207,13 @@
 
                                         <a style="margin-left:5%;" href="#" onclick="return nijeZainteresovan(@Model.Id)" class="btn btn-outline-secondary">Nije zainteresovan</a>
                                         <a href="#" onclick="return uPregovorima(@Model.Id)" class="btn btn-outline-secondary">U pregovorima</a>
-                                        <a href="#" onclick="return nijeDobijen(@Model.Id)" class="btn btn-outline-secondary">Nije dobijen</a>
+                                        <a class="btn btn-outline-secondary open-nijeDobijen"
+                                           data-kontakt-id="@Model.Id"
+                                           data-termin-id="@Model.terminId"
+                                           href="javascript:void(0)">
+                                            Nije dobijen
+                                        </a>
+
                                         <a style="margin-left:1%;" href="#" onclick="return prodat(@Model.Id)" class="btn btn-primary">             PRODAT             </a>
 
                                         <a style="margin-left:17%;" href="#" onclick="goBack()" class="btn btn-primary">Nazad</a>
@@ -199,6 +221,42 @@
                                 }
 
 
+                                <div class="modal fade" id="nijeDobijenModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl" role="document" style="max-width:90%;">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Nije dobijen - prebaci tiket i termin</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group mb-3">
+                                                    <label>Odaberite agenta</label>
+                                                    <select id="nijeDobijenAgentSelect" class="form-control">
+                                                        <option value="">-- Odaberite --</option>
+                                                        @foreach (var agent in ViewBag.Users as List<CC2.Models.UserInfo>)
+                                                        {
+                                                            <option value="@agent.Id">@agent.Email</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label>Početak termina</label>
+                                                    <input type="datetime-local" id="nijeDobijenNewStart" class="form-control" />
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label>Kraj termina</label>
+                                                    <input type="datetime-local" id="nijeDobijenNewEnd" class="form-control" />
+                                                </div>
+
+                                                <div id="nijeDobijenCalendar"></div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="btnNijeDobijen" class="btn btn-success">Potvrdi</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -208,13 +266,127 @@
         </div>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="~/Content/js/plugins/datatables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 <script>
-    function goBack() {
-        window.history.back();
-    }
+    var nijeDobijenKontaktId = null;
+    var nijeDobijenTerminId = null;
+    var nijeDobijenCalendar;
+
+    // Klik na dugme -> pripremi podatke i otvori modal
+    $(document).on("click", ".open-nijeDobijen", function () {
+        nijeDobijenKontaktId = $(this).data("kontakt-id");
+        nijeDobijenTerminId = $(this).data("termin-id") || 0;
+
+        $("#nijeDobijenAgentSelect").val("");
+        $("#nijeDobijenNewStart").val("");
+        $("#nijeDobijenNewEnd").val("");
+
+        // ručno otvaranje modala
+        $("#nijeDobijenModal").modal("show");
+    });
+
+    // Kada se modal prikaže -> inicijalizuj/refresh kalendar
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("nijeDobijenModal");
+
+        modal.addEventListener("shown.bs.modal", function () {
+            console.log("➡️ Modal otvoren: nijeDobijenModal");
+
+            if (!nijeDobijenCalendar) {
+                console.log("🟡 Inicijalizacija nijeDobijenCalendar...");
+
+                $.get("/Kontakti/GetAllTermini")
+                    .done(function (data) {
+                        console.log("📥 Učitani termini:", data);
+
+                        // FullCalendar v6 fix: className → classNames
+                        data.forEach(ev => {
+                            if (ev.className) {
+                                ev.classNames = [ev.className];
+                                delete ev.className;
+                            }
+                        });
+
+                        var calendarEl = document.getElementById("nijeDobijenCalendar");
+                        if (!calendarEl) {
+                            console.error("❌ Element #nijeDobijenCalendar ne postoji u DOM-u!");
+                            return;
+                        }
+
+                        nijeDobijenCalendar = new FullCalendar.Calendar(calendarEl, {
+                            initialView: "dayGridMonth",
+                            height: 600,
+                            locale: "de",
+                            allDaySlot: false,
+                            slotMinTime: "07:00:00",
+                            slotMaxTime: "20:00:00",
+                            headerToolbar: {
+                                left: "dayGridMonth,timeGridWeek,timeGridDay",
+                                center: "title",
+                                right: "prev,next today"
+                            },
+                            events: data
+                        });
+
+                        nijeDobijenCalendar.render();
+                        console.log("✅ nijeDobijenCalendar renderovan.");
+                    })
+                    .fail(function (xhr, status, error) {
+                        console.error("⚠ Greška kod GET /Kontakti/GetAllTermini:", status, error);
+                    });
+
+            } else {
+                console.log("ℹ️ Ponovno renderujem postojeći nijeDobijenCalendar.");
+                nijeDobijenCalendar.render();
+            }
+        });
+    });
+
+    // potvrda "Nije dobijen"
+    $("#btnNijeDobijen").click(function () {
+        var agentId = $("#nijeDobijenAgentSelect").val();
+        var newStart = $("#nijeDobijenNewStart").val();
+        var newEnd = $("#nijeDobijenNewEnd").val();
+
+        if (!agentId) {
+            alert("Molimo odaberite agenta.");
+            return;
+        }
+        if (!newStart || !newEnd) {
+            alert("Molimo odaberite vrijeme termina.");
+            return;
+        }
+
+        $.ajax({
+            url: "/Pregled/PrebaciTiketNijeDobijen",
+            type: "POST",
+            data: {
+                kontaktId: nijeDobijenKontaktId,
+                terminId: nijeDobijenTerminId,
+                agentId: agentId,
+                noviStart: newStart,
+                noviEnd: newEnd
+            },
+            success: function (res) {
+                if (res.success) {
+                    alert("Tiket i termin uspješno prebačeni!");
+                    setTimeout(function () {
+                        window.location.href = "/Pregled";
+                    }, 500); // 0.5s pauza
+                } else {
+                    alert("❌ Greška: " + res.message);
+                }
+            },
+            error: function () {
+                alert("⚠ Došlo je do greške prilikom slanja zahtjeva.");
+            }
+        });
+    });
 </script>
+
+
 <script>
     function prodat(itemId) {
 

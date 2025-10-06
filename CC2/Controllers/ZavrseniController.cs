@@ -1,4 +1,5 @@
-﻿using CC2.Models;
+﻿using CC2.Helpers;
+using CC2.Models;
 using DataAccess;
 using Microsoft.AspNet.Identity;
 using System;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace CC2.Controllers
 {
-    public class ZavrseniController : Controller
+    public class ZavrseniController : BaseController
     {
         CCEntities efContext = new CCEntities();
 

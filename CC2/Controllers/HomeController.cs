@@ -11,10 +11,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using NLog;
+using CC2.Helpers;
 
 namespace CC2.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         CCEntities efContext = new CCEntities();
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();

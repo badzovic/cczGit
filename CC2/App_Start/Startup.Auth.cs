@@ -35,7 +35,7 @@ namespace CC2
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 },
                 SlidingExpiration = true, // Resets the expiration time with each request
-                ExpireTimeSpan = TimeSpan.FromMinutes(30) // Sets the cookie to expire in 30 minutes of inactivity
+                ExpireTimeSpan = TimeSpan.FromHours(10),
             });            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 

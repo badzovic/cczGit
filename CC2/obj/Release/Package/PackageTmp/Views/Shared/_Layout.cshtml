@@ -82,6 +82,7 @@
                                 <a class="nav-link " href="/Pregled/SalesAdmin">
                                     <span class="sidenav-mini-icon"> L </span>
                                     <span class="sidenav-normal"> Pregled </span>
+
                                 </a>
                             </li>
                         }
@@ -116,6 +117,7 @@
                                 <a class="nav-link " href="/Nijezainteresovan">
                                     <span class="sidenav-mini-icon"> L </span>
                                     <span class="sidenav-normal"> Nije zainteresovan </span>
+
                                 </a>
                             </li>
                             <li class="nav-item ">
@@ -125,22 +127,31 @@
                                 </a>
                             </li>
                         }
-                        @if ((!User.IsInRole("adminsales")) && (!User.IsInRole("sales")) && (!User.IsInRole("kontrola")) && (!User.IsInRole("kontrola")))
-                        {
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/PregledVracenih">
-                                    <span class="sidenav-mini-icon"> L </span>
-                                    <span class="sidenav-normal"> Vraćeni kontakti </span>
-                                </a>
-                            </li>
 
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/Pregled/Mojikreirani">
-                                    <span class="sidenav-mini-icon"> L </span>
-                                    <span class="sidenav-normal"> Svi kreirani kontakti </span>
-                                </a>
-                            </li>
-                        }
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/PregledVracenih">
+                                <span class="sidenav-mini-icon"> L </span>
+                                <span class="sidenav-normal"> Prebačeni kontakti </span>
+                                <span class="badge bg-danger" style="margin-left:8px;">@ViewBag.CountVraceni</span>
+
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/Nijedobijen">
+                                <span class="sidenav-mini-icon"> L </span>
+                                <span class="sidenav-normal"> Nije dobijen </span>
+                                <span class="badge bg-danger" style="margin-left:8px;">@ViewBag.countNijeDobijen</span>
+
+                                
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="/Pregled/Mojikreirani">
+                                <span class="sidenav-mini-icon"> L </span>
+                                <span class="sidenav-normal"> Svi kreirani kontakti </span>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </div>

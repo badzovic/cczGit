@@ -8,11 +8,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NLog;
+using CC2.Helpers;
 
 
 namespace CC2.Controllers
 {
-    public class PregledController : Controller
+    public class PregledController : BaseController
     {
 
         CCEntities efContext = new CCEntities();
@@ -112,6 +113,21 @@ namespace CC2.Controllers
             }
 
 
+            var roleIds = new[] { "2", "3", "5" };
+
+            var agents = (from ur in efContext.AspNetUserRoles
+                          join u in efContext.AspNetUsers on ur.UserId equals u.Id
+                          where roleIds.Contains(ur.RoleId)
+                                && u.Active == "Y"
+                                && u.Deleted != "Y"
+                          select new UserInfo
+                          {
+                              Id = u.Id,
+                              Email = u.Email
+                          }).ToList();
+
+            pregled.Users = agents;
+
 
             return View(pregled);
 
@@ -133,7 +149,13 @@ namespace CC2.Controllers
                         .Where(t => t.DATUM >= DateTime.Now)
                         .OrderBy(t => t.DATUM)
                         .Select(t => (DateTime?)t.DATUM)
-                        .FirstOrDefault()
+                        .FirstOrDefault(),
+                    SljedeciTerminId = x.termini
+                    .Where(t => t.DATUM >= DateTime.Now)
+                    .OrderBy(t => t.DATUM)
+                    .Select(t => (int?)t.ID)
+                    .FirstOrDefault()
+
                 })
                 .OrderBy(x => x.SljedeciTermin ?? DateTime.MaxValue)
                 .ThenByDescending(x => x.Kontakt.ID)
@@ -155,6 +177,89 @@ namespace CC2.Controllers
 
             return View(pregled);
         }
+
+        [HttpPost]
+        public ActionResult PrebaciTiket(int kontaktId, string agentId, int terminId, DateTime noviStart, DateTime noviEnd)
+        {
+            using (var efContext = new CCEntities())
+            {
+                var kontakt = efContext.CC_KONTAKTI.Find(kontaktId);
+                if (kontakt == null)
+                    return Json(new { success = false, message = "Kontakt ne postoji" });
+
+                var agentRoleId = efContext.AspNetUserRoles
+                .Where(r => r.UserId == agentId)
+                .Select(r => r.RoleId)
+                .FirstOrDefault();
+
+                // prebaci kontakt
+                kontakt.TRENUTNO_KOD_ID = agentId;
+                kontakt.VRACEN_MARKETINGU = "Y";
+                kontakt.NIJE_DOBIJEN = null;
+                // update grupe na osnovu role
+                if (agentRoleId == "2") // marketing
+                {
+                    kontakt.TRENUTNO_GRUPA_ID = "2";
+                }
+                else if (agentRoleId == "5") // adminsales
+                {
+                    kontakt.TRENUTNO_GRUPA_ID = "5";
+                }
+                // prebaci termin
+                var termin = efContext.TERMINI.FirstOrDefault(t => t.ID == terminId && t.KONTAKT_ID == kontaktId);
+                if (termin != null)
+                {
+                    termin.USER_ID = agentId;
+                    termin.DATUM = noviStart;
+                    termin.DATUM_KRAJA = noviEnd;
+                }
+
+                efContext.SaveChanges();
+                return Json(new { success = true });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult PrebaciTiketNijeDobijen(int kontaktId, string agentId, int terminId, DateTime noviStart, DateTime noviEnd)
+        {
+            using (var efContext = new CCEntities())
+            {
+                var kontakt = efContext.CC_KONTAKTI.Find(kontaktId);
+                if (kontakt == null)
+                    return Json(new { success = false, message = "Kontakt ne postoji" });
+
+                var agentRoleId = efContext.AspNetUserRoles
+                .Where(r => r.UserId == agentId)
+                .Select(r => r.RoleId)
+                .FirstOrDefault();
+
+                // prebaci kontakt
+                kontakt.TRENUTNO_KOD_ID = agentId;
+                kontakt.VRACEN_MARKETINGU = null;
+                kontakt.NIJE_DOBIJEN = "Y";
+                // update grupe na osnovu role
+                if (agentRoleId == "2") // marketing
+                {
+                    kontakt.TRENUTNO_GRUPA_ID = "2";
+                }
+                else if (agentRoleId == "5") // adminsales
+                {
+                    kontakt.TRENUTNO_GRUPA_ID = "5";
+                }
+                // prebaci termin
+                var termin = efContext.TERMINI.FirstOrDefault(t => t.ID == terminId && t.KONTAKT_ID == kontaktId);
+                if (termin != null)
+                {
+                    termin.USER_ID = agentId;
+                    termin.DATUM = noviStart;
+                    termin.DATUM_KRAJA = noviEnd;
+                }
+
+                efContext.SaveChanges();
+                return Json(new { success = true });
+            }
+        }
+
 
         [Authorize]
         public ActionResult Blacklist(int id)
@@ -331,6 +436,7 @@ namespace CC2.Controllers
         }
         public ActionResult Prosljedi(string selectedIds)
         {
+            
 
             string[] idStrings = selectedIds.Split(',');
 
@@ -354,6 +460,8 @@ namespace CC2.Controllers
                         var kontakt = efContext.CC_KONTAKTI.Find(id);
                         kontakt.TRENUTNO_GRUPA_ID = "5";
                         kontakt.DATETIME_UPDATED = DateTime.Now;
+                        kontakt.VRACEN_MARKETINGU = null;
+                        kontakt.NIJE_DOBIJEN = null;
                     }
 
                     int results = efContext.SaveChanges();
@@ -879,6 +987,7 @@ namespace CC2.Controllers
     {
         public CC_KONTAKTI Kontakt { get; set; }
         public DateTime? SljedeciTermin { get; set; }
+        public int? SljedeciTerminId { get; set; }   
     }
 
     

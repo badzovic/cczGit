@@ -9,10 +9,11 @@ using System.Web;
 using System.Web.Mvc;
 using NLog;
 using System.Configuration;
+using CC2.Helpers;
 
 namespace CC2.Controllers
 {
-    public class KontaktiController : Controller
+    public class KontaktiController : BaseController
     {
         CCEntities efContext = new CCEntities();
 
@@ -84,23 +85,19 @@ namespace CC2.Controllers
                                           Main = u.Main
                                       };
                 // FILTRIRANJE PO ULOGAMA
-                if (loggedUserRoleId == "3") // SALES
-                {
-                    // vidi samo svoje termine
-                    terminiRawQuery = terminiRawQuery.Where(t => t.USER_ID == loggedUserId);
-                }
-                else if (loggedUserRoleId == "2") // MARKETING
+                //if (loggedUserRoleId == "3") // SALES
+                //{
+                //    // vidi samo svoje termine
+                //    terminiRawQuery = terminiRawQuery.Where(t => t.USER_ID == loggedUserId);
+                //}
+                if (loggedUserRoleId == "2") // MARKETING
                 {
                     // vidi termine agenata gdje je Main = "Y" ILI svoje vlastite termine
                     terminiRawQuery = terminiRawQuery.Where(t =>
-                        efContext.AspNetUsers.Any(u => u.Id == t.USER_ID && u.Main == "Y")
+                        efContext.AspNetUsers.Any(u => u.Id == t.USER_ID /*&& u.Main == "Y"*/)
                         || t.USER_ID == loggedUserId);
                 }
-                else
-                {
-
-                }
-
+              
 
 
                 var terminiRaw = terminiRawQuery.ToList();
@@ -119,11 +116,13 @@ namespace CC2.Controllers
                       .FirstOrDefault() + " - " + t.EMAIL),
                      Boja = (t.Main == "Y" ? "#f1c40f" :   // žuta
                 t.Main == "YY" ? "#2ecc71" :   // zelena
-                t.Main == "YYY" ? "#e74c3c" :   // crvena
+                t.Main == "YYY" ? "#e74c3c" :   //crvena
+                 t.Main == "YYYY" ? "#1545c2" : // plava
                                   "#9b59b6"),
                      UserId = t.USER_ID,
                      KONTAKT_ID = t.KONTAKT_ID,
                      BrojKartica = t.brojKartica,
+                     RoleId = t.ROLE_ID
                  }).ToList();
 
 
@@ -133,6 +132,69 @@ namespace CC2.Controllers
                 return View(model);
             }
         }
+
+        [HttpGet]
+        public ActionResult GetAllTermini()
+        {
+            using (var efContext = new CCEntities())
+            {
+                var loggedUserId = User.Identity.GetUserId();
+                var loggedUserRoleId = efContext.AspNetUserRoles
+                    .Where(r => r.UserId == loggedUserId)
+                    .Select(r => r.RoleId)
+                    .FirstOrDefault();
+
+                var terminiRawQuery = from t in efContext.TERMINI
+                                      join ur in efContext.AspNetUserRoles on t.USER_ID.ToString() equals ur.UserId
+                                      join u in efContext.AspNetUsers on ur.UserId equals u.Id
+                                      join kTemp in efContext.CC_KONTAKTI on t.KONTAKT_ID equals kTemp.ID into kontaktJoin
+                                      from k in kontaktJoin.DefaultIfEmpty()
+                                      select new
+                                      {
+                                          id = t.ID,
+                                          DATUM = t.DATUM,
+                                          END = t.DATUM_KRAJA,
+                                          EMAIL = u.Email,
+                                          NAZIV = t.NAZIV,
+                                          KONTAKT_ID = t.KONTAKT_ID,
+                                          USER_ID = t.USER_ID.ToString(),
+                                          ROLE_ID = ur.RoleId,
+                                          brojKartica = k != null ? k.BROJ_KARTICA.ToString() : "0",
+                                          Main = u.Main
+                                      };
+
+               
+
+                var terminiRaw = terminiRawQuery.ToList();
+
+                var termini = terminiRaw.Select(t => new
+                {
+                    id = t.id,
+                    title = (loggedUserRoleId == "2")
+                        ? ("KARTICA: " + t.brojKartica)  // marketing vidi samo kartice
+                        : (efContext.CC_KONTAKTI
+                               .Where(k => k.ID == t.KONTAKT_ID)
+                               .Select(k => k.FIRMA)
+                               .FirstOrDefault() + " - " + t.EMAIL),
+                    start = t.DATUM.HasValue ? t.DATUM.Value.ToString("yyyy-MM-ddTHH:mm:ss") : null,
+                    end = t.END.HasValue ? t.END.Value.ToString("yyyy-MM-ddTHH:mm:ss") : null,
+                    backgroundColor = (t.Main == "Y" ? "#f1c40f" :    // žuta
+                                       t.Main == "YY" ? "#2ecc71" :   // zelena
+                                       t.Main == "YYY" ? "#e74c3c" :   // crvena
+                                       t.Main == "YYYY" ? "#1545c2" : // plava
+                                                         "#9b59b6"),
+                    borderColor = "#ffffff",
+                    textColor = "white",
+                    userId = t.USER_ID,
+                    kontaktId = t.KONTAKT_ID,
+                    brojKartica = t.brojKartica,
+                }).ToList();
+
+                return Json(termini, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
 
         [HttpPost]
         public JsonResult AzurirajTermin(int terminId, DateTime noviStart, DateTime? noviEnd)
@@ -597,6 +659,19 @@ namespace CC2.Controllers
         public ActionResult editSales(int id)
         {
             var contactToEdit = efContext.CC_KONTAKTI.Find(id);
+            var roleIds = new[] { "2", "3", "5" }; // marketing, sales, adminsales
+            var agents = (from ur in efContext.AspNetUserRoles
+                          join u in efContext.AspNetUsers on ur.UserId equals u.Id
+                          where roleIds.Contains(ur.RoleId)
+                                && u.Active == "Y"
+                                && u.Deleted != "Y"
+                          select new UserInfo
+                          {
+                              Id = u.Id,
+                              Email = u.Email
+                          }).ToList();
+
+            ViewBag.Users = agents;
 
             if (contactToEdit != null)
             {

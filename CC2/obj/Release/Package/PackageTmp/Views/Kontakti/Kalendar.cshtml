@@ -121,6 +121,51 @@
             .navbar-brand img {
                 height: 30px;
             }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+            margin-right: 10px;
+        }
+
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 20px;
+                width: 20px;
+                left: 3px;
+                bottom: 3px;
+                background-color: white;
+                transition: .4s;
+                border-radius: 50%;
+            }
+
+        input:checked + .slider {
+            background-color: #0d6efd; /* plava */
+        }
+
+            input:checked + .slider:before {
+                transform: translateX(24px)
     </style>
 </head>
 
@@ -142,6 +187,17 @@
         {
             <h2 class="calendar-title">Zakazivanje termina za: @Model.firma</h2>
         }
+        @if (ViewBag.RoleId == "3") // samo Sales vidi toggle
+        {
+            <div style="text-align:right; margin:10px;">
+                <label class="switch">
+                    <input type="checkbox" id="toggleSalesView">
+                    <span class="slider round"></span>
+                </label>
+                <span id="toggleSalesLabel">Svi sales termini</span>
+            </div>
+        }
+
         <div id="calendar"></div>
     </div>
 </div>
@@ -150,6 +206,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+
+  
         var termini = @Html.Raw(Json.Encode(Model.Termini
             .Where(t => t.DATUM.HasValue)
             .Select(t => new {
@@ -162,18 +220,29 @@
                 textColor = "white",
                 userId = t.UserId,
                 kontaktId = t.KONTAKT_ID,
-                brojKartica = t.BrojKartica
+                brojKartica = t.BrojKartica,
+                roleId = t.RoleId
             })));
-
+        let showAllSales = false; // defaultno vidi samo svoje
+        const allTermini = termini; // svi termini sa servera
 
         const loggedUserId = "@ViewBag.UserId";
         const loggedUserRoleId = "@ViewBag.RoleId";
-
+    function getFilteredEvents() {
+        if (loggedUserRoleId === "3") { // Sales
+            if (showAllSales) {
+                return allTermini.filter(t => t.roleId === "3");
+            } else {
+                return allTermini.filter(t => t.userId === loggedUserId);
+            }
+        }
+        return allTermini;
+    }
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'timeGridWeek',
+                initialView: 'dayGridMonth',
                 initialDate: new Date().toISOString().split('T')[0],
                 height: '100vh',
                 expandRows: true,
@@ -196,7 +265,7 @@
                 dateClick: function (info) {
                     calendar.changeView('timeGridDay', info.dateStr);
                 },
-                events: termini,
+                events: getFilteredEvents(),
                 eventDidMount: function (info) {
                     info.el.style.width = "100%";
                     info.el.style.display = "inline-block";
@@ -214,7 +283,18 @@
               eventClick: function(info) {
                     const eventOwnerId = info.event.extendedProps.userId;
                     const kontaktId = info.event.extendedProps.kontaktId;
+                    const loggedUserId = "@ViewBag.UserId";
+                    const loggedUserRoleId = "@ViewBag.RoleId";
                   console.log(kontaktId);
+                  if (loggedUserRoleId === "5") {
+                      if (kontaktId > 0) {
+                          const url = `/Pregled/Kontakt?id=${kontaktId}&page=1`;
+                          window.location.href = url;
+                      } else {
+                          alert("Otvaranje termina nije moguće jer nije definisan kontakt.");
+                      }
+                      return;
+                  }
                       if (eventOwnerId === loggedUserId && kontaktId > 0) {
                             const url = `/Pregled/Kontakt?id=${kontaktId}&page=1`;
                             window.location.href = url;
@@ -319,6 +399,19 @@
             });
 
             calendar.render();
+            document.getElementById("toggleSalesView").addEventListener("change", function () {
+                showAllSales = this.checked;
+
+                if (showAllSales) {
+                    document.getElementById("toggleSalesLabel").innerText = "Prikaži samo svoje";
+                } else {
+                    document.getElementById("toggleSalesLabel").innerText = "Svi Sales termini";
+                }
+
+                // 🔄 refresh kalendara
+                calendar.removeAllEvents();
+                calendar.addEventSource(getFilteredEvents());
+            });
 
             function obrisiTermin(id) {
                 if (!confirm("Da li želiš obrisati ovaj termin?")) return;

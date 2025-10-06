@@ -3,8 +3,27 @@
 @{
     ViewBag.Title = "Pregled";
 }
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
 
+<style>
+    .modal-dialog {
+        max-width: 90% !important;
+        margin-left: 300px;
+        margin-right: auto;
+    }
 
+    #modalCalendar {
+        margin-top: 20px;
+        background: #fff;
+        padding: 10px;
+        border-radius: 6px;
+        min-height: 400px; /* da se vidi okvir i dok nema eventa */
+    }
+    .ps__rail-x, .ps__rail-y {
+        display: none !important;
+    }
+
+</style>
 <main class="main-content position-relative border-radius-lg ">
     <div class="container-fluid py-4">
         <div class="row">
@@ -229,6 +248,9 @@
                                                     📅 Termini
                                                 </a>
                                             </td>
+
+
+
                                             <td>
                                                 <a class="btn btn_primary text-uppercase linkForItem" href="@Url.Action("Kontakt", "Pregled", new { id = item.Kontakt.ID })">PREGLED</a>
 
@@ -362,8 +384,8 @@
                                                 <a class="btn btn-outline-secondary text-uppercase" href="@Url.Action("kontaktSales", "Pregled", new { id = item.Kontakt.ID})">PREGLED</a>
                                             </td>
                                             @*<td>
-            <button type="button" class="btn btn-outline-secondary" id="prosljediAgentu" data-item-id="@item.Kontakt.ID">PROSLJEDI AGENTU</button>
-        </td>*@
+                                                    <button type="button" class="btn btn-outline-secondary" id="prosljediAgentu" data-item-id="@item.Kontakt.ID">PROSLJEDI AGENTU</button>
+                                                </td>*@
                                         </tr>
 
                                     }
@@ -397,7 +419,17 @@
                                                     📅 Termini
                                                 </a>
                                             </td>
-
+                                            <td>
+                                                <a class="btn btn_primary open-prebaci"
+                                                   data-kontakt-id="@item.Kontakt.ID"
+                                                   data-termin-id="@item.SljedeciTerminId"
+                                                   href="javascript:void(0)">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12 2a10 10 0 1 1-9.95 10H2.5" stroke="#4CAF50" stroke-width="2" fill="none" stroke-linecap="round" />
+                                                        <polygon points="12,2 14,6 10,6" fill="#4CAF50" />
+                                                    </svg>
+                                                </a>
+                                            </td>
 
 
                                             <td>
@@ -457,6 +489,50 @@
     </div>
 
 
+    <div class="modal fade" id="prebaciModal" tabindex="-1" role="dialog" aria-labelledby="prebaciModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document" style="max-width:90%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Prebaci tiket i termin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- dropdown -->
+                    <div class="form-group mb-3">
+                        <label for="agentSelect">Odaberite agenta</label>
+                        <select id="agentSelect" class="form-control">
+                            <option value="">-- Odaberite --</option>
+                            @foreach (var agent in Model.Users)
+                            {
+                                <option value="@agent.Id">@agent.Email</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- novo vrijeme -->
+                    <div class="form-group mb-3">
+                        <label for="newStart">Početak termina</label>
+                        <input type="datetime-local" id="newStart" class="form-control" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="newEnd">Kraj termina</label>
+                        <input type="datetime-local" id="newEnd" class="form-control" />
+                    </div>
+
+                    <!-- kalendar -->
+                    <div id="modalCalendar"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnPrebaci" class="btn btn-success">Prebaci</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <div class="modal fade" id="agentSelectionModal" tabindex="-1" role="dialog" aria-labelledby="agentSelectionModalLabel">
@@ -484,11 +560,67 @@
         </div>
     </div>
 </main>
-
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>*@
 
+
 <script src="~/Content/js/plugins/datatables.js"></script>
+
+
+<script>
+    var modalCalendar;
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("prebaciModal");
+
+        modal.addEventListener("shown.bs.modal", function () {
+            console.log("➡️ Modal otvoren: prebaciModal");
+
+            if (!modalCalendar) {
+                console.log("🟡 Inicijalizacija kalendara...");
+
+                $.get("/Kontakti/GetAllTermini")
+                    .done(function (data) {
+                        console.log("Učitani podaci iz GetAllTermini:", data);
+
+                        var calendarEl = document.getElementById("modalCalendar");
+                        if (!calendarEl) {
+                            console.error("Element #modalCalendar ne postoji u DOM-u!");
+                            return;
+                        }
+
+                        modalCalendar = new FullCalendar.Calendar(calendarEl, {
+                            initialView: "dayGridMonth",
+                            height: 600,
+                            locale: "de",
+                            allDaySlot: false,
+                            slotMinTime: "07:00:00",
+                            slotMaxTime: "20:00:00",
+                            headerToolbar: {
+                                left: "dayGridMonth,timeGridWeek,timeGridDay",
+                                center: "title",
+                                right: "prev,next today"
+                            },
+                            events: data
+                        });
+
+                        modalCalendar.render();
+                        console.log("Kalendar renderovan.");
+                    })
+                    .fail(function (xhr, status, error) {
+                        console.error("Greška kod GET /Kontakti/GetAllTermini:", status, error);
+                    });
+
+            } else {
+                console.log("ℹ️ Ponovno renderujem postojeći kalendar.");
+                modalCalendar.render();
+            }
+        });
+    });
+
+
+</script>
 <script>
 
     var ItemId;
@@ -705,17 +837,16 @@
 
 </script>
 
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const dataTable = new simpleDatatables.DataTable("#datatable-basic");
 
-        
+
 
 
         function updateLinkHref(linkElement) {
 
-           
+
             var savedPage = localStorage.getItem('dataTableCurrentPage');
             const href = linkElement.getAttribute('href');
             const baseUrl = href.substring(0, href.lastIndexOf('/'));
@@ -724,7 +855,7 @@
             linkElement.setAttribute('href', newHref);
         }
 
-    
+
 
         // Function to update the console log with the current page
         function updateCurrentPage() {
@@ -760,4 +891,65 @@
         updateCurrentPage();
     });
 
+</script>
+<script>
+    var selectedKontaktId = null;
+    var selectedTerminId = null;
+
+    // otvori modal na klik ikone
+    $(document).on("click", ".open-prebaci", function () {
+        selectedKontaktId = $(this).data("kontakt-id");
+        selectedTerminId = $(this).data("termin-id");
+
+        if (!selectedTerminId) {
+            alert("Nema definisanog termina za ovaj kontakt.");
+            return;
+        }
+
+        // očisti prethodne vrijednosti
+        $("#agentSelect").val("");
+        $("#newStart").val("");
+        $("#newEnd").val("");
+
+        $("#prebaciModal").modal("show");
+    });
+
+    // potvrdi prebacivanje
+    $("#btnPrebaci").click(function () {
+        var agentId = $("#agentSelect").val();
+        var newStart = $("#newStart").val();
+        var newEnd = $("#newEnd").val();
+
+        if (!agentId) {
+            alert("Molimo odaberite agenta.");
+            return;
+        }
+        if (!newStart || !newEnd) {
+            alert("Molimo odaberite novo vrijeme termina.");
+            return;
+        }
+
+        $.ajax({
+            url: "/Pregled/PrebaciTiket",
+            type: "POST",
+            data: {
+                kontaktId: selectedKontaktId,
+                terminId: selectedTerminId,
+                agentId: agentId,
+                noviStart: newStart,
+                noviEnd: newEnd
+            },
+            success: function (res) {
+                if (res.success) {
+                    alert("Tiket i termin uspješno prebačeni!");
+                    location.reload();
+                } else {
+                    alert("Greška: " + res.message);
+                }
+            },
+            error: function () {
+                alert("Došlo je do greške prilikom slanja zahtjeva.");
+            }
+        });
+    });
 </script>

@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\adzovic berin\Documents\New folder</_PublishTargetUrl>
-    <History>True|2025-09-11T09:27:01.5430318Z;True|2025-09-10T14:36:06.9869392+02:00;True|2025-08-08T13:28:29.4863484+02:00;True|2025-08-06T09:44:19.0960585+02:00;</History>
+    <History>True|2025-09-15T11:16:27.6907890Z;True|2025-09-11T11:27:01.5430318+02:00;True|2025-09-10T14:36:06.9869392+02:00;True|2025-08-08T13:28:29.4863484+02:00;True|2025-08-06T09:44:19.0960585+02:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -16,10 +16,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/14/2024 10:38:10</publishTime>
     </File>
     <File Include="bin/CC2.dll">
-      <publishTime>09/11/2025 15:11:00</publishTime>
+      <publishTime>09/15/2025 13:16:26</publishTime>
     </File>
     <File Include="bin/CC2.pdb">
-      <publishTime>09/11/2025 15:11:00</publishTime>
+      <publishTime>09/15/2025 13:16:26</publishTime>
     </File>
     <File Include="bin/DataAccess.dll">
       <publishTime>09/11/2025 15:10:59</publishTime>
@@ -1468,19 +1468,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/06/2025 10:53:50</publishTime>
     </File>
     <File Include="Views/Kontakti/Create.cshtml">
-      <publishTime>09/11/2025 13:45:51</publishTime>
+      <publishTime>09/15/2025 13:13:51</publishTime>
     </File>
     <File Include="Views/Kontakti/Edit.cshtml">
       <publishTime>08/08/2025 10:29:37</publishTime>
     </File>
     <File Include="Views/Kontakti/editSales.cshtml">
-      <publishTime>08/08/2025 11:41:36</publishTime>
+      <publishTime>09/15/2025 13:15:12</publishTime>
     </File>
     <File Include="Views/Kontakti/Index.cshtml">
       <publishTime>03/14/2024 10:38:09</publishTime>
     </File>
     <File Include="Views/Kontakti/Kalendar.cshtml">
-      <publishTime>08/13/2025 10:48:15</publishTime>
+      <publishTime>09/15/2025 12:48:07</publishTime>
     </File>
     <File Include="Views/Korisnik/Index.cshtml">
       <publishTime>08/22/2024 09:15:32</publishTime>
@@ -1519,7 +1519,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/14/2024 10:38:09</publishTime>
     </File>
     <File Include="Views/Pregled/Index.cshtml">
-      <publishTime>09/11/2025 11:23:49</publishTime>
+      <publishTime>09/15/2025 12:52:19</publishTime>
     </File>
     <File Include="Views/Pregled/Kontakt.cshtml">
       <publishTime>08/04/2025 15:38:56</publishTime>

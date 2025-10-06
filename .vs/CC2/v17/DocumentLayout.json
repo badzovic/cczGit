@@ -3,44 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\controllers\\kontakticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\kontakticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\kontakti\\kalendar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\kontakti\\kalendar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\controllers\\pregledcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\pregledcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8CC9A97-B63A-496A-A29F-CC20411A5B0A}|DataAccess\\DataAccess.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\dataaccess\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
-      "RelativeMoniker": "D:0:0:{E8CC9A97-B63A-496A-A29F-CC20411A5B0A}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\kontakti\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\kontakti\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\pregled\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\views\\pregled\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\pregled\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\models\\pregled.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\models\\pregled.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\controllers\\kontakticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\kontakticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8CC9A97-B63A-496A-A29F-CC20411A5B0A}|DataAccess\\DataAccess.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\dataaccess\\cc_kontakti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8CC9A97-B63A-496A-A29F-CC20411A5B0A}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\cc_kontakti.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\models\\termin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\models\\termin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\pregled\\salesadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\pregled\\salesadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\controllers\\nijedobijencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\nijedobijencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\helpers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\helpers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\controllers\\pregledvracenihcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\pregledvracenihcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\controllers\\pregledcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\pregledcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\cc2\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,135 +50,128 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Kalendar.cshtml",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Kalendar.cshtml",
-              "RelativeDocumentMoniker": "CC2\\Views\\Kontakti\\Kalendar.cshtml",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Kalendar.cshtml",
-              "RelativeToolTip": "CC2\\Views\\Kontakti\\Kalendar.cshtml",
-              "ViewState": "AQIAACUBAAAAAAAAAAAYwE0BAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T12:51:24.792Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Model1.edmx [Diagram1]",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\DataAccess\\Model1.edmx",
-              "RelativeDocumentMoniker": "DataAccess\\Model1.edmx",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\DataAccess\\Model1.edmx [Diagram1]",
-              "RelativeToolTip": "DataAccess\\Model1.edmx [Diagram1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
-              "WhenOpened": "2025-09-11T12:47:56.87Z",
-              "EditorCaption": " [Diagram1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "CC2\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "CC2\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAACUAAAAAAAAAAAAIwEQAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T11:41:50.171Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Create.cshtml",
-              "RelativeDocumentMoniker": "CC2\\Views\\Kontakti\\Create.cshtml",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Create.cshtml",
-              "RelativeToolTip": "CC2\\Views\\Kontakti\\Create.cshtml",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACQAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T11:45:07.689Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "KontaktiController.cs",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\KontaktiController.cs",
-              "RelativeDocumentMoniker": "CC2\\Controllers\\KontaktiController.cs",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\KontaktiController.cs",
-              "RelativeToolTip": "CC2\\Controllers\\KontaktiController.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAswHQAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T09:10:02.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Pregled\\Index.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Pregled\\Index.cshtml",
               "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Pregled\\Index.cshtml",
               "RelativeToolTip": "CC2\\Views\\Pregled\\Index.cshtml",
-              "ViewState": "AQIAAMwBAAAAAAAAAAAYwNkBAADBAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T09:19:02.879Z",
+              "WhenOpened": "2025-09-29T08:55:33.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Termin.cs",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Models\\Termin.cs",
+              "RelativeDocumentMoniker": "CC2\\Models\\Termin.cs",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Models\\Termin.cs",
+              "RelativeToolTip": "CC2\\Models\\Termin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T08:39:25.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Kalendar.cshtml",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Kalendar.cshtml",
+              "RelativeDocumentMoniker": "CC2\\Views\\Kontakti\\Kalendar.cshtml",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Kalendar.cshtml",
+              "RelativeToolTip": "CC2\\Views\\Kontakti\\Kalendar.cshtml",
+              "ViewState": "AQIAAKgAAAAAAAAAAAAIwLwAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-17T09:05:22.839Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Pregled.cs",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Models\\Pregled.cs",
-              "RelativeDocumentMoniker": "CC2\\Models\\Pregled.cs",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Models\\Pregled.cs",
-              "RelativeToolTip": "CC2\\Models\\Pregled.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwBoAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "PregledVracenihController.cs",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\PregledVracenihController.cs",
+              "RelativeDocumentMoniker": "CC2\\Controllers\\PregledVracenihController.cs",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\PregledVracenihController.cs",
+              "RelativeToolTip": "CC2\\Controllers\\PregledVracenihController.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAgwBYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T09:05:16.123Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-16T11:13:44.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NijedobijenController.cs",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\NijedobijenController.cs",
+              "RelativeDocumentMoniker": "CC2\\Controllers\\NijedobijenController.cs",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\NijedobijenController.cs",
+              "RelativeToolTip": "CC2\\Controllers\\NijedobijenController.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAIBJwE8AAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T11:13:32.773Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "CC_KONTAKTI.cs",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\DataAccess\\CC_KONTAKTI.cs",
-              "RelativeDocumentMoniker": "DataAccess\\CC_KONTAKTI.cs",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\DataAccess\\CC_KONTAKTI.cs",
-              "RelativeToolTip": "DataAccess\\CC_KONTAKTI.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAQwCsAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T09:03:05.325Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "PregledController.cs",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\PregledController.cs",
               "RelativeDocumentMoniker": "CC2\\Controllers\\PregledController.cs",
               "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\PregledController.cs",
               "RelativeToolTip": "CC2\\Controllers\\PregledController.cs",
-              "ViewState": "AQIAAJkAAAAAAAAAAAAowLQAAAApAAAA",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAkwIUAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-11T08:54:47.207Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-16T11:06:33.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Helpers\\BaseController.cs",
+              "RelativeDocumentMoniker": "CC2\\Helpers\\BaseController.cs",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Helpers\\BaseController.cs",
+              "RelativeToolTip": "CC2\\Helpers\\BaseController.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAwwBkAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T11:05:53.081Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "CC2\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "CC2\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAADsAAAAAAAAAAMBdwE0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-16T11:04:51.334Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KontaktiController.cs",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\KontaktiController.cs",
+              "RelativeDocumentMoniker": "CC2\\Controllers\\KontaktiController.cs",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\KontaktiController.cs",
+              "RelativeToolTip": "CC2\\Controllers\\KontaktiController.cs",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAswF8AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T11:04:36.572Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "SalesAdmin.cshtml",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Pregled\\SalesAdmin.cshtml",
-              "RelativeDocumentMoniker": "CC2\\Views\\Pregled\\SalesAdmin.cshtml",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Pregled\\SalesAdmin.cshtml",
-              "RelativeToolTip": "CC2\\Views\\Pregled\\SalesAdmin.cshtml",
-              "ViewState": "AQIAAGMAAAAAAAAAAAArwIUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-11T08:54:18.474Z",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "CC2\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "CC2\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T11:04:35.623Z",
               "EditorCaption": ""
             }
           ]

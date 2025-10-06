@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using CC2.Helpers;
 using CC2.Models;
 using DataAccess;
 
 namespace CC2.Controllers
 {
-    public class KorisnikController : Controller
+    public class KorisnikController : BaseController
     {
         private CCEntities efContext = new CCEntities();
 

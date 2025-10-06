@@ -15,7 +15,7 @@ namespace CC2.Models
         public int? KONTAKT_ID { get; set; }
         public string Boja { get; set; }
         public string BrojKartica { get; set; }
-
+        public string RoleId { get; set; }
         public DateTime? KRAJ { get; set; }
 
         public string UserId { get; set; }

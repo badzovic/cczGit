@@ -8,10 +8,11 @@ using NLog;
 using CC2.Models;
 using System.IO;
 using System.Data.Entity;
+using CC2.Helpers;
 
 namespace CC2.Controllers
 {
-    public class NovostiController : Controller
+    public class NovostiController : BaseController
     {
         CCEntities efContext = new CCEntities();
 
