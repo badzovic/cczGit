@@ -181,6 +181,9 @@
                                                              ? Model.terminEndDate.Value.ToString("yyyy-MM-ddTHH:mm")
                                                              : ""
                                                 })
+
+
+
                                             </div>
                                         </div>
                                         <p>&nbsp;</p>
@@ -190,7 +193,23 @@
                                                 style="border:none;">
                                         </iframe>
                                         <p>&nbsp;</p>
-
+                                        <div class="col-6">
+                                            <label class="form-label">VVL datum</label>
+                                            @Html.TextBoxFor(x => x.vvl, new { @type = "date", @class = "form-control", placeholder = "Odaberite datum (obavezno prije prodaje)" })
+                                            @Html.ValidationMessageFor(x => x.vvl)
+                                        </div>
+                                        <p>&nbsp;</p> 
+                                        <div class="col-6">
+                                            <label class="form-label d-block">Vrsta prodaje</label>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="vrstaProdaje" id="verkaufNeu" value="Verkauf Neu">
+                                                <label class="form-check-label" for="verkaufNeu">Verkauf Neu</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="vrstaProdaje" id="verkaufVVL" value="Verkauf VVL">
+                                                <label class="form-check-label" for="verkaufVVL">Verkauf VVL</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     @*<p>&nbsp;</p>
                                         <div id="additionalElements">
@@ -207,6 +226,7 @@
 
                                         <a style="margin-left:5%;" href="#" onclick="return nijeZainteresovan(@Model.Id)" class="btn btn-outline-secondary">Nije zainteresovan</a>
                                         <a href="#" onclick="return uPregovorima(@Model.Id)" class="btn btn-outline-secondary">U pregovorima</a>
+                                        <a href="#" onclick="return KIVVL(@Model.Id)" class="btn btn-outline-secondary">KI - VVL</a>
                                         <a class="btn btn-outline-secondary open-nijeDobijen"
                                            data-kontakt-id="@Model.Id"
                                            data-termin-id="@Model.terminId"
@@ -214,7 +234,7 @@
                                             Nije dobijen
                                         </a>
 
-                                        <a style="margin-left:1%;" href="#" onclick="return prodat(@Model.Id)" class="btn btn-primary">             PRODAT             </a>
+                                        <a id="btnProdat" style="margin-left:1%;" href="#" onclick="return prodat(@Model.Id)" class="btn btn-primary">PRODAT</a>
 
                                         <a style="margin-left:17%;" href="#" onclick="goBack()" class="btn btn-primary">Nazad</a>
                                     </div>
@@ -388,16 +408,42 @@
 
 
 <script>
-    function prodat(itemId) {
+   function prodat(itemId) {
+       var vvlDatum = document.querySelector("[name='vvl']").value;
+       var vrstaProdaje = document.querySelector('input[name="vrstaProdaje"]:checked');
 
-        var confirmResult = confirm("Jeste li sigurni?");
-
-        if (confirmResult) {
-            // If the user clicks "OK", continue to the action
-            window.location.href = "@Url.Action("prodat", "Pregled")" + "?id=" + @Model.Id;
+        if (!vvlDatum) {
+            alert("❗ Morate unijeti VVL datum prije nego što označite kontakt kao PRODAT.");
+            return false;
         }
 
-        // Return false to prevent the default link behavior
+        if (!vrstaProdaje) {
+           alert("❗ Morate odabrati vrstu prodaje (Verkauf Neu ili Verkauf VVL).");
+           return false;
+        }
+
+       var potvrda = confirm("Jeste li sigurni da želite označiti kontakt kao PRODAT?");
+       if (!potvrda) return false;
+
+        // AJAX-a
+        $.ajax({
+            url: "/Pregled/prodat",
+            type: "POST",
+            data: JSON.stringify({ id: itemId, vvlDatum: vvlDatum, vrstaProdaje: vrstaProdaje.value }),
+            contentType: "application/json",
+            success: function (res) {
+                if (res.success) {
+                    alert("Kontakt je uspješno označen kao PRODAT.");
+                    window.location.href = "/Pregled";
+                } else {
+                    alert("⚠️ Greška: " + res.message);
+                }
+            },
+            error: function () {
+                alert("❌ Došlo je do greške prilikom slanja zahtjeva.");
+            }
+        });
+
         return false;
     }
 </script>
@@ -455,6 +501,19 @@
         // Return false to prevent the default link behavior
         return false;
     }
+
+     function KIVVL(itemId) {
+
+     var confirmResult = confirm("Jeste li sigurni?");
+
+     if (confirmResult) {
+         // If the user clicks "OK", continue to the action
+         window.location.href = "@Url.Action("kivvl", "Pregled")" + "?id=" + @Model.Id;
+     }
+
+     // Return false to prevent the default link behavior
+     return false;
+ }
 </script>
 
 <script>

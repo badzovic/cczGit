@@ -1,0 +1,81 @@
+﻿@model CC2.Models.Pregled
+
+@{
+    ViewBag.Title = "Pregled VVL kontakata";
+}
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"></script>
+
+<main class="main-content position-relative border-radius-lg ">
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5 class="mb-0"> VVL kontakti</h5>
+                        <p class="text-sm mb-0">Sortirano po najranijem datumu.</p>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-flush" id="datatable-vvl">
+                            <thead class="thead-light">
+                                <tr style="text-align:center;">
+                                    <th>Rb</th>
+                                    <th>Firma</th>
+                                    <th>Broj kartica</th>
+                                    <th>Adresa</th>
+                                    <th>PLZ</th>
+                                    <th>Telefon</th>
+                                    <th>VVL datum</th>
+                                    <th>Sljedeći termin</th>
+                                    <th>Pregledaj</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.kontaktiSales)
+                                {
+                                    <tr>
+                                        <td>@item.Kontakt.ID</td>
+                                        <td>@item.Kontakt.FIRMA</td>
+                                        <td>@item.Kontakt.BROJ_KARTICA</td>
+                                        <td>@item.Kontakt.ADRESA</td>
+                                        <td>@item.Kontakt.PLZ</td>
+                                        <td>@item.Kontakt.PREFIX @item.Kontakt.BROJ</td>
+                                        <td>@item.Kontakt.VVL_DATUM</td>
+                                        <td>
+                                            @(item.SljedeciTermin.HasValue
+                                                ? item.SljedeciTermin.Value.ToString("dd.MM.yyyy HH:mm")
+                                                : "-")
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-outline-primary btn-sm"
+                                               href="@Url.Action("kontaktSales", "Pregled", new { id = item.Kontakt.ID })">
+                                                Otvori
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dataTable = new simpleDatatables.DataTable("#datatable-vvl", {
+            searchable: true,
+            fixedHeight: true,
+            perPageSelect: [10, 25, 50],
+            labels: {
+                placeholder: "Pretraži...",
+                perPage: "Redova po stranici",
+                noRows: "Nema podataka",
+                info: "Prikazano {start} - {end} od {rows}"
+            }
+        });
+    });
+</script>

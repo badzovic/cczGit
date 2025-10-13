@@ -104,6 +104,9 @@
     <Property Name="DATUM_DODJELE" Type="datetime" />
     <Property Name="FIRMA" Type="nvarchar" MaxLength="200" />
     <Property Name="BROJ_KARTICA" Type="nvarchar" MaxLength="50" />
+    <Property Name="VVL_DATUM" Type="datetime" />
+    <Property Name="KIVVL" Type="nvarchar" MaxLength="50" />
+    <Property Name="VRSTA_PRODAJE" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="DRZAVE">
     <Key>
@@ -143,6 +146,7 @@
     <Property Name="TERMIN_ID" Type="int" />
     <Property Name="VRACEN_MARKETINGU" Type="nvarchar" MaxLength="5" />
     <Property Name="STATUS_ID" Type="int" />
+    <Property Name="VVL_DATUM" Type="datetime" />
   </EntityType>
   <EntityType Name="STATISTIKA">
     <Key>

@@ -2,7 +2,9 @@
 @using CC2.Models
 <!DOCTYPE html>
 
-
+@{
+    var userId = User.Identity.GetUserId();
+}
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -54,6 +56,18 @@
                 </a>
                 <div class="collapse  show " id="dashboardsExamples">
                     <ul class="nav ms-4">
+
+                        @if (userId == "303a59cb-7019-4060-8f27-8cb33c89833a"
+                            || userId == "9eadd004-a508-4f7f-a4ac-ca510ff4c390")
+                        {
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Kontakti/Vvl">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> VVL kontakti </span>
+                                </a>
+                            </li>
+                        }
+
                         @if ((!User.IsInRole("adminsales")) && (!User.IsInRole("kontrola")) && (!User.IsInRole("adminmarketing")))
                         {
                             <li class="nav-item ">
@@ -82,6 +96,13 @@
                                 <a class="nav-link " href="/Pregled/SalesAdmin">
                                     <span class="sidenav-mini-icon"> L </span>
                                     <span class="sidenav-normal"> Pregled </span>
+
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link " href="/Kivvl">
+                                    <span class="sidenav-mini-icon"> V </span>
+                                    <span class="sidenav-normal"> KI VVL </span>
 
                                 </a>
                             </li>
@@ -142,9 +163,10 @@
                                 <span class="sidenav-normal"> Nije dobijen </span>
                                 <span class="badge bg-danger" style="margin-left:8px;">@ViewBag.countNijeDobijen</span>
 
-                                
+
                             </a>
                         </li>
+
                         <li class="nav-item ">
                             <a class="nav-link " href="/Pregled/Mojikreirani">
                                 <span class="sidenav-mini-icon"> L </span>

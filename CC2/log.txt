@@ -976,3 +976,47 @@
 2025-09-29 11:01:06.1096 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
 2025-10-01 12:17:05.7499 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
 2025-10-01 12:19:31.9607 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-08 10:49:39.2167 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-08 10:50:37.4700 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-08 11:10:17.9173 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-08 11:13:36.4606 Info Korisnik sales2@cc.com je označio kontakt 2184 kao PRODAT (VVL datum: 31.10.2025).
+2025-10-08 11:18:48.7748 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-08 11:20:10.7379 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-08 11:23:10.0659 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-08 11:28:16.0569 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-08 11:29:33.7613 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-08 11:40:54.6257 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-09 15:06:54.0698 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-09 15:17:53.9829 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-09 15:21:35.1710 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-09 15:23:42.9600 Info Korisnik sales1@cc.com je označio kontakt 2193 kao PRODAT (VVL datum: 30.10.2025).
+2025-10-09 15:24:27.2975 Info Korisnik sales1@cc.com je označio kontakt 2191 kao PRODAT (VVL datum: 31.10.2025).
+2025-10-09 15:24:50.1177 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-09 15:26:02.6629 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-09 15:26:26.9525 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-09 15:34:21.6631 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-09 15:38:15.0639 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-09 15:43:27.0531 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-09 15:44:47.8117 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-09 15:46:37.2086 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-09 15:51:14.6129 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-09 15:51:48.7843 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-09 15:54:48.4899 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-09 15:57:45.4485 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-09 15:58:58.6261 Info Korisnik sales1@cc.com je označio kontakt 2190 kao PRODAT (VVL datum: 16.10.2025).
+2025-10-09 15:59:29.6824 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-09 16:00:06.4869 Info Korisnik sales2@cc.com je označio kontakt 2165 kao PRODAT (VVL datum: 17.10.2025).
+2025-10-09 16:00:19.4315 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-09 16:01:21.1155 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-13 11:12:07.0356 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-13 11:18:45.2822 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-13 11:22:01.2846 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-13 11:22:26.0013 Info Korisnik sales1@cc.com je označio kontakt 2189 kao PRODAT (VVL datum: 24.10.2025).
+2025-10-13 11:23:59.7222 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-13 11:32:29.7192 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-13 11:33:05.4163 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-13 11:33:36.7219 Info Korisnik sales1@cc.com je označio kontakt 2171 kao PRODAT (VVL datum: 24.10.2025).
+2025-10-13 11:33:42.8219 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-13 11:34:26.4017 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-13 11:34:53.1149 Info Korisnik sales1@cc.com je označio kontakt 117 kao PRODAT (VVL datum: 17.10.2025).
+2025-10-13 11:35:35.9943 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju

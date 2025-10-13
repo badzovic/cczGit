@@ -50,6 +50,9 @@ namespace DataAccess
         public Nullable<System.DateTime> DATUM_DODJELE { get; set; }
         public string FIRMA { get; set; }
         public string BROJ_KARTICA { get; set; }
+        public Nullable<System.DateTime> VVL_DATUM { get; set; }
+        public string KIVVL { get; set; }
+        public string VRSTA_PRODAJE { get; set; }
     
         public virtual AspNetRoles AspNetRoles { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }

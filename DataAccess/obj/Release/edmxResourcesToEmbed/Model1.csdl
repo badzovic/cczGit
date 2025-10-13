@@ -202,6 +202,9 @@
     <Property Name="DATUM_DODJELE" Type="DateTime" Precision="3" />
     <Property Name="FIRMA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="BROJ_KARTICA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VVL_DATUM" Type="DateTime" Precision="3" />
+    <Property Name="KIVVL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VRSTA_PRODAJE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DRZAVE">
     <Key>
@@ -246,6 +249,7 @@
     <NavigationProperty Name="AspNetUsers2" Relationship="CCModel.FK_KONTAKTI_AspNetUsers2" FromRole="KONTAKTI" ToRole="AspNetUsers" />
     <NavigationProperty Name="AspNetUsers3" Relationship="CCModel.FK_KONTAKTI_AspNetUsers3" FromRole="KONTAKTI" ToRole="AspNetUsers" />
     <NavigationProperty Name="TERMINI" Relationship="CCModel.FK_KONTAKTI_TERMINI" FromRole="KONTAKTI" ToRole="TERMINI" />
+    <Property Name="VVL_DATUM" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="STATISTIKA">
     <Key>

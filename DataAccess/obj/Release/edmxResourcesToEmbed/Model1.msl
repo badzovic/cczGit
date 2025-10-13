@@ -71,6 +71,9 @@
     <EntitySetMapping Name="CC_KONTAKTI">
       <EntityTypeMapping TypeName="CCModel.CC_KONTAKTI">
         <MappingFragment StoreEntitySet="CC_KONTAKTI">
+          <ScalarProperty Name="VRSTA_PRODAJE" ColumnName="VRSTA_PRODAJE" />
+          <ScalarProperty Name="KIVVL" ColumnName="KIVVL" />
+          <ScalarProperty Name="VVL_DATUM" ColumnName="VVL_DATUM" />
           <ScalarProperty Name="BROJ_KARTICA" ColumnName="BROJ_KARTICA" />
           <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
           <ScalarProperty Name="DATUM_DODJELE" ColumnName="DATUM_DODJELE" />
@@ -121,6 +124,7 @@
     <EntitySetMapping Name="KONTAKTI">
       <EntityTypeMapping TypeName="CCModel.KONTAKTI">
         <MappingFragment StoreEntitySet="KONTAKTI">
+          <ScalarProperty Name="VVL_DATUM" ColumnName="VVL_DATUM" />
           <ScalarProperty Name="STATUS_ID" ColumnName="STATUS_ID" />
           <ScalarProperty Name="VRACEN_MARKETINGU" ColumnName="VRACEN_MARKETINGU" />
           <ScalarProperty Name="TERMIN_ID" ColumnName="TERMIN_ID" />

@@ -53,6 +53,19 @@
                     <div class="table-responsive">
                         <form method="get" action="@Url.Action("SalesAdmin", "Pregled")" class="form-inline mb-3">
                             <div class="form-group mr-3" style="width: 50%;">
+                                <label for="vrstaProdajeFilter" class="mr-2">Vrsta prodaje:  </label>
+                                @Html.DropDownList(
+                                    "vrstaProdajeFilter",
+                                    new List<SelectListItem> {
+                                        new SelectListItem { Text = "Sve vrste", Value = "" },
+                                        new SelectListItem { Text = "Verkauf Neu", Value = "Verkauf Neu", Selected = (ViewBag.SelectedVrstaProdaje == "Verkauf Neu") },
+                                        new SelectListItem { Text = "Verkauf VVL", Value = "Verkauf VVL", Selected = (ViewBag.SelectedVrstaProdaje == "Verkauf VVL") }
+                                    },
+                                    new { @class = "form-control", @id = "vrstaProdajeFilter" }
+                                )
+                            </div>
+
+                            <div class="form-group mr-3" style="width: 50%;">
                                 <label for="statusFilter" class="mr-2">Filter po statusu:</label>
                                 @Html.DropDownListFor(m => m.filter, new List<SelectListItem> {
                                     new SelectListItem { Text = "Prikazi sve", Value = "" },
@@ -62,6 +75,7 @@
                                     new SelectListItem { Text = "PRODAT", Value = "PRODAT", Selected = (ViewBag.SelectedFilter == "PRODAT") }
                                 }, new { @class = "form-control", @id = "statusFilter" })
                             </div>
+
                             <div class="form-group mr-3" style="width: 50%;">
                                 <label for="agentFilter" class="mr-2">Filter po agentu:</label>
                                 @Html.DropDownListFor(m => m.SelectedAgentId, new SelectList(Model.Users, "Id", "Email", ViewBag.SelectedAgentId), "Svi agenti", new { @class = "form-control", @id = "agentFilter" })
@@ -95,6 +109,7 @@
 
                                         <th>Broj tel.</th>
 
+                                        <th>Vrsta prodaje</th>
 
                                         <th>Status</th>
 
@@ -140,6 +155,9 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PREFIX @item.Kontakt.BROJ</td>
 
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">
+                                                @(string.IsNullOrEmpty(item.Kontakt.VRSTA_PRODAJE) ? "-" : item.Kontakt.VRSTA_PRODAJE)
+                                            </td>
 
                                             @if (item.Kontakt.PRODAT == "Y")
                                             {
@@ -549,7 +567,7 @@
             // Resetovanje vrednosti filtera
             $("#statusFilter").val("");
             $("#agentFilter").val("");
-
+            $("#vrstaProdajeFilter").val("");
             // Postavi clearFilters parametar na true
             form.append($('<input>').attr('type', 'hidden').attr('name', 'clearFilters').attr('value', 'true'));
 

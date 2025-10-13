@@ -65,7 +65,7 @@ namespace CC2.Controllers
                         .Where(k => k.TRENUTNO_KOD_ID == userId
                                  && k.TRENUTNO_GRUPA_ID == "2"
                                  && k.VRACEN_MARKETINGU == null
-                                 && k.PRODAT != "Y")
+                                 && k.PRODAT != "Y" && k.KIVVL != "DA")
                         .OrderByDescending(k => k.ID)
                 );
             }
@@ -75,7 +75,7 @@ namespace CC2.Controllers
                     efContext.CC_KONTAKTI
                         .Where(k => k.TRENUTNO_GRUPA_ID == "4"
                                  && k.VRACENO_SA_KONTROLE == null
-                                 && k.PRODAT != "Y")
+                                 && k.PRODAT != "Y" && k.KIVVL != "DA")
                         .OrderByDescending(k => k.DATETIME_UPDATED)
                 );
             }
@@ -83,7 +83,7 @@ namespace CC2.Controllers
             {
                 pregled.kontrola = GetKontaktiSaTerminima(
                     efContext.CC_KONTAKTI
-                        .Where(k => k.TRENUTNO_GRUPA_ID == "6" && k.PRODAT != "Y")
+                        .Where(k => k.TRENUTNO_GRUPA_ID == "6" && k.PRODAT != "Y" && k.KIVVL != "DA")
                         .OrderByDescending(k => k.ID)
                 );
             }
@@ -95,7 +95,8 @@ namespace CC2.Controllers
                                  && k.PRODAT != "Y"
                                  && k.SALES_NIJE_ZAINTERESOVAN != "Y"
                                  && k.U_PREGOVORIMA != "Y"
-                                 && k.NIJE_DOBIJEN != "Y")
+                                 && k.NIJE_DOBIJEN != "Y"
+                                 && k.KIVVL != "DA")
                         .OrderByDescending(k => k.ID)
                 );
             }
@@ -107,7 +108,7 @@ namespace CC2.Controllers
                                  && k.TRENUTNO_KOD_ID == userId
                                  && k.NIJE_DOBIJEN != "Y"
                                  && k.U_PREGOVORIMA != "Y"
-                                 && k.PRODAT != "Y")
+                                 && k.PRODAT != "Y" && k.KIVVL != "DA")
                         .OrderByDescending(k => k.DATETIME_CREATED)
                 );
             }
@@ -290,13 +291,14 @@ namespace CC2.Controllers
             return RedirectToAction("Index", "Pregled");
         }
         [Authorize]
-        public ActionResult SalesAdmin(string filter, string SelectedAgentId, bool clearFilters = false)
+        public ActionResult SalesAdmin(string filter, string SelectedAgentId, string vrstaProdajeFilter, bool clearFilters = false)
         {
             if (clearFilters)
             {
                 // Očisti filtere iz sesije
                 Session["SelectedFilter"] = null;
                 Session["SelectedAgentId"] = null;
+                Session["SelectedVrstaProdaje"] = null; 
                 filter = null;
                 SelectedAgentId = null;
             }
@@ -315,6 +317,8 @@ namespace CC2.Controllers
                 {
                     Session["SelectedAgentId"] = SelectedAgentId;
                 }
+                if (!string.IsNullOrEmpty(vrstaProdajeFilter))
+                    Session["SelectedVrstaProdaje"] = vrstaProdajeFilter;
                 else
                 {
                     SelectedAgentId = Session["SelectedAgentId"] as string;
@@ -391,6 +395,10 @@ namespace CC2.Controllers
                 {
                     query = query.Where(k => k.TRENUTNO_GRUPA_ID == "5" || k.TRENUTNO_GRUPA_ID == "3");
                 }
+                if (!string.IsNullOrEmpty(vrstaProdajeFilter))
+                {
+                    query = query.Where(k => k.VRSTA_PRODAJE == vrstaProdajeFilter);
+                }
 
                 pregled.kontaktiSalesAdminSvi = query
                  .GroupJoin(
@@ -415,6 +423,7 @@ namespace CC2.Controllers
 
             ViewBag.SelectedFilter = filter;
             ViewBag.SelectedAgentId = SelectedAgentId;
+            ViewBag.SelectedVrstaProdaje = vrstaProdajeFilter;
 
             return View(pregled);
         }
@@ -545,6 +554,7 @@ namespace CC2.Controllers
             }
 
 
+
             if (user.IsInRole("adminsales"))
             {
                 TempData["Success"] = "Uspješno ste oznacili kontakt kao u pregovorima!";
@@ -558,6 +568,52 @@ namespace CC2.Controllers
 
 
         }
+
+
+        [Authorize]
+        public ActionResult kivvl(int id)
+        {
+
+            var kontakt = efContext.CC_KONTAKTI.Find(id);
+            var user = HttpContext.User;
+            var username = user.Identity.Name;
+            var userId = User.Identity.GetUserId();
+
+            using (var transaction = efContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    kontakt.NIJE_DOBIJEN = null;
+                    kontakt.KIVVL = "DA";
+                    kontakt.TRENUTNO_GRUPA_ID = "5";
+                    kontakt.TRENUTNO_KOD_ID = "50fbd40f-2379-49cd-9776-dc2fad1fa562";
+                    kontakt.DATETIME_UPDATED = DateTime.Now;
+                    int results2 = efContext.SaveChanges();
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error("Greska na metodi KIVVL get." + " " + ex.Message);
+
+                }
+            }
+
+
+
+            if (user.IsInRole("adminsales"))
+            {
+                TempData["Success"] = "Uspješno ste oznacili kontakt kao u KI VVL!";
+
+                return RedirectToAction("SalesAdmin", "Pregled");
+            }
+
+            TempData["Success"] = "Uspješno ste oznacili kontakt kao u KI VVL!";
+
+            return RedirectToAction("Index", "Pregled");
+
+
+        }
+
 
         [Authorize]
         public ActionResult nijeZainteresovanSales(int id)
@@ -634,6 +690,44 @@ namespace CC2.Controllers
                 }
                 catch (Exception ex)
                 {
+                    return Json(new { success = false, message = ex.Message });
+                }
+            }
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public JsonResult prodat(int id, DateTime vvlDatum, string vrstaProdaje)
+        {
+            var kontakt = efContext.CC_KONTAKTI.Find(id);
+            var userId = User.Identity.GetUserId();
+            var username = User.Identity.Name;
+
+            using (var transaction = efContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    kontakt.PRODAT = "Y";
+                    kontakt.TRENUTNO_GRUPA_ID = "5";
+                    kontakt.TRENUTNO_KOD_ID = "50fbd40f-2379-49cd-9776-dc2fad1fa562";
+                    kontakt.FINALIZIRAO_ID = userId;
+                    kontakt.DATETIME_UPDATED = DateTime.Now;
+                    kontakt.VRSTA_PRODAJE = vrstaProdaje;
+                    // 🔹 Postavi tačan datum koji korisnik odabrao
+                    kontakt.VVL_DATUM = vvlDatum;
+
+                    efContext.SaveChanges();
+                    transaction.Commit();
+
+                    _logger.Info($"Korisnik {username} je označio kontakt {id} kao PRODAT (VVL datum: {vvlDatum:dd.MM.yyyy}).");
+
+                    return Json(new { success = true });
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    _logger.Error("Greška u metodi prodat: " + ex.Message);
                     return Json(new { success = false, message = ex.Message });
                 }
             }

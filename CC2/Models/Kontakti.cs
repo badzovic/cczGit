@@ -35,5 +35,7 @@ namespace CC2.Models
         public string vracenSakontrole { get; set; }
         public List<Termin> Termini { get; set; }
         public DateTime? terminEndDate { get; set; }
+        public DateTime? vvl { get; set; }
+
     }
 }

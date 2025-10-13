@@ -41,6 +41,7 @@ namespace DataAccess
         public Nullable<int> TERMIN_ID { get; set; }
         public string VRACEN_MARKETINGU { get; set; }
         public Nullable<int> STATUS_ID { get; set; }
+        public Nullable<System.DateTime> VVL_DATUM { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual AspNetUsers AspNetUsers1 { get; set; }

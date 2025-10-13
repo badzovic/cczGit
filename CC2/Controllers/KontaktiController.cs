@@ -32,6 +32,13 @@ namespace CC2.Controllers
         [HttpGet]
         public ActionResult Kalendar(int? id)
         {
+            var specialUserIds = new List<string>
+                {
+                    "303a59cb-7019-4060-8f27-8cb33c89833a",// Test
+                    "9eadd004-a508-4f7f-a4ac-ca510ff4c390" // Dino
+                };
+
+
             using (var efContext = new CCEntities())
             {
                 //var kontakt = efContext.CC_KONTAKTI.Find(id);
@@ -97,10 +104,48 @@ namespace CC2.Controllers
                         efContext.AspNetUsers.Any(u => u.Id == t.USER_ID /*&& u.Main == "Y"*/)
                         || t.USER_ID == loggedUserId);
                 }
-              
+
 
 
                 var terminiRaw = terminiRawQuery.ToList();
+
+                if (specialUserIds.Contains(loggedUserId))
+                {
+                    var vvlKontakti = efContext.CC_KONTAKTI
+                        .Where(k => k.VVL_DATUM != null)
+                        .Select(k => new
+                        {
+                            KONTAKT_ID = k.ID,
+                            DATUM = k.VVL_DATUM,
+                            FIRMA = k.FIRMA,
+                            KARTICA = k.BROJ_KARTICA
+                        })
+                        .ToList();
+
+                    foreach (var vvl in vvlKontakti)
+                    {
+                        bool postoji = terminiRaw.Any(t =>
+                            t.KONTAKT_ID == vvl.KONTAKT_ID &&
+                            t.DATUM == vvl.DATUM);
+
+                        if (!postoji)
+                        {
+                            terminiRaw.Add(new
+                            {
+                                id = 0,
+                                DATUM = (DateTime?)vvl.DATUM,
+                                END = (DateTime?)vvl.DATUM,
+                                EMAIL = "VVL",
+                                NAZIV = "VVL",
+                                KONTAKT_ID = (int?)vvl.KONTAKT_ID,
+                                USER_ID = loggedUserId,
+                                ROLE_ID = loggedUserRoleId,
+                                brojKartica = vvl.KARTICA,
+                                Main = "VV"
+                            });
+                        }
+                    }
+                }
 
                 var termini = terminiRaw
                  .Select(t => new Termin
@@ -115,8 +160,8 @@ namespace CC2.Controllers
                       .Select(k => k.FIRMA)
                       .FirstOrDefault() + " - " + t.EMAIL),
                      Boja = (t.Main == "Y" ? "#f1c40f" :   // žuta
-                t.Main == "YY" ? "#2ecc71" :   // zelena
-                t.Main == "YYY" ? "#e74c3c" :   //crvena
+                 t.Main == "YY" ? "#2ecc71" :   // zelena
+                 t.Main == "YYY" ? "#e74c3c" :   //crvena
                  t.Main == "YYYY" ? "#1545c2" : // plava
                                   "#9b59b6"),
                      UserId = t.USER_ID,
@@ -124,6 +169,22 @@ namespace CC2.Controllers
                      BrojKartica = t.brojKartica,
                      RoleId = t.ROLE_ID
                  }).ToList();
+
+
+
+                // ako je logovani korisnik jedan od njih — zamijeni nazive i boje za VVL termine
+                if (specialUserIds.Contains(loggedUserId))
+                {
+                    foreach (var t in termini)
+                    {
+                        var kontakt = efContext.CC_KONTAKTI.FirstOrDefault(k => k.ID == t.KONTAKT_ID);
+                        if (kontakt?.VVL_DATUM != null)
+                        {
+                            t.NAZIV = "VVL - " + kontakt.FIRMA;          
+                            t.Boja = "#db1091";       
+                        }
+                    }
+                }
 
 
                 model.Termini = termini;
@@ -163,7 +224,7 @@ namespace CC2.Controllers
                                           Main = u.Main
                                       };
 
-               
+
 
                 var terminiRaw = terminiRawQuery.ToList();
 
@@ -594,6 +655,43 @@ namespace CC2.Controllers
 
             return RedirectToAction("Index", "Pregled");
         }
+
+
+        [Authorize]
+        public ActionResult Vvl()
+        {
+            Pregled pregled = new Pregled();
+
+            // Učitaj aktivne sales agente (isti princip kao u Index)
+            var roleIds = new[] { "2", "3", "5" };
+            var agents = (from ur in efContext.AspNetUserRoles
+                          join u in efContext.AspNetUsers on ur.UserId equals u.Id
+                          where roleIds.Contains(ur.RoleId)
+                                && u.Active == "Y"
+                                && u.Deleted != "Y"
+                          select new UserInfo
+                          {
+                              Id = u.Id,
+                              Email = u.Email
+                          }).ToList();
+            pregled.Users = agents;
+
+            var user = HttpContext.User;
+            var userId = User.Identity.GetUserId();
+
+
+            var kontaktiSaVvl = efContext.CC_KONTAKTI
+                .Where(k => k.VVL_DATUM != null)
+                .OrderBy(k => k.VVL_DATUM);
+
+            // Uključi termine pomoću tvoje postojeće helper metode
+            pregled.kontaktiSales = GetKontaktiSaTerminima(kontaktiSaVvl);
+
+            return View(pregled);
+        }
+
+
+
         [HttpPost]
         public JsonResult ZakaziTermin(int kontaktId, DateTime start, DateTime end)
         {
@@ -696,7 +794,8 @@ namespace CC2.Controllers
                     komentar = contactToEdit.KOMENTAR,
                     terminId = contactToEdit.TERMIN_ID,
                     vracenMarketingu = contactToEdit.VRACEN_MARKETINGU,
-                    vracenSakontrole = contactToEdit.VRACENO_SA_KONTROLE
+                    vracenSakontrole = contactToEdit.VRACENO_SA_KONTROLE,
+                    vvl = contactToEdit.VVL_DATUM
 
                 };
                 if (contactToEdit.TERMIN_ID.HasValue)
@@ -986,6 +1085,35 @@ namespace CC2.Controllers
             int hash = input.GetHashCode();
             Random rand = new Random(hash);
             return $"#{rand.Next(0x1000000):X6}";
+        }
+
+        private List<KontaktSaTerminima> GetKontaktiSaTerminima(IQueryable<CC_KONTAKTI> query)
+        {
+            return query
+                .GroupJoin(
+                    efContext.TERMINI,
+                    kontakt => kontakt.ID,
+                    termin => termin.KONTAKT_ID,
+                    (kontakt, termini) => new { kontakt, termini }
+                )
+                .Select(x => new KontaktSaTerminima
+                {
+                    Kontakt = x.kontakt,
+                    SljedeciTermin = x.termini
+                        .Where(t => t.DATUM >= DateTime.Now)
+                        .OrderBy(t => t.DATUM)
+                        .Select(t => (DateTime?)t.DATUM)
+                        .FirstOrDefault(),
+                    SljedeciTerminId = x.termini
+                    .Where(t => t.DATUM >= DateTime.Now)
+                    .OrderBy(t => t.DATUM)
+                    .Select(t => (int?)t.ID)
+                    .FirstOrDefault()
+
+                })
+                .OrderBy(x => x.SljedeciTermin ?? DateTime.MaxValue)
+                .ThenByDescending(x => x.Kontakt.ID)
+                .ToList();
         }
     }
 }

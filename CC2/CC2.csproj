@@ -214,6 +214,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KivvlController.cs" />
     <Compile Include="Controllers\KontaktiController.cs" />
     <Compile Include="Controllers\KorisnikController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -659,6 +660,8 @@
     <Content Include="Views\Novosti\Index.cshtml" />
     <Content Include="Views\Novosti\dodaj.cshtml" />
     <Content Include="Views\Kontakti\Kalendar.cshtml" />
+    <Content Include="Views\Kontakti\Vvl.cshtml" />
+    <Content Include="Views\Kivvl\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
