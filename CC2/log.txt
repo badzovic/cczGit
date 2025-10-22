@@ -1020,3 +1020,90 @@
 2025-10-13 11:34:26.4017 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
 2025-10-13 11:34:53.1149 Info Korisnik sales1@cc.com je označio kontakt 117 kao PRODAT (VVL datum: 17.10.2025).
 2025-10-13 11:35:35.9943 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-17 11:50:32.8010 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-17 11:51:49.1080 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-17 11:52:51.9564 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-20 14:09:40.7097 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-20 14:17:21.6577 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-20 14:19:58.3549 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-20 14:21:46.7415 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-20 14:23:07.8927 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-20 14:23:27.3085 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-20 14:23:40.2357 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-20 14:24:11.5498 Info Korisnik sales2@cc.com je označio kontakt 2199 kao PRODAT (VVL datum: 23.10.2025).
+2025-10-20 14:24:20.1565 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-20 14:24:37.6264 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-20 14:27:00.9829 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-20 14:37:12.5705 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-20 14:41:24.9909 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-20 14:53:17.4632 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-20 15:02:10.1023 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-20 15:05:24.3094 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-20 15:05:52.9433 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-20 15:06:01.5339 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-20 15:53:58.2841 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-21 10:51:31.6992 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 10:55:31.5346 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 10:57:52.7365 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 11:11:06.8509 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 11:20:43.3997 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 11:23:36.6591 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 11:28:11.4672 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 11:30:23.1446 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 11:41:30.4984 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 11:46:12.0943 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 11:53:32.1954 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 12:00:39.6483 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 12:06:24.2410 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 12:09:06.3460 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 12:23:53.6647 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 12:26:08.3854 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 12:29:47.9363 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 12:34:01.6383 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 13:38:24.6525 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 13:53:31.9294 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 13:57:12.3578 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 14:05:04.5095 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 14:09:05.5965 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 14:20:03.9154 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 14:21:05.1288 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 14:24:11.8478 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 14:27:35.8282 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 15:05:53.8441 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-21 15:09:29.8890 Info Korisnik sales4@cc.com se ulogovao na aplikaciju
+2025-10-21 15:09:58.3393 Info Korisnik sales4@cc.com je označio kontakt 2194 kao PRODAT (VVL datum: 24.10.2025).
+2025-10-21 15:10:14.8970 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 15:10:35.5720 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 15:11:22.3012 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 15:11:36.7828 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-21 15:12:47.8029 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-21 15:21:02.1382 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-21 15:22:45.2014 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-21 15:29:04.9260 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-21 15:35:50.9002 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-21 15:38:23.4833 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-21 15:39:33.7281 Info Korisnik sales2@cc.com je označio kontakt 2200 kao PRODAT (VVL datum: 26.10.2025).
+2025-10-21 15:39:48.8538 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-21 15:50:38.9898 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-21 15:51:37.7012 Info Korisnik sales2@cc.com je označio kontakt 2200 kao PRODAT (VVL datum: 10.01.2026).
+2025-10-21 15:54:31.7888 Info Korisnik sales2@cc.com je označio kontakt 2200 kao PRODAT (VVL datum: 22.02.2026).
+2025-10-21 15:55:25.7013 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-21 15:56:02.3799 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-21 15:56:28.1489 Info Korisnik sales2@cc.com je označio kontakt 2200 kao PRODAT (VVL datum: 15.02.2026).
+2025-10-21 16:08:12.6488 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-22 11:42:32.3234 Info Korisnik marketing1@cc.com se ulogovao na aplikaciju
+2025-10-22 11:44:06.6118 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-22 11:44:33.8921 Info Korisnik sales2@cc.com se ulogovao na aplikaciju
+2025-10-22 11:45:09.2013 Info Korisnik sales2@cc.com je označio kontakt 2202 kao PRODAT (VVL datum: 22.01.2026).
+2025-10-22 11:45:14.4924 Info Korisnik sales2@cc.com je označio kontakt 2202 kao PRODAT (VVL datum: 22.01.2026).
+2025-10-22 11:45:24.4674 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-22 11:45:51.0224 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-22 11:46:56.1160 Info Korisnik sales5@cc.com se ulogovao na aplikaciju
+2025-10-22 11:47:17.4604 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-22 11:47:33.1436 Info Korisnik sales5@cc.com se ulogovao na aplikaciju
+2025-10-22 11:48:14.2283 Info Korisnik sales5@cc.com je označio kontakt 2202 kao PRODAT (VVL datum: 17.10.2027).
+2025-10-22 11:48:32.1086 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-22 11:49:05.2714 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-22 11:49:12.4111 Info Korisnik sales1@cc.com se ulogovao na aplikaciju
+2025-10-22 11:49:35.4345 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju
+2025-10-22 11:58:32.8625 Info Korisnik salesadmin@cc.com se ulogovao na aplikaciju

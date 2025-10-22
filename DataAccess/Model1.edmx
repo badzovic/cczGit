@@ -112,6 +112,31 @@
           <Property Name="VVL_DATUM" Type="datetime" />
           <Property Name="KIVVL" Type="nvarchar" MaxLength="50" />
           <Property Name="VRSTA_PRODAJE" Type="nvarchar" MaxLength="50" />
+          <Property Name="KOMENTAR2" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CC_KONTAKTI_OBRISANI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORIGINAL_ID" Type="int" Nullable="false" />
+          <Property Name="FIRMA" Type="nvarchar" MaxLength="200" />
+          <Property Name="IME" Type="nvarchar" MaxLength="100" />
+          <Property Name="PREZIME" Type="nvarchar" MaxLength="100" />
+          <Property Name="ADRESA" Type="nvarchar" MaxLength="200" />
+          <Property Name="PLZ" Type="nvarchar" MaxLength="50" />
+          <Property Name="DRZAVA" Type="nvarchar" MaxLength="100" />
+          <Property Name="GRAD" Type="nvarchar" MaxLength="100" />
+          <Property Name="PREFIX" Type="nvarchar" MaxLength="10" />
+          <Property Name="BROJ" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="VRSTA_PRODAJE" Type="nvarchar" MaxLength="50" />
+          <Property Name="BROJ_KARTICA" Type="nvarchar" MaxLength="50" />
+          <Property Name="VVL_DATUM" Type="datetime" />
+          <Property Name="KOMENTAR" Type="nvarchar(max)" />
+          <Property Name="DATETIME_OBRISAN" Type="datetime" Nullable="false" />
+          <Property Name="OBRISAO_ID" Type="nvarchar" MaxLength="128" />
+          <Property Name="OBRISAO_USERNAME" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="DRZAVE">
           <Key>
@@ -119,6 +144,16 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KONTAKT_HISTORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KONTAKT_ID" Type="int" />
+          <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="CHANGED_AT" Type="datetime" />
+          <Property Name="CREATED_AT" Type="datetime" />
         </EntityType>
         <EntityType Name="KONTAKTI">
           <Key>
@@ -304,6 +339,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_KONTAKT_HISTORY_KONTAKT_HISTORY">
+          <End Role="KONTAKT_HISTORY" Type="Self.KONTAKT_HISTORY" Multiplicity="1" />
+          <End Role="KONTAKT_HISTORY1" Type="Self.KONTAKT_HISTORY" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="KONTAKT_HISTORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KONTAKT_HISTORY1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_KONTAKTI_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="KONTAKTI" Type="Self.KONTAKTI" Multiplicity="*" />
@@ -396,7 +443,9 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CC_KONTAKTI" EntityType="Self.CC_KONTAKTI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CC_KONTAKTI_OBRISANI" EntityType="Self.CC_KONTAKTI_OBRISANI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DRZAVE" EntityType="Self.DRZAVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KONTAKT_HISTORY" EntityType="Self.KONTAKT_HISTORY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KONTAKTI" EntityType="Self.KONTAKTI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STATISTIKA" EntityType="Self.STATISTIKA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STATUS" EntityType="Self.STATUS" Schema="dbo" store:Type="Tables" />
@@ -434,6 +483,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KONTAKT_HISTORY_KONTAKT_HISTORY" Association="Self.FK_KONTAKT_HISTORY_KONTAKT_HISTORY">
+            <End Role="KONTAKT_HISTORY" EntitySet="KONTAKT_HISTORY" />
+            <End Role="KONTAKT_HISTORY1" EntitySet="KONTAKT_HISTORY" />
           </AssociationSet>
           <AssociationSet Name="FK_KONTAKTI_AspNetUsers" Association="Self.FK_KONTAKTI_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -543,6 +596,12 @@
             <End Role="KONTAKTI" EntitySet="KONTAKTI" />
           </AssociationSet>
           <EntitySet Name="UPLOADEDFILES" EntityType="CCModel.UPLOADEDFILES" />
+          <EntitySet Name="KONTAKT_HISTORY" EntityType="CCModel.KONTAKT_HISTORY" />
+          <AssociationSet Name="FK_KONTAKT_HISTORY_KONTAKT_HISTORY" Association="CCModel.FK_KONTAKT_HISTORY_KONTAKT_HISTORY">
+            <End Role="KONTAKT_HISTORY" EntitySet="KONTAKT_HISTORY" />
+            <End Role="KONTAKT_HISTORY1" EntitySet="KONTAKT_HISTORY" />
+          </AssociationSet>
+          <EntitySet Name="CC_KONTAKTI_OBRISANI" EntityType="CCModel.CC_KONTAKTI_OBRISANI" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -673,6 +732,7 @@
           <Property Name="VVL_DATUM" Type="DateTime" Precision="3" />
           <Property Name="KIVVL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VRSTA_PRODAJE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KOMENTAR2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DRZAVE">
           <Key>
@@ -957,6 +1017,54 @@
           <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="FILEPATH" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="KONTAKT_HISTORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KONTAKT_ID" Type="Int32" />
+          <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CHANGED_AT" Type="DateTime" Precision="3" />
+          <Property Name="CREATED_AT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="KONTAKT_HISTORY1" Relationship="CCModel.FK_KONTAKT_HISTORY_KONTAKT_HISTORY" FromRole="KONTAKT_HISTORY" ToRole="KONTAKT_HISTORY1" />
+          <NavigationProperty Name="KONTAKT_HISTORY2" Relationship="CCModel.FK_KONTAKT_HISTORY_KONTAKT_HISTORY" FromRole="KONTAKT_HISTORY1" ToRole="KONTAKT_HISTORY" />
+        </EntityType>
+        <Association Name="FK_KONTAKT_HISTORY_KONTAKT_HISTORY">
+          <End Type="CCModel.KONTAKT_HISTORY" Role="KONTAKT_HISTORY" Multiplicity="1" />
+          <End Type="CCModel.KONTAKT_HISTORY" Role="KONTAKT_HISTORY1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="KONTAKT_HISTORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="KONTAKT_HISTORY1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CC_KONTAKTI_OBRISANI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORIGINAL_ID" Type="Int32" Nullable="false" />
+          <Property Name="FIRMA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PREZIME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ADRESA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PLZ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DRZAVA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GRAD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PREFIX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BROJ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="VRSTA_PRODAJE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BROJ_KARTICA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VVL_DATUM" Type="DateTime" Precision="3" />
+          <Property Name="KOMENTAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DATETIME_OBRISAN" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OBRISAO_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="OBRISAO_USERNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1033,6 +1141,7 @@
           <EntitySetMapping Name="CC_KONTAKTI">
             <EntityTypeMapping TypeName="CCModel.CC_KONTAKTI">
               <MappingFragment StoreEntitySet="CC_KONTAKTI">
+                <ScalarProperty Name="KOMENTAR2" ColumnName="KOMENTAR2" />
                 <ScalarProperty Name="VRSTA_PRODAJE" ColumnName="VRSTA_PRODAJE" />
                 <ScalarProperty Name="KIVVL" ColumnName="KIVVL" />
                 <ScalarProperty Name="VVL_DATUM" ColumnName="VVL_DATUM" />
@@ -1165,6 +1274,42 @@
               <MappingFragment StoreEntitySet="UPLOADEDFILES">
                 <ScalarProperty Name="FILEPATH" ColumnName="FILEPATH" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KONTAKT_HISTORY">
+            <EntityTypeMapping TypeName="CCModel.KONTAKT_HISTORY">
+              <MappingFragment StoreEntitySet="KONTAKT_HISTORY">
+                <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+                <ScalarProperty Name="CHANGED_AT" ColumnName="CHANGED_AT" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="KONTAKT_ID" ColumnName="KONTAKT_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CC_KONTAKTI_OBRISANI">
+            <EntityTypeMapping TypeName="CCModel.CC_KONTAKTI_OBRISANI">
+              <MappingFragment StoreEntitySet="CC_KONTAKTI_OBRISANI">
+                <ScalarProperty Name="OBRISAO_USERNAME" ColumnName="OBRISAO_USERNAME" />
+                <ScalarProperty Name="OBRISAO_ID" ColumnName="OBRISAO_ID" />
+                <ScalarProperty Name="DATETIME_OBRISAN" ColumnName="DATETIME_OBRISAN" />
+                <ScalarProperty Name="KOMENTAR" ColumnName="KOMENTAR" />
+                <ScalarProperty Name="VVL_DATUM" ColumnName="VVL_DATUM" />
+                <ScalarProperty Name="BROJ_KARTICA" ColumnName="BROJ_KARTICA" />
+                <ScalarProperty Name="VRSTA_PRODAJE" ColumnName="VRSTA_PRODAJE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+                <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+                <ScalarProperty Name="GRAD" ColumnName="GRAD" />
+                <ScalarProperty Name="DRZAVA" ColumnName="DRZAVA" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+                <ScalarProperty Name="PREZIME" ColumnName="PREZIME" />
+                <ScalarProperty Name="IME" ColumnName="IME" />
+                <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+                <ScalarProperty Name="ORIGINAL_ID" ColumnName="ORIGINAL_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

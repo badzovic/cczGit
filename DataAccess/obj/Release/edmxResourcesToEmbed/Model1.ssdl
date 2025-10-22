@@ -107,6 +107,7 @@
     <Property Name="VVL_DATUM" Type="datetime" />
     <Property Name="KIVVL" Type="nvarchar" MaxLength="50" />
     <Property Name="VRSTA_PRODAJE" Type="nvarchar" MaxLength="50" />
+    <Property Name="KOMENTAR2" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="DRZAVE">
     <Key>

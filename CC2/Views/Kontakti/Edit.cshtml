@@ -153,11 +153,16 @@
                                   
 
                                     <div class="row">
-                                      
+
                                         <div class="col-12">
-                                            <label for="Komentar" class="form-label">Komentar</label>
-                                            @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "Komentar" })
+                                            <label for="Komentar" class="form-label">Kommentar Termin</label>
+                                            @Html.TextAreaFor(m => m.komentar, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "KommentarTermin" })
                                             @Html.ValidationMessageFor(m => m.komentar)
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="Komentar" class="form-label">Komentar Prodaja</label>
+                                            @Html.TextAreaFor(m => m.komentar2, new { @class = "form-control", rows = "6", placeholder = "Komentar...", @tabindex = "5", @style = "border-color: #d3d3d3;", id = "KomentarProdaja" })
+                                            @Html.ValidationMessageFor(m => m.komentar2)
                                         </div>
                                     </div>
                                     <p>&nbsp;</p>

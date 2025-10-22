@@ -233,6 +233,7 @@
     </Compile>
     <Compile Include="Helpers\BaseController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AgentStatsViewModel.cs" />
     <Compile Include="Models\Dashboard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Kontakti.cs" />
@@ -242,6 +243,7 @@
     <Compile Include="Models\PregledKontakta.cs" />
     <Compile Include="Models\PregledVracenih.cs" />
     <Compile Include="Models\Statistika.cs" />
+    <Compile Include="Models\StatsFilterViewModel.cs" />
     <Compile Include="Models\Termin.cs" />
     <Compile Include="Models\UploadedFile.cs" />
     <Compile Include="Models\UserInfo.cs" />
@@ -662,6 +664,7 @@
     <Content Include="Views\Kontakti\Kalendar.cshtml" />
     <Content Include="Views\Kontakti\Vvl.cshtml" />
     <Content Include="Views\Kivvl\Index.cshtml" />
+    <Content Include="Views\Statistika\Pregled.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

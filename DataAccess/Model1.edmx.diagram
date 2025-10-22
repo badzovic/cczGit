@@ -34,6 +34,9 @@
         <AssociationConnector Association="CCModel.FK_TERMINI_AspNetUsers" />
         <AssociationConnector Association="CCModel.FK_KONTAKTI_TERMINI" />
         <EntityTypeShape EntityType="CCModel.UPLOADEDFILES" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CCModel.KONTAKT_HISTORY" Width="1.5" PointX="5.375" PointY="3.75" />
+        <AssociationConnector Association="CCModel.FK_KONTAKT_HISTORY_KONTAKT_HISTORY" />
+        <EntityTypeShape EntityType="CCModel.CC_KONTAKTI_OBRISANI" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

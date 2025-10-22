@@ -33,21 +33,14 @@ namespace CC2.Controllers
         public ActionResult Kalendar(int? id)
         {
             var specialUserIds = new List<string>
-                {
-                    "303a59cb-7019-4060-8f27-8cb33c89833a",// Test
-                    "9eadd004-a508-4f7f-a4ac-ca510ff4c390" // Dino
-                };
-
+            {
+                "303a59cb-7019-4060-8f27-8cb33c89833a", // Test
+                "9eadd004-a508-4f7f-a4ac-ca510ff4c390"  // Dino
+            };
 
             using (var efContext = new CCEntities())
             {
-                //var kontakt = efContext.CC_KONTAKTI.Find(id);
-
-                //if (kontakt == null)
-                //    return HttpNotFound();
                 var model = new Kontakti();
-
-
 
                 var loggedUserId = User.Identity.GetUserId();
                 var loggedUserRoleId = efContext.AspNetUserRoles
@@ -55,6 +48,7 @@ namespace CC2.Controllers
                     .Select(r => r.RoleId)
                     .FirstOrDefault();
 
+                // Ako je prosleđen konkretan kontakt
                 if (id.HasValue)
                 {
                     var kontakt = efContext.CC_KONTAKTI.Find(id.Value);
@@ -67,12 +61,11 @@ namespace CC2.Controllers
                 }
                 else
                 {
-                    model.Id = 0; // ili ostavi null ako tvoj View to podržava
+                    model.Id = 0;
                     model.firma = "Svi kontakti";
                 }
 
-
-
+                // Učitavanje termina sa korisnicima i kontaktima
                 var terminiRawQuery = from t in efContext.TERMINI
                                       join ur in efContext.AspNetUserRoles on t.USER_ID.ToString() equals ur.UserId
                                       join u in efContext.AspNetUsers on ur.UserId equals u.Id
@@ -91,24 +84,34 @@ namespace CC2.Controllers
                                           brojKartica = k != null ? k.BROJ_KARTICA.ToString() : "0",
                                           Main = u.Main
                                       };
-                // FILTRIRANJE PO ULOGAMA
-                //if (loggedUserRoleId == "3") // SALES
-                //{
-                //    // vidi samo svoje termine
-                //    terminiRawQuery = terminiRawQuery.Where(t => t.USER_ID == loggedUserId);
-                //}
+
+                // Filtriranje po ulozi
                 if (loggedUserRoleId == "2") // MARKETING
                 {
-                    // vidi termine agenata gdje je Main = "Y" ILI svoje vlastite termine
+                    // vidi termine agenata gdje je Main = "Y" ili svoje
                     terminiRawQuery = terminiRawQuery.Where(t =>
-                        efContext.AspNetUsers.Any(u => u.Id == t.USER_ID /*&& u.Main == "Y"*/)
+                        efContext.AspNetUsers.Any(u => u.Id == t.USER_ID)
                         || t.USER_ID == loggedUserId);
+                }
+
+                var terminiRaw = terminiRawQuery.ToList();
+
+                //  Ako korisnik NIJE specijalan — sakrij termine koji pripadaju kontaktima kod specijalnih agenata
+                if (!specialUserIds.Contains(loggedUserId))
+                {
+                    var kontaktiKodSpecijalnih = efContext.CC_KONTAKTI
+                        .Where(k => k.TRENUTNO_KOD_ID != null && specialUserIds.Contains(k.TRENUTNO_KOD_ID))
+                        .Select(k => k.ID)
+                        .ToList();
+
+                    terminiRaw = terminiRaw
+                        .Where(t => !t.KONTAKT_ID.HasValue || !kontaktiKodSpecijalnih.Contains(t.KONTAKT_ID.Value))
+                        .ToList();
                 }
 
 
 
-                var terminiRaw = terminiRawQuery.ToList();
-
+                //  Dodaj VVL termine SAMO za specijalne korisnike
                 if (specialUserIds.Contains(loggedUserId))
                 {
                     var vvlKontakti = efContext.CC_KONTAKTI
@@ -136,7 +139,7 @@ namespace CC2.Controllers
                                 DATUM = (DateTime?)vvl.DATUM,
                                 END = (DateTime?)vvl.DATUM,
                                 EMAIL = "VVL",
-                                NAZIV = "VVL",
+                                NAZIV = "VVL - " + vvl.FIRMA,
                                 KONTAKT_ID = (int?)vvl.KONTAKT_ID,
                                 USER_ID = loggedUserId,
                                 ROLE_ID = loggedUserRoleId,
@@ -146,33 +149,40 @@ namespace CC2.Controllers
                         }
                     }
                 }
+                else
+                {
+                    terminiRaw = terminiRaw
+                        .Where(t => string.IsNullOrEmpty(t.NAZIV)
+                                 || !t.NAZIV.Trim().StartsWith("VVL", StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                }
 
                 var termini = terminiRaw
-                 .Select(t => new Termin
-                 {
-                     ID = t.id,
-                     DATUM = t.DATUM,
-                     KRAJ = t.END,
-                     NAZIV = (loggedUserRoleId == "2")
-                ? ("")
-                : (efContext.CC_KONTAKTI
-                      .Where(k => k.ID == t.KONTAKT_ID)
-                      .Select(k => k.FIRMA)
-                      .FirstOrDefault() + " - " + t.EMAIL),
-                     Boja = (t.Main == "Y" ? "#f1c40f" :   // žuta
-                 t.Main == "YY" ? "#2ecc71" :   // zelena
-                 t.Main == "YYY" ? "#e74c3c" :   //crvena
-                 t.Main == "YYYY" ? "#1545c2" : // plava
-                                  "#9b59b6"),
-                     UserId = t.USER_ID,
-                     KONTAKT_ID = t.KONTAKT_ID,
-                     BrojKartica = t.brojKartica,
-                     RoleId = t.ROLE_ID
-                 }).ToList();
+                    .Select(t => new Termin
+                    {
+                        ID = t.id,
+                        DATUM = t.DATUM,
+                        KRAJ = t.END,
+                        NAZIV = (loggedUserRoleId == "2")
+                            ? ""
+                            : (efContext.CC_KONTAKTI
+                                .Where(k => k.ID == t.KONTAKT_ID)
+                                .Select(k => k.FIRMA)
+                                .FirstOrDefault() + " - " + t.EMAIL),
+                        Boja = (t.Main == "Y" ? "#f1c40f" :   // žuta
+                                t.Main == "YY" ? "#2ecc71" :   // zelena
+                                t.Main == "YYY" ? "#e74c3c" :   // crvena
+                                t.Main == "YYYY" ? "#1545c2" :  // plava
+                                "#9b59b6"),
+                        UserId = t.USER_ID,
+                        KONTAKT_ID = t.KONTAKT_ID,
+                        BrojKartica = t.brojKartica,
+                        RoleId = t.ROLE_ID
+                    })
+                    .ToList();
 
 
-
-                // ako je logovani korisnik jedan od njih — zamijeni nazive i boje za VVL termine
+                // Za specijalne — oboji VVL termine
                 if (specialUserIds.Contains(loggedUserId))
                 {
                     foreach (var t in termini)
@@ -180,19 +190,186 @@ namespace CC2.Controllers
                         var kontakt = efContext.CC_KONTAKTI.FirstOrDefault(k => k.ID == t.KONTAKT_ID);
                         if (kontakt?.VVL_DATUM != null)
                         {
-                            t.NAZIV = "VVL - " + kontakt.FIRMA;          
-                            t.Boja = "#db1091";       
+                            t.NAZIV = "VVL - " + kontakt.FIRMA;
+                            t.Boja = "#db1091"; // roze-ljubičasta
                         }
                     }
                 }
 
-
                 model.Termini = termini;
                 ViewBag.UserId = loggedUserId;
                 ViewBag.RoleId = loggedUserRoleId;
+
                 return View(model);
             }
         }
+
+
+        //[Authorize]
+        //[HttpGet]
+        //public ActionResult Kalendar(int? id)
+        //{
+        //    var specialUserIds = new List<string>
+        //        {
+        //            "303a59cb-7019-4060-8f27-8cb33c89833a",// Test
+        //            "9eadd004-a508-4f7f-a4ac-ca510ff4c390" // Dino
+        //        };
+
+
+        //    using (var efContext = new CCEntities())
+        //    {
+        //        //var kontakt = efContext.CC_KONTAKTI.Find(id);
+
+        //        //if (kontakt == null)
+        //        //    return HttpNotFound();
+        //        var model = new Kontakti();
+
+
+
+        //        var loggedUserId = User.Identity.GetUserId();
+        //        var loggedUserRoleId = efContext.AspNetUserRoles
+        //            .Where(r => r.UserId == loggedUserId)
+        //            .Select(r => r.RoleId)
+        //            .FirstOrDefault();
+
+        //        if (id.HasValue)
+        //        {
+        //            var kontakt = efContext.CC_KONTAKTI.Find(id.Value);
+        //            if (kontakt == null)
+        //                return HttpNotFound();
+
+        //            model.Id = kontakt.ID;
+        //            model.firma = kontakt.FIRMA;
+        //            model.brojkartica = kontakt.BROJ_KARTICA;
+        //        }
+        //        else
+        //        {
+        //            model.Id = 0; // ili ostavi null ako tvoj View to podržava
+        //            model.firma = "Svi kontakti";
+        //        }
+
+
+
+        //        var terminiRawQuery = from t in efContext.TERMINI
+        //                              join ur in efContext.AspNetUserRoles on t.USER_ID.ToString() equals ur.UserId
+        //                              join u in efContext.AspNetUsers on ur.UserId equals u.Id
+        //                              join kTemp in efContext.CC_KONTAKTI on t.KONTAKT_ID equals kTemp.ID into kontaktJoin
+        //                              from k in kontaktJoin.DefaultIfEmpty()
+        //                              select new
+        //                              {
+        //                                  id = t.ID,
+        //                                  DATUM = t.DATUM,
+        //                                  END = t.DATUM_KRAJA,
+        //                                  EMAIL = u.Email,
+        //                                  NAZIV = t.NAZIV,
+        //                                  KONTAKT_ID = t.KONTAKT_ID,
+        //                                  USER_ID = t.USER_ID.ToString(),
+        //                                  ROLE_ID = ur.RoleId,
+        //                                  brojKartica = k != null ? k.BROJ_KARTICA.ToString() : "0",
+        //                                  Main = u.Main
+        //                              };
+        //        // FILTRIRANJE PO ULOGAMA
+        //        //if (loggedUserRoleId == "3") // SALES
+        //        //{
+        //        //    // vidi samo svoje termine
+        //        //    terminiRawQuery = terminiRawQuery.Where(t => t.USER_ID == loggedUserId);
+        //        //}
+        //        if (loggedUserRoleId == "2") // MARKETING
+        //        {
+        //            // vidi termine agenata gdje je Main = "Y" ILI svoje vlastite termine
+        //            terminiRawQuery = terminiRawQuery.Where(t =>
+        //                efContext.AspNetUsers.Any(u => u.Id == t.USER_ID /*&& u.Main == "Y"*/)
+        //                || t.USER_ID == loggedUserId);
+        //        }
+
+
+
+        //        var terminiRaw = terminiRawQuery.ToList();
+
+        //        if (specialUserIds.Contains(loggedUserId))
+        //        {
+        //            var vvlKontakti = efContext.CC_KONTAKTI
+        //                .Where(k => k.VVL_DATUM != null)
+        //                .Select(k => new
+        //                {
+        //                    KONTAKT_ID = k.ID,
+        //                    DATUM = k.VVL_DATUM,
+        //                    FIRMA = k.FIRMA,
+        //                    KARTICA = k.BROJ_KARTICA
+        //                })
+        //                .ToList();
+
+        //            foreach (var vvl in vvlKontakti)
+        //            {
+        //                bool postoji = terminiRaw.Any(t =>
+        //                    t.KONTAKT_ID == vvl.KONTAKT_ID &&
+        //                    t.DATUM == vvl.DATUM);
+
+        //                if (!postoji)
+        //                {
+        //                    terminiRaw.Add(new
+        //                    {
+        //                        id = 0,
+        //                        DATUM = (DateTime?)vvl.DATUM,
+        //                        END = (DateTime?)vvl.DATUM,
+        //                        EMAIL = "VVL",
+        //                        NAZIV = "VVL",
+        //                        KONTAKT_ID = (int?)vvl.KONTAKT_ID,
+        //                        USER_ID = loggedUserId,
+        //                        ROLE_ID = loggedUserRoleId,
+        //                        brojKartica = vvl.KARTICA,
+        //                        Main = "VV"
+        //                    });
+        //                }
+        //            }
+        //        }
+
+        //        var termini = terminiRaw
+        //         .Select(t => new Termin
+        //         {
+        //             ID = t.id,
+        //             DATUM = t.DATUM,
+        //             KRAJ = t.END,
+        //             NAZIV = (loggedUserRoleId == "2")
+        //        ? ("")
+        //        : (efContext.CC_KONTAKTI
+        //              .Where(k => k.ID == t.KONTAKT_ID)
+        //              .Select(k => k.FIRMA)
+        //              .FirstOrDefault() + " - " + t.EMAIL),
+        //             Boja = (t.Main == "Y" ? "#f1c40f" :   // žuta
+        //         t.Main == "YY" ? "#2ecc71" :   // zelena
+        //         t.Main == "YYY" ? "#e74c3c" :   //crvena
+        //         t.Main == "YYYY" ? "#1545c2" : // plava
+        //                          "#9b59b6"),
+        //             UserId = t.USER_ID,
+        //             KONTAKT_ID = t.KONTAKT_ID,
+        //             BrojKartica = t.brojKartica,
+        //             RoleId = t.ROLE_ID
+        //         }).ToList();
+
+
+
+        //        // ako je logovani korisnik jedan od njih — zamijeni nazive i boje za VVL termine
+        //        if (specialUserIds.Contains(loggedUserId))
+        //        {
+        //            foreach (var t in termini)
+        //            {
+        //                var kontakt = efContext.CC_KONTAKTI.FirstOrDefault(k => k.ID == t.KONTAKT_ID);
+        //                if (kontakt?.VVL_DATUM != null)
+        //                {
+        //                    t.NAZIV = "VVL - " + kontakt.FIRMA;          
+        //                    t.Boja = "#db1091";       
+        //                }
+        //            }
+        //        }
+
+
+        //        model.Termini = termini;
+        //        ViewBag.UserId = loggedUserId;
+        //        ViewBag.RoleId = loggedUserRoleId;
+        //        return View(model);
+        //    }
+        //}
 
         [HttpGet]
         public ActionResult GetAllTermini()
@@ -471,6 +648,7 @@ namespace CC2.Controllers
                         efKontakti.DOSTUPNOST = kontakt.dostupnost;
                         efKontakti.MOGUCA_INVESTICIJA = kontakt.investicija;
                         efKontakti.KOMENTAR = kontakt.komentar;
+                        efKontakti.KOMENTAR2 = kontakt.komentar2;
                         efKontakti.DATETIME_CREATED = DateTime.Now;
                         efKontakti.AKTIVAN = "Y";
                         efKontakti.FIRMA = kontakt.firma;
@@ -540,6 +718,7 @@ namespace CC2.Controllers
                         efKontakti.DOSTUPNOST = kontakt.dostupnost;
                         efKontakti.MOGUCA_INVESTICIJA = kontakt.investicija;
                         efKontakti.KOMENTAR = kontakt.komentar;
+                        efKontakti.KOMENTAR2 = kontakt.komentar2;
                         efKontakti.DATETIME_CREATED = DateTime.Now;
                         efKontakti.AKTIVAN = "Y";
                         efKontakti.FIRMA = kontakt.firma;
@@ -608,6 +787,7 @@ namespace CC2.Controllers
                         efKontakti.DOSTUPNOST = kontakt.dostupnost;
                         efKontakti.MOGUCA_INVESTICIJA = kontakt.investicija;
                         efKontakti.KOMENTAR = kontakt.komentar;
+                        efKontakti.KOMENTAR2 = kontakt.komentar2;
                         efKontakti.DATETIME_CREATED = DateTime.Now;
                         efKontakti.AKTIVAN = "Y";
                         efKontakti.FIRMA = kontakt.firma;
@@ -662,7 +842,18 @@ namespace CC2.Controllers
         {
             Pregled pregled = new Pregled();
 
-            // Učitaj aktivne sales agente (isti princip kao u Index)
+          
+            var salesAgenti = efContext.AspNetUsers
+                .Join(efContext.AspNetUserRoles, u => u.Id, ur => ur.UserId, (u, ur) => new { u, ur.RoleId })
+                .Where(x => x.RoleId == "3" && x.u.Active == "Y" && x.u.Deleted != "Y")
+                .Select(x => new SelectListItem
+                {
+                    Value = x.u.Id,
+                    Text = x.u.UserName
+                })
+                .ToList();
+            ViewBag.SalesAgenti = salesAgenti;
+
             var roleIds = new[] { "2", "3", "5" };
             var agents = (from ur in efContext.AspNetUserRoles
                           join u in efContext.AspNetUsers on ur.UserId equals u.Id
@@ -676,15 +867,11 @@ namespace CC2.Controllers
                           }).ToList();
             pregled.Users = agents;
 
-            var user = HttpContext.User;
-            var userId = User.Identity.GetUserId();
-
-
             var kontaktiSaVvl = efContext.CC_KONTAKTI
                 .Where(k => k.VVL_DATUM != null)
-                .OrderBy(k => k.VVL_DATUM);
+                .OrderBy(k => k.VVL_DATUM)
+                .AsQueryable();
 
-            // Uključi termine pomoću tvoje postojeće helper metode
             pregled.kontaktiSales = GetKontaktiSaTerminima(kontaktiSaVvl);
 
             return View(pregled);
@@ -792,6 +979,7 @@ namespace CC2.Controllers
                     dostupnost = contactToEdit.DOSTUPNOST,
                     investicija = contactToEdit.MOGUCA_INVESTICIJA,
                     komentar = contactToEdit.KOMENTAR,
+                    komentar2 = contactToEdit.KOMENTAR2,
                     terminId = contactToEdit.TERMIN_ID,
                     vracenMarketingu = contactToEdit.VRACEN_MARKETINGU,
                     vracenSakontrole = contactToEdit.VRACENO_SA_KONTROLE,
@@ -853,35 +1041,38 @@ namespace CC2.Controllers
                     efKontaktiToUpdate.FAX = kontakt.fax;
                     efKontaktiToUpdate.DOSTUPNOST = kontakt.dostupnost;
                     efKontaktiToUpdate.MOGUCA_INVESTICIJA = kontakt.investicija + " - " + DateTime.Now;
-                    if (kontakt.komentar == null || string.IsNullOrWhiteSpace(kontakt.komentar.Trim()))
-                    {
-                        // Ako je unos potpuno prazan – očisti KOMENTAR u bazi
-                        efKontaktiToUpdate.KOMENTAR = null;
-                    }
-                    else
-                    {
-                        var noviKomentari = kontakt.komentar
-                            .Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries)
-                            .Select(line => line.Trim())
-                            .Where(line => !string.IsNullOrWhiteSpace(line))
-                            .Distinct()
-                            .ToList();
+                    efKontaktiToUpdate.KOMENTAR = kontakt.komentar;
+                    efKontaktiToUpdate.KOMENTAR2 = kontakt.komentar2;
 
-                        var stariKomentar = efKontaktiToUpdate.KOMENTAR ?? "";
-                        var linijePostojece = stariKomentar.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    //if (kontakt.komentar == null || string.IsNullOrWhiteSpace(kontakt.komentar.Trim()))
+                    //{
+                    //    // Ako je unos potpuno prazan – očisti KOMENTAR u bazi
+                    //    efKontaktiToUpdate.KOMENTAR = null;
+                    //}
+                    //else
+                    //{
+                    //    var noviKomentari = kontakt.komentar
+                    //        .Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries)
+                    //        .Select(line => line.Trim())
+                    //        .Where(line => !string.IsNullOrWhiteSpace(line))
+                    //        .Distinct()
+                    //        .ToList();
 
-                        foreach (var linija in noviKomentari)
-                        {
-                            // Ne dodaj liniju ako već postoji ista (ignoriramo datum)
-                            if (!linijePostojece.Any(x => x.EndsWith(linija)))
-                            {
-                                var zapis = $"[{DateTime.Now:dd.MM.yyyy. HH:mm}] {linija}";
-                                stariKomentar = zapis + "\n" + stariKomentar;
-                            }
-                        }
+                    //    var stariKomentar = efKontaktiToUpdate.KOMENTAR ?? "";
+                    //    var linijePostojece = stariKomentar.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
-                        efKontaktiToUpdate.KOMENTAR = stariKomentar.Trim();
-                    }
+                    //    foreach (var linija in noviKomentari)
+                    //    {
+                    //        // Ne dodaj liniju ako već postoji ista (ignoriramo datum)
+                    //        if (!linijePostojece.Any(x => x.EndsWith(linija)))
+                    //        {
+                    //            var zapis = $"[{DateTime.Now:dd.MM.yyyy. HH:mm}] {linija}";
+                    //            stariKomentar = zapis + "\n" + stariKomentar;
+                    //        }
+                    //    }
+
+                    //    efKontaktiToUpdate.KOMENTAR = stariKomentar.Trim();
+                    //}
 
                     efKontaktiToUpdate.DATETIME_UPDATED = DateTime.Now;
                     efKontaktiToUpdate.AKTIVAN = "Y";
@@ -965,6 +1156,7 @@ namespace CC2.Controllers
                     dostupnost = contactToEdit.DOSTUPNOST,
                     investicija = contactToEdit.MOGUCA_INVESTICIJA,
                     komentar = contactToEdit.KOMENTAR,
+                    komentar2 = contactToEdit.KOMENTAR2,
                     terminId = contactToEdit.TERMIN_ID,
                     vracenMarketingu = contactToEdit.VRACEN_MARKETINGU,
                     vracenSakontrole = contactToEdit.VRACENO_SA_KONTROLE
@@ -1030,6 +1222,7 @@ namespace CC2.Controllers
                     efKontaktiToUpdate.DOSTUPNOST = kontakt.dostupnost;
                     efKontaktiToUpdate.MOGUCA_INVESTICIJA = kontakt.investicija;
                     efKontaktiToUpdate.KOMENTAR = kontakt.komentar;
+                    efKontaktiToUpdate.KOMENTAR2 = kontakt.komentar2;
                     efKontaktiToUpdate.DATETIME_UPDATED = DateTime.Now;
                     efKontaktiToUpdate.AKTIVAN = "Y";
                     if (kontakt.terminDate != DateTime.MinValue)
@@ -1089,9 +1282,11 @@ namespace CC2.Controllers
 
         private List<KontaktSaTerminima> GetKontaktiSaTerminima(IQueryable<CC_KONTAKTI> query)
         {
+            var now = DateTime.Now;
+
             return query
                 .GroupJoin(
-                    efContext.TERMINI,
+                    this.efContext.TERMINI,   
                     kontakt => kontakt.ID,
                     termin => termin.KONTAKT_ID,
                     (kontakt, termini) => new { kontakt, termini }
@@ -1099,21 +1294,25 @@ namespace CC2.Controllers
                 .Select(x => new KontaktSaTerminima
                 {
                     Kontakt = x.kontakt,
+
                     SljedeciTermin = x.termini
-                        .Where(t => t.DATUM >= DateTime.Now)
+                        .Where(t => t.DATUM >= now)
                         .OrderBy(t => t.DATUM)
                         .Select(t => (DateTime?)t.DATUM)
-                        .FirstOrDefault(),
-                    SljedeciTerminId = x.termini
-                    .Where(t => t.DATUM >= DateTime.Now)
-                    .OrderBy(t => t.DATUM)
-                    .Select(t => (int?)t.ID)
-                    .FirstOrDefault()
+                        .FirstOrDefault()
+                        ?? x.termini.OrderByDescending(t => t.DATUM)
+                                    .Select(t => (DateTime?)t.DATUM)
+                                    .FirstOrDefault(),
 
+                    SljedeciTerminId = x.termini
+                        .OrderByDescending(t => t.DATUM)
+                        .Select(t => (int?)t.ID)
+                        .FirstOrDefault()
                 })
                 .OrderBy(x => x.SljedeciTermin ?? DateTime.MaxValue)
                 .ThenByDescending(x => x.Kontakt.ID)
                 .ToList();
         }
+
     }
 }

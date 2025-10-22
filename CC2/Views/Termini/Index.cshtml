@@ -45,6 +45,11 @@
 
                                 <tr style="text-align:center;">
 
+                                    <th>Ime</th>
+
+                                    <th>Firma</th>
+
+                                    <th>Broj kartica</th>
 
                                     <th>Datum</th>
 
@@ -59,6 +64,13 @@
                                 {
                                     <tr>
 
+
+                                        <td style="text-align:left;" class="text-sm font-weight-normal">@item.NAZIV</td>
+
+
+                                        <td>@ViewBag.Firme[item.ID]</td>
+
+                                        <td>@ViewBag.BrojKartica[item.ID]</td>
 
                                         <td style="text-align:left;" class="text-sm font-weight-normal">@item.DATUM</td>
 

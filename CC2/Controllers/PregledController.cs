@@ -197,6 +197,8 @@ namespace CC2.Controllers
                 kontakt.TRENUTNO_KOD_ID = agentId;
                 kontakt.VRACEN_MARKETINGU = "Y";
                 kontakt.NIJE_DOBIJEN = null;
+                kontakt.PRODAT = null;
+                kontakt.VVL_DATUM = null;
                 // update grupe na osnovu role
                 if (agentRoleId == "2") // marketing
                 {
@@ -614,6 +616,62 @@ namespace CC2.Controllers
 
         }
 
+        [Authorize]
+        [HttpPost]
+        public JsonResult ObrisiKontakt(int id)
+        {
+            var userId = User.Identity.GetUserId();
+            var username = User.Identity.Name;
+
+            using (var transaction = efContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    var kontakt = efContext.CC_KONTAKTI.Find(id);
+                    if (kontakt == null)
+                    {
+                        return Json(new { success = false, message = "Kontakt nije pronađen." });
+                    }
+
+                    var log = new CC_KONTAKTI_OBRISANI
+                    {
+                        ORIGINAL_ID = kontakt.ID,
+                        FIRMA = kontakt.FIRMA,
+                        IME = kontakt.IME,
+                        PREZIME = kontakt.PREZIME,
+                        ADRESA = kontakt.ADRESA,
+                        PLZ = kontakt.PLZ,
+                        DRZAVA = kontakt.DRZAVA,
+                        GRAD = kontakt.GRAD,
+                        PREFIX = kontakt.PREFIX,
+                        BROJ = kontakt.BROJ,
+                        EMAIL = kontakt.EMAIL,
+                        VRSTA_PRODAJE = kontakt.VRSTA_PRODAJE,
+                        BROJ_KARTICA = kontakt.BROJ_KARTICA,
+                        VVL_DATUM = kontakt.VVL_DATUM,
+                        KOMENTAR = kontakt.KOMENTAR ?? kontakt.KOMENTAR2,
+                        DATETIME_OBRISAN = DateTime.Now,
+                        OBRISAO_ID = userId,
+                        OBRISAO_USERNAME = username
+                    };
+
+                    efContext.CC_KONTAKTI_OBRISANI.Add(log);
+
+                    efContext.CC_KONTAKTI.Remove(kontakt);
+
+                    efContext.SaveChanges();
+                    transaction.Commit();
+
+                    return Json(new { success = true });
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    return Json(new { success = false, message = ex.Message });
+                }
+            }
+        }
+
 
         [Authorize]
         public ActionResult nijeZainteresovanSales(int id)
@@ -714,10 +772,20 @@ namespace CC2.Controllers
                     kontakt.FINALIZIRAO_ID = userId;
                     kontakt.DATETIME_UPDATED = DateTime.Now;
                     kontakt.VRSTA_PRODAJE = vrstaProdaje;
-                    // 🔹 Postavi tačan datum koji korisnik odabrao
                     kontakt.VVL_DATUM = vvlDatum;
 
-                    efContext.SaveChanges();
+
+                    var historyEntry = new KONTAKT_HISTORY
+                    {
+                        KONTAKT_ID = id,
+                        STATUS = "prodat",
+                        CREATED_AT = DateTime.Now,
+                        CHANGED_AT = DateTime.Now
+                    };
+
+                    efContext.KONTAKT_HISTORY.Add(historyEntry);
+                    var ok = efContext.SaveChanges();
+
                     transaction.Commit();
 
                     _logger.Info($"Korisnik {username} je označio kontakt {id} kao PRODAT (VVL datum: {vvlDatum:dd.MM.yyyy}).");

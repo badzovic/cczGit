@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+
 
 namespace CC2.Controllers
 {
@@ -38,9 +40,11 @@ namespace CC2.Controllers
             //    .ToList();
 
 
+
             var initialTermini = efContext.TERMINI
-                .Where(x => x.USER_ID == userId && x.DATUM >= datum)
-                .ToList();
+              .Where(x => x.USER_ID == userId && x.DATUM >= datum)
+              .ToList();
+
 
             var filteredTermini = initialTermini
                 .Where(ter => efContext.CC_KONTAKTI
@@ -54,7 +58,28 @@ namespace CC2.Controllers
                 .ToList();
 
 
+            var terminiWithNames = distinctTermini
+             .Select(t => new
+             {
+                 TerminId = t.ID, 
+                 KontaktIme = efContext.CC_KONTAKTI
+                     .Where(k => k.ID == t.KONTAKT_ID)
+                     .Select(k => k.IME + " " + k.PREZIME)
+                     .FirstOrDefault(),
+                 Firma = efContext.CC_KONTAKTI
+                     .Where(k => k.ID == t.KONTAKT_ID)
+                     .Select(k => k.FIRMA)
+                     .FirstOrDefault(),
+                 BrojKartica = efContext.CC_KONTAKTI
+                     .Where(k => k.ID == t.KONTAKT_ID)
+                     .Select(k => k.BROJ_KARTICA)
+                     .FirstOrDefault()
+             })
+             .ToList();
 
+            ViewBag.KontaktImena = terminiWithNames.ToDictionary(x => x.TerminId, x => x.KontaktIme);
+            ViewBag.Firme = terminiWithNames.ToDictionary(x => x.TerminId, x => x.Firma);
+            ViewBag.BrojKartica = terminiWithNames.ToDictionary(x => x.TerminId, x => x.BrojKartica);
 
             list.termini = distinctTermini ?? null;
 

@@ -205,6 +205,7 @@
     <Property Name="VVL_DATUM" Type="DateTime" Precision="3" />
     <Property Name="KIVVL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="VRSTA_PRODAJE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KOMENTAR2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DRZAVE">
     <Key>

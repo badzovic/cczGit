@@ -1,0 +1,186 @@
+﻿@model Dictionary<string, List<CC2.Models.AgentStatsViewModel>>
+@{
+    ViewBag.Title = "Pregled statistike";
+}
+
+<main class="main-content position-relative border-radius-lg ">
+    <div class="container-fluid py-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Statistika - Marketing i Sales</h5>
+            </div>
+
+            <!-- Filter -->
+            <form method="get" class="mb-3">
+                <div style="margin-left:20px;" class="form-inline">
+                    <label for="dateFrom">Od:</label>
+                    <input type="date" id="dateFrom" style="width:50%;" name="dateFrom" value="@ViewBag.DateFrom?.ToString(" yyyy-MM-dd")" class="form-control mx-2" />
+                    <label for="dateTo">Do:</label>
+                    <input type="date" id="dateTo"   style="width:50%;" name="dateTo" value="@ViewBag.DateTo?.ToString(" yyyy-MM-dd")" class="form-control mx-2" />
+                    <br />
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </form>
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="statsTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing" type="button" role="tab">Marketing</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sales-tab" data-bs-toggle="tab" data-bs-target="#sales" type="button" role="tab">Sales</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="statsTabsContent">
+                <!-- MARKETING -->
+                <div class="tab-pane fade show active p-3" id="marketing" role="tabpanel">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Agent</th>
+                                <th>Kreirano</th>
+                                <th>PRODAT</th>
+                                <th>U PREGOVORIMA</th>
+                                <th>NIJE ZAINTERESOVAN</th>
+                                <th>OTVOREN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model["Marketing"].Any())
+                            {
+                                foreach (var item in Model["Marketing"])
+                                {
+                                    <tr>
+                                        <td>@item.AgentName</td>
+                                        <td>@item.TotalCreated</td>
+                                        <td class="text-success fw-bold">@item.TotalProdato</td>
+                                        <td class="text-warning fw-bold">@item.TotalPregovori</td>
+                                        <td class="text-danger fw-bold">@item.TotalNijeZainteresovan</td>
+                                        <td class="text-muted fw-bold">@item.TotalOtvoren</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr><td colspan="6" class="text-center text-muted">Nema podataka za prikaz.</td></tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <canvas id="marketingChart" height="100"></canvas>
+                </div>
+
+
+                <!-- SALES -->
+                <div class="tab-pane fade p-3" id="sales" role="tabpanel">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Agent</th>
+                                <th>Vraćeno marketingu</th>
+                                <th>Nezainteresovan</th>
+                                <th>Prodano</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model["Sales"].Any())
+                            {
+                                foreach (var item in Model["Sales"])
+                                {
+                                    <tr>
+                                        <td>@item.AgentName</td>
+                                        <td>@item.TotalReturned</td>
+                                        <td>@item.TotalNotInterested</td>
+                                        <td>@item.TotalSold</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr><td colspan="4" class="text-center text-muted">Nema podataka za prikaz.</td></tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <canvas id="salesChart" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // MARKETING CHART
+    const marketingLabels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model["Marketing"].Select(m => m.AgentName)));
+    const marketingCreated = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model["Marketing"].Select(m => m.TotalCreated)));
+
+    if (marketingLabels.length > 0) {
+        const ctxMarketing = document.getElementById('marketingChart').getContext('2d');
+        new Chart(ctxMarketing, {
+            type: 'bar',
+            data: {
+                labels: marketingLabels,
+                datasets: [
+                    {
+                        label: 'Kreirano',
+                        data: marketingCreated,
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: {
+                        display: true,
+                        text: 'Marketing - broj kreiranih kontakata po agentu'
+                    }
+                }
+            }
+        });
+    }
+
+
+    // --- SALES CHART ---
+    const salesLabels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model["Sales"].Select(m => m.AgentName)));
+    const salesReturned = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model["Sales"].Select(m => m.TotalReturned)));
+    const salesNotInterested = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model["Sales"].Select(m => m.TotalNotInterested)));
+    const salesSold = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model["Sales"].Select(m => m.TotalSold)));
+
+    if (salesLabels.length > 0) {
+        const ctxSales = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctxSales, {
+            type: 'bar',
+            data: {
+                labels: salesLabels,
+                datasets: [
+                    { label: 'Vraćeno marketingu', data: salesReturned, backgroundColor: 'rgba(255, 206, 86, 0.7)' },
+                    { label: 'Nezainteresovan', data: salesNotInterested, backgroundColor: 'rgba(255, 99, 132, 0.7)' },
+                    { label: 'Prodano', data: salesSold, backgroundColor: 'rgba(75, 192, 192, 0.7)' }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: {
+                        display: true,
+                        text: 'Sales - status kontakata po agentu'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 1 }
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -45,7 +45,12 @@
 
                                 <tr style="text-align:center;">
 
-                                  
+
+                                    <th>Ime</th>
+
+                                    <th>Firma</th>
+
+                                    <th>Broj kartica</th>
 
                                     <th>Datum</th>
 
@@ -58,14 +63,25 @@
                             <tbody>
                                 @foreach (var item in Model.termini)
                                 {
+
                                     <tr>
 
+
+                                        <td style="text-align:left;" class="text-sm font-weight-normal">@item.NAZIV</td>
+
+
+                                        <td>@ViewBag.Firme[item.ID]</td>
+
+                                        <td>@ViewBag.BrojKartica[item.ID]</td>
 
                                         <td style="text-align:left;" class="text-sm font-weight-normal">@item.DATUM</td>
 
                                         <td style="text-align:left;" class="text-sm font-weight-normal"><a style="text-align:center;" href="/Pregled/Kontakt/@item.KONTAKT_ID"><b style="color: darkslategrey">PREGLEDAJ KONTAKT</b></a></td>
 
                                     </tr>
+
+
+                                  
 
                                 }
                             </tbody>

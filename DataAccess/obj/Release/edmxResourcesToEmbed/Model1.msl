@@ -71,6 +71,7 @@
     <EntitySetMapping Name="CC_KONTAKTI">
       <EntityTypeMapping TypeName="CCModel.CC_KONTAKTI">
         <MappingFragment StoreEntitySet="CC_KONTAKTI">
+          <ScalarProperty Name="KOMENTAR2" ColumnName="KOMENTAR2" />
           <ScalarProperty Name="VRSTA_PRODAJE" ColumnName="VRSTA_PRODAJE" />
           <ScalarProperty Name="KIVVL" ColumnName="KIVVL" />
           <ScalarProperty Name="VVL_DATUM" ColumnName="VVL_DATUM" />

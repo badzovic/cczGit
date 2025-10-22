@@ -27,6 +27,8 @@ namespace CC2.Models
         public string investicija { get; set; }
         public DateTime? terminDate { get; set; }
         public string komentar { get; set; }
+        public string komentar2 { get; set; }
+
         public string buttonZainteresovan { get; set; }
         public string buttonSacuvaj { get; set; }
         public string submitButtonHidden { get; set; }

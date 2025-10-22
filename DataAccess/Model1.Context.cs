@@ -39,5 +39,7 @@ namespace DataAccess
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TERMINI> TERMINI { get; set; }
         public virtual DbSet<UPLOADEDFILES> UPLOADEDFILES { get; set; }
+        public virtual DbSet<KONTAKT_HISTORY> KONTAKT_HISTORY { get; set; }
+        public virtual DbSet<CC_KONTAKTI_OBRISANI> CC_KONTAKTI_OBRISANI { get; set; }
     }
 }
