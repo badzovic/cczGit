@@ -109,12 +109,46 @@
     <Property Name="VRSTA_PRODAJE" Type="nvarchar" MaxLength="50" />
     <Property Name="KOMENTAR2" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="CC_KONTAKTI_OBRISANI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ORIGINAL_ID" Type="int" Nullable="false" />
+    <Property Name="FIRMA" Type="nvarchar" MaxLength="200" />
+    <Property Name="IME" Type="nvarchar" MaxLength="100" />
+    <Property Name="PREZIME" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADRESA" Type="nvarchar" MaxLength="200" />
+    <Property Name="PLZ" Type="nvarchar" MaxLength="50" />
+    <Property Name="DRZAVA" Type="nvarchar" MaxLength="100" />
+    <Property Name="GRAD" Type="nvarchar" MaxLength="100" />
+    <Property Name="PREFIX" Type="nvarchar" MaxLength="10" />
+    <Property Name="BROJ" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="150" />
+    <Property Name="VRSTA_PRODAJE" Type="nvarchar" MaxLength="50" />
+    <Property Name="BROJ_KARTICA" Type="nvarchar" MaxLength="50" />
+    <Property Name="VVL_DATUM" Type="datetime" />
+    <Property Name="KOMENTAR" Type="nvarchar(max)" />
+    <Property Name="DATETIME_OBRISAN" Type="datetime" Nullable="false" />
+    <Property Name="OBRISAO_ID" Type="nvarchar" MaxLength="128" />
+    <Property Name="OBRISAO_USERNAME" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="DRZAVE">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="KONTAKT_HISTORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KONTAKT_ID" Type="int" />
+    <Property Name="STATUS" Type="nvarchar" MaxLength="50" />
+    <Property Name="CHANGED_AT" Type="datetime" />
+    <Property Name="CREATED_AT" Type="datetime" />
   </EntityType>
   <EntityType Name="KONTAKTI">
     <Key>
@@ -300,6 +334,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_KONTAKT_HISTORY_KONTAKT_HISTORY">
+    <End Role="KONTAKT_HISTORY" Type="Self.KONTAKT_HISTORY" Multiplicity="1" />
+    <End Role="KONTAKT_HISTORY1" Type="Self.KONTAKT_HISTORY" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="KONTAKT_HISTORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KONTAKT_HISTORY1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_KONTAKTI_AspNetUsers">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
     <End Role="KONTAKTI" Type="Self.KONTAKTI" Multiplicity="*" />
@@ -392,7 +438,9 @@
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CC_KONTAKTI" EntityType="Self.CC_KONTAKTI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CC_KONTAKTI_OBRISANI" EntityType="Self.CC_KONTAKTI_OBRISANI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DRZAVE" EntityType="Self.DRZAVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KONTAKT_HISTORY" EntityType="Self.KONTAKT_HISTORY" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KONTAKTI" EntityType="Self.KONTAKTI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="STATISTIKA" EntityType="Self.STATISTIKA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="STATUS" EntityType="Self.STATUS" Schema="dbo" store:Type="Tables" />
@@ -430,6 +478,10 @@
     <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KONTAKT_HISTORY_KONTAKT_HISTORY" Association="Self.FK_KONTAKT_HISTORY_KONTAKT_HISTORY">
+      <End Role="KONTAKT_HISTORY" EntitySet="KONTAKT_HISTORY" />
+      <End Role="KONTAKT_HISTORY1" EntitySet="KONTAKT_HISTORY" />
     </AssociationSet>
     <AssociationSet Name="FK_KONTAKTI_AspNetUsers" Association="Self.FK_KONTAKTI_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />

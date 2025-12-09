@@ -200,8 +200,15 @@
                                         <p>&nbsp;</p>
                                         <div class="col-6">
                                             <label class="form-label">VVL datum</label>
-                                            @Html.TextBoxFor(x => x.vvl, new { @type = "date", @class = "form-control", placeholder = "Odaberite datum (obavezno prije prodaje)" })
+                                            @Html.TextBoxFor(x => x.vvl, new
+                                              {
+                                                  @type = "date",
+                                                  @class = "form-control",
+                                                  @Value = Model.vvl.HasValue ? Model.vvl.Value.ToString("yyyy-MM-dd") : "",
+                                                  placeholder = "Odaberite datum (obavezno prije prodaje)"
+                                              })
                                             @Html.ValidationMessageFor(x => x.vvl)
+
                                         </div>
                                         <p>&nbsp;</p> 
                                         <div class="col-6">

@@ -97,17 +97,17 @@ namespace CC2.Controllers
                 var terminiRaw = terminiRawQuery.ToList();
 
                 //  Ako korisnik NIJE specijalan — sakrij termine koji pripadaju kontaktima kod specijalnih agenata
-                if (!specialUserIds.Contains(loggedUserId))
-                {
-                    var kontaktiKodSpecijalnih = efContext.CC_KONTAKTI
-                        .Where(k => k.TRENUTNO_KOD_ID != null && specialUserIds.Contains(k.TRENUTNO_KOD_ID))
-                        .Select(k => k.ID)
-                        .ToList();
+                //if (!specialUserIds.Contains(loggedUserId))
+                //{
+                //    var kontaktiKodSpecijalnih = efContext.CC_KONTAKTI
+                //        .Where(k => k.TRENUTNO_KOD_ID != null && specialUserIds.Contains(k.TRENUTNO_KOD_ID))
+                //        .Select(k => k.ID)
+                //        .ToList();
 
-                    terminiRaw = terminiRaw
-                        .Where(t => !t.KONTAKT_ID.HasValue || !kontaktiKodSpecijalnih.Contains(t.KONTAKT_ID.Value))
-                        .ToList();
-                }
+                //    terminiRaw = terminiRaw
+                //        .Where(t => !t.KONTAKT_ID.HasValue || !kontaktiKodSpecijalnih.Contains(t.KONTAKT_ID.Value))
+                //        .ToList();
+                //}
 
 
 
@@ -170,10 +170,11 @@ namespace CC2.Controllers
                                 .Select(k => k.FIRMA)
                                 .FirstOrDefault() + " - " + t.EMAIL),
                         Boja = (t.Main == "Y" ? "#f1c40f" :   // žuta
-                                t.Main == "YY" ? "#2ecc71" :   // zelena
-                                t.Main == "YYY" ? "#e74c3c" :   // crvena
-                                t.Main == "YYYY" ? "#1545c2" :  // plava
-                                "#9b59b6"),
+                            t.Main == "YY" ? "#2ecc71" :   // zelena
+                            t.Main == "YYY" ? "#e74c3c" :   // crvena
+                            t.Main == "YYYY" ? "#1545c2" :   // plava
+                            t.Main == "YYYYY" ? "#0fcbd3" :   // tirkizna
+                            "#9b59b6"),
                         UserId = t.USER_ID,
                         KONTAKT_ID = t.KONTAKT_ID,
                         BrojKartica = t.brojKartica,
@@ -489,6 +490,15 @@ namespace CC2.Controllers
         {
             var kontakt = new Kontakti();
 
+            var specialUserIds = new List<string>
+            {
+                "303a59cb-7019-4060-8f27-8cb33c89833a", 
+                "9eadd004-a508-4f7f-a4ac-ca510ff4c390"  
+            };
+
+            var loggedUserId = User.Identity.GetUserId();
+            ViewBag.AllowVvl = specialUserIds.Contains(loggedUserId);
+
             using (var efContext = new CCEntities())
             {
                 var terminiRaw = (from t in efContext.TERMINI
@@ -620,7 +630,7 @@ namespace CC2.Controllers
             .Where(r => r.UserId == userId)
             .Select(r => r.RoleId)
             .FirstOrDefault();
-
+        
 
             if (roleId == "3")
             {
@@ -651,6 +661,10 @@ namespace CC2.Controllers
                         efKontakti.KOMENTAR2 = kontakt.komentar2;
                         efKontakti.DATETIME_CREATED = DateTime.Now;
                         efKontakti.AKTIVAN = "Y";
+                        if (kontakt.vvl.HasValue)
+                        {
+                            efKontakti.VVL_DATUM = kontakt.vvl;
+                        }
                         efKontakti.FIRMA = kontakt.firma;
                         efKontakti.BROJ_KARTICA = kontakt.brojkartica;
 
@@ -869,10 +883,14 @@ namespace CC2.Controllers
 
             var kontaktiSaVvl = efContext.CC_KONTAKTI
                 .Where(k => k.VVL_DATUM != null)
-                .OrderBy(k => k.VVL_DATUM)
                 .AsQueryable();
 
-            pregled.kontaktiSales = GetKontaktiSaTerminima(kontaktiSaVvl);
+            var kontaktiWithTerminima = GetKontaktiSaTerminima(kontaktiSaVvl);
+
+            // Sortiranje ovdje, nakon što se spoje termini
+            pregled.kontaktiSales = kontaktiWithTerminima
+                .OrderBy(x => x.Kontakt.VVL_DATUM)
+                .ToList();
 
             return View(pregled);
         }
@@ -955,7 +973,7 @@ namespace CC2.Controllers
                               Id = u.Id,
                               Email = u.Email
                           }).ToList();
-
+           
             ViewBag.Users = agents;
 
             if (contactToEdit != null)
@@ -1043,7 +1061,10 @@ namespace CC2.Controllers
                     efKontaktiToUpdate.MOGUCA_INVESTICIJA = kontakt.investicija + " - " + DateTime.Now;
                     efKontaktiToUpdate.KOMENTAR = kontakt.komentar;
                     efKontaktiToUpdate.KOMENTAR2 = kontakt.komentar2;
-
+                    if (kontakt.vvl.HasValue)
+                    {
+                        efKontaktiToUpdate.VVL_DATUM = kontakt.vvl;
+                    }
                     //if (kontakt.komentar == null || string.IsNullOrWhiteSpace(kontakt.komentar.Trim()))
                     //{
                     //    // Ako je unos potpuno prazan – očisti KOMENTAR u bazi

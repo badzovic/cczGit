@@ -106,6 +106,7 @@
 
                                 </a>
                             </li>
+
                         }
                         else
                         {
@@ -126,11 +127,11 @@
                                 </a>
                             </li>
                             @*<li class="nav-item ">
-                <a class="nav-link " href="/Nijedobijen">
-                    <span class="sidenav-mini-icon"> L </span>
-                    <span class="sidenav-normal"> Nije dobijen </span>
-                </a>
-            </li>*@
+                            <a class="nav-link " href="/Nijedobijen">
+                                <span class="sidenav-mini-icon"> L </span>
+                                <span class="sidenav-normal"> Nije dobijen </span>
+                            </a>
+                        </li>*@
                         }
                         @if ((User.IsInRole("adminsales")))
                         {
@@ -298,7 +299,25 @@
                         </ul>
                     </div>
                 </li>
-
+                <!-- STATISTIKA -->
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#statistikaExamples" class="nav-link" aria-controls="statistikaExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                            <i class="ni ni-chart-bar-32 text-success text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Statistika</span>
+                    </a>
+                    <div class="collapse" id="statistikaExamples">
+                        <ul class="nav ms-4">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Statistika/Pregled">
+                                    <span class="sidenav-mini-icon"> S </span>
+                                    <span class="sidenav-normal">Pregled</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             }
 
 

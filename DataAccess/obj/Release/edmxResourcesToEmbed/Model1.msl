@@ -208,5 +208,41 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="KONTAKT_HISTORY">
+      <EntityTypeMapping TypeName="CCModel.KONTAKT_HISTORY">
+        <MappingFragment StoreEntitySet="KONTAKT_HISTORY">
+          <ScalarProperty Name="CREATED_AT" ColumnName="CREATED_AT" />
+          <ScalarProperty Name="CHANGED_AT" ColumnName="CHANGED_AT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="KONTAKT_ID" ColumnName="KONTAKT_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CC_KONTAKTI_OBRISANI">
+      <EntityTypeMapping TypeName="CCModel.CC_KONTAKTI_OBRISANI">
+        <MappingFragment StoreEntitySet="CC_KONTAKTI_OBRISANI">
+          <ScalarProperty Name="OBRISAO_USERNAME" ColumnName="OBRISAO_USERNAME" />
+          <ScalarProperty Name="OBRISAO_ID" ColumnName="OBRISAO_ID" />
+          <ScalarProperty Name="DATETIME_OBRISAN" ColumnName="DATETIME_OBRISAN" />
+          <ScalarProperty Name="KOMENTAR" ColumnName="KOMENTAR" />
+          <ScalarProperty Name="VVL_DATUM" ColumnName="VVL_DATUM" />
+          <ScalarProperty Name="BROJ_KARTICA" ColumnName="BROJ_KARTICA" />
+          <ScalarProperty Name="VRSTA_PRODAJE" ColumnName="VRSTA_PRODAJE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="BROJ" ColumnName="BROJ" />
+          <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+          <ScalarProperty Name="GRAD" ColumnName="GRAD" />
+          <ScalarProperty Name="DRZAVA" ColumnName="DRZAVA" />
+          <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+          <ScalarProperty Name="ADRESA" ColumnName="ADRESA" />
+          <ScalarProperty Name="PREZIME" ColumnName="PREZIME" />
+          <ScalarProperty Name="IME" ColumnName="IME" />
+          <ScalarProperty Name="FIRMA" ColumnName="FIRMA" />
+          <ScalarProperty Name="ORIGINAL_ID" ColumnName="ORIGINAL_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

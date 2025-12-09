@@ -64,9 +64,11 @@ namespace CC2.Controllers
             using (var efContext = new CCEntities())
             {
                 if (!dateFrom.HasValue)
-                    dateFrom = new DateTime(2024, 1, 1);
+                    dateFrom = new DateTime(2025, 12, 1);
                 if (!dateTo.HasValue)
                     dateTo = DateTime.Now;
+
+                dateTo = dateTo.Value.AddDays(1);
 
                 var model = new Dictionary<string, List<AgentStatsViewModel>>
         {
@@ -98,7 +100,7 @@ namespace CC2.Controllers
                     var marketingStats = efContext.CC_KONTAKTI
                         .Where(k => marketingUserIds.Contains(k.KREIRAO_ID)
                             && k.DATETIME_CREATED >= dateFrom.Value
-                            && k.DATETIME_CREATED <= dateTo.Value)
+                            && k.DATETIME_CREATED < dateTo.Value)
                         .GroupBy(k => k.KREIRAO_ID)
                         .Select(g => new AgentStatsViewModel
                         {
@@ -130,9 +132,17 @@ namespace CC2.Controllers
                                 k.SALES_NIJE_ZAINTERESOVAN != "Y" &&
                                 !efContext.KONTAKT_HISTORY.Any(h => h.KONTAKT_ID == k.ID && h.STATUS == "prodat"))
                         })
-                        .Where(x => x.AgentName != null)
-                        .OrderBy(x => x.AgentName)
-                        .ToList();
+                    .Where(x => x.AgentName != null)
+                    .AsEnumerable()
+                    .Select(x =>
+                    {
+                        x.Wandlungsquote = x.TotalCreated > 0
+                            ? Math.Round((x.TotalProdato * 100.0) / x.TotalCreated, 2)
+                            : 0;
+                        return x;
+                    })
+                    .OrderBy(x => x.AgentName)
+                    .ToList();
 
                     model["Marketing"] = marketingStats;
                 }
@@ -145,10 +155,20 @@ namespace CC2.Controllers
                 if (User.IsInRole("sales") || User.IsInRole("adminsales") || User.IsInRole("adminmarketing"))
                 {
                     var salesStats = efContext.CC_KONTAKTI
-                        .Where(k => salesUserIds.Contains(k.FINALIZIRAO_ID)
-                            && k.DATETIME_CREATED >= dateFrom.Value
-                            && k.DATETIME_CREATED <= dateTo.Value)
-                        .GroupBy(k => k.FINALIZIRAO_ID)
+                           .Where(k =>
+                            (
+                                // ako je finalizirao sales agent
+                                (k.FINALIZIRAO_ID != null && salesUserIds.Contains(k.FINALIZIRAO_ID)) ||
+
+                                // ili ako je trenutno kod sales agenta (ali nije kod marketinga)
+                                (salesUserIds.Contains(k.TRENUTNO_KOD_ID))
+                            )
+                            && k.DATETIME_UPDATED >= dateFrom.Value
+                            && k.DATETIME_UPDATED < dateTo.Value)
+                        .GroupBy(k =>
+                            k.FINALIZIRAO_ID != null && salesUserIds.Contains(k.FINALIZIRAO_ID)
+                                ? k.FINALIZIRAO_ID
+                                : k.TRENUTNO_KOD_ID)
                         .Select(g => new AgentStatsViewModel
                         {
                             AgentName = efContext.AspNetUsers
@@ -170,15 +190,30 @@ namespace CC2.Controllers
                                 k.SALES_NIJE_ZAINTERESOVAN == "Y" &&
                                 !efContext.KONTAKT_HISTORY.Any(h => h.KONTAKT_ID == k.ID && h.STATUS == "prodat")),
 
+                            // --- U pregovorima ---
+                            TotalPregovori = g.Count(k =>
+                                k.U_PREGOVORIMA == "Y" &&
+                                k.VRACEN_MARKETINGU != "Y" &&
+                                !efContext.KONTAKT_HISTORY.Any(h => h.KONTAKT_ID == k.ID && h.STATUS == "prodat")),
+
                             // --- OTVOREN (nije prodat, nije vraćen, nije nezainteresovan) ---
                             TotalOtvoren = g.Count(k =>
+                                k.U_PREGOVORIMA != "Y" &&
                                 k.VRACEN_MARKETINGU != "Y" &&
                                 k.SALES_NIJE_ZAINTERESOVAN != "Y" &&
                                 !efContext.KONTAKT_HISTORY.Any(h => h.KONTAKT_ID == k.ID && h.STATUS == "prodat"))
                         })
                         .Where(x => x.AgentName != null)
+                      .AsEnumerable() // da se izračun radi u memoriji
+                        .Select(x =>
+                        {
+                            var ukupno = (x.TotalSold + x.TotalReturned + x.TotalNotInterested + x.TotalOtvoren);
+                            x.Wandlungsquote = ukupno > 0 ? Math.Round((x.TotalSold * 100.0) / ukupno, 2) : 0;
+                            return x;
+                        })
                         .OrderBy(x => x.AgentName)
                         .ToList();
+
 
                     model["Sales"] = salesStats;
                 }

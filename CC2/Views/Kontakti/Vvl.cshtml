@@ -194,7 +194,7 @@
             console.log("➡️ Modal otvoren: prebaciModal");
 
             if (!modalCalendar) {
-                console.log("🟡 Inicijalizacija kalendara...");
+                console.log("Inicijalizacija kalendara...");
 
                 $.get("/Kontakti/GetAllTermini")
                     .done(function (data) {
@@ -229,7 +229,7 @@
                     });
 
             } else {
-                console.log("ℹ️ Ponovno renderujem postojeći kalendar.");
+                console.log("Ponovno renderujem postojeći kalendar.");
                 modalCalendar.render();
             }
         });

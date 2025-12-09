@@ -75,6 +75,12 @@
       <End Role="KONTAKTI" EntitySet="KONTAKTI" />
     </AssociationSet>
     <EntitySet Name="UPLOADEDFILES" EntityType="CCModel.UPLOADEDFILES" />
+    <EntitySet Name="KONTAKT_HISTORY" EntityType="CCModel.KONTAKT_HISTORY" />
+    <AssociationSet Name="FK_KONTAKT_HISTORY_KONTAKT_HISTORY" Association="CCModel.FK_KONTAKT_HISTORY_KONTAKT_HISTORY">
+      <End Role="KONTAKT_HISTORY" EntitySet="KONTAKT_HISTORY" />
+      <End Role="KONTAKT_HISTORY1" EntitySet="KONTAKT_HISTORY" />
+    </AssociationSet>
+    <EntitySet Name="CC_KONTAKTI_OBRISANI" EntityType="CCModel.CC_KONTAKTI_OBRISANI" />
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
@@ -489,5 +495,53 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="FILEPATH" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="KONTAKT_HISTORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KONTAKT_ID" Type="Int32" />
+    <Property Name="STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CHANGED_AT" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_AT" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="KONTAKT_HISTORY1" Relationship="CCModel.FK_KONTAKT_HISTORY_KONTAKT_HISTORY" FromRole="KONTAKT_HISTORY" ToRole="KONTAKT_HISTORY1" />
+    <NavigationProperty Name="KONTAKT_HISTORY2" Relationship="CCModel.FK_KONTAKT_HISTORY_KONTAKT_HISTORY" FromRole="KONTAKT_HISTORY1" ToRole="KONTAKT_HISTORY" />
+  </EntityType>
+  <Association Name="FK_KONTAKT_HISTORY_KONTAKT_HISTORY">
+    <End Type="CCModel.KONTAKT_HISTORY" Role="KONTAKT_HISTORY" Multiplicity="1" />
+    <End Type="CCModel.KONTAKT_HISTORY" Role="KONTAKT_HISTORY1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="KONTAKT_HISTORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KONTAKT_HISTORY1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CC_KONTAKTI_OBRISANI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ORIGINAL_ID" Type="Int32" Nullable="false" />
+    <Property Name="FIRMA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PREZIME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ADRESA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PLZ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DRZAVA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GRAD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PREFIX" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="BROJ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="VRSTA_PRODAJE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BROJ_KARTICA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VVL_DATUM" Type="DateTime" Precision="3" />
+    <Property Name="KOMENTAR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DATETIME_OBRISAN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OBRISAO_ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="OBRISAO_USERNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

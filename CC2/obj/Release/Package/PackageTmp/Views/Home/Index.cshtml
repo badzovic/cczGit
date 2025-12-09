@@ -203,20 +203,10 @@
                                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Ukupno u pregovorima <u id="pregovorimaCount">@Model.uPregovorima.Count()</u></p>
                                            <a style="text-align: center; font-size: 14px;" href="#" onclick="openModal('pregovorimaModal')">PREGLEDAJ KONTAKTE</a>
                                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Nisu zainteresovani <u id="nisuZainteresovaniCount">@Model.nisuZainteresovani.Count()</u></p>
-                                           <a style="text-align: center; font-size: 14px;" href="#" onclick="openModal('nisuZainteresovaniModal')">PREGLEDAJ KONTAKTE</a>
-                                           <p class="text-sm mb-0 text-uppercase font-weight-bold">Ukupno prodatih <u id="prodatiCount">@Model.prodati.Count()</u></p>
-                                           <a style="text-align: center; font-size: 14px;" href="#" onclick="openModal('prodatiModal')">PREGLEDAJ KONTAKTE</a>
+                                           <a style="text-align: center; font-size: 14px;" href="#" onclick="openModal('nisuZainteresovaniModal')">PREGLEDAJ KONTAKTE</a>                                       
                                        </div>
                                     }
-                                    else
-                                    {
-                                        <div class="numbers">
-                                            <h6>STATISTIKA KORISNIKA</h6>
-                                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Ukupno u pregovorima <u>@Model.uPregovorimaUser.Count()</u></p>                                 
-                                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Ukupno prodatih <u>@Model.prodatiUser.Count()</u></p>
-                                          
-                                        </div>
-                                    }
+                                  
 
                                 </div>
                                 <div class="col-4 text-end">

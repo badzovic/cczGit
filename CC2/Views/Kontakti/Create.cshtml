@@ -211,12 +211,20 @@
                                         </div>
                                     </div>
 
+                                    @if (ViewBag.AllowVvl == true)
+                                    {
+                                        <div class="col-6">
+                                            <label class="form-label">VVL datum</label>
+                                            @Html.TextBoxFor(x => x.vvl, new { @type = "datetime-local", @class = "form-control", @name = "vvl" })
+                                            @Html.ValidationMessageFor(x => x.vvl)
+                                        </div>
+                                    }
+                                    <p>&nbsp;</p>
                                     <hr class="horizontal dark my-3">
-
 
                                     <div class="row">
 
-                                    
+
                                         <div class="uk-width-1-1">
                                             <h5><span style="color: red;"></span> <span>Zakaži termin </span></h5>
                                         </div>

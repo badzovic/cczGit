@@ -71,21 +71,15 @@
                                 <hr class="horizontal dark my-3">
 
                                 <div class="row">
-                                    <div class="col-12">
-                                        <label for="Aktivnost">Dostupnnost</label>
-                                        <span>@Model.pregledKontakta[0].DOSTUPNOST</span>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="Investicija" class="form-label">Moguća investicija</label>
-                                        <span>@Model.pregledKontakta[0].MOGUCA_INVESTICIJA</span>
-                                    </div>
+                                  
                                     <div class="col-12">
                                         <label for="Komentar" class="form-label">Kommentar Termin</label>
-                                        <span>@Model.pregledKontakta[0].KOMENTAR</span>
+                                        <span>@Html.Raw(Model.pregledKontakta[0].KOMENTAR?.Replace("\n", "<br/>"))</span>
                                     </div>
+
                                     <div class="col-12">
                                         <label for="Komentar" class="form-label">Komentar Prodaja</label>
-                                        <span>@Model.pregledKontakta[0].KOMENTAR2</span>
+                                        <span>@Html.Raw(Model.pregledKontakta[0].KOMENTAR2?.Replace("\n", "<br/>"))</span>
                                     </div>
                                 </div>
                                 <p>&nbsp;</p>
@@ -126,8 +120,6 @@
                                     <a href="@Url.Action("editSales", "Kontakti", new { @Model.pregledKontakta[0].ID })" class="btn btn-outline-primary">Uredi</a>
 
                                     <button class="btn btn-outline-primary" onclick="goBack()">Nazad</button>
-
-
 
                                 </div>
                             </div>

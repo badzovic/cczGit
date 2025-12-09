@@ -20,6 +20,6 @@ namespace CC2.Models
         public int TotalPregovori { get; set; }
         public int TotalNijeZainteresovan { get; set; }
         public int TotalOtvoren { get; set; }
-
+        public double Wandlungsquote { get; set; }
     }
 }

@@ -505,6 +505,7 @@ namespace CC2.Controllers
                 {
                     kontakt.TRENUTNO_GRUPA_ID = "5";
                     kontakt.SALES_NIJE_ZAINTERESOVAN = "Y";
+                    kontakt.FINALIZIRAO_ID = userId;
                     kontakt.SALES_NIJE_ZAINTERESOVAN_DATE = DateTime.Now;
                     int results2 = efContext.SaveChanges();
                     transaction.Commit();
@@ -544,6 +545,7 @@ namespace CC2.Controllers
                 {
                     kontakt.NIJE_DOBIJEN = null;
                     kontakt.U_PREGOVORIMA = "Y";
+                    kontakt.FINALIZIRAO_ID = userId;
                     kontakt.DATETIME_UPDATED = DateTime.Now;
                     int results2 = efContext.SaveChanges();
                     transaction.Commit();
@@ -725,6 +727,8 @@ namespace CC2.Controllers
             var kontakt = efContext.CC_KONTAKTI.Find(id);
             if (kontakt == null)
                 return Json(new { success = false, message = "Kontakt nije pronađen." });
+            var userId = User.Identity.GetUserId();
+            var username = User.Identity.Name;
 
             var user = HttpContext.User;
 
@@ -735,6 +739,7 @@ namespace CC2.Controllers
                     kontakt.TRENUTNO_GRUPA_ID = "2";
                     kontakt.TRENUTNO_KOD_ID = kontakt.KREIRAO_ID;
                     kontakt.U_PREGOVORIMA = null;
+                    kontakt.FINALIZIRAO_ID = userId;
                     kontakt.NIJE_DOBIJEN = "Y";
                     kontakt.DATETIME_UPDATED = DateTime.Now;
                     kontakt.VRACEN_MARKETINGU = "Y";

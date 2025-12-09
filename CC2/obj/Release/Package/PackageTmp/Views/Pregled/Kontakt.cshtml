@@ -81,12 +81,14 @@
                                     </div>
                                     <div class="col-12">
                                         <label for="Komentar" class="form-label">Kommentar Termin</label>
-                                        <span>@Model.pregledKontakta[0].KOMENTAR</span>
+                                        <span>@Html.Raw(Model.pregledKontakta[0].KOMENTAR?.Replace("\n", "<br/>"))</span>
                                     </div>
+
                                     <div class="col-12">
                                         <label for="Komentar" class="form-label">Komentar Prodaja</label>
-                                        <span>@Model.pregledKontakta[0].KOMENTAR2</span>
+                                        <span>@Html.Raw(Model.pregledKontakta[0].KOMENTAR2?.Replace("\n", "<br/>"))</span>
                                     </div>
+
                                 </div>
                                 <p>&nbsp;</p>
                                 <p>&nbsp;</p>
