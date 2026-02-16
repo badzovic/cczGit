@@ -78,11 +78,11 @@
 
                                         <th>Firma</th>
 
+                                        <th>Anbieter</th>
+
+                                        <th>Projekt</th>
+
                                         <th>Broj kartica</th>
-
-                                        <th>Adresa</th>
-
-                                        <th>PLZ</th>
 
                                         <th>Sljedeci termin</th>
 
@@ -169,9 +169,12 @@
 
                                         <th>Firma</th>
 
+                                        <th>Anbieter</th>
+
+                                        <th>Projekt</th>
+
                                         <th>Broj kartica</th>
 
-                                        <th>Adresa</th>
 
 
 
@@ -197,7 +200,9 @@
                                         <th>Rb</th>
 
                                         <th>Firma</th>
+                                        <th>Anbieter</th>
 
+                                        <th>Projekt</th>
                                         <th>Broj kartica</th>
 
                                         <th>Adresa</th>
@@ -229,11 +234,13 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.FIRMA</td>
 
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ANBIETER</td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PROJEKT</td>
+
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.BROJ_KARTICA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ADRESA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PLZ</td>
 
                                             <td>
                                                 @(item.SljedeciTermin.HasValue
@@ -278,9 +285,7 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PREZIME</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ADRESA</td>
-
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PLZ</td>
+                                   
 
                                             <td>
                                                 @(item.SljedeciTermin.HasValue
@@ -320,9 +325,7 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PREZIME</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ADRESA</td>
-
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PLZ</td>
+                                            
 
                                             <td>
                                                 @(item.SljedeciTermin.HasValue
@@ -357,11 +360,12 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ID</td>
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.FIRMA</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ANBIETER</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PROJEKT</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.BROJ_KARTICA</td>
 
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ADRESA</td>
 
 
                                             <td>
@@ -384,8 +388,8 @@
                                                 <a class="btn btn-outline-secondary text-uppercase" href="@Url.Action("kontaktSales", "Pregled", new { id = item.Kontakt.ID})">PREGLED</a>
                                             </td>
                                             @*<td>
-                                                    <button type="button" class="btn btn-outline-secondary" id="prosljediAgentu" data-item-id="@item.Kontakt.ID">PROSLJEDI AGENTU</button>
-                                                </td>*@
+            <button type="button" class="btn btn-outline-secondary" id="prosljediAgentu" data-item-id="@item.Kontakt.ID">PROSLJEDI AGENTU</button>
+        </td>*@
                                         </tr>
 
                                     }
@@ -400,16 +404,19 @@
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ID</td>
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.FIRMA</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ANBIETER</td>
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PROJEKT</td>
+
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.BROJ_KARTICA</td>
 
-                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ADRESA</td>
 
 
                                             <td>
                                                 @(item.SljedeciTermin.HasValue
-      ? item.SljedeciTermin.Value.ToString("dd.MM.yyyy HH:mm")
-      : "-")
+                                                  ? item.SljedeciTermin.Value.ToString("dd.MM.yyyy HH:mm")
+                                                  : "-")
                                             </td>
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PREFIX @item.Kontakt.BROJ</td>
 

@@ -54,6 +54,8 @@ namespace DataAccess
         public string KIVVL { get; set; }
         public string VRSTA_PRODAJE { get; set; }
         public string KOMENTAR2 { get; set; }
+        public string ANBIETER { get; set; }
+        public string PROJEKT { get; set; }
     
         public virtual AspNetRoles AspNetRoles { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }

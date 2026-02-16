@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace CC2.Models
 {
@@ -20,7 +21,11 @@ namespace CC2.Models
         public string broj2 { get; set; }
         public string email { get; set; }
         public string firma { get; set; }
+
+        [Required(ErrorMessage = "Polje je obavezno")]
+        [RegularExpression(@"^\d+$", ErrorMessage = "Dozvoljeni su samo brojevi")]
         public string brojkartica { get; set; }
+
         public string fax { get; set; }
         public string bei { get; set; }
         public string dostupnost { get; set; }
@@ -38,6 +43,9 @@ namespace CC2.Models
         public List<Termin> Termini { get; set; }
         public DateTime? terminEndDate { get; set; }
         public DateTime? vvl { get; set; }
+
+        public string Anbieter { get; set; }
+        public string Projekt { get; set; }
 
     }
 }

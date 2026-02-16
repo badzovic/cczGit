@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\controllers\\kontakticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\controllers\\kontakticontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\content\\js\\plugins\\amcharts\\core.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\content\\js\\plugins\\amcharts\\core.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\kivvl\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\kivvl\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\zavrseni\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\zavrseni\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\kivvl\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|solutionrelative:cc2\\views\\kivvl\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E50B38EC-6A15-4CC5-9AB0-830AD32C21FC}|CC2\\CC2.csproj|c:\\users\\adzovic berin\\documents\\github\\cczgit\\cc2\\views\\nijedobijen\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -51,45 +39,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "CC2\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "CC2\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAE4AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-04T20:25:01.678Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "KontaktiController.cs",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\KontaktiController.cs",
-              "RelativeDocumentMoniker": "CC2\\Controllers\\KontaktiController.cs",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Controllers\\KontaktiController.cs",
-              "RelativeToolTip": "CC2\\Controllers\\KontaktiController.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAkwCYAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-04T20:24:43.244Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "core.js",
-              "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Content\\js\\plugins\\amcharts\\core.js",
-              "RelativeDocumentMoniker": "CC2\\Content\\js\\plugins\\amcharts\\core.js",
-              "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Content\\js\\plugins\\amcharts\\core.js",
-              "RelativeToolTip": "CC2\\Content\\js\\plugins\\amcharts\\core.js",
-              "ViewState": "AgIAAMkCAAAAAAAAAAAzwNQCAACmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-02-04T20:24:38.281Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kivvl\\Index.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Kivvl\\Index.cshtml",
@@ -102,20 +51,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Zavrseni\\Index.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Zavrseni\\Index.cshtml",
               "ToolTip": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Zavrseni\\Index.cshtml",
               "RelativeToolTip": "CC2\\Views\\Zavrseni\\Index.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAACoAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAC8AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-02-04T10:54:38.988Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Vvl.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Kontakti\\Vvl.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Kontakti\\Vvl.cshtml",
@@ -128,7 +77,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Nijedobijen\\Index.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Nijedobijen\\Index.cshtml",
@@ -141,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\Pregled\\Index.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\Pregled\\Index.cshtml",
@@ -154,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\adzovic berin\\Documents\\GitHub\\cczGit\\CC2\\Views\\PregledVracenih\\Index.cshtml",
               "RelativeDocumentMoniker": "CC2\\Views\\PregledVracenih\\Index.cshtml",

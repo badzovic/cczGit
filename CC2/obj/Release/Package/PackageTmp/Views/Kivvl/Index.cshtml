@@ -22,9 +22,11 @@
                                 <tr style="text-align:center;">
                                     <th>Broj</th>
                                     <th>Firma</th>
+                                    <th>Anbieter</th>
+
+                                    <th>Projekt</th>
                                     <th>Broj kartica</th>
-                                    <th>Adresa</th>
-                                    <th>PLZ</th>
+
                                     <th>Telefon</th>
                                     <th>VVL datum</th>
                                     <th>Pregledaj</th>
@@ -39,9 +41,11 @@
                                         <tr>
                                             <td>@item.Kontakt.ID</td>
                                             <td>@item.Kontakt.FIRMA</td>
+                                            <td>@item.Kontakt.ANBIETER</td>
+                                            <td>@item.Kontakt.PROJEKT</td>
                                             <td>@item.Kontakt.BROJ_KARTICA</td>
-                                            <td>@item.Kontakt.ADRESA</td>
-                                            <td>@item.Kontakt.PLZ</td>
+
+
                                             <td>@item.Kontakt.PREFIX @item.Kontakt.BROJ</td>
                                             <td>
                                                 @(item.Kontakt.VVL_DATUM.HasValue

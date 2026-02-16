@@ -32,11 +32,15 @@ namespace CC2.Controllers
         [HttpGet]
         public ActionResult Kalendar(int? id)
         {
-            var specialUserIds = new List<string>
+            var specialUserIds = new HashSet<string>(
+            new[]
             {
                 "303a59cb-7019-4060-8f27-8cb33c89833a", // Test
                 "9eadd004-a508-4f7f-a4ac-ca510ff4c390"  // Dino
-            };
+            },
+                StringComparer.OrdinalIgnoreCase
+            );
+
 
             using (var efContext = new CCEntities())
             {
@@ -490,11 +494,14 @@ namespace CC2.Controllers
         {
             var kontakt = new Kontakti();
 
-            var specialUserIds = new List<string>
+            var specialUserIds = new HashSet<string>(
+            new[]
             {
-                "303a59cb-7019-4060-8f27-8cb33c89833a", 
-                "9eadd004-a508-4f7f-a4ac-ca510ff4c390"  
-            };
+                "303a59cb-7019-4060-8f27-8cb33c89833a", // Test
+                "9eadd004-a508-4f7f-a4ac-ca510ff4c390"  // Dino
+            },
+                StringComparer.OrdinalIgnoreCase
+            );
 
             var loggedUserId = User.Identity.GetUserId();
             ViewBag.AllowVvl = specialUserIds.Contains(loggedUserId);
@@ -622,6 +629,11 @@ namespace CC2.Controllers
             CC_KONTAKTI efKontakti = new CC_KONTAKTI();
             TERMINI termin = new TERMINI();
 
+            if (!ModelState.IsValid)
+            {
+                return View(kontakt);
+            }
+
             var user = HttpContext.User;
             var username = user.Identity.Name;
             var userId = User.Identity.GetUserId();
@@ -661,6 +673,8 @@ namespace CC2.Controllers
                         efKontakti.KOMENTAR2 = kontakt.komentar2;
                         efKontakti.DATETIME_CREATED = DateTime.Now;
                         efKontakti.AKTIVAN = "Y";
+                        efKontakti.PROJEKT = kontakt.Projekt;
+                        efKontakti.ANBIETER = kontakt.Anbieter;
                         if (kontakt.vvl.HasValue)
                         {
                             efKontakti.VVL_DATUM = kontakt.vvl;
@@ -735,6 +749,8 @@ namespace CC2.Controllers
                         efKontakti.KOMENTAR2 = kontakt.komentar2;
                         efKontakti.DATETIME_CREATED = DateTime.Now;
                         efKontakti.AKTIVAN = "Y";
+                        efKontakti.PROJEKT = kontakt.Projekt;
+                        efKontakti.ANBIETER = kontakt.Anbieter;
                         efKontakti.FIRMA = kontakt.firma;
                         efKontakti.BROJ_KARTICA = kontakt.brojkartica;
                         efContext.CC_KONTAKTI.Add(efKontakti);
@@ -804,6 +820,8 @@ namespace CC2.Controllers
                         efKontakti.KOMENTAR2 = kontakt.komentar2;
                         efKontakti.DATETIME_CREATED = DateTime.Now;
                         efKontakti.AKTIVAN = "Y";
+                        efKontakti.PROJEKT = kontakt.Projekt;
+                        efKontakti.ANBIETER = kontakt.Anbieter;
                         efKontakti.FIRMA = kontakt.firma;
                         efKontakti.BROJ_KARTICA = kontakt.brojkartica;
                         efContext.CC_KONTAKTI.Add(efKontakti);
@@ -1020,31 +1038,28 @@ namespace CC2.Controllers
                 return HttpNotFound();
             }
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult editSales(Kontakti kontakt)
         {
-
+            // var vvlUserId = "303a59cb-7019-4060-8f27-8cb33c89833a"; // test
+            var vvlUserId = "9eadd004-a508-4f7f-a4ac-ca510ff4c390"; // prod
 
             var user = HttpContext.User;
             var username = user.Identity.Name;
             var userId = User.Identity.GetUserId();
+
             var efKontaktiToUpdate = efContext.CC_KONTAKTI.Find(kontakt.Id);
             var terminToUpdateId = efKontaktiToUpdate.TERMIN_ID;
 
-            TERMINI terminToUpdate = new TERMINI();
-
-            TERMINI termin = new TERMINI();
-
-
-
+            TERMINI terminToUpdate = null;
 
             using (var transaction = efContext.Database.BeginTransaction())
             {
                 try
                 {
-
-
+                    // ===== UPDATE KONTAKTA  =====
                     efKontaktiToUpdate.IME = kontakt.ime;
                     efKontaktiToUpdate.FIRMA = kontakt.firma;
                     efKontaktiToUpdate.BROJ_KARTICA = kontakt.brojkartica;
@@ -1061,50 +1076,53 @@ namespace CC2.Controllers
                     efKontaktiToUpdate.MOGUCA_INVESTICIJA = kontakt.investicija + " - " + DateTime.Now;
                     efKontaktiToUpdate.KOMENTAR = kontakt.komentar;
                     efKontaktiToUpdate.KOMENTAR2 = kontakt.komentar2;
+                    efKontaktiToUpdate.DATETIME_UPDATED = DateTime.Now;
+                    efKontaktiToUpdate.AKTIVAN = "Y";
+
+                    // ===================== VVL LOGIKA =====================
                     if (kontakt.vvl.HasValue)
                     {
                         efKontaktiToUpdate.VVL_DATUM = kontakt.vvl;
+
+                        var vvlTermin = efContext.TERMINI.FirstOrDefault(t =>
+                            t.KONTAKT_ID == kontakt.Id &&
+                            t.DATUM == kontakt.vvl &&
+                            t.USER_ID == vvlUserId);
+
+                        if (vvlTermin != null)
+                        {
+                            // UPDATE VVL termina
+                            vvlTermin.DATUM = kontakt.vvl.Value;
+                            vvlTermin.DATUM_KRAJA = kontakt.vvl.Value;
+                            vvlTermin.NAZIV = "VVL - " + efKontaktiToUpdate.FIRMA;
+
+                            efKontaktiToUpdate.TERMIN_ID = vvlTermin.ID;
+                        }
+                        else
+                        {
+                            // CREATE VVL termina
+                            var noviVvlTermin = new TERMINI
+                            {
+                                USER_ID = vvlUserId,
+                                DATUM = kontakt.vvl.Value,
+                                DATUM_KRAJA = kontakt.vvl.Value,
+                                NAZIV = "VVL - " + efKontaktiToUpdate.FIRMA,
+                                KONTAKT_ID = kontakt.Id
+                            };
+
+                            efContext.TERMINI.Add(noviVvlTermin);
+                            efContext.SaveChanges(); // bitno radi ID-a
+
+                            efKontaktiToUpdate.TERMIN_ID = noviVvlTermin.ID;
+                        }
                     }
-                    //if (kontakt.komentar == null || string.IsNullOrWhiteSpace(kontakt.komentar.Trim()))
-                    //{
-                    //    // Ako je unos potpuno prazan – očisti KOMENTAR u bazi
-                    //    efKontaktiToUpdate.KOMENTAR = null;
-                    //}
-                    //else
-                    //{
-                    //    var noviKomentari = kontakt.komentar
-                    //        .Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries)
-                    //        .Select(line => line.Trim())
-                    //        .Where(line => !string.IsNullOrWhiteSpace(line))
-                    //        .Distinct()
-                    //        .ToList();
-
-                    //    var stariKomentar = efKontaktiToUpdate.KOMENTAR ?? "";
-                    //    var linijePostojece = stariKomentar.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-
-                    //    foreach (var linija in noviKomentari)
-                    //    {
-                    //        // Ne dodaj liniju ako već postoji ista (ignoriramo datum)
-                    //        if (!linijePostojece.Any(x => x.EndsWith(linija)))
-                    //        {
-                    //            var zapis = $"[{DateTime.Now:dd.MM.yyyy. HH:mm}] {linija}";
-                    //            stariKomentar = zapis + "\n" + stariKomentar;
-                    //        }
-                    //    }
-
-                    //    efKontaktiToUpdate.KOMENTAR = stariKomentar.Trim();
-                    //}
-
-                    efKontaktiToUpdate.DATETIME_UPDATED = DateTime.Now;
-                    efKontaktiToUpdate.AKTIVAN = "Y";
-                    if (kontakt.terminDate != DateTime.MinValue)
+                    // ===================== SALES LOGIKA =====================
+                    else if (kontakt.terminDate != DateTime.MinValue)
                     {
-                        terminToUpdateId = efKontaktiToUpdate.TERMIN_ID;
                         terminToUpdate = efContext.TERMINI.Find(terminToUpdateId);
 
                         if (terminToUpdate != null)
                         {
-                            // Ažuriraj postojeći termin
                             terminToUpdate.DATUM = kontakt.terminDate;
                             terminToUpdate.DATUM_KRAJA = kontakt.terminEndDate;
                             terminToUpdate.NAZIV = kontakt.ime + " " + kontakt.prezime;
@@ -1113,7 +1131,6 @@ namespace CC2.Controllers
                         }
                         else
                         {
-                            // Kreiraj novi termin
                             var noviTermin = new TERMINI
                             {
                                 USER_ID = userId,
@@ -1129,27 +1146,21 @@ namespace CC2.Controllers
                             efKontaktiToUpdate.TERMIN_ID = noviTermin.ID;
                         }
                     }
-                    int results2 = efContext.SaveChanges();
+
+                    efContext.SaveChanges();
                     transaction.Commit();
                 }
                 catch (Exception ex)
                 {
-                    _logger.Error("Greska na metodi edtSales upis u bazu." + " " + ex.Message);
-
+                    transaction.Rollback();
+                    _logger.Error("Greska na metodi editSales upis u bazu. " + ex.Message);
                 }
             }
 
-
-
             TempData["Success"] = "Uspješno ste izmjenili kontakt!";
-
-            string url = $"/Kontakti/editSales/{kontakt.Id}";
-
-            // Redirect to the URL
-            return Redirect(url);
-
-
+            return Redirect($"/Kontakti/editSales/{kontakt.Id}");
         }
+
 
         [HttpGet]
         public ActionResult Edit(int id)

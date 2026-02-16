@@ -113,6 +113,8 @@
           <Property Name="KIVVL" Type="nvarchar" MaxLength="50" />
           <Property Name="VRSTA_PRODAJE" Type="nvarchar" MaxLength="50" />
           <Property Name="KOMENTAR2" Type="nvarchar(max)" />
+          <Property Name="ANBIETER" Type="nvarchar" MaxLength="100" />
+          <Property Name="PROJEKT" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="CC_KONTAKTI_OBRISANI">
           <Key>
@@ -733,6 +735,8 @@
           <Property Name="KIVVL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VRSTA_PRODAJE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="KOMENTAR2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ANBIETER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PROJEKT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DRZAVE">
           <Key>
@@ -1141,6 +1145,8 @@
           <EntitySetMapping Name="CC_KONTAKTI">
             <EntityTypeMapping TypeName="CCModel.CC_KONTAKTI">
               <MappingFragment StoreEntitySet="CC_KONTAKTI">
+                <ScalarProperty Name="PROJEKT" ColumnName="PROJEKT" />
+                <ScalarProperty Name="ANBIETER" ColumnName="ANBIETER" />
                 <ScalarProperty Name="KOMENTAR2" ColumnName="KOMENTAR2" />
                 <ScalarProperty Name="VRSTA_PRODAJE" ColumnName="VRSTA_PRODAJE" />
                 <ScalarProperty Name="KIVVL" ColumnName="KIVVL" />

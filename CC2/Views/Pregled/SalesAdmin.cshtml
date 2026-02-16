@@ -95,7 +95,9 @@
 
                                     @if (User.IsInRole("adminsales"))
                                     {
-                                        <p style="margin-left:25px;">  <input type="checkbox" id="selectAll" />  Odaberi sve unose</p>
+                                        <p style="margin-left:25px;">
+                                            <input type="checkbox" id="selectAll" />  Odaberi sve unose
+                                        </p>
 
                                         <th></th>
 
@@ -103,8 +105,12 @@
 
                                         <th>Firma</th>
 
-                                        <th>Broj kartica</th>
 
+
+                                        <th>Anbieter</th>
+
+                                        <th>Projekt</th>
+                                        <th>Broj kartica</th>
                                         <th>Sljedeci termin</th>
 
                                         <th>Broj tel.</th>
@@ -144,11 +150,11 @@
 
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.FIRMA</td>
 
+
+
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.ANBIETER</td>
+                                            <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.PROJEKT</td>
                                             <td style="text-align:left;" class="text-sm font-weight-bold">@item.Kontakt.BROJ_KARTICA</td>
-
-
-
-
                                             <td>
                                                 @(item.SljedeciTermin.HasValue
                                                 ? item.SljedeciTermin.Value.ToString("dd.MM.yyyy HH:mm")
@@ -196,7 +202,7 @@
                                                 <a class="btn btn-outline-secondary text-uppercase" href="@Url.Action("kontaktSales", "Pregled", new { id = item.Kontakt.ID})">PREGLED</a>
                                             </td>
                                             <td>
-                                               
+
                                                 <button class="btn btn-outline-danger text-uppercase delete-contact"
                                                         data-id="@item.Kontakt.ID">
                                                     OBRIŠI

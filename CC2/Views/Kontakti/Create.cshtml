@@ -129,7 +129,15 @@
                                         </div>
                                         <div class="col-6">
                                             <label class="form-label">Broj kartica</label>
-                                            @Html.TextBoxFor(x => x.brojkartica, new { required = "required", @name = "brojkartica", placeholder = "Broj kartica", @class = "form-control" })
+                                            @Html.TextBoxFor(x => x.brojkartica, new
+                                            {
+                                                type = "text",
+                                                required = "required",
+                                                pattern = @"\d+",
+                                                title = "Dozvoljeni su samo brojevi",
+                                                @class = "form-control",
+                                                placeholder = "Broj kartica"
+                                            })
                                             @Html.ValidationMessageFor(x => x.brojkartica)
                                         </div>
 
@@ -170,6 +178,38 @@
                                             <label class="form-label">Broj 2</label>
                                             @Html.TextBoxFor(x => x.broj2, new { @name = "broj2", placeholder = "Unesite broj telefona bez državnog prefiksa", @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.broj2)
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="form-label">Anbieter</label>
+                                            @Html.DropDownListFor(
+                                                x => x.Anbieter,
+                                                new List<SelectListItem>
+                                                {
+                                                    new SelectListItem { Text = "Vodafone", Value = "Vodafone" },
+                                                    new SelectListItem { Text = "O2", Value = "O2" }
+                                                },
+                                                "Odaberite provajdera",
+                                                new { @class = "form-select", @id = "anbieter" }
+                                            )
+                                            @Html.ValidationMessageFor(x => x.Anbieter)
+                                        </div>
+
+                                        <div class="col-6">
+                                            <label class="form-label">Projekt</label>
+                                            @Html.DropDownListFor(
+                                                x => x.Projekt,
+                                                new List<SelectListItem>
+                                                {
+                                                    new SelectListItem { Text = "Mobilfunk", Value = "Mobilfunk" },
+                                                    new SelectListItem { Text = "Microsoft", Value = "Microsoft" },
+                                                    new SelectListItem { Text = "Cloude", Value = "Cloude" },
+                                                    new SelectListItem { Text = "Internet", Value = "Internet" },
+                                                    new SelectListItem { Text = "Festnetz", Value = "Festnetz" }
+                                                },
+                                                "Odaberite projekat",
+                                                new { @class = "form-select", @id = "projektSelect" }
+                                            )
+                                            @Html.ValidationMessageFor(x => x.Projekt)
                                         </div>
 
                                         <div class="row">
