@@ -143,7 +143,19 @@
 
                                         <div class="col-6">
                                             <label class="form-label">Država</label>
-                                            @Html.DropDownListFor(x => x.drzava, new SelectList(Enumerable.Empty<SelectListItem>(), "Value", "Text"), "Odaberite državu", new { @class = "form-select", @id = "countrySelect" })
+                                            @Html.DropDownListFor(x => x.drzava,
+                                              new List<SelectListItem>
+                                              {
+                                                  new SelectListItem { Value = "DE", Text = "Njemačka" },
+                                                  new SelectListItem { Value = "AT", Text = "Austrija" },
+                                                  new SelectListItem { Value = "CH", Text = "Švicarska" },
+                                                  new SelectListItem { Value = "BE", Text = "Belgija" },
+                                                  new SelectListItem { Value = "NL", Text = "Nizozemska" },
+                                                  new SelectListItem { Value = "LU", Text = "Luksemburg" },
+                                                  new SelectListItem { Value = "FR", Text = "Francuska" }
+                                              },
+                                              "Odaberite državu",
+                                              new { @class = "form-select", id = "countrySelect" })
                                             @Html.ValidationMessageFor(x => x.drzava)
                                         </div>
 
